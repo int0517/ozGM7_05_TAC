@@ -15,8 +15,8 @@ GameObject:
   - component: {fileID: 7812066149428827819}
   - component: {fileID: 6060947761586514512}
   m_Layer: 3
-  m_Name: ShotRangeEnumy
-  m_TagString: Enumy
+  m_Name: ShotRangeEnemy
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -182,9 +182,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShotRangeEnumyFollow
   Level: 1
-  EnumyHP: 3
-  EnumyATK: 1
-  EnumySpeed: 2
+  EnemyHP: 3
+  EnemyATK: 1
+  EnemySpeed: 2
   knockbackForce: 5
 --- !u!114 &6060947761586514512
 MonoBehaviour:
