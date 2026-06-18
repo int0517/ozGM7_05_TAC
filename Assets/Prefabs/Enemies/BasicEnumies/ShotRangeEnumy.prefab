@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 2198761881726923903}
   - component: {fileID: 7812066149428827819}
   - component: {fileID: 6060947761586514512}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: ShotRangeEnumy
-  m_TagString: Enumy
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -208,7 +208,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6612943277010028381}
   - component: {fileID: 7454949097053892429}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: CollisionDecision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
