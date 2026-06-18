@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class UI02_SkillIcons : MonoBehaviour
 {
-    [SerializeField] private List<GameObject> SkillPrefabs;
+    [SerializeField] private List<GameObject> ownedSkills;
 
     [System.Serializable]
     public class SkillData

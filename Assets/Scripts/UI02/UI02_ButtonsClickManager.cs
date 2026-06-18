@@ -4,10 +4,12 @@ using UnityEngine.SceneManagement;
 public class UI02_ButtonsClickManager : MonoBehaviour
 {
     [SerializeField] private GameObject pausePanel;
+    [SerializeField] private GameObject quitPanel;
 
     private void Start()
     {
         pausePanel.SetActive(false);
+        quitPanel.SetActive(false);
     }
     private void Update()
     {
@@ -37,9 +39,17 @@ public class UI02_ButtonsClickManager : MonoBehaviour
     }
     public void GoExit()
     {
+        quitPanel.SetActive(true);
+    }
+    public void CancelExit()
+    {
+        quitPanel.SetActive(false);
+    }
+    public void ConfirmExit()
+    {
         Application.Quit();
-        Debug.Log("게임종료");
+        Debug.Log("게임 종료");
     }
 
-    
+
 }
