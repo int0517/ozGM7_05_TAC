@@ -15,6 +15,8 @@ public class UI02_ButtonsClickManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
+            if (quitPanel.activeSelf)
+                return;
             if (pausePanel.activeSelf)
                 GoResume(); //activeSelf : 오브젝트가 SetActive로 켜져 있는가?
             else
