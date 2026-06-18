@@ -1,13 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ShotRangeEnemyFollow : MonoBehaviour
+public class ShortRangeEnemyFollow : MonoBehaviour
 {
     [Header("몬스터 스텟")]
     [SerializeField] private int Level = 1;
-    [SerializeField] private int EnemyHP = 3;
+    [SerializeField] private int EnemyMaxHP = 3;
+    private int enemyCurrentHP;
     [SerializeField] private int EnemyATK = 1;
     [SerializeField] private float EnemySpeed = 2.0f;
+    [SerializeField] private GameObject coinPrefab;
+    [SerializeField] private EnemyHPUI enemyUI;
     public float knockbackForce = 20.0f;
 
     private Transform playerTransform;
@@ -15,6 +18,7 @@ public class ShotRangeEnemyFollow : MonoBehaviour
     private bool isKnockedBack = false;
     void Start()
     {
+        enemyCurrentHP = EnemyMaxHP;
         rb = GetComponent<Rigidbody2D>();
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
         if (playerObj != null)
@@ -47,11 +51,16 @@ public class ShotRangeEnemyFollow : MonoBehaviour
         }
         if (collision.CompareTag("Skill"))
         {
-            EnemyHP--;
+            enemyCurrentHP--;
+            enemyUI.UpdateHealthBar(enemyCurrentHP, EnemyMaxHP);
             StartCoroutine(KnockbackRoutine(collision.transform.position));
-            Debug.Log($"남은 체력 : {EnemyHP}");
-            if (EnemyHP <= 0)
+            Debug.Log($"남은 체력 : {enemyCurrentHP}");
+            if (enemyCurrentHP <= 0)
             {
+                if (coinPrefab != null)
+                {
+                    Instantiate(coinPrefab, transform.position, Quaternion.identity);
+                }
                 Destroy(gameObject);
                 Debug.Log("몬스터가 죽었다....");
             }

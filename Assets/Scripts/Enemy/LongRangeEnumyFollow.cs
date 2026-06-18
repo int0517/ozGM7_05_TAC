@@ -5,7 +5,8 @@ public class LongRangeEnemyFollow : MonoBehaviour
 {
     [Header("몬스터 스텟")]
     [SerializeField] private int enumyLevel = 1;
-    [SerializeField] private int enemyHP = 3;
+    [SerializeField] private int EnemyMaxHP = 3;
+    private int enemyCurrentHP;
     [SerializeField] private int enemyRange = 5;
     [SerializeField] private int enemyATK = 1;
     [SerializeField] private float enemyFireInterval = 1;
@@ -13,7 +14,8 @@ public class LongRangeEnemyFollow : MonoBehaviour
 
     [SerializeField] private Transform firePoint;
     [SerializeField] private GameObject bulletPrefab;
-
+    [SerializeField] private GameObject coinPrefab;
+    [SerializeField] private EnemyHPUI enemyUI;
 
     public float knockbackForce = 20.0f;
 
@@ -26,6 +28,7 @@ public class LongRangeEnemyFollow : MonoBehaviour
     private float fireTimer=0;
     void Start()
     {
+        enemyCurrentHP = EnemyMaxHP;
         rb = GetComponent<Rigidbody2D>();
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
         if (playerObj != null)
@@ -62,11 +65,16 @@ public class LongRangeEnemyFollow : MonoBehaviour
     {
         if (collision.CompareTag("Skill"))
         {
-            enemyHP--;
+            enemyCurrentHP--;
+            enemyUI.UpdateHealthBar(enemyCurrentHP, EnemyMaxHP);
             StartCoroutine(KnockbackRoutine(collision.transform.position));
-            Debug.Log($"남은 체력 : {enemyHP}");
-            if (enemyHP <= 0)
+            Debug.Log($"남은 체력 : {enemyCurrentHP}");
+            if (enemyCurrentHP <= 0)
             {
+                if (coinPrefab != null)
+                {
+                    Instantiate(coinPrefab, transform.position, Quaternion.identity);
+                }
                 Destroy(gameObject);
                 Debug.Log("몬스터가 죽었다....");
             }
