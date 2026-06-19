@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class ExitButtonController : MonoBehaviour
@@ -15,7 +15,7 @@ public class ExitButtonController : MonoBehaviour
     {
         if(Input.GetKeyUp(KeyCode.Escape))
         {
-            if (pausePanel.activeSelf) Resume(); //activeSelf : ¿ÀºêÁ§Æ®°¡ SetActive·Î ÄÑÁ® ÀÖ´Â°¡?
+            if (pausePanel.activeSelf) Resume(); //activeSelf : ì˜¤ë¸Œì íŠ¸ê°€ SetActiveë¡œ ì¼œì ¸ ìˆëŠ”ê°€?
         }
     }
     public void GameStop()
