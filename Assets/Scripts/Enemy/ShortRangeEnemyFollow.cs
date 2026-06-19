@@ -4,11 +4,11 @@ using System.Collections;
 public class ShortRangeEnemyFollow : MonoBehaviour
 {
     [Header("몬스터 스텟")]
-    [SerializeField] private int Level = 1;
-    [SerializeField] private int EnemyMaxHP = 3;
+    [SerializeField] private int enemyMaxHP = 3;
     private int enemyCurrentHP;
-    [SerializeField] private int EnemyATK = 1;
-    [SerializeField] private float EnemySpeed = 2.0f;
+    [SerializeField] private int enemyATK = 1;
+    [SerializeField] private float enemySpeed = 2.0f;
+    [SerializeField] private int enemyPoint = 0;
     [SerializeField] private GameObject coinPrefab;
     [SerializeField] private EnemyHPUI enemyUI;
     public float knockbackForce = 20.0f;
@@ -18,7 +18,7 @@ public class ShortRangeEnemyFollow : MonoBehaviour
     private bool isKnockedBack = false;
     void Start()
     {
-        enemyCurrentHP = EnemyMaxHP;
+        enemyCurrentHP = enemyMaxHP;
         rb = GetComponent<Rigidbody2D>();
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
         if (playerObj != null)
@@ -34,10 +34,10 @@ public class ShortRangeEnemyFollow : MonoBehaviour
 
         Vector2 direction = (playerTransform.position - transform.position).normalized;
 
-        rb.AddForce(direction * EnemySpeed * 10f);
-        if (rb.linearVelocity.magnitude > EnemySpeed)
+        rb.AddForce(direction * enemySpeed * 10f);
+        if (rb.linearVelocity.magnitude > enemySpeed)
         {
-            rb.linearVelocity = rb.linearVelocity.normalized * EnemySpeed;
+            rb.linearVelocity = rb.linearVelocity.normalized * enemySpeed;
         }
     }
 
@@ -51,28 +51,22 @@ public class ShortRangeEnemyFollow : MonoBehaviour
         }
         if (collision.CompareTag("Skill"))
         {
-            enemyCurrentHP--;
-            enemyUI.UpdateHealthBar(enemyCurrentHP, EnemyMaxHP);
-            StartCoroutine(KnockbackRoutine(collision.transform.position));
-            Debug.Log($"남은 체력 : {enemyCurrentHP}");
             if (enemyCurrentHP <= 0)
             {
-                if (coinPrefab != null)
+                if (coinPrefab != null && enemyPoint > 0)
                 {
-                    Instantiate(coinPrefab, transform.position, Quaternion.identity);
+                    for (int i = 0; i < enemyPoint; i++)
+                    {
+                        Instantiate(coinPrefab, transform.position, Quaternion.identity);
+                    }
                 }
                 Destroy(gameObject);
-                Debug.Log("몬스터가 죽었다....");
             }
+            enemyCurrentHP--;
+            enemyUI.UpdateHealthBar(enemyCurrentHP, enemyMaxHP);
+            StartCoroutine(KnockbackRoutine(collision.transform.position));
         }
-        
-    }
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Enumy"))
-        {
 
-        }
     }
     private IEnumerator KnockbackRoutine(Vector3 attackerPos)
     {

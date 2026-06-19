@@ -683,14 +683,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9fbfc7e07a24b546a16d7b31592b4e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LongRangeEnemyFollow
-  enumyLevel: 2
-  EnemyMaxHP: 5
+  enemyMaxHP: 3
   enemyRange: 8
   enemyATK: 1
   enemyFireInterval: 1
   enemySpeed: 2
+  enemyPoint: 4
   firePoint: {fileID: 6518658707487779013}
-  bulletPrefab: {fileID: 3508973122262030066, guid: 2ccbb50c726a745498af9cc894234181, type: 3}
+  bulletPrefab: {fileID: 5152163912297502162, guid: 2ccbb50c726a745498af9cc894234181, type: 3}
   coinPrefab: {fileID: 5971139616951717026, guid: f78e6e6459eac404689428af753400a4, type: 3}
   enemyUI: {fileID: 3228254922889619189}
   knockbackForce: 20

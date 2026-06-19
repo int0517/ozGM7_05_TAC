@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class UI02_ButtonsClickManager : MonoBehaviour
@@ -6,7 +6,7 @@ public class UI02_ButtonsClickManager : MonoBehaviour
     [SerializeField] private GameObject pausePanel;
     [SerializeField] private GameObject quitPanel;
 
-    //½ºÅ³ ½½·Ô
+    //ìŠ¤í‚¬ ìŠ¬ë¡¯
     [SerializeField] private UI02_SkillSlots skillSlots;
 
     private void Start()
@@ -21,7 +21,7 @@ public class UI02_ButtonsClickManager : MonoBehaviour
             if (quitPanel.activeSelf)
                 return;
             if (pausePanel.activeSelf)
-                GoResume(); //activeSelf : ¿ÀºêÁ§Æ®°¡ SetActive·Î ÄÑÁ® ÀÖ´Â°¡?
+                GoResume(); //activeSelf : ì˜¤ë¸Œì íŠ¸ê°€ SetActiveë¡œ ì¼œì ¸ ìˆëŠ”ê°€?
             else
                 GameStop();
         }
@@ -55,7 +55,7 @@ public class UI02_ButtonsClickManager : MonoBehaviour
     public void ConfirmExit()
     {
         Application.Quit();
-        Debug.Log("°ÔÀÓ Á¾·á");
+        Debug.Log("ê²Œì„ ì¢…ë£Œ");
     }
 
 

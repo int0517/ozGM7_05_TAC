@@ -20,13 +20,34 @@ public class WaveInfo
 {
     [Header("웨이브 번호")]
     public int waveNumber;
+    [Header("보스전")]
+    public bool bossWave;
     [Header("이 웨이브에 등장할 몬스터들")]
     public List<EnemySpawnInfo> spawnList;
+
 }
+
 
 [CreateAssetMenu(fileName = "GameLevelData", menuName = "Spawn/GameLevelData")]
 public class GameLevelData : ScriptableObject
 {
 
     public List<WaveInfo> waveList;
+    private void OnValidate()
+    {
+        if (waveList == null) return;
+
+        foreach (var wave in waveList)
+        {
+            // 5의 배수 체크
+            if (wave.waveNumber > 0 && wave.waveNumber % 5 == 0)
+            {
+                wave.bossWave = true;
+            }
+            else
+            {
+                wave.bossWave = false;
+            }
+        }
+    }
 }

@@ -181,6 +181,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerNormalAttackBullet
   targetLayer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 0
   damage: 1
   moveSpeed: 10

@@ -1,23 +1,26 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class LongRangeEnemyFollow : MonoBehaviour
+public class OneBossEnemyFollow : MonoBehaviour
 {
     [Header("몬스터 스텟")]
-    [SerializeField] private int enemyMaxHP = 3;
+    [SerializeField] private int enemyMaxHP = 20;
     private int enemyCurrentHP;
     [SerializeField] private int enemyRange = 5;
-    [SerializeField] private int enemyATK = 1;
     [SerializeField] private float enemyFireInterval = 1;
-    [SerializeField] private float enemySpeed = 2.0f;
+    [SerializeField] private float enemySpeed = 1.0f;
     [SerializeField] private int enemyPoint = 0;
-
-    [SerializeField] private Transform firePoint;
-    [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private GameObject coinPrefab;
+    [Header("보스 추가 스텟")]
+    [SerializeField] public float warningTime = 3f;
+    [SerializeField] public float poisonDuration = 5f;
+    [SerializeField] private GameObject warningPrefab;
+    [SerializeField] private GameObject poisonPrefab;
+    [Header("보스 체력바는 따로")]
     [SerializeField] private EnemyHPUI enemyUI;
+    [SerializeField] public float knockbackForce = 20.0f;
 
-    public float knockbackForce = 20.0f;
+
 
     public LayerMask playerLayer;
     private Transform playerTransform;
@@ -25,7 +28,7 @@ public class LongRangeEnemyFollow : MonoBehaviour
     private bool isAttack = false;
     private bool isKnockedBack = false;
     private bool timerCheck = false;
-    private float fireTimer=0;
+    private float fireTimer = 0;
     void Start()
     {
         enemyCurrentHP = enemyMaxHP;
@@ -37,7 +40,7 @@ public class LongRangeEnemyFollow : MonoBehaviour
         }
     }
 
-    
+
     void FixedUpdate()
     {
         if (!timerCheck)
@@ -67,7 +70,7 @@ public class LongRangeEnemyFollow : MonoBehaviour
         {
             if (enemyCurrentHP <= 0)
             {
-                if (coinPrefab != null && enemyPoint>0)
+                if (coinPrefab != null && enemyPoint > 0)
                 {
                     for (int i = 0; i < enemyPoint; i++)
                     {
@@ -86,18 +89,18 @@ public class LongRangeEnemyFollow : MonoBehaviour
     {
         float dist = Vector2.Distance(transform.position, playerTransform.position);
 
-        
-            if (dist <= enemyRange)
-            {
-                isAttack = true;
-            }
-        
-            else if (dist > enemyRange * 1.2f)
-            {
-                isAttack = false;
-                 fireTimer = 0f;
-            }
-        
+
+        if (dist <= enemyRange)
+        {
+            isAttack = true;
+        }
+
+        else if (dist > enemyRange * 1.2f)
+        {
+            isAttack = false;
+            fireTimer = 0f;
+        }
+
     }
 
     private void Fire()
@@ -106,12 +109,42 @@ public class LongRangeEnemyFollow : MonoBehaviour
         timerCheck = true;
         if (fireTimer >= enemyFireInterval)
         {
-            Vector2 direction = (playerTransform.position - firePoint.position).normalized;
-            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            GameObject bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.Euler(0, 0, angle));
+
+            Vector3 playerPos = playerTransform.position;
+            StartCoroutine(PoisonAttackRoutine(playerPos));
+
+            for (int i = 0; i < 2; i++)
+            {
+                Vector3 randomPos = GetRandomPositionInCamera();
+                StartCoroutine(PoisonAttackRoutine(randomPos));
+            }
+
             fireTimer = 0f;
             timerCheck = false;
         }
+    }
+
+    private IEnumerator PoisonAttackRoutine(Vector3 targetPos)
+    {
+
+        GameObject warning = Instantiate(warningPrefab, targetPos, Quaternion.identity);
+
+        yield return new WaitForSeconds(warningTime);
+
+        Destroy(warning);
+        GameObject poison = Instantiate(poisonPrefab, targetPos, Quaternion.identity);
+
+        yield return new WaitForSeconds(poisonDuration);
+        Destroy(poison);
+    }
+
+    private Vector3 GetRandomPositionInCamera()
+    {
+
+        float randomX = Random.Range(0.1f, 0.9f);
+        float randomY = Random.Range(0.1f, 0.9f);
+
+        return Camera.main.ViewportToWorldPoint(new Vector3(randomX, randomY, 10f));
     }
 
     private IEnumerator KnockbackRoutine(Vector3 attackerPos)
