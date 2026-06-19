@@ -23,9 +23,17 @@ public class PlayerStat : MonoBehaviour
         set => pSpeedBonus = Mathf.Max(0f, value);
     }
 
+    private float playerNonhitTimerMax = 2f;
+    private float playerNonhitTimer = 0f;
+
     private void Start()
     {
         pCurrentHP = pMaxHP;
+    }
+
+    private void Update()
+    {
+        if (playerNonhitTimer < playerNonhitTimerMax) playerNonhitTimer += Time.deltaTime;
     }
 
     public void IncreasePlayerLevel()
@@ -41,9 +49,12 @@ public class PlayerStat : MonoBehaviour
 
     public void DamagePlayer(int amount)
     {
+        if (playerNonhitTimer < playerNonhitTimerMax) return;
+
         pCurrentHP -= amount;
 
         if (pCurrentHP < 0) pCurrentHP = 0;
+        // 플레이어 사망 처리, 종료 화면
     }
 
     public void SetPlayerAttackBonus(int amount)

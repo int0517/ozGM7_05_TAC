@@ -14,8 +14,6 @@ public class pSkill1_FireballBullet : MonoBehaviour
     void Start()
     {
         SearchEnemy();
-        Debug.Log($"방향 : {moveDirection}");
-        Debug.Log($"속도 : {moveSpeed}");
         Destroy(gameObject, 5f);
     }
     void Update()

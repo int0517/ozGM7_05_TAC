@@ -6,7 +6,7 @@ public class pSkill1_FireBall : MonoBehaviour
     [SerializeField] private Transform firePoint;
 
     [Header("스킬 레벨")]
-    [SerializeField] private int skill1Level;
+    [SerializeField] private int skill1Level = 0;
 
     [Header("공격 쿨타임")]
     [SerializeField] private float attackTimerMax = 1.0f;
