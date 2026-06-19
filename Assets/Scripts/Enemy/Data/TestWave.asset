@@ -12,4 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: TestWave
   m_EditorClassIdentifier: Assembly-CSharp::GameLevelData
-  waveList: []
+  waveList:
+  - waveNumber: 1
+    spawnList:
+    - enemyPrefab: {fileID: 4489811073085863802, guid: c4b5563d0977afb4c881494c978a7bce, type: 3}
+      count: 3
+      batchSize: 3
+      spawnInterval: 3
+    - enemyPrefab: {fileID: 2114593321956485282, guid: 8257f24a502a2f24895b116cdd92670b, type: 3}
+      count: 3
+      batchSize: 3
+      spawnInterval: 3
+  - waveNumber: 0
+    spawnList: []
