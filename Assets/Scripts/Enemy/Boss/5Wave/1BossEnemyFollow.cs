@@ -4,7 +4,7 @@ using System.Collections;
 public class OneBossEnemyFollow : MonoBehaviour
 {
     [Header("몬스터 스텟")]
-    [SerializeField] private int enemyMaxHP = 3;
+    [SerializeField] private int enemyMaxHP = 20;
     private int enemyCurrentHP;
     [SerializeField] private int enemyRange = 5;
     [SerializeField] private float enemyFireInterval = 1;
@@ -18,9 +18,9 @@ public class OneBossEnemyFollow : MonoBehaviour
     [SerializeField] private GameObject poisonPrefab;
     [Header("보스 체력바는 따로")]
     [SerializeField] private EnemyHPUI enemyUI;
+    [SerializeField] public float knockbackForce = 20.0f;
 
 
-    public float knockbackForce = 20.0f;
 
     public LayerMask playerLayer;
     private Transform playerTransform;
@@ -113,7 +113,6 @@ public class OneBossEnemyFollow : MonoBehaviour
             Vector3 playerPos = playerTransform.position;
             StartCoroutine(PoisonAttackRoutine(playerPos));
 
-            // 2. 랜덤 위치 2개 계산 및 실행
             for (int i = 0; i < 2; i++)
             {
                 Vector3 randomPos = GetRandomPositionInCamera();
