@@ -28,6 +28,10 @@ public class UI02_SkillSlots : MonoBehaviour
         for(int i = 0; i < skills.Count && i < skillSlots.Length; i++)
         {
             skillSlots[i].sprite = skills[i].icon;
+
+            UI02_SkillSlotInfo slot = skillSlots[i].GetComponent<UI02_SkillSlotInfo>();
+
+            slot.skillData = skills[i];
         }
     }
 
