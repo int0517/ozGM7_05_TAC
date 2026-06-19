@@ -6,6 +6,9 @@ public class UI02_ButtonsClickManager : MonoBehaviour
     [SerializeField] private GameObject pausePanel;
     [SerializeField] private GameObject quitPanel;
 
+    //½ºÅ³ ½½·Ô
+    [SerializeField] private UI02_SkillSlots skillSlots;
+
     private void Start()
     {
         pausePanel.SetActive(false);
@@ -26,6 +29,8 @@ public class UI02_ButtonsClickManager : MonoBehaviour
     private void GameStop()
     {
         pausePanel.SetActive(true);
+        skillSlots.UpdateSkillsSlots();
+
         Time.timeScale = 0.0f;
 
     }
