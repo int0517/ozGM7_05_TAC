@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using System;
@@ -7,7 +7,7 @@ public class UI02_SkillSlots : MonoBehaviour
 {
     //[SerializeField] private List<Sprite> skillIcons;
 
-    [SerializeField] private Image[] skillSlots; //°ø°£
+    [SerializeField] private Image[] skillSlots; //ê³µê°„
 
     //
     [Serializable]

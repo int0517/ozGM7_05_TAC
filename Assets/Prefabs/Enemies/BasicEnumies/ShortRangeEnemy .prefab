@@ -182,10 +182,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5659b932d81c5a44a6377f30549261a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShotRangeEnumyFollow
-  Level: 1
-  EnemyMaxHP: 3
-  EnemyATK: 1
-  EnemySpeed: 2
+  enemyMaxHP: 3
+  enemyATK: 1
+  enemySpeed: 2
+  enemyPoint: 2
   coinPrefab: {fileID: 5971139616951717026, guid: f78e6e6459eac404689428af753400a4, type: 3}
   enemyUI: {fileID: 8228260006366363679}
   knockbackForce: 5
