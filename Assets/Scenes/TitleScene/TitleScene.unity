@@ -362,7 +362,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameSceneName: GameScene
-  combatHudSceneName: UI01GameHUDScene
+  combatHudSceneName: GameHUDScene
 --- !u!1 &300000
 GameObject:
   m_ObjectHideFlags: 0

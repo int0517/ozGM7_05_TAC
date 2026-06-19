@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 public class TitleSceneController : MonoBehaviour
 {
     [SerializeField] private string gameSceneName = "GameScene";
-    [SerializeField] private string combatHudSceneName = "UI01GameHUDScene";
+    [SerializeField] private string combatHudSceneName = "GameHUDScene";
 
     public void StartGame()
     {
