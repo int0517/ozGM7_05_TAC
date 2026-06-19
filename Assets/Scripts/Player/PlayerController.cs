@@ -9,11 +9,13 @@ public class PlayerController : MonoBehaviour
 
     private InputAction moveAction;
     private Rigidbody2D rb;
+    private PlayerStat pStat;
 
     private void Awake()
     {
         moveAction = InputSystem.actions.FindAction("Move");
         rb = GetComponent<Rigidbody2D>();
+        pStat = GetComponent<PlayerStat>();
     }
 
     void Update()
@@ -32,7 +34,7 @@ public class PlayerController : MonoBehaviour
         float moveX = movement.x;
         float moveY = movement.y;
 
-        rb.linearVelocity = new Vector2(moveX * moveSpeed, moveY * moveSpeed);
+        rb.linearVelocity = new Vector2(moveX * moveSpeed, moveY * moveSpeed * pStat.PSpeedBonus);
     }
 
     private void Rotate()
