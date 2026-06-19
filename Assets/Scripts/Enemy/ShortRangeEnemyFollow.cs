@@ -67,6 +67,13 @@ public class ShortRangeEnemyFollow : MonoBehaviour
         }
         
     }
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Enumy"))
+        {
+
+        }
+    }
     private IEnumerator KnockbackRoutine(Vector3 attackerPos)
     {
         isKnockedBack = true;

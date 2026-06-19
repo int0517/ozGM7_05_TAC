@@ -179,5 +179,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b30c3a78912eca44a9b25c8c98775b5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerNormalAttackBullet
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 64
   damage: 1
   moveSpeed: 10
