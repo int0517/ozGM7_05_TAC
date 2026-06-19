@@ -8,6 +8,9 @@ public class PlayerStat : MonoBehaviour
     private int pAttackBonus = 1;
     private float pSpeedBonus = 1f;
 
+    public int PLevel { get { return pLevel; } }
+    public int PMaxHP { get { return pMaxHP; } }
+    public int PCurrentHP { get { return pCurrentHP; } }
     public int PAttackBonus
     {
         get => pAttackBonus;
