@@ -13,7 +13,6 @@ public class pSkill3_Laser : MonoBehaviour
     [SerializeField] private float laserTime = 1f;
 
     [SerializeField] private GameObject[] lasers;
-    [SerializeField] private Transform playerTransform;
     [SerializeField] private LayerMask targetLayer;
     [SerializeField] private float searchLength = 8f;
     private Vector2 moveDirection1, moveDirection2, moveDirection3;
@@ -29,8 +28,6 @@ public class pSkill3_Laser : MonoBehaviour
 
     void Update()
     {
-        transform.position = playerTransform.position;
-
         if (attackTimer < attackTimerMax) attackTimer += Time.deltaTime;
 
         if (!isLaserActive && attackTimer >= attackTimerMax) StartCoroutine(LaserActive());
