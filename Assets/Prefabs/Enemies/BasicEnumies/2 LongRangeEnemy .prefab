@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4815390188753753416}
   - component: {fileID: 9088386280689831284}
   - component: {fileID: 6746123633577422493}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -85,7 +85,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6263895735131142756}
   - component: {fileID: 7200845755652521464}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: CollisionDecision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -162,7 +162,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6518658707487779013}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ShootPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -195,7 +195,7 @@ GameObject:
   - component: {fileID: 3101348701398660588}
   - component: {fileID: 6853513360509354724}
   - component: {fileID: 9105413988983448821}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -269,7 +269,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3827018479746595419}
   - component: {fileID: 2410606842985454039}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Triangle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -362,7 +362,7 @@ GameObject:
   - component: {fileID: 7155571255099662331}
   - component: {fileID: 3645067913180305077}
   - component: {fileID: 7861908787448975356}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -461,7 +461,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8426270013320744171}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Handle Slide Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -501,7 +501,7 @@ GameObject:
   - component: {fileID: 4810967891478363674}
   - component: {fileID: 3885095882370980874}
   - component: {fileID: 3350293467341146515}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: '2 LongRangeEnemy '
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -708,7 +708,7 @@ GameObject:
   - component: {fileID: 6157588178043454575}
   - component: {fileID: 8528053494964548804}
   - component: {fileID: 3228254922889619189}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -810,7 +810,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 168614255201389046}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -7,6 +7,9 @@ public class pSkill2_FreezeArea : MonoBehaviour
     [SerializeField] private float freezeRadius = 1f;
     [SerializeField] private float freezeTime = 2f;
 
+    [Header("스킬 레벨")]
+    [SerializeField] private int skill2Level = 0;
+
     [Header("공격 쿨타임")]
     [SerializeField] private float attackTimerMax = 5.0f;
     [SerializeField] private float attackTimer = 0f;
