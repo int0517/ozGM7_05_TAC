@@ -91,9 +91,9 @@ public class UI02_ButtonsClickManager : MonoBehaviour
 
         levelText.text = $"Lv. ";
 
-        attackText.text = $"ATK : {playerStat.PAttackBonus}";
+        attackText.text = $"공격력 : {playerStat.PAttackBonus}";
         attackSpeed.text = "-";
-        moveSpeed.text = $"MOVE SPD : {playerStat.PSpeedBonus:F1}";
+        moveSpeed.text = $"이동속도 : {playerStat.PSpeedBonus:F1}";
         maxHpText.text = $"HP : {playerStat.PCurrentHP}/{playerStat.PMaxHP}";
 
         magnetism.text = "-";
