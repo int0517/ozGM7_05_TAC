@@ -20,10 +20,10 @@ public class pSkill4_Satellites : MonoBehaviour
         if (skill4Level >= 3) return;
 
         skill4Level++;
-        SkillLevelApply(skill4Level);
+        Skill4LevelApply(skill4Level);
     }
 
-    private void SkillLevelApply(int skillLvl)
+    private void Skill4LevelApply(int skillLvl)
     {
         foreach (GameObject satellite in satellites)
         {

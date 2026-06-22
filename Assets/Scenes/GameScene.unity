@@ -149,7 +149,11 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 702581325}
+  - {fileID: 1642686401}
+  - {fileID: 81720485}
+  - {fileID: 395068535}
+  - {fileID: 163100854}
+  - {fileID: 1321495543}
   m_Father: {fileID: 2012714375}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &22018141
@@ -166,9 +170,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerNormalAttack
   bulletPrefab: {fileID: 3968114533307104445, guid: 1622b1656a5f9d7449e195f4749a0c2d,
     type: 3}
-  firePoint: {fileID: 1642686401}
-  normalAttackLevel: 0
+  firePoint:
+  - {fileID: 1642686401}
+  - {fileID: 81720485}
+  - {fileID: 395068535}
+  - {fileID: 163100854}
+  - {fileID: 1321495543}
+  normalAttackLevel: 1
   attackTimerMax: 0.4
+  attackTimer: 0
 --- !u!1 &31987582
 GameObject:
   m_ObjectHideFlags: 0
@@ -215,7 +225,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::pSkill2_FreezeArea
   targetLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   freezeRadius: 1
   freezeTime: 2
   skill2Level: 0
@@ -435,6 +445,37 @@ MonoBehaviour:
   itemLayer:
     serializedVersion: 2
     m_Bits: 512
+--- !u!1 &81720484
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 81720485}
+  m_Layer: 0
+  m_Name: FirePoint2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &81720485
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 81720484}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.8, y: -0.6, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 22018140}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &137989632
 GameObject:
   m_ObjectHideFlags: 0
@@ -759,6 +800,37 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   damage: 0
+--- !u!1 &163100853
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 163100854}
+  m_Layer: 0
+  m_Name: FirePoint4
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &163100854
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 163100853}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.8, y: -0.6, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 22018140}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &163354974
 GameObject:
   m_ObjectHideFlags: 0
@@ -958,6 +1030,37 @@ MonoBehaviour:
   acidrainPrefab: {fileID: 6499966919917261323, guid: f3cf4ed83a442b84db03530bc933e66b,
     type: 3}
   searchLength: 10
+--- !u!1 &395068534
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 395068535}
+  m_Layer: 0
+  m_Name: FirePoint3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &395068535
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 395068534}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.8, y: -0.6, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 22018140}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &495275375
 GameObject:
   m_ObjectHideFlags: 0
@@ -1275,7 +1378,7 @@ GameObject:
   m_Component:
   - component: {fileID: 526025717}
   m_Layer: 0
-  m_Name: Laser2
+  m_Name: LaserLv2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1537,38 +1640,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!1 &702581324
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 702581325}
-  m_Layer: 0
-  m_Name: lv1
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &702581325
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 702581324}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1642686401}
-  m_Father: {fileID: 22018140}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &708361618
 GameObject:
   m_ObjectHideFlags: 0
@@ -1614,8 +1685,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 094b35d04df71d74ab3b63231fab72dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::pSkill1_FireBall
-  bulletPrefab: {fileID: 8119504955998422576, guid: 147c287bbfd3d744189fc9e62d285b17,
-    type: 3}
+  bulletPrefabs:
+  - {fileID: 8119504955998422576, guid: 147c287bbfd3d744189fc9e62d285b17, type: 3}
+  - {fileID: 8119504955998422576, guid: 9fe3f13c535771749a51ad16083fdca6, type: 3}
+  - {fileID: 8119504955998422576, guid: bdbb069d1906f814bb6b43ddabbc6afb, type: 3}
   firePoint: {fileID: 958031687}
   skill1Level: 0
   attackTimerMax: 1
@@ -2065,7 +2138,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1179809810}
   m_Layer: 0
-  m_Name: Laser3
+  m_Name: LaserLv3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2233,6 +2306,37 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   damage: 0
+--- !u!1 &1321495542
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1321495543}
+  m_Layer: 0
+  m_Name: FirePoint5
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1321495543
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1321495542}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.8, y: -0.6, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 22018140}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1642686400
 GameObject:
   m_ObjectHideFlags: 0
@@ -2243,7 +2347,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1642686401}
   m_Layer: 0
-  m_Name: FirePoint
+  m_Name: FirePoint1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2257,12 +2361,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1642686400}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -0.6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 702581325}
+  m_Father: {fileID: 22018140}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1662151099
 GameObject:
@@ -2940,7 +3044,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2101623989}
   m_Layer: 0
-  m_Name: Laser1
+  m_Name: LaserLv1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

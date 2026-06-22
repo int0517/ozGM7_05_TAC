@@ -108,11 +108,6 @@ public class pSkill1_FireballBullet : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public void SetExplosionRadius(float amount)
-    {
-        explosionRadius = amount;
-    }
-
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.orange;

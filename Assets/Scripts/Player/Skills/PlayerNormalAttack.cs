@@ -3,14 +3,14 @@
 public class PlayerNormalAttack : MonoBehaviour
 {
     [SerializeField] private PlayerNormalAttackBullet bulletPrefab;
-    [SerializeField] private Transform firePoint;
+    [SerializeField] private Transform[] firePoint;
 
     [Header("스킬 레벨")]
     [SerializeField] private int normalAttackLevel;
 
     [Header("공격 쿨타임")]
     [SerializeField] private float attackTimerMax = 1.0f;
-    private float attackTimer = 0f;
+    [SerializeField] private float attackTimer = 0f;
 
     void Update()
     {
@@ -23,12 +23,29 @@ public class PlayerNormalAttack : MonoBehaviour
     {
         if (attackTimer <= attackTimerMax) return;
 
-        Instantiate(bulletPrefab, firePoint.position, transform.rotation);
+        switch(normalAttackLevel)
+        {
+            case 0:
+                break;
+            case 1:
+                Instantiate(bulletPrefab, firePoint[0].position, transform.rotation);
+                break;
+            case 2:
+                Instantiate(bulletPrefab, firePoint[1].position, transform.rotation);
+                Instantiate(bulletPrefab, firePoint[2].position, transform.rotation);
+                break;
+            case 3:
+                Instantiate(bulletPrefab, firePoint[0].position, transform.rotation);
+                Instantiate(bulletPrefab, firePoint[3].position, transform.rotation);
+                Instantiate(bulletPrefab, firePoint[4].position, transform.rotation);
+                break;
+        }
+        
         attackTimer = 0f;
     }
 
     public void SkillLevelUp()
     {
-        normalAttackLevel++;
+        if (normalAttackLevel < 3) normalAttackLevel++;
     }
 }

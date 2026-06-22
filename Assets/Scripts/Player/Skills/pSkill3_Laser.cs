@@ -73,26 +73,37 @@ public class pSkill3_Laser : MonoBehaviour
 
     IEnumerator LaserActive()
     {
+        if (skill3Level == 0) yield return null;
+
         isLaserActive = true;
 
         SearchEnemy();
 
-        if (moveDirection1 != Vector2.zero)
+        if(skill3Level >= 1)
         {
-            lasers[0].SetActive(true);
-            lasers[0].transform.right = moveDirection1;
-        }
+            if (moveDirection1 != Vector2.zero)
+            {
+                lasers[0].SetActive(true);
+                lasers[0].transform.right = moveDirection1;
+            }
 
-        if (moveDirection2 != Vector2.zero)
-        {
-            lasers[1].SetActive(true);
-            lasers[1].transform.right = moveDirection2;
-        }
+            if(skill3Level >= 2)
+            {
+                if (moveDirection2 != Vector2.zero)
+                {
+                    lasers[1].SetActive(true);
+                    lasers[1].transform.right = moveDirection2;
+                }
 
-        if (moveDirection3 != Vector2.zero)
-        {
-            lasers[2].SetActive(true);
-            lasers[2].transform.right = moveDirection3;
+                if(skill3Level == 3)
+                {
+                    if (moveDirection3 != Vector2.zero)
+                    {
+                        lasers[2].SetActive(true);
+                        lasers[2].transform.right = moveDirection3;
+                    }
+                }
+            }
         }
 
         attackTimer = 0;
@@ -105,5 +116,10 @@ public class pSkill3_Laser : MonoBehaviour
         }
 
         isLaserActive = false;
+    }
+
+    public void Skill3LevelUp()
+    {
+        if (skill3Level < 3) skill3Level++;
     }
 }
