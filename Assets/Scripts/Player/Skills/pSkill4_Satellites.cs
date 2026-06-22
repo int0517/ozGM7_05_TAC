@@ -13,9 +13,6 @@ public class pSkill4_Satellites : MonoBehaviour
     void Update()
     {
         transform.Rotate(new Vector3(0, 0, rotateSpeed * Time.deltaTime));
-
-        if (Input.GetKeyDown(KeyCode.R))
-            Skill4LevelUp();
     }
 
     public void Skill4LevelUp()

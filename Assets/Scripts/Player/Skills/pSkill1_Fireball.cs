@@ -14,7 +14,7 @@ public class pSkill1_FireBall : MonoBehaviour
 
     void Update()
     {
-        attackTimer += Time.deltaTime;
+        if (attackTimer < attackTimerMax) attackTimer += Time.deltaTime;
 
         Attack();
     }

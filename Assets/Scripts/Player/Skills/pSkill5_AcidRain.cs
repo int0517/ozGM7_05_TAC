@@ -1,0 +1,93 @@
+﻿using System.Collections;
+using UnityEngine;
+
+public class pSkill5_AcidRain : MonoBehaviour
+{
+    [Header("스킬 레벨")]
+    [SerializeField] private int skill5Level = 0;
+
+    [Header("공격 쿨타임")]
+    [SerializeField] private float attackTimerMax = 8.0f;
+    [SerializeField] private float attackTimer = 0f;
+
+    [SerializeField] private LayerMask targetLayer;
+    [SerializeField] private GameObject acidrainPrefab;
+    [SerializeField] float searchLength = 10f;
+    private float posX, posY, posXMax, posYMax;
+    private Vector3 targetPosition1, targetPosition2, targetPosition3;
+
+    void Update()
+    {
+        if (attackTimer < attackTimerMax) attackTimer += Time.deltaTime;
+
+        if (attackTimer >= attackTimerMax) SpawnAcidRain(skill5Level);
+    }
+
+    private void SpawnAcidRain(int skillLvl)
+    {
+        SearchEnemy();
+
+        switch(skillLvl)
+        {
+            case 0:
+                break;
+            case 1:
+                Instantiate(acidrainPrefab, targetPosition1, Quaternion.identity);
+                break;
+            case 2:
+                Instantiate(acidrainPrefab, targetPosition1, Quaternion.identity);
+                Instantiate(acidrainPrefab, targetPosition2, Quaternion.identity);
+                break;
+            case 3:
+                Instantiate(acidrainPrefab, targetPosition1, Quaternion.identity);
+                Instantiate(acidrainPrefab, targetPosition2, Quaternion.identity);
+                Instantiate(acidrainPrefab, targetPosition3, Quaternion.identity);
+                break;
+            default:
+                break;
+        }
+
+        attackTimer = 0f;
+    }
+
+    private void SearchEnemy()
+    {
+        Collider2D[] enemies = Physics2D.OverlapCircleAll(transform.position, searchLength, targetLayer);
+
+        targetPosition1 = Vector3.zero;
+        targetPosition2 = Vector3.zero;
+        targetPosition3 = Vector3.zero;
+
+        if (enemies.Length == 0) return;
+
+        System.Array.Sort(enemies, (a, b) =>
+        {
+            float distA = (a.transform.position - transform.position).sqrMagnitude;
+            float distB = (b.transform.position - transform.position).sqrMagnitude;
+            return distA.CompareTo(distB);
+        });
+
+        // 가장 가까운 적 위치
+        targetPosition1 = enemies[0].transform.position;
+
+        // 적이 2마리 이상일 때 가장 먼 적 위치
+        if (enemies.Length >= 2)
+        {
+            targetPosition2 = enemies[enemies.Length - 1].transform.position;
+        }
+
+        // 적이 3마리 이상일 때 중간 적 위치
+        if (enemies.Length >= 3)
+        {
+            int middleIndex = enemies.Length / 2;
+            targetPosition3 = enemies[middleIndex].transform.position;
+        }
+    }
+
+    public void Skill5LevelUp()
+    {
+        if (skill5Level >= 3) return;
+
+        skill5Level++;
+    }
+}

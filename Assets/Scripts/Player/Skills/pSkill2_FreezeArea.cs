@@ -16,7 +16,7 @@ public class pSkill2_FreezeArea : MonoBehaviour
 
     void Update()
     {
-        attackTimer += Time.deltaTime;
+        if (attackTimer < attackTimerMax) attackTimer += Time.deltaTime;
 
         StartCoroutine(Freeze());
     }
