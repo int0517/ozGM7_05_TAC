@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7c3513c9018a5a9489aa2ee86a9d20f0
+guid: 91f6e33df687a914190b51dce724b709
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
@@ -14,5 +14,5 @@ AssetOrigin:
   productId: 187605
   packageName: Pixel Art Top Down - Basic
   packageVersion: 1.2.3
-  assetPath: Assets/Cainos/Pixel Art Top Down - Basic/Script/StairsLayerTrigger.cs
+  assetPath: Assets/Cainos/Pixel Art Top Down - Basic/Script/CameraFollow.cs
   uploadId: 849082
