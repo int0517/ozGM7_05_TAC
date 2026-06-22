@@ -1,16 +1,17 @@
 using DG.Tweening;
+using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class SkillCardUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    [Header("������ UI")]
+    [Header("레벨업 UI")]
     [SerializeField] private LevelUpUI levelUpUI;
-    [Header("ī�� ������")]
+    [Header("카드 투명도")]
     [SerializeField] private CanvasGroup canvasGroup;
-    [Header("���� ���� ��ġ")]
-    [SerializeField] private float startOffset = -80.0f; 
-    [Header("���콺 ���� ũ��")]
+    [Header("등장 시작 위치")]
+    [SerializeField] private float startOffset = -80.0f; //원래 위치보다 아래에서 나타난다
+    [Header("마우스 오버 크기")]
     [SerializeField] private float hoveScale = 1.09f;
 
     private RectTransform rectTransform;
@@ -27,32 +28,37 @@ public class SkillCardUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         originalScale = transform.localScale;
     }
 
+    //카드를 숨기는 녀석
     public void HideInstant()
     {
         isClickable = false;
+        //DOKill : 현재 오브젝트에서 실행중인 DoTween 애니메이션을 즉시 종료하는 녀석
         transform.DOKill();
         canvasGroup.DOKill();
         rectTransform.DOKill();
         canvasGroup.alpha = 0.0f;
         canvasGroup.blocksRaycasts = false;
         canvasGroup.interactable = false;
+        //카드를 원래 위치보다 아래쪽으로 이동시킨다.
         rectTransform.anchoredPosition = originalPosition + new Vector2(0.0f, startOffset);
 
         transform.localScale = Vector3.zero;
     }
 
+    //카드 등장 애니메이션을 실행 
     public void PlayOpenTween()
     {
-        isClickable = true;
+        isClickable = true;//카드 등장하면 클릭 가능한 상태
         canvasGroup.blocksRaycasts = true;
         canvasGroup.interactable = true;
 
         Sequence sequence = DOTween.Sequence();
 
-        sequence.Join(canvasGroup.DOFade(1.0f, 0.25f));
+        sequence.Join(canvasGroup.DOFade(1.0f, 0.25f));//투명도를 0.25초동안 1로 만든다.
         sequence.Join(rectTransform.DOAnchorPos(originalPosition, 0.35f).SetEase(Ease.OutCubic));
         sequence.Join(transform.DOScale(originalScale, 0.35f).SetEase(Ease.OutBack));
     }
+    //카드가 선택되었을때 실행할 녀석
     public Tween PlaySelectTween()
     {
         isClickable = false;
@@ -65,6 +71,7 @@ public class SkillCardUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
         return sequence;
     }
+    //선택되지 않은 카드가 사라질 때
     public Tween PlayHideTween()
     {
         isClickable = false;
@@ -95,6 +102,7 @@ public class SkillCardUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         transform.DOScale(originalScale, 0.15f).SetEase(Ease.OutQuad);
     }
 
+    //카드가 클릭되었을 때 Button의 OnClick에서 호출할 녀석
     public void OnClickCard()
     {
         if (!isClickable) return;
