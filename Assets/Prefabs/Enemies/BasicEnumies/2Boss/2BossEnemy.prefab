@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7804499694234929289}
   - component: {fileID: 6196350436195241123}
   - component: {fileID: 5234220481979332246}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: 2BossEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -88,7 +88,8 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6,
+    type: 3}
   m_Color: {r: 0.2741634, g: 0.5754717, b: 0.46798915, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -201,13 +202,16 @@ MonoBehaviour:
   enemyFireInterval: 5
   enemySpeed: 0.5
   enemyPoint: 15
-  coinPrefab: {fileID: 5971139616951717026, guid: f78e6e6459eac404689428af753400a4, type: 3}
+  coinPrefab: {fileID: 5971139616951717026, guid: f78e6e6459eac404689428af753400a4,
+    type: 3}
   MouthPoint: {fileID: 7194125141256782945}
-  WebBulletPrefab: {fileID: 5088536366339289579, guid: b76224f8a69838447a79e28c386cb8f8, type: 3}
+  WebBulletPrefab: {fileID: 5088536366339289579, guid: b76224f8a69838447a79e28c386cb8f8,
+    type: 3}
   lineRenderer: {fileID: 5234220481979332246}
   webPoints: 10
   waveAmplitude: 0.2
   waveSpeed: 5
+  pullingSpeed: 5
   pullingInterval: 3
   enemyUI: {fileID: 0}
   knockbackForce: 20
@@ -368,7 +372,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7139160481906927952}
   - component: {fileID: 1652591583047603321}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: CollisionDecision
   m_TagString: Untagged
   m_Icon: {fileID: 0}

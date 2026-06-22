@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3778519645925049344}
   - component: {fileID: 6042539820406855625}
   - component: {fileID: 2989989990937557301}
-  m_Layer: 3
+  m_Layer: 8
   m_Name: 1BossEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -86,7 +86,8 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6,
+    type: 3}
   m_Color: {r: 0.5171712, g: 0.8679245, b: 0.25792095, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -198,11 +199,14 @@ MonoBehaviour:
   enemyFireInterval: 2
   enemySpeed: 1
   enemyPoint: 20
-  coinPrefab: {fileID: 5971139616951717026, guid: f78e6e6459eac404689428af753400a4, type: 3}
+  coinPrefab: {fileID: 5971139616951717026, guid: f78e6e6459eac404689428af753400a4,
+    type: 3}
   warningTime: 3
   poisonDuration: 5
-  warningPrefab: {fileID: 3371393513933375377, guid: ff9098dbad2657c41be5fa50a1ce94f3, type: 3}
-  poisonPrefab: {fileID: 439054695739901879, guid: 8f067aadca05dea47a4b8696122514f8, type: 3}
+  warningPrefab: {fileID: 3371393513933375377, guid: ff9098dbad2657c41be5fa50a1ce94f3,
+    type: 3}
+  poisonPrefab: {fileID: 439054695739901879, guid: 8f067aadca05dea47a4b8696122514f8,
+    type: 3}
   enemyUI: {fileID: 0}
   knockbackForce: 20
   playerLayer:
@@ -218,7 +222,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5852878838494346968}
   - component: {fileID: 4193249511481905406}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: CollisionDecision
   m_TagString: Untagged
   m_Icon: {fileID: 0}

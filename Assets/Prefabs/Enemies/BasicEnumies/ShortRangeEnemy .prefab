@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4349965309983025145}
   - component: {fileID: 5672201177144542509}
   - component: {fileID: 8557248098523412950}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: 'ShortRangeEnemy '
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -87,7 +87,8 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6,
+    type: 3}
   m_Color: {r: 0.6981132, g: 0.2799039, b: 0.2799039, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -186,7 +187,8 @@ MonoBehaviour:
   enemyATK: 1
   enemySpeed: 2
   enemyPoint: 2
-  coinPrefab: {fileID: 5971139616951717026, guid: f78e6e6459eac404689428af753400a4, type: 3}
+  coinPrefab: {fileID: 5971139616951717026, guid: f78e6e6459eac404689428af753400a4,
+    type: 3}
   enemyUI: {fileID: 8228260006366363679}
   knockbackForce: 5
 --- !u!114 &8557248098523412950
@@ -212,7 +214,7 @@ GameObject:
   - component: {fileID: 2597113695562265603}
   - component: {fileID: 6256229989660249630}
   - component: {fileID: 2650863182785102067}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -288,7 +290,7 @@ GameObject:
   - component: {fileID: 6755677954081855034}
   - component: {fileID: 6262474010210460773}
   - component: {fileID: 8342169062493733780}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -387,7 +389,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3048593207383559228}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -425,7 +427,7 @@ GameObject:
   - component: {fileID: 416264894299177080}
   - component: {fileID: 7954088275037186822}
   - component: {fileID: 8228260006366363679}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -528,7 +530,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8725822072106931419}
   - component: {fileID: 5019526330938293451}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: CollisionDecision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -605,7 +607,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1992664125865765187}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Handle Slide Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -642,7 +644,7 @@ GameObject:
   - component: {fileID: 2217421997950273415}
   - component: {fileID: 3884541750665951868}
   - component: {fileID: 3100646039379629437}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
