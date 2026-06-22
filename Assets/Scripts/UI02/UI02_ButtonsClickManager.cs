@@ -41,7 +41,7 @@ public class UI02_ButtonsClickManager : MonoBehaviour
     }
     public void GoTitle()
     {
-        SceneManager.LoadScene("UI02TestTitleScene");
+        SceneManager.LoadScene("TitleScene");
         Time.timeScale = 1.0f;
     }
     public void GoExit()
