@@ -9,6 +9,7 @@ public class EnemyHPUI : MonoBehaviour
     public void UpdateHealthBar(int currentHp, int maxHP)
     {
         float fill = (float)currentHp / maxHP;
+    
 
         if (hpFillImage != null)
         {

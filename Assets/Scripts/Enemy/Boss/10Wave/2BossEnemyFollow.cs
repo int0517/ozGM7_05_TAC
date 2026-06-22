@@ -23,8 +23,7 @@ public class TwoBossEnemyFollow : MonoBehaviour
     [SerializeField] private float pullingSpeed = 5f;
     [SerializeField] private float pullingInterval = 3f;
     private float pullingTimer = 0;
-    [Header("보스 체력바는 따로")]
-    [SerializeField] private EnemyHPUI enemyUI;
+
 
     public float knockbackForce = 20.0f;
 
@@ -46,9 +45,7 @@ public class TwoBossEnemyFollow : MonoBehaviour
             playerTransform = playerObj.transform;
         }
 
-        // 라인 설정
         lineRenderer.positionCount = webPoints;
-        //lineRenderer.useWorldSpace = true;
     }
 
     void Update()
@@ -103,7 +100,6 @@ public class TwoBossEnemyFollow : MonoBehaviour
                 Destroy(gameObject);
             }
             enemyCurrentHP--;
-            enemyUI.UpdateHealthBar(enemyCurrentHP, enemyMaxHP);
             StartCoroutine(KnockbackRoutine(collision.transform.position));
         }
 

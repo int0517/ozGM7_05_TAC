@@ -64,7 +64,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -87,7 +87,8 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6,
+    type: 3}
   m_Color: {r: 0.6981132, g: 0.2799039, b: 0.2799039, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -186,7 +187,8 @@ MonoBehaviour:
   enemyATK: 1
   enemySpeed: 2
   enemyPoint: 2
-  coinPrefab: {fileID: 5971139616951717026, guid: f78e6e6459eac404689428af753400a4, type: 3}
+  coinPrefab: {fileID: 5971139616951717026, guid: f78e6e6459eac404689428af753400a4,
+    type: 3}
   enemyUI: {fileID: 8228260006366363679}
   knockbackForce: 5
 --- !u!114 &8557248098523412950
