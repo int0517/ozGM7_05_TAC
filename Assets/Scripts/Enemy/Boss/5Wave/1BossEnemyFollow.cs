@@ -1,5 +1,6 @@
-﻿using UnityEngine;
+﻿
 using System.Collections;
+using UnityEngine;
 
 public class OneBossEnemyFollow : MonoBehaviour
 {
@@ -11,14 +12,14 @@ public class OneBossEnemyFollow : MonoBehaviour
     [SerializeField] private float enemySpeed = 1.0f;
     [SerializeField] private int enemyPoint = 0;
     [SerializeField] private GameObject coinPrefab;
+    [SerializeField] public float knockbackForce = 20.0f;
     [Header("보스 추가 스텟")]
     [SerializeField] public float warningTime = 3f;
     [SerializeField] public float poisonDuration = 5f;
     [SerializeField] private GameObject warningPrefab;
     [SerializeField] private GameObject poisonPrefab;
-    [Header("보스 체력바는 따로")]
-    [SerializeField] private EnemyHPUI enemyUI;
-    [SerializeField] public float knockbackForce = 20.0f;
+
+    
 
 
 
@@ -80,7 +81,7 @@ public class OneBossEnemyFollow : MonoBehaviour
                 Destroy(gameObject);
             }
             enemyCurrentHP--;
-            enemyUI.UpdateHealthBar(enemyCurrentHP, enemyMaxHP);
+ 
             StartCoroutine(KnockbackRoutine(collision.transform.position));
         }
 

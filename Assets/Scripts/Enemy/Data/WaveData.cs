@@ -22,8 +22,21 @@ public class WaveInfo
     public int waveNumber;
     [Header("보스전")]
     public bool bossWave;
+    [Header("--- 보스 정보 (보스 웨이브 전용) ---")]
+    public GameObject bossPrefab;
+    public float bossSpawnDelay;
     [Header("이 웨이브에 등장할 몬스터들")]
     public List<EnemySpawnInfo> spawnList;
+
+    public void ValidateBossData()
+    {
+        if (!bossWave)
+        {
+            bossPrefab = null;
+            bossSpawnDelay = 0f;
+            Debug.Log("보스 데이터가 초기화되었습니다.");
+        }
+    }
 
 }
 

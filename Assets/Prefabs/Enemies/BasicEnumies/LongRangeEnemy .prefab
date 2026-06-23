@@ -169,7 +169,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -192,8 +192,9 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.2784314, g: 0.34291485, b: 0.69803923, a: 1}
+  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6,
+    type: 3}
+  m_Color: {r: 0.2236116, g: 0.29597583, b: 0.7075472, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -306,8 +307,10 @@ MonoBehaviour:
   enemySpeed: 2
   enemyPoint: 3
   firePoint: {fileID: 453019060997225180}
-  bulletPrefab: {fileID: 3260786699608004417, guid: 2ccbb50c726a745498af9cc894234181, type: 3}
-  coinPrefab: {fileID: 5971139616951717026, guid: f78e6e6459eac404689428af753400a4, type: 3}
+  bulletPrefab: {fileID: 3260786699608004417, guid: 2ccbb50c726a745498af9cc894234181,
+    type: 3}
+  coinPrefab: {fileID: 5971139616951717026, guid: f78e6e6459eac404689428af753400a4,
+    type: 3}
   enemyUI: {fileID: 5501631121549604352}
   knockbackForce: 3
   playerLayer:

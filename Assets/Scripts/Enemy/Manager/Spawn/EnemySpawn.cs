@@ -18,6 +18,12 @@ public class EnemySpawn : MonoBehaviour
             yield return new WaitForSeconds(info.spawnInterval);
         }
     }
+    public IEnumerator SpawnBossRoutine(WaveInfo info)
+    {
+        yield return new WaitForSeconds(info.bossSpawnDelay);
+
+        SpawnEnemy(info.bossPrefab);
+    }
 
     void SpawnEnemy(GameObject prefab)
     {
