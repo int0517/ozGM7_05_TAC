@@ -202,7 +202,7 @@ MonoBehaviour:
   enemyPoint: 20
   coinPrefab: {fileID: 5971139616951717026, guid: f78e6e6459eac404689428af753400a4,
     type: 3}
-  knockbackForce: 20
+  knockbackForce: 10
   warningTime: 3
   poisonDuration: 5
   warningPrefab: {fileID: 3371393513933375377, guid: ff9098dbad2657c41be5fa50a1ce94f3,

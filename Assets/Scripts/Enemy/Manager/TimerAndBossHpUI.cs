@@ -8,10 +8,10 @@ namespace Assets.Scripts.Enemy.Manager
 
         [SerializeField] private Image fillImage;
 
-        public void UpdateTimerBar(int currentTimer, int timer)
+        public void UpdateTimerBar(float currentTimer, float timer)
         {
             fillImage.color = Color.white;
-            float fill = (float)currentTimer / timer;
+            float fill = currentTimer / timer;
             Debug.Log($"전체 시간 : {timer}, 남은 시간 : {currentTimer}");
             if (fillImage != null)
             {

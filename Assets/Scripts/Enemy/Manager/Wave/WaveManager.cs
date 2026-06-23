@@ -37,7 +37,7 @@ public class WaveManager : MonoBehaviour
             while(currentWaveTimer<bossTime)
             {
                 currentWaveTimer += Time.deltaTime;
-                UI.UpdateTimerBar((int)currentWaveTimer, (int)bossTime);
+                UI.UpdateTimerBar(currentWaveTimer, bossTime);
                 yield return null;
             }
             yield return new WaitUntil(() => currentBoss != null);
@@ -52,7 +52,7 @@ public class WaveManager : MonoBehaviour
 
                     if (currentBoss.GetCurrentHp() <= 0)
                     {
-                        
+                        Clean();
                         yield break;
                     }
                 }
