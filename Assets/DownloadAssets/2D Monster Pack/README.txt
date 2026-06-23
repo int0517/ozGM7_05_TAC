@@ -1,4 +1,4 @@
-# 2D Monster Pack by SP1
+﻿# 2D Monster Pack by SP1
 
 ## Table of Contents
 1. Introduction

@@ -1,4 +1,4 @@
-Copyright (c) 2011 by Brian J. Bonislawsky DBA Astigmatic (AOETI)
+﻿Copyright (c) 2011 by Brian J. Bonislawsky DBA Astigmatic (AOETI)
 (astigma@astigmatic.com), with Reserved Font Names "Righteous"
 
 This Font Software is licensed under the SIL Open Font License, Version 1.1.

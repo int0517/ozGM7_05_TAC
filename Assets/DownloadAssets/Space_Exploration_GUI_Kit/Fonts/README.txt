@@ -1,4 +1,4 @@
-Asap Variable Font
+﻿Asap Variable Font
 ==================
 
 This download contains Asap as both variable fonts and static fonts.
