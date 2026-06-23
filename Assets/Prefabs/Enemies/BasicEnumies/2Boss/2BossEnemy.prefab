@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 6196350436195241123}
   - component: {fileID: 2704828755354959243}
   - component: {fileID: 5234220481979332246}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: 2BossEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -385,7 +385,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7139160481906927952}
   - component: {fileID: 1652591583047603321}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: CollisionDecision
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 72d6c2622486fa443aa8b9016285cd6b
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 187605
+  packageName: Pixel Art Top Down - Basic
+  packageVersion: 1.2.3
+  assetPath: Assets/Cainos/Pixel Art Top Down - Basic/Script/TopDownCharacterController.cs
+  uploadId: 849082
