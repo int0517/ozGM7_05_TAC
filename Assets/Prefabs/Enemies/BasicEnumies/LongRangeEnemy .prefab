@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3367742929339741517}
   - component: {fileID: 469084832717897375}
   - component: {fileID: 5501631121549604352}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -118,7 +118,7 @@ GameObject:
   - component: {fileID: 7510757459958034000}
   - component: {fileID: 4821819792562656910}
   - component: {fileID: 6213520241299043396}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: 'LongRangeEnemy '
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -325,7 +325,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4234131882991306389}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -362,7 +362,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9207855168232366804}
   - component: {fileID: 7779007685596061834}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: CollisionDecision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -441,7 +441,7 @@ GameObject:
   - component: {fileID: 6536385410880227334}
   - component: {fileID: 4850345197935930964}
   - component: {fileID: 1513631111900711460}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -514,7 +514,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1371562576757319857}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Handle Slide Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -551,7 +551,7 @@ GameObject:
   - component: {fileID: 8625559196158999278}
   - component: {fileID: 8916126493136631931}
   - component: {fileID: 2097017575310994776}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -624,7 +624,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 453019060997225180}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: ShootPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -658,7 +658,7 @@ GameObject:
   - component: {fileID: 7789933949295410484}
   - component: {fileID: 2260399898093598196}
   - component: {fileID: 550505727957281879}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}

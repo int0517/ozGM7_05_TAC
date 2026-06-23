@@ -1,24 +1,30 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class BossBase : MonoBehaviour
 {
     [Header("보스 기본 스텟")]
-    [SerializeField] private int enemyMaxHP = 20;
-    private int enemyCurrentHP;
-    [SerializeField] private int enemyRange = 5;
-    [SerializeField] private float enemyFireInterval = 1;
-    [SerializeField] private float enemySpeed = 1.0f;
-    [SerializeField] private int enemyPoint = 0;
-    [SerializeField] private GameObject coinPrefab;
-    [SerializeField] public float knockbackForce = 5.0f;
+    [SerializeField] protected int enemyMaxHP = 20;
+    protected int enemyCurrentHP;
+    [SerializeField] protected int enemyRange = 5;
+    [SerializeField] protected float enemyFireInterval = 1;
+    [SerializeField] protected float enemySpeed = 1.0f;
+    [SerializeField] protected int enemyPoint = 0;
+    [SerializeField] protected GameObject coinPrefab;
+    [SerializeField] protected float knockbackForce = 5.0f;
+
+    
 
     public LayerMask playerLayer;
-    private Transform playerTransform;
-    private Rigidbody2D rb;
-    private bool isKnockedBack = false;
-    private bool isAttack = false;
-    private float fireTimer = 0;
+    protected Transform playerTransform;
+    protected Rigidbody2D rb;
+    protected bool isKnockedBack = false;
+    protected bool isAttack = false;
+    protected bool timerCheck = false;
+    protected float fireTimer = 0;
+    public static event Action OnBossDeath;
+
     protected virtual void Start()
     {
         enemyCurrentHP = enemyMaxHP;
@@ -28,8 +34,35 @@ public class BossBase : MonoBehaviour
         {
             playerTransform = playerObj.transform;
         }
+        if (WaveManager.Instance != null)
+        {
+            WaveManager.Instance.RegisterBoss(this);
+        }
     }
-    void CheckForPlayer()
+
+
+    protected virtual void FixedUpdate()
+    {
+        if (!timerCheck)
+        {
+            CheckForPlayer();
+        }
+        if (isKnockedBack || playerTransform == null) return;
+        if (isAttack)
+        {
+            rb.linearVelocity = Vector2.zero;
+            return;
+        }
+
+        Vector2 direction = (playerTransform.position - transform.position).normalized;
+
+        rb.AddForce(direction * enemySpeed * 10f);
+        if (rb.linearVelocity.magnitude > enemySpeed)
+        {
+            rb.linearVelocity = rb.linearVelocity.normalized * enemySpeed;
+        }
+    }
+    protected virtual void CheckForPlayer()
     {
         float dist = Vector2.Distance(transform.position, playerTransform.position);
 
@@ -47,7 +80,7 @@ public class BossBase : MonoBehaviour
 
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    protected void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Skill"))
         {
@@ -59,6 +92,9 @@ public class BossBase : MonoBehaviour
     {
         if (enemyCurrentHP <= 0)
         {
+            Debug.Log("보스 사망! 이벤트 발사 직전");
+            OnBossDeath?.Invoke();
+            Debug.Log("보스 사망! 이벤트 발사 완료");
             if (coinPrefab != null && enemyPoint > 0)
             {
                 for (int i = 0; i < enemyPoint; i++)
@@ -70,6 +106,8 @@ public class BossBase : MonoBehaviour
         }
         enemyCurrentHP--;
     }
+    public int GetCurrentHp() => enemyCurrentHP;
+    public int GetMaxHp() => enemyMaxHP;
 
     protected IEnumerator KnockbackRoutine(Vector3 attackerPos)
     {
@@ -83,7 +121,7 @@ public class BossBase : MonoBehaviour
         isKnockedBack = false;
     }
 
-    private void OnDrawGizmosSelected()
+    protected void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, enemyRange);
