@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class UI02_ButtonsClickManager : MonoBehaviour
@@ -9,11 +10,28 @@ public class UI02_ButtonsClickManager : MonoBehaviour
     //스킬 슬롯
     [SerializeField] private UI02_SkillSlots skillSlots;
 
+
+    //플레이어 정보 받아오기
+    private PlayerStat playerStat;
+
+    [Header("스탯 UI")]
+    [SerializeField] private TMP_Text scoreText;
+
+    [SerializeField] private TMP_Text levelText;
+    [SerializeField] private TMP_Text attackText;
+    [SerializeField] private TMP_Text attackSpeedText;
+    [SerializeField] private TMP_Text maxHpText;
+    [SerializeField] private TMP_Text moveSpeedText;
+    [SerializeField] private TMP_Text magnetismText;
+
     private void Start()
     {
         pausePanel.SetActive(false);
         quitPanel.SetActive(false);
+
+        playerStat = FindFirstObjectByType<PlayerStat>();
     }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -31,18 +49,20 @@ public class UI02_ButtonsClickManager : MonoBehaviour
         pausePanel.SetActive(true);
         skillSlots.UpdateSkillsSlots();
 
-        Time.timeScale = 0.0f;
+        UpdatePlayerStatUI();
+
+        Time.timeScale = 0f;
 
     }
     public void GoResume()
     {
         pausePanel.SetActive(false);
-        Time.timeScale = 1.0f;
+        Time.timeScale = 1f;
     }
     public void GoTitle()
     {
-        SceneManager.LoadScene("UI02TestTitleScene");
-        Time.timeScale = 1.0f;
+        SceneManager.LoadScene("TitleScene");
+        Time.timeScale = 1f;
     }
     public void GoExit()
     {
@@ -58,5 +78,24 @@ public class UI02_ButtonsClickManager : MonoBehaviour
         Debug.Log("게임 종료");
     }
 
+    //플레이어 스탯 추가
+    private void UpdatePlayerStatUI()
+    {
+        if (playerStat == null)
+        {
+            Debug.LogWarning("PlayerStat이 없습니다.");
+            return;
+        }
 
+        scoreText.text = $"SCORE : ";
+
+        levelText.text = $"Lv. ";
+
+        attackText.text = $"공격력 : {playerStat.PAttackBonus}";
+        attackSpeedText.text = "-";
+        moveSpeedText.text = $"이동속도 : {playerStat.PSpeedBonus:F1}";
+        maxHpText.text = $"HP : {playerStat.PCurrentHP}/{playerStat.PMaxHP}";
+
+        magnetismText.text = "-";
+    }
 }
