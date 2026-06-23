@@ -26,7 +26,8 @@ public class LevelUpUI : MonoBehaviour
 
     public void Open()
     {
-        if (isOpen) return;//이미 패널이 열려있으면 다시 열지말자.
+        if (isOpen) return;
+
 
         isOpen = true;//열린 상태로 변경
         isSelected = false; //아직 어떤 카드도 선택하지 않은 상태임.
@@ -37,7 +38,10 @@ public class LevelUpUI : MonoBehaviour
 
         //패널에 전체 투명도로 0.25초동안 1로 만든다
         //화면이 자연스럽게 나타나는 페이드 인 효과임.
-        panleCanvasGroup.DOFade(1.0f, 0.25f);
+        panleCanvasGroup.DOFade(1.0f, 0.25f).Complete(() =>
+        {
+            Time.timeScale = 0f; //레벨업 창이 뜨면서 게임을 멈춤
+        });
 
         //레벨업 타이틀 등장 애니메이션
         PlayTitleTween();
@@ -110,7 +114,11 @@ public class LevelUpUI : MonoBehaviour
     }
     public void Close()
     {
-        panleCanvasGroup.DOFade(0.0f, 0.25f).OnComplete(() =>
+        Time.timeScale = 1.0f;
+
+        panleCanvasGroup.DOFade(0.0f, 0.25f)
+            .SetUpdate(true) //Time.timeScale의 영향을 받지 않고 트윈을 실행
+            .OnComplete(() =>
         {
             CloseInstant();
         });

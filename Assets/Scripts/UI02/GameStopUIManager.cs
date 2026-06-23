@@ -1,20 +1,20 @@
-ï»¿using TMPro;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class UI02_ButtonsClickManager : MonoBehaviour
+public class GameStopUIManager : MonoBehaviour
 {
     [SerializeField] private GameObject pausePanel;
     [SerializeField] private GameObject quitPanel;
 
-    //ìŠ¤í‚¬ ìŠ¬ë¡¯
+    //½ºÅ³ ½½·Ô
     [SerializeField] private UI02_SkillSlots skillSlots;
 
 
-    //í”Œë ˆì´ì–´ ì •ë³´ ë°›ì•„ì˜¤ê¸°
+    //ÇÃ·¹ÀÌ¾î Á¤º¸ ¹Ş¾Æ¿À±â
     private PlayerStat playerStat;
 
-    [Header("ìŠ¤íƒ¯ UI")]
+    [Header("½ºÅÈ UI")]
     [SerializeField] private TMP_Text scoreText;
 
     [SerializeField] private TMP_Text levelText;
@@ -39,7 +39,7 @@ public class UI02_ButtonsClickManager : MonoBehaviour
             if (quitPanel.activeSelf)
                 return;
             if (pausePanel.activeSelf)
-                GoResume(); //activeSelf : ì˜¤ë¸Œì íŠ¸ê°€ SetActiveë¡œ ì¼œì ¸ ìˆëŠ”ê°€?
+                GoResume(); //activeSelf : ¿ÀºêÁ§Æ®°¡ SetActive·Î ÄÑÁ® ÀÖ´Â°¡?
             else
                 GameStop();
         }
@@ -75,15 +75,15 @@ public class UI02_ButtonsClickManager : MonoBehaviour
     public void ConfirmExit()
     {
         Application.Quit();
-        Debug.Log("ê²Œì„ ì¢…ë£Œ");
+        Debug.Log("°ÔÀÓ Á¾·á");
     }
 
-    //í”Œë ˆì´ì–´ ìŠ¤íƒ¯ ì¶”ê°€
+    //ÇÃ·¹ÀÌ¾î ½ºÅÈ Ãß°¡
     private void UpdatePlayerStatUI()
     {
         if (playerStat == null)
         {
-            Debug.LogWarning("PlayerStatì´ ì—†ìŠµë‹ˆë‹¤.");
+            Debug.LogWarning("PlayerStatÀÌ ¾ø½À´Ï´Ù.");
             return;
         }
 
@@ -91,9 +91,9 @@ public class UI02_ButtonsClickManager : MonoBehaviour
 
         levelText.text = $"Lv. ";
 
-        attackText.text = $"ê³µê²©ë ¥ : {playerStat.PAttackBonus}";
+        attackText.text = $"°ø°İ·Â : {playerStat.PAttackBonus}";
         attackSpeedText.text = "-";
-        moveSpeedText.text = $"ì´ë™ì†ë„ : {playerStat.PSpeedBonus:F1}";
+        moveSpeedText.text = $"ÀÌµ¿¼Óµµ : {playerStat.PSpeedBonus:F1}";
         maxHpText.text = $"HP : {playerStat.PCurrentHP}/{playerStat.PMaxHP}";
 
         magnetismText.text = "-";
