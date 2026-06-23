@@ -8,7 +8,7 @@ public class pSkill4_Satellites : MonoBehaviour
     [SerializeField] private int skill4Level = 0;
 
     [SerializeField] private GameObject[] satellites;
-    [SerializeField] private float rotateSpeed = 10f;
+    [SerializeField] private float rotateSpeed = 100f;
 
     void Update()
     {
@@ -31,5 +31,10 @@ public class pSkill4_Satellites : MonoBehaviour
         }
 
         if (satellites[skillLvl-1] != null) satellites[skillLvl - 1].SetActive(true);
+
+        if (skill4Level == 3)
+        {
+            rotateSpeed = 150f;
+        }
     }
 }
