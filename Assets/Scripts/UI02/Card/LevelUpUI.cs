@@ -38,7 +38,7 @@ public class LevelUpUI : MonoBehaviour
 
         //패널에 전체 투명도로 0.25초동안 1로 만든다
         //화면이 자연스럽게 나타나는 페이드 인 효과임.
-        panleCanvasGroup.DOFade(1.0f, 0.25f).Complete(() =>
+        panleCanvasGroup.DOFade(1.0f, 0.25f).OnComplete(() =>
         {
             Time.timeScale = 0f; //레벨업 창이 뜨면서 게임을 멈춤
         });
@@ -119,9 +119,9 @@ public class LevelUpUI : MonoBehaviour
         panleCanvasGroup.DOFade(0.0f, 0.25f)
             .SetUpdate(true) //Time.timeScale의 영향을 받지 않고 트윈을 실행
             .OnComplete(() =>
-        {
-            CloseInstant();
-        });
+            {
+                CloseInstant();
+            });
     }
     private void CloseInstant()
     {
