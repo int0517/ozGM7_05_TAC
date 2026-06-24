@@ -15,6 +15,8 @@ public class pSkill2_FreezeArea : MonoBehaviour
     [SerializeField] private float attackTimerMax = 5.0f;
     [SerializeField] private float attackTimer = 0f;
 
+    [SerializeField] private PlayerStat pStat;
+
     private void Start()
     {
         Skill2LevelApply();
@@ -22,9 +24,8 @@ public class pSkill2_FreezeArea : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.T)) Skill2LevelUp();
-
-        if (attackTimer < attackTimerMax) attackTimer += Time.deltaTime;
+        if (attackTimer < attackTimerMax) attackTimer += Time.deltaTime
+                 * PlayerStatDictionary.PlayerAttackSpeed[pStat.GetStatLvl(PlayerStatEnum.AttackSpeed)];
 
         StartCoroutine(Freeze());
     }

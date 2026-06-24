@@ -8,6 +8,8 @@ public class PlayerNormalAttackBullet : MonoBehaviour
     [SerializeField] private int damage;
     [SerializeField] private float moveSpeed = 10f;
 
+    [SerializeField] private PlayerStat pStat;
+
     private void Start()
     {
         EnsureVisibleFallbackSprite();
@@ -53,6 +55,8 @@ public class PlayerNormalAttackBullet : MonoBehaviour
     {
         if ((targetLayer.value & (1 << collision.gameObject.layer)) == 0) return;
 
+        float totalDamage = damage *
+            PlayerStatDictionary.PlayerDamageIncrease[pStat.GetStatLvl(PlayerStatEnum.DamageIncrease)];
         // 적 피격 메서드
 
         Destroy(gameObject);

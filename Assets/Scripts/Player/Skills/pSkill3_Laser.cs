@@ -19,6 +19,8 @@ public class pSkill3_Laser : MonoBehaviour
     private Vector2 moveDirection1, moveDirection2, moveDirection3;
     private bool isLaserActive = false;
 
+    [SerializeField] private PlayerStat pStat;
+
     void Start()
     {
         for (int i = 0; i < lasers.Length; i++)
@@ -29,7 +31,8 @@ public class pSkill3_Laser : MonoBehaviour
 
     void Update()
     {
-        if (attackTimer < attackTimerMax) attackTimer += Time.deltaTime;
+        if (attackTimer < attackTimerMax) attackTimer += Time.deltaTime
+                 * PlayerStatDictionary.PlayerAttackSpeed[pStat.GetStatLvl(PlayerStatEnum.AttackSpeed)];
 
         if (!isLaserActive && attackTimer >= attackTimerMax) StartCoroutine(LaserActive());
     }

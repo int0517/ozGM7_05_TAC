@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
 
@@ -11,6 +11,11 @@ public class PlayerController : MonoBehaviour
     private InputAction moveAction;
     private Rigidbody2D rb;
     private PlayerStat pStat;
+
+    [Header("플레이어 이동 제한")]
+    private float posX, posY;
+    [SerializeField] private float posXMax = 27.25f;
+    [SerializeField] private float posYMax = 17.25f;
 
     private void Awake()
     {
@@ -25,12 +30,14 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        moveSpeed = PlayerStatDictionary.PlayerMoveSpeed[pStat.GetStatLvl(PlayerStatEnum.MoveSpeed)];
         Rotate();
     }
 
     private void FixedUpdate()
     {
         Move();
+        MoveLimit();
     }
 
     private void EnsureVisibleFallbackSprite()
@@ -71,8 +78,17 @@ public class PlayerController : MonoBehaviour
         }
 
         Vector2 movement = ReadMovement();
-        float speedBonus = pStat != null ? pStat.PSpeedBonus : 1f;
-        rb.linearVelocity = new Vector2(movement.x * moveSpeed, movement.y * moveSpeed * speedBonus);
+        rb.linearVelocity = new Vector2(movement.x * moveSpeed, movement.y * moveSpeed);
+    }
+
+    private void MoveLimit()
+    {
+        Vector3 pos = transform.position;
+
+        pos.x = Mathf.Clamp(pos.x, -posXMax, posXMax);
+        pos.y = Mathf.Clamp(pos.y, -posYMax, posYMax);
+
+        transform.position = pos;
     }
 
     private Vector2 ReadMovement()

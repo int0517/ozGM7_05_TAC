@@ -173,7 +173,7 @@ MonoBehaviour:
   targetLayer:
     serializedVersion: 2
     m_Bits: 256
-  damage: 0
+  damage: 2
   moveSpeed: 10
   explosionRadius: 3
   searchLength: 8

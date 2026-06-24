@@ -5,9 +5,17 @@ public class PlayerMagnet : MonoBehaviour
     [SerializeField] private float magnetRadius = 3.0f;
     [SerializeField] private float magnetMoveSpeed = 8.0f;
     [SerializeField] private LayerMask itemLayer;
+    [SerializeField] private PlayerStat pStat;
+
+    private void Awake()
+    {
+        pStat = GetComponent<PlayerStat>();
+    }
 
     void Update()
     {
+        magnetRadius = PlayerStatDictionary.PlayerMagnetRadius[pStat.GetStatLvl(PlayerStatEnum.MagnetRadius)];
+
         MoveEnemies();
     }
 

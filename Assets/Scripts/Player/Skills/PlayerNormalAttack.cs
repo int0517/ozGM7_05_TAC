@@ -13,9 +13,12 @@ public class PlayerNormalAttack : MonoBehaviour
     [SerializeField] private float attackTimerMax = 1.0f;
     [SerializeField] private float attackTimer = 0f;
 
+    [SerializeField] private PlayerStat pStat;
+
     void Update()
     {
-        attackTimer += Time.deltaTime;
+        attackTimer += Time.deltaTime
+             * PlayerStatDictionary.PlayerAttackSpeed[pStat.GetStatLvl(PlayerStatEnum.AttackSpeed)];
 
         Attack();
     }

@@ -5,7 +5,8 @@ public class pSkill1_FireballBullet : MonoBehaviour
     private static Sprite fallbackFireballSprite;
 
     [SerializeField] private LayerMask targetLayer;
-    [SerializeField] private int damage;
+    [SerializeField] private float damage;
+    private float damageBonus;
     [SerializeField] private float moveSpeed = 10f;
     [SerializeField] private float explosionRadius = 1f;
     [SerializeField] private float searchLength = 8f;
@@ -13,8 +14,9 @@ public class pSkill1_FireballBullet : MonoBehaviour
     private bool isExploded = false;
     private Vector2 moveDirection;
 
-    void Start()
+    public void Init(PlayerStat pStat)
     {
+        damageBonus = PlayerStatDictionary.PlayerDamageIncrease[pStat.GetStatLvl(PlayerStatEnum.DamageIncrease)];
         EnsureVisibleFallbackSprite();
         SearchEnemy();
         Destroy(gameObject, 5f);
@@ -99,6 +101,8 @@ public class pSkill1_FireballBullet : MonoBehaviour
         // 폭발 이펙트 추가
 
         Collider2D[] enemies = Physics2D.OverlapCircleAll(transform.position, explosionRadius, targetLayer);
+
+        float totalDamage = damage * damageBonus;
 
         foreach (Collider2D enemy in enemies)
         {
