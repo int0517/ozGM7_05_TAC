@@ -35,4 +35,11 @@ public class UI02_SkillSlots : MonoBehaviour
         }
     }
 
+    public void SetSkills(List<SkillData> newSkills)
+    {
+        skills = newSkills;
+
+        UpdateSkillsSlots();
+    }
+
 }

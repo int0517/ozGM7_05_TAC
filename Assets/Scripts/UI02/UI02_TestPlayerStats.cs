@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class UI02_TestPlayerStats : MonoBehaviour
@@ -18,7 +19,21 @@ public class UI02_TestPlayerStats : MonoBehaviour
     [SerializeField] private int testMoveSpeed = 7;
     [SerializeField] private int testMagemtism = 30;
 
+    [Header("보유 스킬")]
+    [SerializeField]
+    private List<UI02_SkillSlots.SkillData> ownedSkills =
+    new List<UI02_SkillSlots.SkillData>();
+
+    [SerializeField]
+    private UI02_SkillSlots skillSlotsUI; //스킬 슬롯 연결
+
+
     private void Start()
+    {
+        ShowStatUI();
+    }
+
+    private void ShowStatUI()
     {
         scoreText.text = $"SCORE : {testScore}";
 
@@ -28,4 +43,21 @@ public class UI02_TestPlayerStats : MonoBehaviour
         moveSpeed.text = $"MOVE SPD : {testMoveSpeed}";
         magemtism.text = $"MAGNETISM : {testMagemtism}";
     }
+
+    public void AddSkill(UI02_SkillSlots.SkillData skill)
+    {
+        Debug.Log($"추가 시도 : {skill.skillName}");
+
+        ownedSkills.Add(skill);
+
+        Debug.Log($"{skill.skillName} 획득!");
+        Debug.Log($"현재 개수 : {ownedSkills.Count}");
+
+        UpdateOwnedSkillsUI();
+    }
+    private void UpdateOwnedSkillsUI()
+    {
+        skillSlotsUI.SetSkills(ownedSkills);
+    }
+
 }
