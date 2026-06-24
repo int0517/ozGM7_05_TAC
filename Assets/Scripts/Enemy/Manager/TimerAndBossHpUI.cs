@@ -12,7 +12,6 @@ namespace Assets.Scripts.Enemy.Manager
         {
             fillImage.color = Color.white;
             float fill = currentTimer / timer;
-            Debug.Log($"전체 시간 : {timer}, 남은 시간 : {currentTimer}");
             if (fillImage != null)
             {
                 fillImage.fillAmount = fill;
@@ -22,7 +21,6 @@ namespace Assets.Scripts.Enemy.Manager
         {
             fillImage.color = Color.red;
             float fill = (float)currentHP / MAXHP;
-            Debug.Log($"전체 체력 : {MAXHP}, 남은 체력 : {currentHP}");
             if (fillImage != null)
             {
                 fillImage.fillAmount = fill;

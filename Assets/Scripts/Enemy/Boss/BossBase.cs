@@ -80,7 +80,7 @@ public class BossBase : MonoBehaviour
 
     }
 
-    protected void OnTriggerEnter2D(Collider2D collision)
+    protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Skill"))
         {

@@ -1,8 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ThreeBoss : BossBase
+public class NewThreeBoss : MonoBehaviour
 {
+    [Header("보스 기본 스텟")]
+    [SerializeField] protected int enemyRange = 5;
+    [SerializeField] protected float enemyFireInterval = 1;
+    [SerializeField] protected float enemySpeed = 1.0f;
+    [SerializeField] protected int enemyPoint = 0;
+    [SerializeField] protected GameObject coinPrefab;
     [Header("보스 추가 스텟")]
     [SerializeField] public float runningSpeed = 15f;
     [SerializeField] private LineRenderer warningLine;
@@ -14,14 +20,26 @@ public class ThreeBoss : BossBase
     [SerializeField] private Shell rightShellTrigger;
     private SpriteRenderer spriteRenderer;
 
-    protected override void Start()
+    public LayerMask playerLayer;
+    protected Transform playerTransform;
+    protected Rigidbody2D rb;
+    protected bool isAttack = false;
+    protected bool timerCheck = false;
+    protected float fireTimer = 0;
+
+    void Start()
     {
-        base.Start();
+        rb = GetComponent<Rigidbody2D>();
+        GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
+        if (playerObj != null)
+        {
+            playerTransform = playerObj.transform;
+        }
         spriteRenderer = GetComponent<SpriteRenderer>();
         if (warningLine != null) warningLine.enabled = false;
     }
 
-    protected override void FixedUpdate()
+    void FixedUpdate()
     {
         if (timerCheck) return;
 
@@ -30,8 +48,26 @@ public class ThreeBoss : BossBase
             UpdateShells(rb.linearVelocity.x < 0);
         }
 
-        base.FixedUpdate();
+        if (!timerCheck)
+        {
+            CheckForPlayer();
+        }
+        if (playerTransform == null) return;
+        if (isAttack)
+        {
+            rb.linearVelocity = Vector2.zero;
+            return;
+        }
+
+        Vector2 direction = (playerTransform.position - transform.position).normalized;
+
+        rb.AddForce(direction * enemySpeed * 10f);
+        if (rb.linearVelocity.magnitude > enemySpeed)
+        {
+            rb.linearVelocity = rb.linearVelocity.normalized * enemySpeed;
+        }
     }
+
     private void UpdateShells(bool isLeft)
     {
         if (leftShell == null || rightShell == null) return;
@@ -39,44 +75,26 @@ public class ThreeBoss : BossBase
         leftShell.SetActive(isLeft);
         rightShell.SetActive(!isLeft);
     }
-    protected override void CheckForPlayer()
+    void CheckForPlayer()
     {
-        base.CheckForPlayer();
+        float dist = Vector2.Distance(transform.position, playerTransform.position);
+
+
+        if (dist <= enemyRange)
+        {
+            isAttack = true;
+        }
+
+        else if (dist > enemyRange * 1.2f)
+        {
+            isAttack = false;
+            fireTimer = 0f;
+        }
         if (isAttack && !timerCheck)
         {
             StartCoroutine(ChargeSequence());
         }
     }
-
-    protected override void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Skill"))
-        {
-            GameObject hitObject = collision.gameObject; // 이건 스킬입니다.
-
-            // **중요: 부딪힌 게 '조개(Shell)' 콜라이더인지 확인**
-            // collision 콜라이더가 붙어 있는 놈의 태그를 봅니다.
-            if (collision.CompareTag("Shell"))
-            {
-                if (collision.name == "LeftShell")
-                    leftShellTrigger.ShootInRandomDirection();
-                else
-                    rightShellTrigger.ShootInRandomDirection();
-
-                Destroy(hitObject); // 스킬 제거
-            }
-            // **중요: 부딪힌 게 '본체(Body)' 콜라이더인지 확인**
-            else if (collision.CompareTag("Body"))
-            {
-                TakeDamage();
-                StartCoroutine(KnockbackRoutine(collision.transform.position));
-
-            }
-
-        }
-        
-    }
-
     private IEnumerator ChargeSequence()
     {
         timerCheck = true;
@@ -118,5 +136,10 @@ public class ThreeBoss : BossBase
     {
         rb.linearVelocity = Vector2.zero;
         yield return new WaitForSeconds(0.5f);
+    }
+    protected void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, enemyRange);
     }
 }

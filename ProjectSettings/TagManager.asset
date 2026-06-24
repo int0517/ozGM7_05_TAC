@@ -3,7 +3,13 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 3
-  tags: []
+  tags:
+  - Enemy
+  - Item
+  - Skill
+  - EnemyBullet
+  - Body
+  - Shell
   layers:
   - Default
   - TransparentFX
