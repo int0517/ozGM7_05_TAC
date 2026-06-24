@@ -1,24 +1,30 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
-public class BossBase : MonoBehaviour
+public class BossBase : MonoBehaviour, IDamageable
 {
     [Header("보스 기본 스텟")]
-    [SerializeField] private int enemyMaxHP = 20;
-    private int enemyCurrentHP;
-    [SerializeField] private int enemyRange = 5;
-    [SerializeField] private float enemyFireInterval = 1;
-    [SerializeField] private float enemySpeed = 1.0f;
-    [SerializeField] private int enemyPoint = 0;
-    [SerializeField] private GameObject coinPrefab;
-    [SerializeField] public float knockbackForce = 5.0f;
+    [SerializeField] protected float enemyMaxHP = 20;
+    protected float enemyCurrentHP;
+    [SerializeField] protected int enemyRange = 5;
+    [SerializeField] protected float enemyFireInterval = 1;
+    [SerializeField] protected float enemySpeed = 1.0f;
+    [SerializeField] protected int enemyPoint = 0;
+    [SerializeField] protected GameObject coinPrefab;
+    [SerializeField] protected float knockbackForce = 5.0f;
 
+
+    protected PlayerStat playerStat;
     public LayerMask playerLayer;
-    private Transform playerTransform;
-    private Rigidbody2D rb;
-    private bool isKnockedBack = false;
-    private bool isAttack = false;
-    private float fireTimer = 0;
+    protected Transform playerTransform;
+    protected Rigidbody2D rb;
+    protected bool isKnockedBack = false;
+    protected bool isAttack = false;
+    protected bool timerCheck = false;
+    protected float fireTimer = 0;
+    public static event Action OnBossDeath;
+
     protected virtual void Start()
     {
         enemyCurrentHP = enemyMaxHP;
@@ -27,9 +33,37 @@ public class BossBase : MonoBehaviour
         if (playerObj != null)
         {
             playerTransform = playerObj.transform;
+            playerStat = playerObj.GetComponent<PlayerStat>();
+        }
+        if (WaveManager.Instance != null)
+        {
+            WaveManager.Instance.RegisterBoss(this);
         }
     }
-    void CheckForPlayer()
+
+
+    protected virtual void FixedUpdate()
+    {
+        if (!timerCheck)
+        {
+            CheckForPlayer();
+        }
+        if (isKnockedBack || playerTransform == null) return;
+        if (isAttack)
+        {
+            rb.linearVelocity = Vector2.zero;
+            return;
+        }
+
+        Vector2 direction = (playerTransform.position - transform.position).normalized;
+
+        rb.AddForce(direction * enemySpeed * 10f);
+        if (rb.linearVelocity.magnitude > enemySpeed)
+        {
+            rb.linearVelocity = rb.linearVelocity.normalized * enemySpeed;
+        }
+    }
+    protected virtual void CheckForPlayer()
     {
         float dist = Vector2.Distance(transform.position, playerTransform.position);
 
@@ -47,18 +81,26 @@ public class BossBase : MonoBehaviour
 
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.CompareTag("Player"))
+        {
+            if (playerStat != null)
+            {
+                playerStat.DamagePlayer(1);
+            }
+        }
         if (collision.CompareTag("Skill"))
         {
-            TakeDamage();
             StartCoroutine(KnockbackRoutine(collision.transform.position));
         }
     }
-    protected virtual void TakeDamage()//상대 공격력 넣어줘야함
+    public virtual void TakeDamage(float damage)
     {
+        enemyCurrentHP -= damage;
         if (enemyCurrentHP <= 0)
         {
+            OnBossDeath?.Invoke();
             if (coinPrefab != null && enemyPoint > 0)
             {
                 for (int i = 0; i < enemyPoint; i++)
@@ -68,8 +110,11 @@ public class BossBase : MonoBehaviour
             }
             Destroy(gameObject);
         }
-        enemyCurrentHP--;
+
     }
+    
+    public float GetCurrentHp() => enemyCurrentHP;
+    public float GetMaxHp() => enemyMaxHP;
 
     protected IEnumerator KnockbackRoutine(Vector3 attackerPos)
     {
@@ -83,7 +128,7 @@ public class BossBase : MonoBehaviour
         isKnockedBack = false;
     }
 
-    private void OnDrawGizmosSelected()
+    protected void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, enemyRange);

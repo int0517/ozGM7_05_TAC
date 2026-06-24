@@ -6,10 +6,9 @@ public class EnemyHPUI : MonoBehaviour
 
     [SerializeField] private Image hpFillImage;
    
-    public void UpdateHealthBar(int currentHp, int maxHP)
+    public void UpdateHealthBar(float currentHp, float maxHP)
     {
-        float fill = (float)currentHp / maxHP;
-    
+        float fill = currentHp / maxHP;
 
         if (hpFillImage != null)
         {

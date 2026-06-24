@@ -11,14 +11,27 @@ public class WaveManager : MonoBehaviour
     private float currentWaveTimer = 0.0f;
     public SpawnManager spawnManager;
     [SerializeField] private TimerAndBossHpUI UI;
-    private BossHpBase currentBoss;
+    private BossBase currentBoss;
+    private bool isBossDead;
 
-    private void Awake()
+    private void Awake() => Instance = this;
+
+    private void OnEnable()
     {
-        Instance = this;
-
+        BossBase.OnBossDeath += SetBossDead;
     }
-    public void RegisterBoss(BossHpBase boss)
+
+    private void OnDisable()
+    {
+        BossBase.OnBossDeath -= SetBossDead;
+    }
+
+    private void SetBossDead()
+    {
+        Debug.Log("이벤트 수신 성공! isBossDead를 true로 바꿉니다."); // 이 로그가 찍히나요?
+        isBossDead = true;
+    }
+    public void RegisterBoss(BossBase boss)
     {
         currentBoss = boss;
     }
@@ -27,8 +40,13 @@ public class WaveManager : MonoBehaviour
         StartCoroutine(WaveStart());
     }
 
+    public void OnNextWaveButtonClick()
+    {
+        StartCoroutine(WaveStart());
+    }
     public IEnumerator WaveStart()
     {
+        isBossDead = false;
         bool isCurrentlyBossWave = spawnManager.IsCurrentWaveBoss();
         currentWaveTimer = 0f;
         StartCoroutine(spawnManager.StartCurrentWave());
@@ -42,19 +60,18 @@ public class WaveManager : MonoBehaviour
             }
             yield return new WaitUntil(() => currentBoss != null);
 
-
-
             while (true)
             {
+                Debug.Log("보스출현");
                 if (currentBoss != null)
                 {
+                   
                     UI.UpdateBossHPBar(currentBoss.GetCurrentHp(), currentBoss.GetMaxHp());
-
-                    if (currentBoss.GetCurrentHp() <= 0)
-                    {
-                        Clean();
-                        yield break;
-                    }
+                }
+                if (isBossDead)
+                {
+                    Clean();
+                    yield break;
                 }
                 yield return null;
             }
@@ -64,7 +81,7 @@ public class WaveManager : MonoBehaviour
             while (currentWaveTimer < waveTime)
             {
                 currentWaveTimer += Time.deltaTime;
-                UI.UpdateTimerBar((int)currentWaveTimer, (int)waveTime);
+                UI.UpdateTimerBar(currentWaveTimer,waveTime);
                 yield return null;
             }
             Clean();

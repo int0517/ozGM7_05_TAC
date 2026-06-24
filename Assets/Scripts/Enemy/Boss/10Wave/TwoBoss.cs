@@ -1,41 +1,23 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class TwoBossEnemyFollow : MonoBehaviour
+public class TwoBoss : BossBase
 {
-    [Header("몬스터 스텟")]
-    [SerializeField] private int enemyMaxHP = 20;
-    private int enemyCurrentHP;
-    [SerializeField] private int enemyRange = 15;
-    [SerializeField] private int enemyATK = 5;
-    [SerializeField] private float enemyFireInterval = 5;
-    private float fireTimer = 0;
-    [SerializeField] private float enemySpeed = 0.5f;
-    [SerializeField] private int enemyPoint = 0;
-    [SerializeField] private GameObject coinPrefab;
     [Header("보스 스텟")]
     [SerializeField] private Transform MouthPoint;
     [SerializeField] private GameObject WebBulletPrefab;
     [SerializeField] private LineRenderer lineRenderer;
+    [SerializeField] private int enemyATK=5;
     [SerializeField] private int webPoints = 10; // 점을 늘리면 더 부드러운 곡선이 됩니다
     [SerializeField] private float waveAmplitude = 0.2f; // 흔들리는 폭
     [SerializeField] private float waveSpeed = 10f; // 흔들리는 속도
     [SerializeField] private float pullingSpeed = 5f;
     [SerializeField] private float pullingInterval = 3f;
+
     private float pullingTimer = 0;
-
-
-    public float knockbackForce = 20.0f;
-
-    public LayerMask playerLayer;
-    private Transform playerTransform;
-    private Rigidbody2D rb;
-    private bool isAttack = false;
-    private bool isKnockedBack = false;
-    private bool timerCheck = false;
     private bool isBeingPulled = false;
 
-    void Start()
+    protected override void Start()
     {
         enemyCurrentHP = enemyMaxHP;
         rb = GetComponent<Rigidbody2D>();
@@ -43,11 +25,13 @@ public class TwoBossEnemyFollow : MonoBehaviour
         if (playerObj != null)
         {
             playerTransform = playerObj.transform;
+            playerStat = playerObj.GetComponent<PlayerStat>();
         }
 
         lineRenderer.positionCount = webPoints;
+        base.Start();
+ 
     }
-
     void Update()
     {
         if (playerTransform == null) return;
@@ -62,15 +46,14 @@ public class TwoBossEnemyFollow : MonoBehaviour
             lineRenderer.enabled = false;
         }
     }
-
-    void FixedUpdate()
+    protected virtual void FixedUpdate()
     {
         if (!timerCheck)
         {
             CheckForPlayer();
         }
         if (isKnockedBack || playerTransform == null) return;
-        if (isAttack&&!isBeingPulled)
+        if (isAttack && !isBeingPulled)
         {
             Fire();
         }
@@ -83,46 +66,6 @@ public class TwoBossEnemyFollow : MonoBehaviour
             rb.linearVelocity = rb.linearVelocity.normalized * enemySpeed;
         }
     }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Skill"))
-        {
-            if (enemyCurrentHP <= 0)
-            {
-                if (coinPrefab != null && enemyPoint > 0)
-                {
-                    for (int i = 0; i < enemyPoint; i++)
-                    {
-                        Instantiate(coinPrefab, transform.position, Quaternion.identity);
-                    }
-                }
-                Destroy(gameObject);
-            }
-            enemyCurrentHP--;
-            StartCoroutine(KnockbackRoutine(collision.transform.position));
-        }
-
-    }
-
-    void CheckForPlayer()
-    {
-        float dist = Vector2.Distance(transform.position, playerTransform.position);
-
-
-        if (dist <= enemyRange)
-        {
-            isAttack = true;
-        }
-
-        else if (dist > enemyRange * 1.2f)
-        {
-            isAttack = false;
-            fireTimer = 0f;
-        }
-
-    }
-
     private void Fire()
     {
         fireTimer += Time.fixedDeltaTime;
@@ -141,6 +84,20 @@ public class TwoBossEnemyFollow : MonoBehaviour
             }
             fireTimer = 0f;
             timerCheck = false;
+        }
+    }
+    protected override void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            if (playerStat != null)
+            {
+                playerStat.DamagePlayer(enemyATK);
+            }
+        }
+        if (collision.CompareTag("Skill"))
+        {
+            StartCoroutine(KnockbackRoutine(collision.transform.position));
         }
     }
     public void StartPulling()
@@ -192,20 +149,4 @@ public class TwoBossEnemyFollow : MonoBehaviour
         }
     }
 
-    private IEnumerator KnockbackRoutine(Vector3 attackerPos)
-    {
-        isKnockedBack = true;
-
-        Vector2 knockbackDir = (transform.position - attackerPos).normalized;
-        rb.linearVelocity = knockbackDir * knockbackForce;
-
-        yield return new WaitForSeconds(0.2f);
-
-        isKnockedBack = false;
-    }
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, enemyRange);
-    }
 }

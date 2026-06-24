@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3081352709514634448}
   - component: {fileID: 1607367798630830078}
+  - component: {fileID: 4910376778598070366}
   m_Layer: 0
   m_Name: EnemyPoisen
   m_TagString: EnemyBullet
@@ -92,3 +93,16 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &4910376778598070366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 439054695739901879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21a31d45c03fb4c40be5a2ade2bbd22f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BossPosien
+  posienATK: 1

@@ -5,9 +5,15 @@ public class EnemyBullet : MonoBehaviour
     [Header("투사체 스텟")]
     [SerializeField] private float bulletSpeed = 3f;
     [SerializeField] private float bulletLifeTime = 3f;
+    private PlayerStat playerStat;
     void Start()
     {
         GetComponent<Rigidbody2D>().linearVelocity = transform.right * bulletSpeed;
+        GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
+        if (playerObj != null)
+        {
+            playerStat = playerObj.GetComponent<PlayerStat>();
+        }
         Destroy(gameObject, bulletLifeTime);
     }
 
@@ -15,7 +21,10 @@ public class EnemyBullet : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            Debug.Log("플레이어 피격!");
+            if (playerStat != null)
+            {
+                playerStat.DamagePlayer(1);
+            }
             Destroy(gameObject);
         }
     }

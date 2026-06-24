@@ -1,16 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ShortRangeEnemyFollow : MonoBehaviour
+public class ShortRangeEnemyFollow : MonoBehaviour, IDamageable
 {
     [Header("몬스터 스텟")]
-    [SerializeField] private int enemyMaxHP = 3;
-    private int enemyCurrentHP;
+    [SerializeField] private float enemyMaxHP = 3;
+    private float enemyCurrentHP;
     [SerializeField] private int enemyATK = 1;
     [SerializeField] private float enemySpeed = 2.0f;
     [SerializeField] private int enemyPoint = 0;
     [SerializeField] private GameObject coinPrefab;
     [SerializeField] private EnemyHPUI enemyUI;
+    private PlayerStat playerStat;
     public float knockbackForce = 20.0f;
 
     private Transform playerTransform;
@@ -24,6 +25,7 @@ public class ShortRangeEnemyFollow : MonoBehaviour
         if (playerObj != null)
         {
             playerTransform = playerObj.transform;
+            playerStat = playerObj.GetComponent<PlayerStat>();
         }
     }
 
@@ -46,25 +48,31 @@ public class ShortRangeEnemyFollow : MonoBehaviour
 
         if (collision.CompareTag("Player"))
         {
-            //Destroy(collision.gameObject);
-            //Debug.Log("죽어랏!");
+            if (playerStat != null)
+            {
+                playerStat.DamagePlayer(enemyATK);
+            }
         }
         if (collision.CompareTag("Skill"))
         {
-            if (enemyCurrentHP <= 0)
-            {
-                if (coinPrefab != null && enemyPoint > 0)
-                {
-                    for (int i = 0; i < enemyPoint; i++)
-                    {
-                        Instantiate(coinPrefab, transform.position, Quaternion.identity);
-                    }
-                }
-                Destroy(gameObject);
-            }
-            enemyCurrentHP--;
-            enemyUI.UpdateHealthBar(enemyCurrentHP, enemyMaxHP);
             StartCoroutine(KnockbackRoutine(collision.transform.position));
+        }
+
+    }
+    public void TakeDamage(float damage)
+    {
+        enemyCurrentHP -= damage;
+        enemyUI.UpdateHealthBar(enemyCurrentHP, enemyMaxHP);
+        if (enemyCurrentHP <= 0)
+        {
+            if (coinPrefab != null && enemyPoint > 0)
+            {
+                for (int i = 0; i < enemyPoint; i++)
+                {
+                    Instantiate(coinPrefab, transform.position, Quaternion.identity);
+                }
+            }
+            Destroy(gameObject);
         }
 
     }

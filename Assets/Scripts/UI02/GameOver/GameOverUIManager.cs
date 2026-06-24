@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -8,13 +8,13 @@ public class GameOverUIManager : MonoBehaviour
     [SerializeField] private GameObject gameOverPanel;
     [SerializeField] private GameObject quitPanel;
 
-    //½ºÅ³ ½½·Ô
+    //ìŠ¤í‚¬ ìŠ¬ë¡¯
     [SerializeField] private UI02_SkillSlots skillSlots;
 
-    //ÇÃ·¹ÀÌ¾î Á¤º¸
+    //í”Œë ˆì´ì–´ ì •ë³´
     [SerializeField] private PlayerStat playerStat;
 
-    [Header("½ºÅÈ UI")]
+    [Header("ìŠ¤íƒ¯ UI")]
     [SerializeField] private TMP_Text scoreText;
 
     [SerializeField] private TMP_Text levelText;
@@ -39,7 +39,7 @@ public class GameOverUIManager : MonoBehaviour
     {
         if (playerStat == null) return;
 
-        if (Input.GetKeyDown(KeyCode.G)) //Å×½ºÆ®
+        if (Input.GetKeyDown(KeyCode.G)) //í…ŒìŠ¤íŠ¸
         {
             StartCoroutine(GameOver());
         }
@@ -50,7 +50,7 @@ public class GameOverUIManager : MonoBehaviour
         //}
     }
 
-    private IEnumerator GameOver() //°ÔÀÓ¿À¹ö ´À³¦À» ÁÖ°í ½Í¾î¼­ ´À¸®°Ô ¿¬Ãâ 
+    private IEnumerator GameOver() //ê²Œì„ì˜¤ë²„ ëŠë‚Œì„ ì£¼ê³  ì‹¶ì–´ì„œ ëŠë¦¬ê²Œ ì—°ì¶œ 
     {
         Time.timeScale = 0.2f;
 
@@ -64,14 +64,14 @@ public class GameOverUIManager : MonoBehaviour
 
         Time.timeScale = 0f;
 
-        //¹öÆ° ¾Ö´Ï¸ŞÀÌ¼Ç °°Àº °É ³ÖÀ» ¿¹Á¤ÀÌ¸é Animator Update Mode = Unscaled Time ¼³Á¤ÀÌ ÇÊ¿äÇÒ ¼ö ÀÖ´Ù.
+        //ë²„íŠ¼ ì• ë‹ˆë©”ì´ì…˜ ê°™ì€ ê±¸ ë„£ì„ ì˜ˆì •ì´ë©´ Animator Update Mode = Unscaled Time ì„¤ì •ì´ í•„ìš”í•  ìˆ˜ ìˆë‹¤.
 
     }
 
     public void GoRetry()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); //Áö±İ ÇÃ·¹ÀÌ ÁßÀÎ ¾ÀÀÇ ºôµå ÀÎµ¦½º¸¦ ¹Ş¾Æ ´Ù½Ã ½ÃÀÛÇÑ´Ù.
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); //ì§€ê¸ˆ í”Œë ˆì´ ì¤‘ì¸ ì”¬ì˜ ë¹Œë“œ ì¸ë±ìŠ¤ë¥¼ ë°›ì•„ ë‹¤ì‹œ ì‹œì‘í•œë‹¤.
     }
 
     public void GoTitle()
@@ -92,10 +92,10 @@ public class GameOverUIManager : MonoBehaviour
     public void ConfirmExit()
     {
         Application.Quit();
-        Debug.Log("°ÔÀÓ Á¾·á");
+        Debug.Log("ê²Œì„ ì¢…ë£Œ");
     }
 
-    //ÇÃ·¹ÀÌ¾î ½ºÅÈ Ãß°¡
+    //í”Œë ˆì´ì–´ ìŠ¤íƒ¯ ì¶”ê°€
     private void UpdatePlayerStatUI()
     {
         if (!isGameOver && Input.GetKeyDown(KeyCode.G))
@@ -108,9 +108,9 @@ public class GameOverUIManager : MonoBehaviour
 
         levelText.text = $"Lv. ";
 
-        attackText.text = $"°ø°İ·Â : {playerStat.PAttackBonus}";
+        attackText.text = $"ê³µê²©ë ¥ : {playerStat.PAttackBonus}";
         attackSpeedText.text = "-";
-        moveSpeedText.text = $"ÀÌµ¿¼Óµµ : {playerStat.PSpeedBonus:F1}";
+        moveSpeedText.text = $"ì´ë™ì†ë„ : {playerStat.PSpeedBonus:F1}";
         maxHpText.text = $"HP : {playerStat.PCurrentHP}/{playerStat.PMaxHP}";
 
         magnetismText.text = "-";

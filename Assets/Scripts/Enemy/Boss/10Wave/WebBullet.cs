@@ -16,7 +16,7 @@ public class WebBullet : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
 
-            TwoBossEnemyFollow boss = Object.FindAnyObjectByType<TwoBossEnemyFollow>();
+            TwoBoss boss = Object.FindAnyObjectByType<TwoBoss>();
 
             // 보스가 살아있고 active일 때만 실행
             if (boss != null && boss.gameObject.activeInHierarchy)
