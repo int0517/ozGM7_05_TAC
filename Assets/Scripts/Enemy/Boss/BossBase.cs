@@ -2,11 +2,11 @@
 using System.Collections;
 using System;
 
-public class BossBase : MonoBehaviour
+public class BossBase : MonoBehaviour, IDamageable
 {
     [Header("보스 기본 스텟")]
-    [SerializeField] protected int enemyMaxHP = 20;
-    protected int enemyCurrentHP;
+    [SerializeField] protected float enemyMaxHP = 20;
+    protected float enemyCurrentHP;
     [SerializeField] protected int enemyRange = 5;
     [SerializeField] protected float enemyFireInterval = 1;
     [SerializeField] protected float enemySpeed = 1.0f;
@@ -14,8 +14,8 @@ public class BossBase : MonoBehaviour
     [SerializeField] protected GameObject coinPrefab;
     [SerializeField] protected float knockbackForce = 5.0f;
 
-    
 
+    protected PlayerStat playerStat;
     public LayerMask playerLayer;
     protected Transform playerTransform;
     protected Rigidbody2D rb;
@@ -33,6 +33,7 @@ public class BossBase : MonoBehaviour
         if (playerObj != null)
         {
             playerTransform = playerObj.transform;
+            playerStat = playerObj.GetComponent<PlayerStat>();
         }
         if (WaveManager.Instance != null)
         {
@@ -82,19 +83,24 @@ public class BossBase : MonoBehaviour
 
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.CompareTag("Player"))
+        {
+            if (playerStat != null)
+            {
+                playerStat.DamagePlayer(1);
+            }
+        }
         if (collision.CompareTag("Skill"))
         {
-            TakeDamage();
             StartCoroutine(KnockbackRoutine(collision.transform.position));
         }
     }
-    protected virtual void TakeDamage()//상대 공격력 넣어줘야함
+    public virtual void TakeDamage(float damage)
     {
+        enemyCurrentHP -= damage;
         if (enemyCurrentHP <= 0)
         {
-            Debug.Log("보스 사망! 이벤트 발사 직전");
             OnBossDeath?.Invoke();
-            Debug.Log("보스 사망! 이벤트 발사 완료");
             if (coinPrefab != null && enemyPoint > 0)
             {
                 for (int i = 0; i < enemyPoint; i++)
@@ -104,10 +110,11 @@ public class BossBase : MonoBehaviour
             }
             Destroy(gameObject);
         }
-        enemyCurrentHP--;
+
     }
-    public int GetCurrentHp() => enemyCurrentHP;
-    public int GetMaxHp() => enemyMaxHP;
+    
+    public float GetCurrentHp() => enemyCurrentHP;
+    public float GetMaxHp() => enemyMaxHP;
 
     protected IEnumerator KnockbackRoutine(Vector3 attackerPos)
     {

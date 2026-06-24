@@ -52,7 +52,7 @@ public class PlayerStat : MonoBehaviour
         if (playerNonhitTimer < playerNonhitTimerMax) return;
 
         pCurrentHP -= amount;
-
+        Debug.Log("아파");
         if (pCurrentHP < 0) pCurrentHP = 0;
         // 플레이어 사망 처리, 종료 화면
     }

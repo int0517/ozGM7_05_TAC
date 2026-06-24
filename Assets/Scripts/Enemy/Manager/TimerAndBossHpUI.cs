@@ -17,10 +17,10 @@ namespace Assets.Scripts.Enemy.Manager
                 fillImage.fillAmount = fill;
             }
         }
-        public void UpdateBossHPBar(int currentHP, int MAXHP)
+        public void UpdateBossHPBar(float currentHP, float MAXHP)
         {
             fillImage.color = Color.red;
-            float fill = (float)currentHP / MAXHP;
+            float fill = currentHP / MAXHP;
             if (fillImage != null)
             {
                 fillImage.fillAmount = fill;

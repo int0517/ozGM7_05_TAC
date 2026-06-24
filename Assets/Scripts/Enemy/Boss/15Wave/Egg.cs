@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Egg : MonoBehaviour
+public class Egg : MonoBehaviour, IDamageable
 {
     [Header("알 기본 스텟")]
-    [SerializeField] private int eggMaxHP = 5;
-    private int eggcurrentHP;
+    [SerializeField] private float eggMaxHP = 5;
+    private float eggcurrentHP;
     [SerializeField] private float spawnInterval = 3;
     [SerializeField] private EnemyHPUI eggUI;
     [SerializeField] protected GameObject oneEnemyPrefab;
@@ -31,23 +31,14 @@ public class Egg : MonoBehaviour
         Instantiate(prefabToSpawn, transform.position, Quaternion.identity);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void TakeDamage(float damage)
     {
-        Debug.Log("아아야");
-        if (collision.CompareTag("Skill"))
-        {
-            Debug.Log("아야");
-            TakeDamage();
-        }
-    }
-    
-    private void TakeDamage()
-    {
-        eggcurrentHP--;
+        eggcurrentHP -= damage;
         eggUI.UpdateHealthBar(eggcurrentHP, eggMaxHP);
         if (eggcurrentHP <= 0)
         {
             Destroy(gameObject);
         }
+
     }
 }

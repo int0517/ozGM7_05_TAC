@@ -5,9 +5,11 @@ public class ThreeBossBody : BossBase
     protected override void Start()
     {
         enemyCurrentHP = enemyMaxHP;
+        GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
         if (WaveManager.Instance != null)
         {
             WaveManager.Instance.RegisterBoss(this);
+            playerStat = playerObj.GetComponent<PlayerStat>();
         }
         rb = GetComponent<Rigidbody2D>();
     }
@@ -17,9 +19,12 @@ public class ThreeBossBody : BossBase
     { }
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Skill"))
+        if (collision.CompareTag("Player"))
         {
-            TakeDamage();
+            if (playerStat != null)
+            {
+                playerStat.DamagePlayer(1);
+            }
         }
     }
 

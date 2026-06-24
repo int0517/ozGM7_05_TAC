@@ -25,6 +25,7 @@ public class TwoBoss : BossBase
         if (playerObj != null)
         {
             playerTransform = playerObj.transform;
+            playerStat = playerObj.GetComponent<PlayerStat>();
         }
 
         lineRenderer.positionCount = webPoints;
@@ -83,6 +84,20 @@ public class TwoBoss : BossBase
             }
             fireTimer = 0f;
             timerCheck = false;
+        }
+    }
+    protected override void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            if (playerStat != null)
+            {
+                playerStat.DamagePlayer(enemyATK);
+            }
+        }
+        if (collision.CompareTag("Skill"))
+        {
+            StartCoroutine(KnockbackRoutine(collision.transform.position));
         }
     }
     public void StartPulling()
