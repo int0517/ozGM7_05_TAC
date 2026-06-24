@@ -7,6 +7,7 @@ public class PlayerNormalAttack : MonoBehaviour
 
     [Header("스킬 레벨")]
     [SerializeField] private int normalAttackLevel;
+    public int NormalAttackLevel { get { return normalAttackLevel; } }
 
     [Header("공격 쿨타임")]
     [SerializeField] private float attackTimerMax = 1.0f;

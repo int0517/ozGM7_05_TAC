@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 public class PlayerStatDictionary
 {
@@ -29,4 +30,19 @@ public class PlayerStatDictionary
         { 1, 5f },
         { 2, 7f },
     };
+}
+
+public enum PlayerStatEnum
+{
+    NormalAttack = 0,
+    Skill1,
+    Skill2,
+    Skill3,
+    Skill4,
+    Skill5,
+    MoveSpeed = 11,
+    AttackSpeed,
+    MaxHP,
+    DamageIncrease,
+    MagnetRadius
 }

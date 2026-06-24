@@ -6,6 +6,7 @@ public class pSkill3_Laser : MonoBehaviour
 {
     [Header("스킬 레벨")]
     [SerializeField] private int skill3Level = 0;
+    public int Skill3Level { get { return skill3Level; } }
 
     [Header("공격 쿨타임")]
     [SerializeField] private float attackTimerMax = 5.0f;

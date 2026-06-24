@@ -5,6 +5,7 @@ public class pSkill5_AcidRain : MonoBehaviour
 {
     [Header("스킬 레벨")]
     [SerializeField] private int skill5Level = 0;
+    public int Skill5Level { get { return skill5Level; } }
 
     [Header("공격 쿨타임")]
     [SerializeField] private float attackTimerMax = 8.0f;

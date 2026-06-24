@@ -6,14 +6,14 @@ public class PlayerStat : MonoBehaviour
     private int pLevel = 1;
     private int pMaxHP = 3;
     private int pCurrentHP;
-    private int pAttackBonus = 1;
+    private float pAttackBonus = 1f;
     private float pSpeedBonus = 1f;
 
     // 플레이어 스탯 프로퍼티
     public int PLevel { get { return pLevel; } }
     public int PMaxHP { get { return pMaxHP; } }
     public int PCurrentHP { get { return pCurrentHP; } }
-    public int PAttackBonus
+    public float PAttackBonus
     {
         get => pAttackBonus;
         set => pAttackBonus = Mathf.Max(0, value);
@@ -95,6 +95,7 @@ public class PlayerStat : MonoBehaviour
 
         if (pCurrentHP < 0) pCurrentHP = 0;
         // 플레이어 사망 처리, 종료 화면
+        Debug.Log("뎀졌습니다");
     }
 
     // 플레이어 스탯 레벨업 메서드
@@ -128,17 +129,22 @@ public class PlayerStat : MonoBehaviour
         pMagnetLevel++;
     }
 
-    /*
-    public void SetPlayerAttackBonus(int amount)
+    public int GetStatLvl(PlayerStatEnum statEnum)
     {
-        pAttackBonus = amount;
-
-        if (pAttackBonus < 0) pAttackBonus = 0;
+        switch(statEnum)
+        {
+            case PlayerStatEnum.MoveSpeed:
+                return pMoveSpeedLevel;
+            case PlayerStatEnum.AttackSpeed:
+                return pAttackSpeedLevel;
+            case PlayerStatEnum.MaxHP:
+                return pMaxHPLevel;
+            case PlayerStatEnum.DamageIncrease:
+                return pDamageIncreaseLevel;
+            case PlayerStatEnum.MagnetRadius:
+                return pMagnetLevel;
+            default:
+                return -1;
+        }
     }
-
-    public void SetPlayerSpeedBonus(float amount)
-    {
-        pSpeedBonus = amount;
-    }
-    */
 }

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class pSkill4_LaserHit : MonoBehaviour
+public class pSkill4_SatellitesHit : MonoBehaviour
 {
     [SerializeField] private LayerMask targetLayer;
     [SerializeField] private int damage;

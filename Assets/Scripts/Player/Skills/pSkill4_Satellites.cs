@@ -6,6 +6,7 @@ public class pSkill4_Satellites : MonoBehaviour
 {
     [Header("스킬 레벨")]
     [SerializeField] private int skill4Level = 0;
+    public int Skill4Level { get { return skill4Level; } }
 
     [SerializeField] private GameObject[] satellites;
     [SerializeField] private float rotateSpeed = 100f;
