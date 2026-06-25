@@ -7,14 +7,18 @@ public class pSkill1_FireBall : MonoBehaviour
 
     [Header("스킬 레벨")]
     [SerializeField] private int skill1Level = 0;
+    public int Skill1Level { get { return skill1Level; } }
 
     [Header("공격 쿨타임")]
     [SerializeField] private float attackTimerMax = 1.0f;
     [SerializeField] private float attackTimer = 0f;
 
+    [SerializeField] private PlayerStat pStat;
+
     void Update()
     {
-        if (attackTimer < attackTimerMax) attackTimer += Time.deltaTime;
+        if (attackTimer < attackTimerMax) attackTimer += Time.deltaTime
+                 * PlayerStatDictionary.PlayerAttackSpeed[pStat.GetStatLvl(PlayerStatEnum.AttackSpeed)];
 
         Attack();
     }
@@ -30,13 +34,13 @@ public class pSkill1_FireBall : MonoBehaviour
                 case 0:
                     break;
                 case 1:
-                    Instantiate(bulletPrefabs[0], firePoint.position, Quaternion.identity);
+                    Instantiate(bulletPrefabs[0], firePoint.position, Quaternion.identity).Init(pStat);
                     break;
                 case 2:
-                    Instantiate(bulletPrefabs[1], firePoint.position, Quaternion.identity);
+                    Instantiate(bulletPrefabs[1], firePoint.position, Quaternion.identity).Init(pStat);
                     break;
                 case 3:
-                    Instantiate(bulletPrefabs[2], firePoint.position, Quaternion.identity);
+                    Instantiate(bulletPrefabs[2], firePoint.position, Quaternion.identity).Init(pStat);
                     break;
                 default:
                     break;

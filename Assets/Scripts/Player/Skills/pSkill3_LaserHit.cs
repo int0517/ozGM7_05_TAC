@@ -3,12 +3,15 @@
 public class pSkill3_LaserHit : MonoBehaviour
 {
     [SerializeField] private LayerMask targetLayer;
-    [SerializeField] private int damage;
+    [SerializeField] private float damage = 1;
+    [SerializeField] private PlayerStat pStat;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if ((targetLayer.value & (1 << collision.gameObject.layer)) == 0) return;
 
+        float totalDamage = damage *
+            PlayerStatDictionary.PlayerDamageIncrease[pStat.GetStatLvl(PlayerStatEnum.DamageIncrease)];
         // 적 피격
     }
 }

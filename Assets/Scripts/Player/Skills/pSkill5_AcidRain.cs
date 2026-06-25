@@ -5,23 +5,28 @@ public class pSkill5_AcidRain : MonoBehaviour
 {
     [Header("스킬 레벨")]
     [SerializeField] private int skill5Level = 0;
+    public int Skill5Level { get { return skill5Level; } }
 
     [Header("공격 쿨타임")]
     [SerializeField] private float attackTimerMax = 8.0f;
     [SerializeField] private float attackTimer = 0f;
 
     [SerializeField] private LayerMask targetLayer;
-    [SerializeField] private GameObject acidrainPrefab;
+    [SerializeField] private pSkill5_AcidRainController acidrainPrefab;
     [SerializeField] float searchLength = 10f;
-    private float posX, posY, posXMax, posYMax;
+
     private Vector3 targetPosition1, targetPosition2, targetPosition3;
+
+    [SerializeField] private PlayerStat pStat;
 
     void Update()
     {
-        if (attackTimer < attackTimerMax) attackTimer += Time.deltaTime;
+        if (attackTimer < attackTimerMax) attackTimer +=
+                Time.deltaTime * PlayerStatDictionary.PlayerAttackSpeed[pStat.GetStatLvl(PlayerStatEnum.AttackSpeed)];
 
         if (attackTimer >= attackTimerMax) SpawnAcidRain(skill5Level);
     }
+
 
     private void SpawnAcidRain(int skillLvl)
     {
@@ -32,16 +37,16 @@ public class pSkill5_AcidRain : MonoBehaviour
             case 0:
                 break;
             case 1:
-                Instantiate(acidrainPrefab, targetPosition1, Quaternion.identity);
+                Instantiate(acidrainPrefab, targetPosition1, Quaternion.identity).Init(pStat);
                 break;
             case 2:
-                Instantiate(acidrainPrefab, targetPosition1, Quaternion.identity);
-                Instantiate(acidrainPrefab, targetPosition2, Quaternion.identity);
+                Instantiate(acidrainPrefab, targetPosition1, Quaternion.identity).Init(pStat);
+                Instantiate(acidrainPrefab, targetPosition2, Quaternion.identity).Init(pStat);
                 break;
             case 3:
-                Instantiate(acidrainPrefab, targetPosition1, Quaternion.identity);
-                Instantiate(acidrainPrefab, targetPosition2, Quaternion.identity);
-                Instantiate(acidrainPrefab, targetPosition3, Quaternion.identity);
+                Instantiate(acidrainPrefab, targetPosition1, Quaternion.identity).Init(pStat);
+                Instantiate(acidrainPrefab, targetPosition2, Quaternion.identity).Init(pStat);
+                Instantiate(acidrainPrefab, targetPosition3, Quaternion.identity).Init(pStat);
                 break;
             default:
                 break;
@@ -82,6 +87,11 @@ public class pSkill5_AcidRain : MonoBehaviour
             int middleIndex = enemies.Length / 2;
             targetPosition3 = enemies[middleIndex].transform.position;
         }
+    }
+
+    private void SpawnAcidRain(Vector3 pos)
+    {
+        Instantiate(acidrainPrefab, pos, Quaternion.identity).Init(pStat);
     }
 
     public void Skill5LevelUp()

@@ -2,16 +2,21 @@
 
 public class PlayerStat : MonoBehaviour
 {
+    // 플레이어 스탯
     private int pLevel = 1;
     private int pMaxHP = 3;
     private int pCurrentHP;
-    private int pAttackBonus = 1;
+    
+    private float pAttackBonus = 1f;
     private float pSpeedBonus = 1f;
+    
 
+    // 플레이어 스탯 프로퍼티
     public int PLevel { get { return pLevel; } }
     public int PMaxHP { get { return pMaxHP; } }
     public int PCurrentHP { get { return pCurrentHP; } }
-    public int PAttackBonus
+    
+    public float PAttackBonus
     {
         get => pAttackBonus;
         set => pAttackBonus = Mathf.Max(0, value);
@@ -22,6 +27,14 @@ public class PlayerStat : MonoBehaviour
         get =>pSpeedBonus;
         set => pSpeedBonus = Mathf.Max(0f, value);
     }
+    
+
+    // 플레이어 스탯 레벨
+    private int pMoveSpeedLevel = 0;
+    private int pAttackSpeedLevel = 0;
+    private int pMaxHPLevel = 0;
+    private int pDamageIncreaseLevel = 0;
+    private int pMagnetLevel = 0;
 
     private float playerNonhitTimerMax = 2f;
     private float playerNonhitTimer = 0f;
@@ -55,17 +68,56 @@ public class PlayerStat : MonoBehaviour
         Debug.Log("아파");
         if (pCurrentHP < 0) pCurrentHP = 0;
         // 플레이어 사망 처리, 종료 화면
+        Debug.Log("뎀졌습니다");
     }
 
-    public void SetPlayerAttackBonus(int amount)
+    // 플레이어 스탯 레벨업 메서드
+    public void PlayerMoveSpeedLevelUp()
     {
-        pAttackBonus = amount;
-
-        if (pAttackBonus < 0) pAttackBonus = 0;
+        if (pMoveSpeedLevel >= 2) return;
+        pMoveSpeedLevel++;
     }
 
-    public void SetPlayerSpeedBonus(float amount)
+    public void PlayerAttackSpeedLevelUp()
     {
-        pSpeedBonus = amount;
+        if (pAttackSpeedLevel >= 2) return;
+        pAttackSpeedLevel++;
+    }
+
+    public void PlayerMaxHPLevelUp()
+    {
+        if (pMaxHPLevel >= 2) return;
+        pMaxHPLevel++;
+    }
+
+    public void PlayerDamageIncreaseLevelUp()
+    {
+        if (pDamageIncreaseLevel >= 2) return;
+        pDamageIncreaseLevel++;
+    }
+
+    public void PlayerMagnetLevelUp()
+    {
+        if (pMagnetLevel >= 2) return;
+        pMagnetLevel++;
+    }
+
+    public int GetStatLvl(PlayerStatEnum statEnum)
+    {
+        switch(statEnum)
+        {
+            case PlayerStatEnum.MoveSpeed:
+                return pMoveSpeedLevel;
+            case PlayerStatEnum.AttackSpeed:
+                return pAttackSpeedLevel;
+            case PlayerStatEnum.MaxHP:
+                return pMaxHPLevel;
+            case PlayerStatEnum.DamageIncrease:
+                return pDamageIncreaseLevel;
+            case PlayerStatEnum.MagnetRadius:
+                return pMagnetLevel;
+            default:
+                return -1;
+        }
     }
 }

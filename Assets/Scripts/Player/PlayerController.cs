@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
 
@@ -12,12 +12,17 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     private PlayerStat pStat;
 
+    [Header("플레이어 이동 제한")]
+    private float posX, posY;
+    [SerializeField] private float posXMax = 27.25f;
+    [SerializeField] private float posXMin = -28.25f;
+    [SerializeField] private float posYMax = 17.75f;
+    [SerializeField] private float posYMin = -17.75f;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         pStat = GetComponent<PlayerStat>();
-
-        EnsureVisibleFallbackSprite();
 
         moveAction = InputSystem.actions?.FindAction("Move");
         moveAction?.Enable();
@@ -25,42 +30,14 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        moveSpeed = PlayerStatDictionary.PlayerMoveSpeed[pStat.GetStatLvl(PlayerStatEnum.MoveSpeed)];
         Rotate();
     }
 
     private void FixedUpdate()
     {
         Move();
-    }
-
-    private void EnsureVisibleFallbackSprite()
-    {
-        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
-        if (spriteRenderer == null)
-        {
-            return;
-        }
-
-        if (fallbackSquareSprite == null)
-        {
-            Texture2D texture = new Texture2D(1, 1);
-            texture.filterMode = FilterMode.Point;
-            texture.SetPixel(0, 0, new Color(0.15f, 0.45f, 1f, 1f));
-            texture.Apply();
-
-            fallbackSquareSprite = Sprite.Create(
-                texture,
-                new Rect(0f, 0f, 1f, 1f),
-                new Vector2(0.5f, 0.5f),
-                1f
-            );
-            fallbackSquareSprite.name = "PlayerFallbackSquare";
-        }
-
-        spriteRenderer.sprite = fallbackSquareSprite;
-        spriteRenderer.sharedMaterial = null;
-        spriteRenderer.color = new Color(0.15f, 0.45f, 1f, 1f);
-        spriteRenderer.sortingOrder = Mathf.Max(spriteRenderer.sortingOrder, 10);
+        MoveLimit();
     }
 
     private void Move()
@@ -71,8 +48,17 @@ public class PlayerController : MonoBehaviour
         }
 
         Vector2 movement = ReadMovement();
-        float speedBonus = pStat != null ? pStat.PSpeedBonus : 1f;
-        rb.linearVelocity = new Vector2(movement.x * moveSpeed, movement.y * moveSpeed * speedBonus);
+        rb.linearVelocity = new Vector2(movement.x * moveSpeed, movement.y * moveSpeed);
+    }
+
+    private void MoveLimit()
+    {
+        Vector3 pos = transform.position;
+
+        pos.x = Mathf.Clamp(pos.x, posXMin, posXMax);
+        pos.y = Mathf.Clamp(pos.y, posYMin, posYMax);
+
+        transform.position = pos;
     }
 
     private Vector2 ReadMovement()

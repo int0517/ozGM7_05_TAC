@@ -34,10 +34,14 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: UniqueLasers01_Add_5x6
-  m_Shader: {fileID: -6465566751694194690, guid: 9665439ac7e1b83489c673e35dcefd05, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 9665439ac7e1b83489c673e35dcefd05,
+    type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
+  - _BUILTIN_ALPHATEST_ON
+  - _BUILTIN_AlphaClip
+  - _BUILTIN_SURFACE_TYPE_TRANSPARENT
   - _SURFACE_TYPE_TRANSPARENT
   m_InvalidKeywords: []
   m_LightmapFlags: 6
@@ -140,10 +144,10 @@ Material:
     - _BUILTIN_AlphaClip: 1
     - _BUILTIN_Blend: 2
     - _BUILTIN_CullMode: 0
-    - _BUILTIN_DstBlend: 0
-    - _BUILTIN_QueueControl: -1
+    - _BUILTIN_DstBlend: 1
+    - _BUILTIN_QueueControl: 0
     - _BUILTIN_QueueOffset: 0
-    - _BUILTIN_SrcBlend: 1
+    - _BUILTIN_SrcBlend: 5
     - _BUILTIN_Surface: 1
     - _BUILTIN_ZTest: 4
     - _BUILTIN_ZWrite: 0
@@ -169,6 +173,7 @@ Material:
     - _DistortionUSpeed: -0.6
     - _DistortionVSpeed: 0.1
     - _DstBlend: 1
+    - _DstBlendAlpha: 0
     - _FlipbookBlending: 0
     - _FlipbookMode: 0
     - _Frame: 3
@@ -193,6 +198,7 @@ Material:
     - _SoftParticlesNearFadeDistance: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 5
+    - _SrcBlendAlpha: 1
     - _Surface: 1
     - _UVSec: 0
     - _X: 3

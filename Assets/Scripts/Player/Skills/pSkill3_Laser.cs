@@ -6,6 +6,7 @@ public class pSkill3_Laser : MonoBehaviour
 {
     [Header("스킬 레벨")]
     [SerializeField] private int skill3Level = 0;
+    public int Skill3Level { get { return skill3Level; } }
 
     [Header("공격 쿨타임")]
     [SerializeField] private float attackTimerMax = 5.0f;
@@ -18,6 +19,8 @@ public class pSkill3_Laser : MonoBehaviour
     private Vector2 moveDirection1, moveDirection2, moveDirection3;
     private bool isLaserActive = false;
 
+    [SerializeField] private PlayerStat pStat;
+
     void Start()
     {
         for (int i = 0; i < lasers.Length; i++)
@@ -28,7 +31,8 @@ public class pSkill3_Laser : MonoBehaviour
 
     void Update()
     {
-        if (attackTimer < attackTimerMax) attackTimer += Time.deltaTime;
+        if (attackTimer < attackTimerMax) attackTimer += Time.deltaTime
+                 * PlayerStatDictionary.PlayerAttackSpeed[pStat.GetStatLvl(PlayerStatEnum.AttackSpeed)];
 
         if (!isLaserActive && attackTimer >= attackTimerMax) StartCoroutine(LaserActive());
     }

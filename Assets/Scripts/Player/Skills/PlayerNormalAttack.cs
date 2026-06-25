@@ -7,14 +7,18 @@ public class PlayerNormalAttack : MonoBehaviour
 
     [Header("스킬 레벨")]
     [SerializeField] private int normalAttackLevel;
+    public int NormalAttackLevel { get { return normalAttackLevel; } }
 
     [Header("공격 쿨타임")]
     [SerializeField] private float attackTimerMax = 1.0f;
     [SerializeField] private float attackTimer = 0f;
 
+    [SerializeField] private PlayerStat pStat;
+
     void Update()
     {
-        attackTimer += Time.deltaTime;
+        attackTimer += Time.deltaTime
+             * PlayerStatDictionary.PlayerAttackSpeed[pStat.GetStatLvl(PlayerStatEnum.AttackSpeed)];
 
         Attack();
     }
