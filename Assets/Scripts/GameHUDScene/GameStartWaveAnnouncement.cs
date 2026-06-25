@@ -7,6 +7,7 @@ public class GameStartWaveAnnouncement : MonoBehaviour
 {
     private const string HudSceneName = "GameHUDScene";
     private const string AnnouncementName = "GameStartWaveAnnouncement";
+    private const string StyleSourceName = "WaveAnnouncementStyle";
 
     private CanvasGroup canvasGroup;
     private RectTransform rectTransform;
@@ -53,11 +54,23 @@ public class GameStartWaveAnnouncement : MonoBehaviour
         rootRect.anchorMax = new Vector2(0.5f, 0.5f);
         rootRect.pivot = new Vector2(0.5f, 0.5f);
         rootRect.anchoredPosition = Vector2.zero;
-        rootRect.sizeDelta = new Vector2(560f, 140f);
+        rootRect.sizeDelta = new Vector2(660f, 176f);
 
         Image background = root.GetComponent<Image>();
         background.color = new Color(0.02f, 0.025f, 0.035f, 0.78f);
         background.raycastTarget = false;
+
+        Transform styleSource = canvas.transform.Find(StyleSourceName);
+        Image styleBackground = styleSource != null ? styleSource.GetComponent<Image>() : null;
+        Text styleText = styleSource != null ? styleSource.GetComponent<Text>() : null;
+
+        if (styleBackground != null && styleBackground.sprite != null)
+        {
+            background.sprite = styleBackground.sprite;
+            background.type = Image.Type.Simple;
+            background.preserveAspect = true;
+            background.color = Color.white;
+        }
 
         CanvasGroup group = root.GetComponent<CanvasGroup>();
         group.alpha = 0f;
@@ -78,21 +91,25 @@ public class GameStartWaveAnnouncement : MonoBehaviour
         Text text = textObject.GetComponent<Text>();
         text.text = "1WAVE \uC2DC\uC791!";
         text.alignment = TextAnchor.MiddleCenter;
-        text.font = referenceText != null ? referenceText.font : Font.CreateDynamicFontFromOSFont("Malgun Gothic", 56);
-        text.fontSize = 56;
+        text.font = styleText != null && styleText.font != null
+            ? styleText.font
+            : referenceText != null
+                ? referenceText.font
+                : Font.CreateDynamicFontFromOSFont("Malgun Gothic", 56);
+        text.fontSize = 64;
         text.fontStyle = FontStyle.Bold;
-        text.color = new Color(1f, 0.92f, 0.58f, 1f);
+        text.color = new Color(1f, 0.76862746f, 0.23921569f, 1f);
         text.raycastTarget = false;
         text.resizeTextForBestFit = true;
         text.resizeTextMinSize = 28;
-        text.resizeTextMaxSize = 56;
+        text.resizeTextMaxSize = 64;
 
         Outline outline = textObject.GetComponent<Outline>();
-        outline.effectColor = new Color(0f, 0f, 0f, 0.9f);
-        outline.effectDistance = new Vector2(3f, -3f);
+        outline.effectColor = Color.black;
+        outline.effectDistance = new Vector2(5f, -5f);
 
         Shadow shadow = textObject.GetComponent<Shadow>();
-        shadow.effectColor = new Color(0f, 0f, 0f, 0.65f);
+        shadow.effectColor = new Color(0.23529412f, 0.11764706f, 0.023529412f, 1f);
         shadow.effectDistance = new Vector2(0f, -6f);
     }
 
