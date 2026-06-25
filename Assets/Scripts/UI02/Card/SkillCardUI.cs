@@ -33,13 +33,15 @@ public class SkillCardUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     }
 
     [SerializeField] private TMP_Text skillNameText;
+    [SerializeField] private TMP_Text descriptionText;
     [SerializeField] private UnityEngine.UI.Image icon;
 
     private void UpdateUI()
     {
-        if (skillData == null) return; 
+        if (skillData == null) return;
 
         skillNameText.text = skillData.skillName;
+        descriptionText.text = skillData.description;
         icon.sprite = skillData.icon;
     }
     //=======
