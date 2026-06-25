@@ -42,6 +42,15 @@ public class LevelUpUI : MonoBehaviour
     {
         if (isOpen) return;
 
+        //!!
+        GenerateCards();
+
+        if (currentCards.Count == 0) //남은 스킬 0개면 리턴
+        {
+            Debug.Log("선택 가능한 스킬이 없습니다!");
+            return;
+        }
+
 
         isOpen = true;//열린 상태로 변경
         isSelected = false; //아직 어떤 카드도 선택하지 않은 상태임.
@@ -58,9 +67,6 @@ public class LevelUpUI : MonoBehaviour
             {
                 //Time.timeScale = 0f; // 게임만 멈춤
             });
-
-        //!!
-        GenerateCards();
 
         //레벨업 타이틀 등장 애니메이션
         PlayTitleTween();
@@ -84,7 +90,12 @@ public class LevelUpUI : MonoBehaviour
 
             if (i < currentCards.Count)
             {
+                skillCards[i].gameObject.SetActive(true);
                 skillCards[i].SetSkillData(currentCards[i]);
+            }
+            else
+            {
+                skillCards[i].gameObject.SetActive(false);
             }
         }
 
@@ -92,7 +103,7 @@ public class LevelUpUI : MonoBehaviour
         //시퀀스를 사용하면 여러 트윈이나 콜백을 순서대로 실행할 수 있음.
         Sequence sequence = DOTween.Sequence().SetUpdate(true);
 
-        for (int i = 0; i < skillCards.Length; i++)
+        for (int i = 0; i < currentCards.Count; i++)
         {
             int index = i;
 
@@ -119,6 +130,7 @@ public class LevelUpUI : MonoBehaviour
     //카드가 클릭 되었을 때
     public void SelectCard(SkillCardUI selectCard)
     {
+
         if (isSelected) return;
 
         //!! 실제 저장
@@ -180,13 +192,15 @@ public class LevelUpUI : MonoBehaviour
 
         for (int i = 0; i < skillCards.Length; i++)
         {
-            if (tempPool.Count == 0) break;
+            if (tempPool.Count == 0)
+                break;
 
             int randomIndex = Random.Range(0, tempPool.Count);
 
             SkillData selected = tempPool[randomIndex];
 
             currentCards.Add(selected);
+
             tempPool.RemoveAt(randomIndex);
         }
     }
