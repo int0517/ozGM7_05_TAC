@@ -47,14 +47,23 @@ public class UI02_TestPlayerStats : MonoBehaviour
 
     public void AddSkill(UI02_SkillSlots.SkillData skill)
     {
-        // 이미 같은 레벨을 가지고 있으면 추가 안함
-        if (HasSkill(skill.skillId, skill.skillLevel))
-            return;
+        for (int i = 0; i < ownedSkills.Count; i++)
+        {
+            if (ownedSkills[i].skillId == skill.skillId)
+            {
+                // 같은 계열 스킬이면 교체
+                ownedSkills[i] = skill;
 
+                Debug.Log($"{skill.skillName} 획득");
+                UpdateOwnedSkillsUI();
+                return;
+            }
+        }
+
+        // 처음 얻는 경우
         ownedSkills.Add(skill);
 
-        Debug.Log($"{skill.skillName} 획득");
-
+        Debug.Log($"{skill.skillName} 최초 획득");
         UpdateOwnedSkillsUI();
 
     }
