@@ -1,0 +1,429 @@
+fileFormatVersion: 2
+guid: 2a1e47f23132e5649bff28cfae802816
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -7323395299535025656
+    second: game_ui_assets_transparent_sheet_0
+  - first:
+      213: -7687771546568005783
+    second: game_ui_assets_transparent_sheet_1
+  - first:
+      213: -5984782541485917315
+    second: game_ui_assets_transparent_sheet_2
+  - first:
+      213: 1384937499794510530
+    second: game_ui_assets_transparent_sheet_3
+  - first:
+      213: -8916415822060808552
+    second: game_ui_assets_transparent_sheet_4
+  - first:
+      213: -4753968731103043434
+    second: game_ui_assets_transparent_sheet_5
+  - first:
+      213: -6506800844031345060
+    second: game_ui_assets_transparent_sheet_6
+  - first:
+      213: -899579979891075677
+    second: game_ui_assets_transparent_sheet_7
+  - first:
+      213: -1945186195990321862
+    second: game_ui_assets_transparent_sheet_8
+  - first:
+      213: -234704739845620452
+    second: game_ui_assets_transparent_sheet_9
+  - first:
+      213: 7926003712883392646
+    second: game_ui_assets_transparent_sheet_10
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: game_ui_assets_transparent_sheet_0
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 811
+        width: 1039
+        height: 254
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 80a037da6c21e5a90800000000000000
+      internalID: -7323395299535025656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: game_ui_assets_transparent_sheet_1
+      rect:
+        serializedVersion: 2
+        x: 1172
+        y: 847
+        width: 185
+        height: 159
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 967657c828c8f4590800000000000000
+      internalID: -7687771546568005783
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: game_ui_assets_transparent_sheet_2
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 608
+        width: 392
+        height: 162
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d7bb5ccbcf7c1fca0800000000000000
+      internalID: -5984782541485917315
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: game_ui_assets_transparent_sheet_3
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 605
+        width: 423
+        height: 162
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2c29e5f7159483310800000000000000
+      internalID: 1384937499794510530
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: game_ui_assets_transparent_sheet_4
+      rect:
+        serializedVersion: 2
+        x: 907
+        y: 181
+        width: 497
+        height: 584
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 89694601d07824480800000000000000
+      internalID: -8916415822060808552
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: game_ui_assets_transparent_sheet_5
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 438
+        width: 359
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 690e94d60a2860eb0800000000000000
+      internalID: -4753968731103043434
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: game_ui_assets_transparent_sheet_6
+      rect:
+        serializedVersion: 2
+        x: 458
+        y: 438
+        width: 392
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c5ebc4b5b1333b5a0800000000000000
+      internalID: -6506800844031345060
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: game_ui_assets_transparent_sheet_7
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 50
+        width: 227
+        height: 342
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3a51a8346cc0483f0800000000000000
+      internalID: -899579979891075677
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: game_ui_assets_transparent_sheet_8
+      rect:
+        serializedVersion: 2
+        x: 365
+        y: 197
+        width: 187
+        height: 179
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a35e006f57f4105e0800000000000000
+      internalID: -1945186195990321862
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: game_ui_assets_transparent_sheet_9
+      rect:
+        serializedVersion: 2
+        x: 611
+        y: 250
+        width: 249
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c1db66a58492ebcf0800000000000000
+      internalID: -234704739845620452
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: game_ui_assets_transparent_sheet_10
+      rect:
+        serializedVersion: 2
+        x: 338
+        y: 42
+        width: 1034
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 68087d21262defd60800000000000000
+      internalID: 7926003712883392646
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      game_ui_assets_transparent_sheet_0: -7323395299535025656
+      game_ui_assets_transparent_sheet_1: -7687771546568005783
+      game_ui_assets_transparent_sheet_10: 7926003712883392646
+      game_ui_assets_transparent_sheet_2: -5984782541485917315
+      game_ui_assets_transparent_sheet_3: 1384937499794510530
+      game_ui_assets_transparent_sheet_4: -8916415822060808552
+      game_ui_assets_transparent_sheet_5: -4753968731103043434
+      game_ui_assets_transparent_sheet_6: -6506800844031345060
+      game_ui_assets_transparent_sheet_7: -899579979891075677
+      game_ui_assets_transparent_sheet_8: -1945186195990321862
+      game_ui_assets_transparent_sheet_9: -234704739845620452
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
