@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -25,7 +26,7 @@ public class UI02_TestPlayerStats : MonoBehaviour
     new List<UI02_SkillSlots.SkillData>();
 
     [SerializeField]
-    private UI02_SkillSlots skillSlotsUI; //스킬 슬롯 연결
+    private UI02_SkillSlots skillSlotsUI;
 
 
     private void Start()
@@ -46,18 +47,47 @@ public class UI02_TestPlayerStats : MonoBehaviour
 
     public void AddSkill(UI02_SkillSlots.SkillData skill)
     {
-        Debug.Log($"추가 시도 : {skill.skillName}");
+        for (int i = 0; i < ownedSkills.Count; i++)
+        {
+            if (ownedSkills[i].skillId == skill.skillId)
+            {
+                if (ownedSkills[i].skillLevel < skill.maxLevel)
+                {
+                    ownedSkills[i].skillLevel++;
 
+                    Debug.Log($"{skill.skillName} Lv.{ownedSkills[i].skillLevel}");
+                }
+
+                UpdateOwnedSkillsUI();
+                return;
+            }
+        }
+
+        skill.skillLevel = 1;
         ownedSkills.Add(skill);
 
-        Debug.Log($"{skill.skillName} 획득!");
-        Debug.Log($"현재 개수 : {ownedSkills.Count}");
+        Debug.Log($"{skill.skillName} 최초 획득");
 
         UpdateOwnedSkillsUI();
+
     }
     private void UpdateOwnedSkillsUI()
     {
         skillSlotsUI.SetSkills(ownedSkills);
     }
 
-}
+    //보유중인 스킬 레벨 확인
+    public bool HasSkill(int skillId, int level)
+    {
+        foreach (var skill in ownedSkills)
+        {
+            if (skill.skillId == skillId &&
+                skill.skillLevel >= level)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+} 

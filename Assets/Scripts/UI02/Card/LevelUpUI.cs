@@ -1,6 +1,7 @@
 using DG.Tweening;
 using System.Collections.Generic;
 using UnityEngine;
+using static UI02_SkillSlots;
 
 public class LevelUpUI : MonoBehaviour
 {
@@ -30,6 +31,8 @@ public class LevelUpUI : MonoBehaviour
     [SerializeField]
     private UI02_TestPlayerStats playerStats;
 
+    //!!!
+    [SerializeField] private int currentStage;
     void Start()
     {
         CloseInstant();
@@ -79,8 +82,10 @@ public class LevelUpUI : MonoBehaviour
         {
             skillCards[i].HideInstant();
 
-            //!!
-            skillCards[i].SetSkillData(currentCards[i]);
+            if (i < currentCards.Count)
+            {
+                skillCards[i].SetSkillData(currentCards[i]);
+            }
         }
 
         //카드 등장 순서를 제어하기 위한 시퀀스를 만든다.
@@ -100,7 +105,7 @@ public class LevelUpUI : MonoBehaviour
 
             //다음 카드가 등하기 전까지 0.12초 기다린다.
             //이 간격때문에 카드가 하나씩 순서대로 등장하는 느낌을 볼 수 있음
-            sequence.AppendInterval(0.12f);          
+            sequence.AppendInterval(0.12f);
         }
         //!
         sequence.OnComplete(() =>
@@ -169,19 +174,35 @@ public class LevelUpUI : MonoBehaviour
     //!! 카드 랜덤 생성 함수 추가
     private void GenerateCards()
     {
-        currentCards = new List<UI02_SkillSlots.SkillData>();
+        currentCards = new List<SkillData>();
 
-        List<UI02_SkillSlots.SkillData> tempPool =
-            new List<UI02_SkillSlots.SkillData>(allSkills);
+        List<SkillData> tempPool = allSkills.FindAll(CanShowSkill);
 
         for (int i = 0; i < skillCards.Length; i++)
         {
+            if (tempPool.Count == 0) break;
+
             int randomIndex = Random.Range(0, tempPool.Count);
 
-            UI02_SkillSlots.SkillData selected = tempPool[randomIndex];
+            SkillData selected = tempPool[randomIndex];
 
             currentCards.Add(selected);
-            tempPool.RemoveAt(randomIndex); // ! 중복 제거
+            tempPool.RemoveAt(randomIndex);
         }
+    }
+
+    //!!! 카드 등장 조건
+    private bool CanShowSkill(SkillData skill)
+    {
+        if (currentStage < skill.unlockStage)
+            return false;
+
+        if (skill.skillLevel == 1)
+        {
+            return !playerStats.HasSkill(skill.skillId, 1);
+        }
+
+        return playerStats.HasSkill(skill.skillId, skill.skillLevel - 1)
+            && !playerStats.HasSkill(skill.skillId, skill.skillLevel);
     }
 }

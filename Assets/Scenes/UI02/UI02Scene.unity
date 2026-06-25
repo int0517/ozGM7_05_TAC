@@ -1676,16 +1676,93 @@ MonoBehaviour:
   - {fileID: 1483619744}
   - {fileID: 1784382070}
   allSkills:
-  - skillName: "\uAE30\uBCF8\uACF5\uACA9"
-    description: "\uAE30\uBCF8\uACF5\uACA9\uC5B4\uCA4C\uACE0\uC800\uCA4C\uACE0"
+  - skillName: "\uAE30\uBCF8\uACF5\uACA9 Lv1 "
+    description: "\uAE30\uBCF8\uACF5\uACA9\uC740 2\uB808\uBCA8\uBD80\uD130\uB85C
+      \uBC14\uAFB8\uC790"
     icon: {fileID: 1613481295985639152, guid: e69003b12c4852940bd9cbf5a69769c2, type: 3}
-  - skillName: "\uD30C\uC774\uC5B4\uBCFC"
+    skillLevel: 1
+    skillId: 0
+    maxLevel: 3
+    unlockStage: 0
+  - skillName: "\uAE30\uBCF8\uACF5\uACA9 Lv2"
+    description: "\uAE30\uBCF822"
+    icon: {fileID: -9027179324681414974, guid: e69003b12c4852940bd9cbf5a69769c2, type: 3}
+    skillLevel: 2
+    skillId: 0
+    maxLevel: 3
+    unlockStage: 0
+  - skillName: "\uAE30\uBCF8\uACF5\uACA9 Lv3"
+    description: "\uAE30\uBCF833"
+    icon: {fileID: 3972219151982858924, guid: e69003b12c4852940bd9cbf5a69769c2, type: 3}
+    skillLevel: 3
+    skillId: 0
+    maxLevel: 3
+    unlockStage: 0
+  - skillName: "\uD30C\uC774\uC5B4\uBCFC Lv1"
     description: "\uC778\uB370 \uD3ED\uD0C4\uC774 \uB410\uB124.."
     icon: {fileID: 5526119309634511866, guid: e69003b12c4852940bd9cbf5a69769c2, type: 3}
-  - skillName: "\uB0C9\uAC01 \uC9C0\uB300"
+    skillLevel: 1
+    skillId: 1
+    maxLevel: 3
+    unlockStage: 0
+  - skillName: "\uD30C\uC774\uC5B4\uBCFC Lv2"
+    description: "\uB354 \uB728\uAC70\uBE1C"
+    icon: {fileID: -8094595692935226529, guid: e69003b12c4852940bd9cbf5a69769c2, type: 3}
+    skillLevel: 2
+    skillId: 1
+    maxLevel: 3
+    unlockStage: 0
+  - skillName: "\uD30C\uC774\uC5B4\uBCFC Lv3"
+    description: "\uC644\uC804 \uB728\uAC70\uC6C0!"
+    icon: {fileID: 6276971898329534945, guid: e69003b12c4852940bd9cbf5a69769c2, type: 3}
+    skillLevel: 3
+    skillId: 1
+    maxLevel: 3
+    unlockStage: 0
+  - skillName: "\uB0C9\uAC01 \uC9C0\uB300 Lv1"
     description: "\uCD94\uC6CC\uC6A9"
     icon: {fileID: -6551052164859352750, guid: e69003b12c4852940bd9cbf5a69769c2, type: 3}
+    skillLevel: 1
+    skillId: 2
+    maxLevel: 3
+    unlockStage: 0
+  - skillName: "\uB0C9\uAC01 \uC9C0\uB300 Lv2"
+    description: "\uB118 \uCD94\uC6CC\uC6A9"
+    icon: {fileID: 6021421511358016280, guid: e69003b12c4852940bd9cbf5a69769c2, type: 3}
+    skillLevel: 2
+    skillId: 2
+    maxLevel: 3
+    unlockStage: 0
+  - skillName: "\uB0C9\uAC01 \uC9C0\uB300 Lv3"
+    description: "\uC9C4\uC9DC \uCD94\uC6CC\uC6A9.."
+    icon: {fileID: 6762519853196395263, guid: e69003b12c4852940bd9cbf5a69769c2, type: 3}
+    skillLevel: 3
+    skillId: 2
+    maxLevel: 3
+    unlockStage: 0
+  - skillName: "\uB808\uC774\uC800 Lv1"
+    description: "\uC0A5"
+    icon: {fileID: 527519949526313681, guid: e69003b12c4852940bd9cbf5a69769c2, type: 3}
+    skillLevel: 1
+    skillId: 3
+    maxLevel: 3
+    unlockStage: 0
+  - skillName: "\uB808\uC774\uC800 Lv2"
+    description: "\uC0A5\uC0A5"
+    icon: {fileID: -3920608344682924629, guid: e69003b12c4852940bd9cbf5a69769c2, type: 3}
+    skillLevel: 2
+    skillId: 3
+    maxLevel: 3
+    unlockStage: 0
+  - skillName: "\uB808\uC774\uC800 Lv3"
+    description: "\uC0A5\uC0A5\uC0A5.."
+    icon: {fileID: -506372826780094804, guid: e69003b12c4852940bd9cbf5a69769c2, type: 3}
+    skillLevel: 3
+    skillId: 3
+    maxLevel: 3
+    unlockStage: 0
   playerStats: {fileID: 1824585869}
+  currentStage: 0
 --- !u!1 &1483619738
 GameObject:
   m_ObjectHideFlags: 0
