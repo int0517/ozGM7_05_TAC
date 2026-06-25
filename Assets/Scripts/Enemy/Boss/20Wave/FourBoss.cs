@@ -8,9 +8,11 @@ public class FourBoss : BossBase
     [SerializeField] protected GameObject eggPrefab;
     [SerializeField] protected int eggCount = 4;
     [SerializeField] protected GameObject warningPrefab;
+    [SerializeField] protected GameObject powerWarningPrefab;
     [SerializeField] protected GameObject damagePrefab;
-    [SerializeField] protected GameObject TwoDamagePrefab;
+    [SerializeField] protected GameObject powerDamagePrefab;
     [SerializeField] protected float warningCount = 2.0f;
+    [SerializeField] protected float powerWarningCount = 1.0f;
     [SerializeField] protected float damageCount = 0.5f;
     public List<GameObject> eggList = new List<GameObject>();
     public bool isInvincible = true;
@@ -34,6 +36,7 @@ public class FourBoss : BossBase
         if (isInvincible && eggList.Count == 0)
         {
             isInvincible = false;
+            isEscape = false;
             Debug.Log("무적 해제! 보스 공격 가능!");
         }
     }
@@ -128,16 +131,30 @@ public class FourBoss : BossBase
     }
     private IEnumerator AttackRoutine(Vector3 targetPos)
     {
+        if (isInvincible)
+        {
+            GameObject warning = Instantiate(warningPrefab, targetPos, Quaternion.identity);
 
-        GameObject warning = Instantiate(warningPrefab, targetPos, Quaternion.identity);
+            yield return new WaitForSeconds(warningCount);
 
-        yield return new WaitForSeconds(warningCount);
+            Destroy(warning);
+            GameObject poison = Instantiate(damagePrefab, targetPos, Quaternion.identity);
 
-        Destroy(warning);
-        GameObject poison = Instantiate(damagePrefab, targetPos, Quaternion.identity);
+            yield return new WaitForSeconds(damageCount);
+            Destroy(poison);
+        }
+        if (!isInvincible)
+        {
+            GameObject warning = Instantiate(powerWarningPrefab, targetPos, Quaternion.identity);
 
-        yield return new WaitForSeconds(damageCount);
-        Destroy(poison);
+            yield return new WaitForSeconds(powerWarningCount);
+
+            Destroy(warning);
+            GameObject poison = Instantiate(powerDamagePrefab, targetPos, Quaternion.identity);
+
+            yield return new WaitForSeconds(damageCount);
+            Destroy(poison);
+        }
     }
 
     private Vector3 GetRandomPositionInCamera()
