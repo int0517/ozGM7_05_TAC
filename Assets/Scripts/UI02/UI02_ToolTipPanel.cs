@@ -5,16 +5,8 @@ public class UI02_ToolTipPanel : MonoBehaviour
 {
     [SerializeField] private GameObject tooltipPanel;
 
-    private TMP_Text skillNameText;
-    private TMP_Text descriptionText;
-
-    private void Awake()
-    {
-        TMP_Text[] texts = GetComponentsInChildren<TMP_Text>();
-
-        skillNameText = texts[0];
-        descriptionText = texts[1];
-    }
+    [SerializeField] private TMP_Text skillNameText;
+    [SerializeField] private TMP_Text descriptionText;
 
     private void Update()
     {

@@ -1,0 +1,767 @@
+fileFormatVersion: 2
+guid: e69003b12c4852940bd9cbf5a69769c2
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 1613481295985639152
+    second: main_skills_square_sheet_256_0
+  - first:
+      213: -9027179324681414974
+    second: main_skills_square_sheet_256_1
+  - first:
+      213: 3972219151982858924
+    second: main_skills_square_sheet_256_2
+  - first:
+      213: -1675150322774212038
+    second: main_skills_square_sheet_256_3
+  - first:
+      213: 5526119309634511866
+    second: main_skills_square_sheet_256_4
+  - first:
+      213: -8094595692935226529
+    second: main_skills_square_sheet_256_5
+  - first:
+      213: -18099096038769751
+    second: main_skills_square_sheet_256_6
+  - first:
+      213: 6276971898329534945
+    second: main_skills_square_sheet_256_7
+  - first:
+      213: -6551052164859352750
+    second: main_skills_square_sheet_256_8
+  - first:
+      213: 6021421511358016280
+    second: main_skills_square_sheet_256_9
+  - first:
+      213: 6762519853196395263
+    second: main_skills_square_sheet_256_10
+  - first:
+      213: -1500091188922207163
+    second: main_skills_square_sheet_256_11
+  - first:
+      213: 527519949526313681
+    second: main_skills_square_sheet_256_12
+  - first:
+      213: -3920608344682924629
+    second: main_skills_square_sheet_256_13
+  - first:
+      213: -506372826780094804
+    second: main_skills_square_sheet_256_14
+  - first:
+      213: -5938035125036920522
+    second: main_skills_square_sheet_256_15
+  - first:
+      213: -9135260585835817718
+    second: main_skills_square_sheet_256_16
+  - first:
+      213: -3935282172091680203
+    second: main_skills_square_sheet_256_17
+  - first:
+      213: -8694299282526793180
+    second: main_skills_square_sheet_256_18
+  - first:
+      213: 6217565691637724227
+    second: main_skills_square_sheet_256_19
+  - first:
+      213: 8137371165158970173
+    second: main_skills_square_sheet_256_20
+  - first:
+      213: -6058679134338068650
+    second: main_skills_square_sheet_256_21
+  - first:
+      213: 273199470155891502
+    second: main_skills_square_sheet_256_22
+  - first:
+      213: -4976904608360480924
+    second: main_skills_square_sheet_256_23
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: main_skills_square_sheet_256_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1359
+        width: 257
+        height: 257
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0fef5faa0bc346610800000000000000
+      internalID: 1613481295985639152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: main_skills_square_sheet_256_1
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 1359
+        width: 258
+        height: 257
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2c61d947b3409b280800000000000000
+      internalID: -9027179324681414974
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: main_skills_square_sheet_256_2
+      rect:
+        serializedVersion: 2
+        x: 543
+        y: 1359
+        width: 258
+        height: 257
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ca211f3e548202730800000000000000
+      internalID: 3972219151982858924
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: main_skills_square_sheet_256_3
+      rect:
+        serializedVersion: 2
+        x: 815
+        y: 1359
+        width: 257
+        height: 257
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a3289a128aba0c8e0800000000000000
+      internalID: -1675150322774212038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: main_skills_square_sheet_256_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1087
+        width: 257
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: af32135cb38b0bc40800000000000000
+      internalID: 5526119309634511866
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: main_skills_square_sheet_256_5
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 1087
+        width: 258
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f5b5032ba183aaf80800000000000000
+      internalID: -8094595692935226529
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: main_skills_square_sheet_256_6
+      rect:
+        serializedVersion: 2
+        x: 543
+        y: 1087
+        width: 258
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9ab7ad1d7f2bfbff0800000000000000
+      internalID: -18099096038769751
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: main_skills_square_sheet_256_7
+      rect:
+        serializedVersion: 2
+        x: 815
+        y: 1087
+        width: 257
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e19a094fa84c1750800000000000000
+      internalID: 6276971898329534945
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: main_skills_square_sheet_256_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 815
+        width: 257
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2592188d3ccf515a0800000000000000
+      internalID: -6551052164859352750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: main_skills_square_sheet_256_9
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 815
+        width: 258
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 81be36336f2609350800000000000000
+      internalID: 6021421511358016280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: main_skills_square_sheet_256_10
+      rect:
+        serializedVersion: 2
+        x: 543
+        y: 815
+        width: 258
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff24c442afb49dd50800000000000000
+      internalID: 6762519853196395263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: main_skills_square_sheet_256_11
+      rect:
+        serializedVersion: 2
+        x: 815
+        y: 815
+        width: 257
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5443991f20b9e2be0800000000000000
+      internalID: -1500091188922207163
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: main_skills_square_sheet_256_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 543
+        width: 257
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1daa2736990225700800000000000000
+      internalID: 527519949526313681
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: main_skills_square_sheet_256_13
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 543
+        width: 258
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba5fdb79b733799c0800000000000000
+      internalID: -3920608344682924629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: main_skills_square_sheet_256_14
+      rect:
+        serializedVersion: 2
+        x: 543
+        y: 543
+        width: 258
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: caeacdfc89009f8f0800000000000000
+      internalID: -506372826780094804
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: main_skills_square_sheet_256_15
+      rect:
+        serializedVersion: 2
+        x: 815
+        y: 543
+        width: 257
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 631d16cc38cd79da0800000000000000
+      internalID: -5938035125036920522
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: main_skills_square_sheet_256_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 271
+        width: 257
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a0511aad5e8093180800000000000000
+      internalID: -9135260585835817718
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: main_skills_square_sheet_256_17
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 271
+        width: 258
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 53a3c89e6b11369c0800000000000000
+      internalID: -3935282172091680203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: main_skills_square_sheet_256_18
+      rect:
+        serializedVersion: 2
+        x: 543
+        y: 271
+        width: 258
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4229e0eedd4a75780800000000000000
+      internalID: -8694299282526793180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: main_skills_square_sheet_256_19
+      rect:
+        serializedVersion: 2
+        x: 815
+        y: 271
+        width: 257
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 344f8b1fd0b394650800000000000000
+      internalID: 6217565691637724227
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: main_skills_square_sheet_256_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 257
+        height: 257
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d339ec806ffbde070800000000000000
+      internalID: 8137371165158970173
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: main_skills_square_sheet_256_21
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 0
+        width: 258
+        height: 257
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 65f45b57d6f3beba0800000000000000
+      internalID: -6058679134338068650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: main_skills_square_sheet_256_22
+      rect:
+        serializedVersion: 2
+        x: 543
+        y: 0
+        width: 258
+        height: 257
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e23877b78799ac300800000000000000
+      internalID: 273199470155891502
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: main_skills_square_sheet_256_23
+      rect:
+        serializedVersion: 2
+        x: 815
+        y: 0
+        width: 257
+        height: 257
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 46f3ba1a0ab7eeab0800000000000000
+      internalID: -4976904608360480924
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      main_skills_square_sheet_256_0: 1613481295985639152
+      main_skills_square_sheet_256_1: -9027179324681414974
+      main_skills_square_sheet_256_10: 6762519853196395263
+      main_skills_square_sheet_256_11: -1500091188922207163
+      main_skills_square_sheet_256_12: 527519949526313681
+      main_skills_square_sheet_256_13: -3920608344682924629
+      main_skills_square_sheet_256_14: -506372826780094804
+      main_skills_square_sheet_256_15: -5938035125036920522
+      main_skills_square_sheet_256_16: -9135260585835817718
+      main_skills_square_sheet_256_17: -3935282172091680203
+      main_skills_square_sheet_256_18: -8694299282526793180
+      main_skills_square_sheet_256_19: 6217565691637724227
+      main_skills_square_sheet_256_2: 3972219151982858924
+      main_skills_square_sheet_256_20: 8137371165158970173
+      main_skills_square_sheet_256_21: -6058679134338068650
+      main_skills_square_sheet_256_22: 273199470155891502
+      main_skills_square_sheet_256_23: -4976904608360480924
+      main_skills_square_sheet_256_3: -1675150322774212038
+      main_skills_square_sheet_256_4: 5526119309634511866
+      main_skills_square_sheet_256_5: -8094595692935226529
+      main_skills_square_sheet_256_6: -18099096038769751
+      main_skills_square_sheet_256_7: 6276971898329534945
+      main_skills_square_sheet_256_8: -6551052164859352750
+      main_skills_square_sheet_256_9: 6021421511358016280
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -16,6 +16,12 @@ public class UI02_SkillSlots : MonoBehaviour
         public string skillName;
         public string description;
         public Sprite icon;
+
+        public int skillLevel;
+        public int skillId;
+        public int maxLevel = 5;
+
+        public int unlockStage;
     }
 
     [SerializeField] private List<SkillData> skills;
@@ -33,6 +39,13 @@ public class UI02_SkillSlots : MonoBehaviour
 
             slot.skillData = skills[i];
         }
+    }
+
+    public void SetSkills(List<SkillData> newSkills)
+    {
+        skills = newSkills;
+
+        UpdateSkillsSlots();
     }
 
 }

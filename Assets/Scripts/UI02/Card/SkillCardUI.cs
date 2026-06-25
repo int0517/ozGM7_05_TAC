@@ -1,5 +1,6 @@
 using DG.Tweening;
 using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -19,6 +20,32 @@ public class SkillCardUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     private Vector2 originalPosition;
     private Vector3 originalScale;
     private bool isClickable;
+
+    //!! SkillCardUI에 SkillData 넣기 ====
+    private UI02_SkillSlots.SkillData skillData;
+
+    public void SetSkillData(UI02_SkillSlots.SkillData data)
+    {
+        skillData = data;
+
+        if (skillData != null)
+            UpdateUI();
+    }
+
+    [SerializeField] private TMP_Text skillNameText;
+    [SerializeField] private TMP_Text descriptionText;
+    [SerializeField] private UnityEngine.UI.Image icon;
+
+    private void UpdateUI()
+    {
+        if (skillData == null) return;
+
+        skillNameText.text = skillData.skillName;
+        descriptionText.text = skillData.description;
+        icon.sprite = skillData.icon;
+    }
+    //=======
+
 
     private void Awake()
     {
@@ -54,9 +81,10 @@ public class SkillCardUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
         Sequence sequence = DOTween.Sequence();
 
-        sequence.Join(canvasGroup.DOFade(1.0f, 0.25f));//투명도를 0.25초동안 1로 만든다.
-        sequence.Join(rectTransform.DOAnchorPos(originalPosition, 0.35f).SetEase(Ease.OutCubic));
-        sequence.Join(transform.DOScale(originalScale, 0.35f).SetEase(Ease.OutBack));
+        sequence.Join(canvasGroup.DOFade(1.0f, 0.25f).SetUpdate(true));//투명도를 0.25초동안 1로 만든다.
+        sequence.Join(rectTransform.DOAnchorPos(originalPosition, 0.35f).SetEase(Ease.OutCubic).SetUpdate(true));
+        sequence.Join(transform.DOScale(originalScale, 0.35f).SetEase(Ease.OutBack).SetUpdate(true));
+    
     }
     //카드가 선택되었을때 실행할 녀석
     public Tween PlaySelectTween()
@@ -66,8 +94,8 @@ public class SkillCardUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
         Sequence sequence = DOTween.Sequence();
 
-        sequence.Append(transform.DOScale(originalScale * 1.2f, 0.2f).SetEase(Ease.OutBack));
-        sequence.Append(transform.DOScale(originalScale, 0.15f));
+        sequence.Append(transform.DOScale(originalScale * 1.2f, 0.2f).SetEase(Ease.OutBack).SetUpdate(true));
+        sequence.Append(transform.DOScale(originalScale, 0.15f).SetUpdate(true));
 
         return sequence;
     }
@@ -80,8 +108,8 @@ public class SkillCardUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
         Sequence sequence = DOTween.Sequence();
 
-        sequence.Join(canvasGroup.DOFade(0.0f, 0.2f));
-        sequence.Join(transform.DOScale(Vector3.zero, 0.2f).SetEase(Ease.InBack));
+        sequence.Join(canvasGroup.DOFade(0.0f, 0.2f).SetUpdate(true));
+        sequence.Join(transform.DOScale(Vector3.zero, 0.2f).SetEase(Ease.InBack).SetUpdate(true));
 
         return sequence;
     }
@@ -91,7 +119,7 @@ public class SkillCardUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
         transform.DOKill();
 
-        transform.DOScale(originalScale * hoveScale, 0.15f).SetEase(Ease.OutQuad);
+        transform.DOScale(originalScale * hoveScale, 0.15f).SetEase(Ease.OutQuad).SetUpdate(true);
     }
     public void OnPointerExit(PointerEventData eventData)
     {
@@ -99,7 +127,7 @@ public class SkillCardUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
         transform.DOKill();
 
-        transform.DOScale(originalScale, 0.15f).SetEase(Ease.OutQuad);
+        transform.DOScale(originalScale, 0.15f).SetEase(Ease.OutQuad).SetUpdate(true);
     }
 
     //카드가 클릭되었을 때 Button의 OnClick에서 호출할 녀석
@@ -107,5 +135,11 @@ public class SkillCardUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     {
         if (!isClickable) return;
         levelUpUI.SelectCard(this);
+    }
+
+    //!!
+    public UI02_SkillSlots.SkillData GetSkillData()
+    {
+        return skillData;
     }
 }
