@@ -14,10 +14,9 @@ public class BossBase : MonoBehaviour, IDamageable
     [SerializeField] protected GameObject coinPrefab;
     [SerializeField] protected float knockbackForce = 5.0f;
 
-
+    protected Transform playerTransform;
     protected PlayerStat playerStat;
     public LayerMask playerLayer;
-    protected Transform playerTransform;
     protected Rigidbody2D rb;
     protected bool isKnockedBack = false;
     protected bool isAttack = false;

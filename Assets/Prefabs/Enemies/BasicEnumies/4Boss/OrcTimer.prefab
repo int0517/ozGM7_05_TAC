@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 9179325441393897768}
   - component: {fileID: 2042096993690825385}
   m_Layer: 0
-  m_Name: Timer
+  m_Name: OrcTimer
   m_TagString: EnemyBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -107,7 +107,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BossPosienTimer
   timerText: {fileID: 9081398523218303484}
-  currentTime: 3
+  currentTime: 2
 --- !u!1 &4179933518321420666
 GameObject:
   m_ObjectHideFlags: 0

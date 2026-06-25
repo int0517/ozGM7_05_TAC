@@ -11,6 +11,7 @@ public class SortingY : MonoBehaviour
 
     void LateUpdate()
     {
+        if (spriteRenderer.sortingLayerName == "Background") return;
         int precision = 100;
         spriteRenderer.sortingOrder = -(int)(transform.position.y * precision);
     }
