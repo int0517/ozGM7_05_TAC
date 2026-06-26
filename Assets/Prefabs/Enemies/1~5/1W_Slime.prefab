@@ -84,7 +84,7 @@ GameObject:
   - component: {fileID: 5747081283159852361}
   - component: {fileID: 9097286947920362313}
   - component: {fileID: 8526949077955524888}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: 1W_Slime
   m_TagString: Untagged
   m_Icon: {fileID: 0}

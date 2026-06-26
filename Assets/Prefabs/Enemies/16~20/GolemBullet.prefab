@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5890838264037342734}
   m_Layer: 0
   m_Name: GolemBullet
-  m_TagString: Untagged
+  m_TagString: EnemyBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -109,6 +109,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyBullet
   bulletSpeed: 3
   bulletLifeTime: 3
+  rotationSpeed: 500
 --- !u!50 &7558427425141746752
 Rigidbody2D:
   serializedVersion: 5

@@ -1283,7 +1283,7 @@ GameObject:
   - component: {fileID: 4781686681129423211}
   - component: {fileID: 7771033944333301059}
   - component: {fileID: 40169771670510466}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: 3W_Fishman
   m_TagString: Untagged
   m_Icon: {fileID: 0}

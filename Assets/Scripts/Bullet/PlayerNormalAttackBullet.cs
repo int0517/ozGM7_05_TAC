@@ -12,6 +12,7 @@ public class PlayerNormalAttackBullet : MonoBehaviour
 
     private void Start()
     {
+        pStat = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStat>();
         Destroy(gameObject, 5f);
     }
 
@@ -26,7 +27,11 @@ public class PlayerNormalAttackBullet : MonoBehaviour
 
         float totalDamage = damage *
             PlayerStatDictionary.PlayerDamageIncrease[pStat.GetStatLvl(PlayerStatEnum.DamageIncrease)];
-        // 적 피격 메서드
+        
+        if (collision.gameObject.GetComponent<IDamageable>() is IDamageable damageable)
+        {
+            damageable.TakeDamage(totalDamage);
+        }
 
         Destroy(gameObject);
     }

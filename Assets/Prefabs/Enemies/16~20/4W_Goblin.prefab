@@ -361,7 +361,7 @@ GameObject:
   - component: {fileID: 5882994404868250772}
   - component: {fileID: 1686065977267035101}
   - component: {fileID: 5714955553219035210}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: 4W_Goblin
   m_TagString: Untagged
   m_Icon: {fileID: 0}

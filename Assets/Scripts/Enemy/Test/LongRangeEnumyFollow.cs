@@ -21,7 +21,6 @@ public class LongRangeEnemyFollowTest : MonoBehaviour, IDamageable
 
     public float knockbackForce = 20.0f;
 
-    public LayerMask playerLayer;
     private Transform playerTransform;
     private Rigidbody2D rb;
     private bool isAttack = false;
@@ -124,8 +123,8 @@ public class LongRangeEnemyFollowTest : MonoBehaviour, IDamageable
             }
             StartCoroutine(HitRoutine(collision.transform.position));
         }
-
     }
+
     public void TakeDamage(float damage)
     {
         enemyCurrentHP -= damage;
@@ -141,7 +140,6 @@ public class LongRangeEnemyFollowTest : MonoBehaviour, IDamageable
             }
             Destroy(gameObject);
         }
-
     }
 
     private IEnumerator Die()

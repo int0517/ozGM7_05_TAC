@@ -106,7 +106,7 @@ GameObject:
   - component: {fileID: 4432917898127304712}
   m_Layer: 0
   m_Name: FishManBullet
-  m_TagString: Untagged
+  m_TagString: EnemyBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -214,3 +214,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyBullet
   bulletSpeed: 3
   bulletLifeTime: 3
+  rotationSpeed: 500

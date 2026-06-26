@@ -1358,7 +1358,7 @@ GameObject:
   - component: {fileID: 2213212416169722945}
   - component: {fileID: 2116687640321983057}
   - component: {fileID: 2018374928624979776}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: 2W_Beatle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
