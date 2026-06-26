@@ -1,16 +1,22 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using System.Collections;
 
-public class GameOverPanel : UIPanel
+
+public class GameOverPanel : StatPanel
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public override void Open()
     {
-        
+        base.Open();
+
+        RefreshUI();
+
+        Time.timeScale = 0f;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void GoRetry()
     {
-        
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

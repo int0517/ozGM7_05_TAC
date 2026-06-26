@@ -1,16 +1,21 @@
+using TMPro;
 using UnityEngine;
 
-public class StatPanel : MonoBehaviour
+public class StatPanel : UIPanel
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    [SerializeField] protected UI02_SkillSlots skillSlots;
+    [SerializeField] protected PlayerStatUI playerStatUI;
 
-    // Update is called once per frame
-    void Update()
+    protected PlayerStat playerStat;
+
+    protected virtual void Awake()
     {
-        
+        playerStat = FindFirstObjectByType<PlayerStat>();
+    }
+    // 스킬 슬롯과 플레이어 스탯 UI를 최신 정보로 갱신
+    protected void RefreshUI()
+    {
+        skillSlots.UpdateSkillsSlots(); 
+        playerStatUI.UpdateUI(playerStat); 
     }
 }

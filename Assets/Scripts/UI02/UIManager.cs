@@ -17,6 +17,18 @@ public class UIManager : MonoBehaviour
             Destroy(gameObject);
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyUp(KeyCode.Escape))
+        {
+            if (pausePanel.IsOpen) 
+                ClosePause();
+            else
+                OpenPause();
+        }
+    }
+
+    //Pause
     public void OpenPause()
     {
         pausePanel.Open();
@@ -25,5 +37,22 @@ public class UIManager : MonoBehaviour
     public void ClosePause()
     {
         pausePanel.Close();
+    }
+
+    //GameOver
+    public void OpenGameOver()
+    {
+        gameOverPanel.Open();
+    }
+
+    //Quit
+    public void OpenQuit()
+    {
+        quitPanel.Open();
+    }
+
+    public void CloseQuit()
+    {
+        quitPanel.Close();
     }
 }
