@@ -5,14 +5,13 @@ public class PlayerNormalAttackBullet : MonoBehaviour
     private static Sprite fallbackBulletSprite;
 
     [SerializeField] private LayerMask targetLayer;
-    [SerializeField] private int damage;
+    [SerializeField] private float damage;
+    private float damageBonus;
     [SerializeField] private float moveSpeed = 10f;
 
-    [SerializeField] private PlayerStat pStat;
-
-    private void Start()
+    public void Init(PlayerStat pStat)
     {
-        pStat = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStat>();
+        damageBonus = PlayerStatDictionary.PlayerDamageIncrease[pStat.GetStatLvl(PlayerStatEnum.DamageIncrease)];
         Destroy(gameObject, 5f);
     }
 
@@ -25,8 +24,7 @@ public class PlayerNormalAttackBullet : MonoBehaviour
     {
         if ((targetLayer.value & (1 << collision.gameObject.layer)) == 0) return;
 
-        float totalDamage = damage *
-            PlayerStatDictionary.PlayerDamageIncrease[pStat.GetStatLvl(PlayerStatEnum.DamageIncrease)];
+        float totalDamage = damage * damageBonus;
         
         if (collision.gameObject.GetComponent<IDamageable>() is IDamageable damageable)
         {

@@ -75,7 +75,10 @@ public class pSkill1_FireballBullet : MonoBehaviour
 
         foreach (Collider2D enemy in enemies)
         {
-            // 적 피격 메서드
+            if (enemy.gameObject.GetComponent<IDamageable>() is IDamageable damageable)
+            {
+                damageable.TakeDamage(totalDamage);
+            }
         }
 
         Destroy(gameObject);

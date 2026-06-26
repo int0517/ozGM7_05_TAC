@@ -33,7 +33,10 @@ public class pSkill5_AcidRainController: MonoBehaviour
 
         if (hitTimer >= hitTimerMax)
         {
-            // 적 피격
+            if (collision.gameObject.GetComponent<IDamageable>() is IDamageable damageable)
+            {
+                damageable.TakeDamage(totalDamage);
+            }
 
             hitTimer = 0f;
         }

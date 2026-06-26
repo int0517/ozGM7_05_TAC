@@ -12,6 +12,10 @@ public class pSkill4_SatellitesHit : MonoBehaviour
 
         float totalDamage = damage *
             PlayerStatDictionary.PlayerDamageIncrease[pStat.GetStatLvl(PlayerStatEnum.DamageIncrease)];
-        // 적 피격
+
+        if (collision.gameObject.GetComponent<IDamageable>() is IDamageable damageable)
+        {
+            damageable.TakeDamage(totalDamage);
+        }
     }
 }

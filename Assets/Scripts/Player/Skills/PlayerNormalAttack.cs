@@ -32,16 +32,16 @@ public class PlayerNormalAttack : MonoBehaviour
             case 0:
                 break;
             case 1:
-                Instantiate(bulletPrefab, firePoint[0].position, transform.rotation);
+                Instantiate(bulletPrefab, firePoint[0].position, transform.rotation).Init(pStat);
                 break;
             case 2:
-                Instantiate(bulletPrefab, firePoint[1].position, transform.rotation);
-                Instantiate(bulletPrefab, firePoint[2].position, transform.rotation);
+                Instantiate(bulletPrefab, firePoint[1].position, transform.rotation).Init(pStat);
+                Instantiate(bulletPrefab, firePoint[2].position, transform.rotation).Init(pStat);
                 break;
             case 3:
-                Instantiate(bulletPrefab, firePoint[0].position, transform.rotation);
-                Instantiate(bulletPrefab, firePoint[3].position, transform.rotation);
-                Instantiate(bulletPrefab, firePoint[4].position, transform.rotation);
+                Instantiate(bulletPrefab, firePoint[0].position, transform.rotation).Init(pStat);
+                Instantiate(bulletPrefab, firePoint[3].position, transform.rotation).Init(pStat);
+                Instantiate(bulletPrefab, firePoint[4].position, transform.rotation).Init(pStat);
                 break;
         }
         
