@@ -10,6 +10,7 @@ public class NewThreeBoss : MonoBehaviour
     [SerializeField] protected float enemySpeed = 1.0f;
     [SerializeField] protected int enemyPoint = 0;
     [SerializeField] protected GameObject coinPrefab;
+    [SerializeField] protected float knockbackForce = 5.0f;
     [Header("보스 추가 스텟")]
     [SerializeField] public float runningSpeed = 15f;
     [SerializeField] private LineRenderer warningLine;
@@ -21,7 +22,8 @@ public class NewThreeBoss : MonoBehaviour
     protected bool isAttack = false;
     protected bool timerCheck = false;
     protected float fireTimer = 0;
-
+    protected bool isKnockedBack = false;
+    private bool isCharging = false;
     MonsterPrefabController monster;
     private string currentAnim = "";
 
@@ -70,7 +72,7 @@ public class NewThreeBoss : MonoBehaviour
         {
             CheckForPlayer();
         }
-        if (playerTransform == null) return;
+        if (isKnockedBack || playerTransform == null) return;
         if (isAttack)
         {
             rb.linearVelocity = Vector2.zero;
@@ -107,6 +109,63 @@ public class NewThreeBoss : MonoBehaviour
             StartCoroutine(ChargeSequence());
         }
     }
+    public bool IsCharging()
+    {
+        return isCharging;
+    }
+    public void OnHeadDamaged(Vector3 hitPosition)
+    {
+        if (!isCharging)
+        {
+            StartCoroutine(KnockbackRoutine(hitPosition));
+
+            StartCoroutine(hitRoutine());
+        }
+        
+    }
+    private IEnumerator hitRoutine()
+    {
+        PlayAnim("hit");
+        yield return new WaitForSeconds(1.5f);
+        PlayAnim("walk");
+    }
+
+    public void Die()
+    {
+        if (coinPrefab != null && enemyPoint > 0)
+        {
+            for (int i = 0; i < enemyPoint; i++)
+            {
+                Instantiate(coinPrefab, transform.position, Quaternion.identity);
+            }
+        }
+
+        StartCoroutine(DeathRoutine());
+    }
+
+    private IEnumerator DeathRoutine()
+    {
+        
+        PlayAnim("die");
+        rb.linearVelocity = Vector2.zero;
+        rb.bodyType = RigidbodyType2D.Kinematic;
+        yield return new WaitForSeconds(0.5f);
+
+        Destroy(gameObject);
+    }
+
+    private IEnumerator KnockbackRoutine(Vector3 attackerPos)
+    {
+        isKnockedBack = true;
+
+        Vector2 knockbackDir = (transform.position - attackerPos).normalized;
+        rb.linearVelocity = knockbackDir * knockbackForce;
+
+        yield return new WaitForSeconds(0.2f);
+
+        isKnockedBack = false;
+    }
+
     private IEnumerator ChargeSequence()
     {
         timerCheck = true;
@@ -121,6 +180,7 @@ public class NewThreeBoss : MonoBehaviour
 
     private IEnumerator ShowWarning()
     {
+        isCharging= true;
         PlayAnim("idle");
         warningLine.enabled = true;
         float elapsed = 0f;
@@ -145,6 +205,7 @@ public class NewThreeBoss : MonoBehaviour
         PlayAnim("walk");
         yield return new WaitForSeconds(chargeDuration);
         monster.SetAnimationSpeed(1f);
+        isCharging= false;
     }
 
     private IEnumerator ChargeCooldown()

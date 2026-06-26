@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using SP1Assets.MonsterPack2D;
 
 public class TwoBoss : BossBase
 {
@@ -16,6 +17,21 @@ public class TwoBoss : BossBase
 
     private float pullingTimer = 0;
     private bool isBeingPulled = false;
+    MonsterPrefabController monster;
+    private string currentAnim = "";
+
+    private bool isDead = false;
+    private bool isHit = false;
+    private bool isAttacking = false;
+
+    private void PlayAnim(string animName)
+    {
+        if (currentAnim == animName)
+            return;
+
+        currentAnim = animName;
+        monster.PlayAnimation(animName, 0.1f);
+    }
 
     protected override void Start()
     {
@@ -30,7 +46,11 @@ public class TwoBoss : BossBase
 
         lineRenderer.positionCount = webPoints;
         base.Start();
- 
+        monster = GetComponent<MonsterPrefabController>();
+
+        monster.Init();
+        monster.SetAnimationSpeed(0.5f);
+        PlayAnim("walk");
     }
     void Update()
     {
@@ -46,6 +66,19 @@ public class TwoBoss : BossBase
             lineRenderer.enabled = false;
         }
     }
+    private void FacePlayer()
+    {
+        if (playerTransform == null) return;
+
+        Vector3 scale = transform.localScale;
+
+        if (playerTransform.position.x > transform.position.x)
+            scale.x = -Mathf.Abs(scale.x);
+        else
+            scale.x = Mathf.Abs(scale.x);
+
+        transform.localScale = scale;
+    }
     protected virtual void FixedUpdate()
     {
         if (!timerCheck)
@@ -57,7 +90,7 @@ public class TwoBoss : BossBase
         {
             Fire();
         }
-
+        FacePlayer();
         Vector2 direction = (playerTransform.position - transform.position).normalized;
 
         rb.AddForce(direction * enemySpeed * 10f);
@@ -75,7 +108,7 @@ public class TwoBoss : BossBase
             Vector2 direction = (playerTransform.position - MouthPoint.position).normalized;
             float baseAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
-            // -30도, 0도, +30도 방향으로 3발 발사
+            StartCoroutine(ReturnToIdle());
             for (int i = -1; i <= 1; i++)
             {
                 float angle = baseAngle + (i * 30f);
@@ -92,6 +125,7 @@ public class TwoBoss : BossBase
         {
             if (playerStat != null)
             {
+                StartCoroutine(ReturnToIdle());
                 playerStat.DamagePlayer(enemyATK);
             }
         }
@@ -99,6 +133,24 @@ public class TwoBoss : BossBase
         {
             StartCoroutine(KnockbackRoutine(collision.transform.position));
         }
+    }
+    public override void TakeDamage(float damage)
+    {
+        enemyCurrentHP -= damage;
+        StartCoroutine(HitRoutine());
+        if (enemyCurrentHP <= 0)
+        {
+            RaiseBossDeath();
+            if (coinPrefab != null && enemyPoint > 0)
+            {
+                for (int i = 0; i < enemyPoint; i++)
+                {
+                    Instantiate(coinPrefab, transform.position, Quaternion.identity);
+                }
+            }
+            Destroy(gameObject);
+        }
+
     }
     public void StartPulling()
     {
@@ -118,11 +170,11 @@ public class TwoBoss : BossBase
         {
             pullingTimer += Time.deltaTime;
 
-            // 플레이어를 보스 방향으로 강제 이동
-            Vector2 dir = (transform.position - playerTransform.position).normalized;
+            
+            Vector2 dir = (MouthPoint.position - playerTransform.position).normalized;
             playerTransform.position += (Vector3)dir * pullingSpeed * Time.deltaTime;
 
-            yield return null; // 다음 프레임까지 대기
+            yield return null;
         }
 
         isBeingPulled = false;
@@ -130,23 +182,59 @@ public class TwoBoss : BossBase
 
     void UpdateWebVisuals()
     {
-        Vector3 startPos = transform.position;
+        Vector3 startPos = MouthPoint.position;
         Vector3 endPos = playerTransform.position;
 
         for (int i = 0; i < webPoints; i++)
         {
             float t = (float)i / (webPoints - 1);
 
-            // 시작점(보스)과 끝점(플레이어) 사이를 보간
+            
             Vector3 pos = Vector3.Lerp(startPos, endPos, t);
 
-            // 중간 점들만 사인파로 흔들기 (양 끝점은 0.0이라서 안 흔들림)
+            
             float sineOffset = Mathf.Sin(Time.time * waveSpeed + i) * waveAmplitude * (t * (1 - t) * 4);
             pos.y += sineOffset;
-            pos.z = 0; // Z축 고정
+            pos.z = 0;
 
             lineRenderer.SetPosition(i, pos);
         }
     }
+    private IEnumerator ReturnToIdle()
+    {
+        isAttacking = true;
+        monster.SetAnimationSpeed(1f);
+        PlayAnim("attack");
+        yield return new WaitForSeconds(0.2f);
+        PlayAnim("walk");
+        monster.SetAnimationSpeed(0.5f);
+        isAttacking = false;
+    }
+    private IEnumerator HitRoutine()
+    {
+        isHit = true;
+        monster.SetAnimationSpeed(1f);
+        PlayAnim("hit");
 
+        yield return new WaitForSeconds(1f);
+
+        PlayAnim("walk");
+        monster.SetAnimationSpeed(0.5f);
+        isHit = false;
+    }
+    private IEnumerator Die()
+    {
+        if (isDead) yield break;
+
+        isDead = true;
+
+        rb.linearVelocity = Vector2.zero;
+        rb.bodyType = RigidbodyType2D.Kinematic;
+        monster.SetAnimationSpeed(1f);
+        PlayAnim("die");
+
+        yield return new WaitForSeconds(0.5f);
+
+        Destroy(gameObject);
+    }
 }

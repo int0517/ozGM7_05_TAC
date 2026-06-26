@@ -33,7 +33,6 @@ public class ShellBullet : MonoBehaviour
         }
         if (collision.CompareTag("Player"))
         {
-            Debug.Log("플레이어 피격!");
             Destroy(gameObject);
         }
     }

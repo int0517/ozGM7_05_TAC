@@ -2,9 +2,12 @@
 
 public class ThreeBossBody : BossBase
 {
+    private NewThreeBoss boss;
+    private bool isDead = false;
     protected override void Start()
     {
         enemyCurrentHP = enemyMaxHP;
+        boss = GetComponentInParent<NewThreeBoss>();
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
         if (WaveManager.Instance != null)
         {
@@ -17,7 +20,7 @@ public class ThreeBossBody : BossBase
     { }
     protected override void CheckForPlayer()
     { }
-    protected override void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
@@ -26,6 +29,29 @@ public class ThreeBossBody : BossBase
                 playerStat.DamagePlayer(1);
             }
         }
+    }
+
+    public override void TakeDamage(float damage)
+    {
+        
+        if (!boss.IsCharging())
+        {
+            enemyCurrentHP -= damage;
+            boss.OnHeadDamaged(transform.position);
+            if (enemyCurrentHP <= 0)
+            {
+                if (!isDead)
+                {
+                    
+                    RaiseBossDeath();
+                    boss.Die();
+                    isDead = true;
+
+                }
+            }
+        }
+        
+
     }
 
 }

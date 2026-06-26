@@ -16,13 +16,13 @@ public class BossBase : MonoBehaviour, IDamageable
 
     protected Transform playerTransform;
     protected PlayerStat playerStat;
-    public LayerMask playerLayer;
     protected Rigidbody2D rb;
     protected bool isKnockedBack = false;
     protected bool isAttack = false;
     protected bool timerCheck = false;
     protected float fireTimer = 0;
     public static event Action OnBossDeath;
+
 
     protected virtual void Start()
     {
@@ -94,12 +94,16 @@ public class BossBase : MonoBehaviour, IDamageable
             StartCoroutine(KnockbackRoutine(collision.transform.position));
         }
     }
+    protected void RaiseBossDeath()
+    {
+        OnBossDeath?.Invoke();
+    }
     public virtual void TakeDamage(float damage)
     {
         enemyCurrentHP -= damage;
         if (enemyCurrentHP <= 0)
         {
-            OnBossDeath?.Invoke();
+            RaiseBossDeath();
             if (coinPrefab != null && enemyPoint > 0)
             {
                 for (int i = 0; i < enemyPoint; i++)

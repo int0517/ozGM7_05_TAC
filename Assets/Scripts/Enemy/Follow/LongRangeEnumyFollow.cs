@@ -26,6 +26,7 @@ public class LongRangeEnemyFollow : MonoBehaviour, IDamageable
     private bool isAttack = false;
     private bool isAttacking = false;
     private bool isKnockedBack = false;
+    private bool isBeingPulled = false;
     private bool timerCheck = false;
     private float fireTimer=0;
 
@@ -79,7 +80,7 @@ public class LongRangeEnemyFollow : MonoBehaviour, IDamageable
             CheckForPlayer();
         }
         if (isKnockedBack || playerTransform == null) return;
-        if (isAttack)
+        if (isAttack && !isBeingPulled && !isAttacking)
         {
             rb.linearVelocity = Vector2.zero;
             Fire();
@@ -124,6 +125,7 @@ public class LongRangeEnemyFollow : MonoBehaviour, IDamageable
                     Instantiate(coinPrefab, transform.position, Quaternion.identity);
                 }
             }
+            StopAllCoroutines();
             StartCoroutine(Die());
         }
     }
@@ -138,7 +140,7 @@ public class LongRangeEnemyFollow : MonoBehaviour, IDamageable
                 isAttack = true;
                 if (!isAttacking)
                 {
-                    PlayAnim("idle");
+                    PlayAnim("walk");
                 }
                 
              }
@@ -176,13 +178,11 @@ public class LongRangeEnemyFollow : MonoBehaviour, IDamageable
     private IEnumerator HitRoutine()
     {
         isHit = true;
-
         PlayAnim("hit");
 
         yield return new WaitForSeconds(1f);
 
         PlayAnim("walk");
-
         isHit = false;
     }
     private IEnumerator Die()
@@ -193,7 +193,6 @@ public class LongRangeEnemyFollow : MonoBehaviour, IDamageable
 
         rb.linearVelocity = Vector2.zero;
         rb.bodyType = RigidbodyType2D.Kinematic;
-
         PlayAnim("die");
 
         yield return new WaitForSeconds(0.5f);

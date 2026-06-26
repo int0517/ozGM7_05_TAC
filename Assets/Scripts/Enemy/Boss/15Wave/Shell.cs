@@ -15,6 +15,7 @@ public class Shell : MonoBehaviour
         {
             playerStat = playerObj.GetComponent<PlayerStat>();
         }
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

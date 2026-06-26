@@ -28,7 +28,6 @@ public class WaveManager : MonoBehaviour
 
     private void SetBossDead()
     {
-        Debug.Log("이벤트 수신 성공! isBossDead를 true로 바꿉니다."); // 이 로그가 찍히나요?
         isBossDead = true;
     }
     public void RegisterBoss(BossBase boss)

@@ -15,6 +15,7 @@ public class test1 : MonoBehaviour
         {
             Debug.Log(anim);
         }
+        monster.SetAnimationSpeed(0.5f);
         monster.PlayAnimation("walk", 3.0f);
     }
 
