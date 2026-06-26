@@ -3404,7 +3404,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41e104b16abd45749bdec955c42711b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpawnManager
-  levelData: {fileID: 11400000, guid: 0e8a893ab246d0e4f91d61646a63bc96, type: 2}
+  levelData: {fileID: 11400000, guid: aac1ecf1567887b4bb988de35e7c1f9d, type: 2}
   spawner: {fileID: 703499513}
 --- !u!4 &1643679068
 Transform:
