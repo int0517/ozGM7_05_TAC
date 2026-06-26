@@ -11,10 +11,10 @@ public class GameStopUIManager : MonoBehaviour
     [SerializeField] private UI02_SkillSlots skillSlots;
 
 
-    //�÷��̾� ���� �޾ƿ���
+    //플레이어 스탯 받기
     private PlayerStat playerStat;
 
-    [Header("���� UI")]
+    [Header("스탯 UI")]
     [SerializeField] private TMP_Text scoreText;
 
     [SerializeField] private TMP_Text levelText;
