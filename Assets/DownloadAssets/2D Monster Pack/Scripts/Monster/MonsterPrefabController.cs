@@ -37,7 +37,11 @@ namespace SP1Assets.MonsterPack2D
             gameObject.SetActive(false);
             gameObject.SetActive(true);
         }
-
+        public void SetAnimationSpeed(float speed)
+        {
+            if (_animator != null)
+                _animator.speed = speed;
+        }
 
         public void PlayAnimation(string animName, float crossFadeDuration, float normalizedStartTime = 0)
         {

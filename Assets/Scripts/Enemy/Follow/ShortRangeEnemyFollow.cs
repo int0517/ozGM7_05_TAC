@@ -1,35 +1,25 @@
-﻿using SP1Assets.MonsterPack2D;
+﻿using UnityEngine;
 using System.Collections;
-using UnityEngine;
+using SP1Assets.MonsterPack2D;
 
-public class LongRangeEnemyFollowTest : MonoBehaviour, IDamageable
+public class ShortRangeEnemyFollow : MonoBehaviour, IDamageable
 {
     [Header("몬스터 스텟")]
     [SerializeField] private float enemyMaxHP = 3;
     private float enemyCurrentHP;
-    [SerializeField] private int enemyRange = 5;
     [SerializeField] private int enemyATK = 1;
-    [SerializeField] private float enemyFireInterval = 1;
     [SerializeField] private float enemySpeed = 2.0f;
     [SerializeField] private int enemyPoint = 0;
-
-    [SerializeField] private Transform firePoint;
-    [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private GameObject coinPrefab;
     [SerializeField] private EnemyHPUI enemyUI;
     private PlayerStat playerStat;
-
     public float knockbackForce = 20.0f;
 
     private Transform playerTransform;
     private Rigidbody2D rb;
-    private bool isAttack = false;
-    private bool isAttacking = false;
     private bool isKnockedBack = false;
-    private bool timerCheck = false;
-    private float fireTimer=0;
-
     MonsterPrefabController monster;
+
     private bool isDead = false;
     private bool isHit = false;
 
@@ -57,8 +47,8 @@ public class LongRangeEnemyFollowTest : MonoBehaviour, IDamageable
 
         monster.Init();
         PlayAnim("walk");
-    }
 
+    }
     private void FacePlayer()
     {
         if (playerTransform == null) return;
@@ -72,22 +62,16 @@ public class LongRangeEnemyFollowTest : MonoBehaviour, IDamageable
 
         transform.localScale = scale;
     }
+
     void FixedUpdate()
     {
-        if (!timerCheck)
-        {
-            CheckForPlayer();
-        }
+       
         if (isKnockedBack || playerTransform == null) return;
-        if (isAttack)
-        {
-            rb.linearVelocity = Vector2.zero;
-            Fire();
-            return;
-        }
-        FacePlayer();
-        Vector2 direction = (playerTransform.position - transform.position).normalized;
 
+        FacePlayer();
+
+        Vector2 direction = (playerTransform.position - transform.position).normalized;
+        
         rb.AddForce(direction * enemySpeed * 10f);
         if (rb.linearVelocity.magnitude > enemySpeed)
         {
@@ -97,6 +81,7 @@ public class LongRangeEnemyFollowTest : MonoBehaviour, IDamageable
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (isDead) return;
         if (collision.CompareTag("Player"))
         {
             if (playerStat != null)
@@ -106,28 +91,14 @@ public class LongRangeEnemyFollowTest : MonoBehaviour, IDamageable
         }
         if (collision.CompareTag("Skill"))
         {
-            enemyCurrentHP--;
-            enemyUI.UpdateHealthBar(enemyCurrentHP, enemyMaxHP);
-            if (enemyCurrentHP <= 0)
-            {
-                if (coinPrefab != null && enemyPoint > 0)
-                {
-                    for (int i = 0; i < enemyPoint; i++)
-                    {
-                        Instantiate(coinPrefab, transform.position, Quaternion.identity);
-                    }
-
-                }
-                StartCoroutine(Die());
-                return;
-            }
-            StartCoroutine(HitRoutine(collision.transform.position));
+            StartCoroutine(KnockbackRoutine(collision.transform.position));
         }
-    }
 
+    }
     public void TakeDamage(float damage)
     {
         enemyCurrentHP -= damage;
+        StartCoroutine(HitRoutine());
         enemyUI.UpdateHealthBar(enemyCurrentHP, enemyMaxHP);
         if (enemyCurrentHP <= 0)
         {
@@ -138,86 +109,33 @@ public class LongRangeEnemyFollowTest : MonoBehaviour, IDamageable
                     Instantiate(coinPrefab, transform.position, Quaternion.identity);
                 }
             }
-            Destroy(gameObject);
+            StartCoroutine(Die());
         }
-    }
 
+    }
     private IEnumerator Die()
     {
         if (isDead) yield break;
-
         isDead = true;
-
         rb.linearVelocity = Vector2.zero;
         rb.bodyType = RigidbodyType2D.Kinematic;
-
         PlayAnim("die");
-
         yield return new WaitForSeconds(0.5f);
-
         Destroy(gameObject);
     }
 
-    private IEnumerator HitRoutine(Vector3 attackerPos)
+    private IEnumerator HitRoutine()
     {
         isHit = true;
 
         PlayAnim("hit");
 
-        StartCoroutine(KnockbackRoutine(attackerPos));
-
-        yield return new WaitForSeconds(1f); // hit 애니메이션 길이
+        yield return new WaitForSeconds(1f);
 
         PlayAnim("walk");
 
         isHit = false;
     }
-    void CheckForPlayer()
-    {
-        float dist = Vector2.Distance(transform.position, playerTransform.position);
-
-        
-            if (dist <= enemyRange)
-            {
-                isAttack = true;
-                if (!isAttacking)
-                {
-                    PlayAnim("idle");
-                }
-                
-             }
-        
-            else if (dist > enemyRange * 1.2f)
-            {
-                isAttack = false;
-                 fireTimer = 0f;
-            }
-        
-    }
-
-    private void Fire()
-    {
-        fireTimer += Time.fixedDeltaTime;
-        timerCheck = true;
-        if (fireTimer >= enemyFireInterval)
-        {
-            StartCoroutine(ReturnToIdle());
-            Vector2 direction = (playerTransform.position - firePoint.position).normalized;
-            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            GameObject bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.Euler(0, 0, angle));
-            fireTimer = 0f;
-            timerCheck = false;
-        }
-    }
-    private IEnumerator ReturnToIdle()
-    {
-        isAttacking = true;
-        PlayAnim("attack");
-        yield return new WaitForSeconds(0.8f);
-        
-        isAttacking = false;
-    }
-
     private IEnumerator KnockbackRoutine(Vector3 attackerPos)
     {
         isKnockedBack = true;
@@ -228,10 +146,5 @@ public class LongRangeEnemyFollowTest : MonoBehaviour, IDamageable
         yield return new WaitForSeconds(0.2f);
 
         isKnockedBack = false;
-    }
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, enemyRange);
     }
 }

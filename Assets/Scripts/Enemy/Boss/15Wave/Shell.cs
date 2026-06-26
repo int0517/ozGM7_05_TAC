@@ -2,7 +2,9 @@
 
 public class Shell : MonoBehaviour
 {
-    public GameObject bulletPrefab;
+    public GameObject oneBulletPrefab;
+    public GameObject twoBulletPrefab;
+    public GameObject threeBulletPrefab;
     public float bulletSpeed = 15f;
     private PlayerStat playerStat;
 
@@ -36,13 +38,28 @@ public class Shell : MonoBehaviour
 
         float angle = Mathf.Atan2(randomDirection.y, randomDirection.x) * Mathf.Rad2Deg;
 
-        GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.Euler(0, 0, angle));
+        GameObject bullet = Instantiate(RandomBulletChoice(), transform.position, Quaternion.Euler(0, 0, angle));
 
         // 3. 탄환 이동 (Rigidbody2D를 사용한다고 가정)
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         if (rb != null)
         {
             rb.linearVelocity = randomDirection * bulletSpeed;
+        }
+    }
+
+    private GameObject RandomBulletChoice()
+    {
+        switch (Random.Range(0, 3))
+        {
+            case 0:
+                return oneBulletPrefab;
+
+            case 1:
+                return twoBulletPrefab;
+
+            default:
+                return threeBulletPrefab;
         }
     }
 }

@@ -648,7 +648,7 @@ GameObject:
   - component: {fileID: 6014417529286149765}
   - component: {fileID: 7142327122350266480}
   m_Layer: 0
-  m_Name: Canvas
+  m_Name: HpUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -672,7 +672,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 2.6}
-  m_SizeDelta: {x: 200, y: 20}
+  m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &701495193649570677
 Canvas:
@@ -1004,8 +1004,8 @@ Transform:
   m_LocalScale: {x: 0.7, y: 0.7, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 9125991541887153864}
   - {fileID: 2688776717858803843}
+  - {fileID: 9125991541887153864}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1509832273726397992
@@ -1111,16 +1111,13 @@ MonoBehaviour:
   enemyFireInterval: 1
   enemySpeed: 2
   enemyPoint: 12
-  firePoint: {fileID: 598465896805199834, guid: f78e6e6459eac404689428af753400a4,
-    type: 3}
+  firePoint: {fileID: 3876867861840961634}
   bulletPrefab: {fileID: 291370545090557688, guid: 7178dd47c9f5c6d4e8369d9511056450,
     type: 3}
-  coinPrefab: {fileID: 0}
+  coinPrefab: {fileID: 5971139616951717026, guid: f78e6e6459eac404689428af753400a4,
+    type: 3}
   enemyUI: {fileID: 5810290396271310797}
   knockbackForce: 20
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!1 &5350413494365796959
 GameObject:
   m_ObjectHideFlags: 0
@@ -1371,7 +1368,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 7482667652216324306, guid: d1bffa6e078e9aa41a89c6d0aa2f84ed,
+    type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1

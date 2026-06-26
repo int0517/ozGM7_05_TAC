@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3856605890387394394}
   - component: {fileID: 7707102717198184243}
   - component: {fileID: 4919311228905509442}
-  - component: {fileID: 125720998607315878}
+  - component: {fileID: 3857571684762388793}
   m_Layer: 0
   m_Name: ShellBullet3
   m_TagString: Untagged
@@ -109,7 +109,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ShellBullet
   bulletSpeed: 10
   bulletATK: 1
-  bulletLifeTime: 3
+  bulletLifeTime: 4
   rotationSpeed: 900
 --- !u!50 &4919311228905509442
 Rigidbody2D:
@@ -138,8 +138,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &125720998607315878
-BoxCollider2D:
+--- !u!70 &3857571684762388793
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -173,14 +173,5 @@ BoxCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.7, y: 1.22}
-    newSize: {x: 1.7, y: 1.22}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
   m_Size: {x: 1.7, y: 1.22}
-  m_EdgeRadius: 0
+  m_Direction: 1

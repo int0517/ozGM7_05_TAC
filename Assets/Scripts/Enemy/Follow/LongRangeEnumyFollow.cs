@@ -1,5 +1,6 @@
-﻿using UnityEngine;
+﻿using SP1Assets.MonsterPack2D;
 using System.Collections;
+using UnityEngine;
 
 public class LongRangeEnemyFollow : MonoBehaviour, IDamageable
 {
@@ -20,13 +21,28 @@ public class LongRangeEnemyFollow : MonoBehaviour, IDamageable
 
     public float knockbackForce = 20.0f;
 
-    public LayerMask playerLayer;
     private Transform playerTransform;
     private Rigidbody2D rb;
     private bool isAttack = false;
+    private bool isAttacking = false;
     private bool isKnockedBack = false;
     private bool timerCheck = false;
     private float fireTimer=0;
+
+    MonsterPrefabController monster;
+    private bool isDead = false;
+    private bool isHit = false;
+
+    private string currentAnim = "";
+
+    private void PlayAnim(string animName)
+    {
+        if (currentAnim == animName)
+            return;
+
+        currentAnim = animName;
+        monster.PlayAnimation(animName, 0.1f);
+    }
     void Start()
     {
         enemyCurrentHP = enemyMaxHP;
@@ -37,9 +53,25 @@ public class LongRangeEnemyFollow : MonoBehaviour, IDamageable
             playerTransform = playerObj.transform;
             playerStat = playerObj.GetComponent<PlayerStat>();
         }
+        monster = GetComponent<MonsterPrefabController>();
+
+        monster.Init();
+        PlayAnim("walk");
     }
 
-    
+    private void FacePlayer()
+    {
+        if (playerTransform == null) return;
+
+        Vector3 scale = transform.localScale;
+
+        if (playerTransform.position.x > transform.position.x)
+            scale.x = -Mathf.Abs(scale.x);
+        else
+            scale.x = Mathf.Abs(scale.x);
+
+        transform.localScale = scale;
+    }
     void FixedUpdate()
     {
         if (!timerCheck)
@@ -53,7 +85,7 @@ public class LongRangeEnemyFollow : MonoBehaviour, IDamageable
             Fire();
             return;
         }
-
+        FacePlayer();
         Vector2 direction = (playerTransform.position - transform.position).normalized;
 
         rb.AddForce(direction * enemySpeed * 10f);
@@ -76,11 +108,12 @@ public class LongRangeEnemyFollow : MonoBehaviour, IDamageable
         {
             StartCoroutine(KnockbackRoutine(collision.transform.position));
         }
-
     }
+
     public void TakeDamage(float damage)
     {
         enemyCurrentHP -= damage;
+        StartCoroutine(HitRoutine());
         enemyUI.UpdateHealthBar(enemyCurrentHP, enemyMaxHP);
         if (enemyCurrentHP <= 0)
         {
@@ -91,10 +124,10 @@ public class LongRangeEnemyFollow : MonoBehaviour, IDamageable
                     Instantiate(coinPrefab, transform.position, Quaternion.identity);
                 }
             }
-            Destroy(gameObject);
+            StartCoroutine(Die());
         }
-
     }
+
     void CheckForPlayer()
     {
         float dist = Vector2.Distance(transform.position, playerTransform.position);
@@ -103,7 +136,12 @@ public class LongRangeEnemyFollow : MonoBehaviour, IDamageable
             if (dist <= enemyRange)
             {
                 isAttack = true;
-            }
+                if (!isAttacking)
+                {
+                    PlayAnim("idle");
+                }
+                
+             }
         
             else if (dist > enemyRange * 1.2f)
             {
@@ -119,6 +157,7 @@ public class LongRangeEnemyFollow : MonoBehaviour, IDamageable
         timerCheck = true;
         if (fireTimer >= enemyFireInterval)
         {
+            StartCoroutine(ReturnToIdle());
             Vector2 direction = (playerTransform.position - firePoint.position).normalized;
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
             GameObject bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.Euler(0, 0, angle));
@@ -126,7 +165,41 @@ public class LongRangeEnemyFollow : MonoBehaviour, IDamageable
             timerCheck = false;
         }
     }
+    private IEnumerator ReturnToIdle()
+    {
+        isAttacking = true;
+        PlayAnim("attack");
+        yield return new WaitForSeconds(0.2f);
+        PlayAnim("idle");
+        isAttacking = false;
+    }
+    private IEnumerator HitRoutine()
+    {
+        isHit = true;
 
+        PlayAnim("hit");
+
+        yield return new WaitForSeconds(1f);
+
+        PlayAnim("walk");
+
+        isHit = false;
+    }
+    private IEnumerator Die()
+    {
+        if (isDead) yield break;
+
+        isDead = true;
+
+        rb.linearVelocity = Vector2.zero;
+        rb.bodyType = RigidbodyType2D.Kinematic;
+
+        PlayAnim("die");
+
+        yield return new WaitForSeconds(0.5f);
+
+        Destroy(gameObject);
+    }
     private IEnumerator KnockbackRoutine(Vector3 attackerPos)
     {
         isKnockedBack = true;

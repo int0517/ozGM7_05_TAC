@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using SP1Assets.MonsterPack2D;
 
 public class NewThreeBoss : MonoBehaviour
 {
@@ -13,20 +14,25 @@ public class NewThreeBoss : MonoBehaviour
     [SerializeField] public float runningSpeed = 15f;
     [SerializeField] private LineRenderer warningLine;
     [SerializeField] private float chargeDuration = 2f;
-    [Header("조개 오브젝트")]
-    [SerializeField] private GameObject leftShell;  // 왼쪽 조개
-    [SerializeField] private GameObject rightShell; // 오른쪽 조개
-    [SerializeField] private Shell leftShellTrigger;
-    [SerializeField] private Shell rightShellTrigger;
     private SpriteRenderer spriteRenderer;
 
-    public LayerMask playerLayer;
     protected Transform playerTransform;
     protected Rigidbody2D rb;
     protected bool isAttack = false;
     protected bool timerCheck = false;
     protected float fireTimer = 0;
 
+    MonsterPrefabController monster;
+    private string currentAnim = "";
+
+    private void PlayAnim(string animName)
+    {
+        if (currentAnim == animName)
+            return;
+
+        currentAnim = animName;
+        monster.PlayAnimation(animName, 0.1f);
+    }
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -37,16 +43,28 @@ public class NewThreeBoss : MonoBehaviour
         }
         spriteRenderer = GetComponent<SpriteRenderer>();
         if (warningLine != null) warningLine.enabled = false;
-    }
+        monster = GetComponent<MonsterPrefabController>();
 
+        monster.Init();
+        PlayAnim("walk");
+    }
+    private void FacePlayer()
+    {
+        if (playerTransform == null) return;
+
+        Vector3 scale = transform.localScale;
+
+        if (playerTransform.position.x > transform.position.x)
+            scale.x = -Mathf.Abs(scale.x);
+        else
+            scale.x = Mathf.Abs(scale.x);
+
+        transform.localScale = scale;
+    }
     void FixedUpdate()
     {
         if (timerCheck) return;
 
-        if (rb.linearVelocity.magnitude > 0.1f)
-        {
-            UpdateShells(rb.linearVelocity.x < 0);
-        }
 
         if (!timerCheck)
         {
@@ -58,7 +76,7 @@ public class NewThreeBoss : MonoBehaviour
             rb.linearVelocity = Vector2.zero;
             return;
         }
-
+        FacePlayer();
         Vector2 direction = (playerTransform.position - transform.position).normalized;
 
         rb.AddForce(direction * enemySpeed * 10f);
@@ -68,13 +86,7 @@ public class NewThreeBoss : MonoBehaviour
         }
     }
 
-    private void UpdateShells(bool isLeft)
-    {
-        if (leftShell == null || rightShell == null) return;
 
-        leftShell.SetActive(isLeft);
-        rightShell.SetActive(!isLeft);
-    }
     void CheckForPlayer()
     {
         float dist = Vector2.Distance(transform.position, playerTransform.position);
@@ -109,6 +121,7 @@ public class NewThreeBoss : MonoBehaviour
 
     private IEnumerator ShowWarning()
     {
+        PlayAnim("idle");
         warningLine.enabled = true;
         float elapsed = 0f;
 
@@ -126,16 +139,20 @@ public class NewThreeBoss : MonoBehaviour
     {
         Vector2 chargeDir = (playerTransform.position - transform.position).normalized;
 
-        UpdateShells(chargeDir.x < 0);
-
         rb.linearVelocity = chargeDir * runningSpeed;
+
+        monster.SetAnimationSpeed(2f);
+        PlayAnim("walk");
         yield return new WaitForSeconds(chargeDuration);
+        monster.SetAnimationSpeed(1f);
     }
 
     private IEnumerator ChargeCooldown()
     {
+        PlayAnim("idle");
         rb.linearVelocity = Vector2.zero;
         yield return new WaitForSeconds(0.5f);
+        PlayAnim("walk");
     }
     protected void OnDrawGizmosSelected()
     {
