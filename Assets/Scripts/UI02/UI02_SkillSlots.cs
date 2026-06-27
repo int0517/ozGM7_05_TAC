@@ -37,7 +37,8 @@ public class UI02_SkillSlots : MonoBehaviour
 
             UI02_SkillSlotInfo slot = skillSlots[i].GetComponent<UI02_SkillSlotInfo>();
 
-            slot.skillData = skills[i];
+            //SkillData를 직접 접근하지 않기 위해 SkillSlotInfo의 SetSkillData()를 통해 전달.
+            slot.SetSkillData(skills[i]);
         }
     }
 

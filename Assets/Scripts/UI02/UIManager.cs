@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class UIManager : MonoBehaviour
@@ -8,23 +9,48 @@ public class UIManager : MonoBehaviour
     [SerializeField] private PausePanel pausePanel;
     [SerializeField] private GameOverPanel gameOverPanel;
     [SerializeField] private QuitPanel quitPanel;
+    [SerializeField] private TooltipPanel tooltipPanel;
 
     private void Awake()
     {
-        if (Instance == null)
-            Instance = this;
-        else
+        if (Instance != null && Instance != this)
+        {
             Destroy(gameObject);
-    }
+            return;
+        }
 
+        Instance = this;
+    }
+    
+    //게임 시작 시 UI상태
+    private void Start()
+    {
+        pausePanel.Close();
+        gameOverPanel.Close();
+        quitPanel.Close();
+    }
     private void Update()
     {
-        if (Input.GetKeyUp(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (pausePanel.IsOpen) 
+            if (quitPanel.IsOpen)
+            {
+                CloseQuit();
+            }
+            else if (pausePanel.IsOpen)
+            {
                 ClosePause();
+            }
             else
+            {
                 OpenPause();
+            }
+        }
+
+        //게임오버테스트
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            OpenGameOver();
         }
     }
 
@@ -42,6 +68,14 @@ public class UIManager : MonoBehaviour
     //GameOver
     public void OpenGameOver()
     {
+        StartCoroutine(GameOverRoutine());
+    }
+    private IEnumerator GameOverRoutine()
+    {
+        Time.timeScale = 0.2f;
+
+        yield return new WaitForSecondsRealtime(1f); //현실 시간만큼 기다리기
+
         gameOverPanel.Open();
     }
 
@@ -54,5 +88,16 @@ public class UIManager : MonoBehaviour
     public void CloseQuit()
     {
         quitPanel.Close();
+    }
+
+    //ToolTip
+    public void ShowTooltip(UI02_SkillSlots.SkillData skillData)
+    {
+        tooltipPanel.ShowTooltip(skillData);
+    }
+
+    public void HideTooltip()
+    {
+        tooltipPanel.Close();
     }
 }

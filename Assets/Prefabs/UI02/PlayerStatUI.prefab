@@ -360,10 +360,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 2501040461767050908}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8097356868015666647
 CanvasRenderer:
@@ -423,7 +423,6 @@ MonoBehaviour:
     skillId: 0
     maxLevel: 5
     unlockStage: 0
-  tooltip: {fileID: 0}
 --- !u!1 &2118541956583257322
 GameObject:
   m_ObjectHideFlags: 0
@@ -457,10 +456,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 4024758268022880883}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3158984123695105638
 CanvasRenderer:
@@ -520,42 +519,6 @@ MonoBehaviour:
     skillId: 0
     maxLevel: 5
     unlockStage: 0
-  tooltip: {fileID: 0}
---- !u!1 &2150280723247384365
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2786346339952100276}
-  m_Layer: 5
-  m_Name: Skill (7)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &2786346339952100276
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2150280723247384365}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 6426152320600114569}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2194836529720274275
 GameObject:
   m_ObjectHideFlags: 0
@@ -670,8 +633,6 @@ RectTransform:
   - {fileID: 4024758268022880883}
   - {fileID: 5662211441670613488}
   - {fileID: 5464421674511939230}
-  - {fileID: 179585511187889567}
-  - {fileID: 2786346339952100276}
   m_Father: {fileID: 2652117867585029164}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -1204,10 +1165,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 5464421674511939230}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9136033953229903258
 CanvasRenderer:
@@ -1267,7 +1228,6 @@ MonoBehaviour:
     skillId: 0
     maxLevel: 5
     unlockStage: 0
-  tooltip: {fileID: 0}
 --- !u!1 &3949897709459153607
 GameObject:
   m_ObjectHideFlags: 0
@@ -2041,10 +2001,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 5662211441670613488}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1606659222824757984
 CanvasRenderer:
@@ -2104,7 +2064,6 @@ MonoBehaviour:
     skillId: 0
     maxLevel: 5
     unlockStage: 0
-  tooltip: {fileID: 0}
 --- !u!1 &6780216987075782427
 GameObject:
   m_ObjectHideFlags: 0
@@ -2138,10 +2097,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 2316981981239581710}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7359278206225128233
 CanvasRenderer:
@@ -2201,7 +2160,6 @@ MonoBehaviour:
     skillId: 0
     maxLevel: 5
     unlockStage: 0
-  tooltip: {fileID: 0}
 --- !u!1 &7695901204558545481
 GameObject:
   m_ObjectHideFlags: 0
@@ -2482,41 +2440,6 @@ MonoBehaviour:
   maxHpText: {fileID: 8690011867343025444}
   moveSpeedText: {fileID: 1631171240863778641}
   magnetismText: {fileID: 8982312535574340488}
---- !u!1 &8753210354988124642
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 179585511187889567}
-  m_Layer: 5
-  m_Name: Skill (6)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &179585511187889567
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8753210354988124642}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 6426152320600114569}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &9160354267513360209
 GameObject:
   m_ObjectHideFlags: 0
