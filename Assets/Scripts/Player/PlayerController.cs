@@ -4,16 +4,15 @@ using UnityEngine.InputSystem.Controls;
 
 public class PlayerController : MonoBehaviour
 {
-    private static Sprite fallbackSquareSprite;
+    [SerializeField] private PlayerAnimationController playerAnimationController;
 
     [SerializeField] private float moveSpeed = 5.0f;
-
+    private Vector2 movement;
     private InputAction moveAction;
     private Rigidbody2D rb;
     private PlayerStat pStat;
 
     [Header("플레이어 이동 제한")]
-    private float posX, posY;
     [SerializeField] private float posXMax = 27.25f;
     [SerializeField] private float posXMin = -28.25f;
     [SerializeField] private float posYMax = 17.75f;
@@ -30,12 +29,22 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        moveSpeed = PlayerStatDictionary.PlayerMoveSpeed[pStat.GetStatLvl(PlayerStatEnum.MoveSpeed)];
+        if (pStat.isDead)
+        {
+            GetComponent<Collider2D>().enabled = false;
+            GetComponent<PlayerMagnet>().enabled = false;
+            rb.linearVelocity = Vector2.zero;
+            return;
+        }
+
         Rotate();
+        UpdateAnimation();
     }
 
     private void FixedUpdate()
     {
+        if (pStat.isDead) return;
+
         Move();
         MoveLimit();
     }
@@ -47,12 +56,14 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
-        Vector2 movement = ReadMovement();
+        movement = ReadMovement();
+        moveSpeed = PlayerStatDictionary.PlayerMoveSpeed[pStat.GetStatLvl(PlayerStatEnum.MoveSpeed)];
         rb.linearVelocity = new Vector2(movement.x * moveSpeed, movement.y * moveSpeed);
     }
 
     private void MoveLimit()
     {
+
         Vector3 pos = transform.position;
 
         pos.x = Mathf.Clamp(pos.x, posXMin, posXMax);
@@ -104,10 +115,9 @@ public class PlayerController : MonoBehaviour
 
     private void Rotate()
     {
-        if (Camera.main == null || Mouse.current == null)
-        {
-            return;
-        }
+        if (Camera.main == null || Mouse.current == null) return;
+        if (CombatHudController.isPaused || pStat.isDead) return;
+
 
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
         mousePos.z = 0f;
@@ -116,5 +126,27 @@ public class PlayerController : MonoBehaviour
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
         transform.rotation = Quaternion.Euler(0f, 0f, angle + 90f);
+    }
+
+    private void UpdateAnimation()
+    {
+        if (CombatHudController.isPaused || pStat.isDead) return;
+
+        PlayerAnimationController.PlayerAnimState nextState;
+
+        if(Mathf.Abs(movement.x) > 0.01f || Mathf.Abs(movement.y) > 0.01f)
+        {
+            nextState = PlayerAnimationController.PlayerAnimState.Walk;
+        }
+        else if (pStat.PMaxHP <= 0)
+        {
+            nextState = PlayerAnimationController.PlayerAnimState.Die;
+        }
+        else
+        {
+            nextState = PlayerAnimationController.PlayerAnimState.Idle;
+        }
+        Debug.Log(nextState.ToString());
+        playerAnimationController.SetState(nextState);
     }
 }

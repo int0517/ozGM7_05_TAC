@@ -11,7 +11,7 @@ public class CombatHudController : MonoBehaviour
 
     private int wave = 1;
     private int score;
-    private bool isPaused;
+    public static bool isPaused;
 
     private void Awake()
     {
