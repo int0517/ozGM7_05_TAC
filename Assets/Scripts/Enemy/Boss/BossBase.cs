@@ -23,6 +23,13 @@ public class BossBase : MonoBehaviour, IDamageable
     protected float fireTimer = 0;
     public static event Action OnBossDeath;
 
+    [Header("보스 이동 제한")]
+    protected float posX, posY;
+    [SerializeField] protected float posXMax = 27.25f;
+    [SerializeField] protected float posXMin = -28.25f;
+    [SerializeField] protected float posYMax = 17.75f;
+    [SerializeField] protected float posYMin = -17.75f;
+
 
     protected virtual void Start()
     {
@@ -61,6 +68,7 @@ public class BossBase : MonoBehaviour, IDamageable
         {
             rb.linearVelocity = rb.linearVelocity.normalized * enemySpeed;
         }
+        MoveLimit();
     }
     protected virtual void CheckForPlayer()
     {
@@ -136,5 +144,13 @@ public class BossBase : MonoBehaviour, IDamageable
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, enemyRange);
     }
+    protected void MoveLimit()
+    {
+        Vector2 pos = rb.position;
 
+        pos.x = Mathf.Clamp(pos.x, posXMin, posXMax);
+        pos.y = Mathf.Clamp(pos.y, posYMin, posYMax);
+
+        rb.position = pos;
+    }
 }

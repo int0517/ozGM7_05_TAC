@@ -98,6 +98,7 @@ public class TwoBoss : BossBase
         {
             rb.linearVelocity = rb.linearVelocity.normalized * enemySpeed;
         }
+        MoveLimit();
     }
     private void Fire()
     {
@@ -140,7 +141,6 @@ public class TwoBoss : BossBase
         StartCoroutine(HitRoutine());
         if (enemyCurrentHP <= 0)
         {
-            RaiseBossDeath();
             if (coinPrefab != null && enemyPoint > 0)
             {
                 for (int i = 0; i < enemyPoint; i++)
@@ -148,6 +148,8 @@ public class TwoBoss : BossBase
                     Instantiate(coinPrefab, transform.position, Quaternion.identity);
                 }
             }
+            RaiseBossDeath();
+            StartCoroutine(Die());
             Destroy(gameObject);
         }
 
@@ -237,4 +239,6 @@ public class TwoBoss : BossBase
 
         Destroy(gameObject);
     }
+
+
 }

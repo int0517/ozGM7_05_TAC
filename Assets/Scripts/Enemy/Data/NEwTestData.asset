@@ -13,22 +13,21 @@ MonoBehaviour:
   m_Name: NEwTestData
   m_EditorClassIdentifier: Assembly-CSharp::GameLevelData
   waveList:
-  - waveNumber: 5
-    bossWave: 1
-    bossPrefab: {fileID: 4447445841254252223, guid: d9c4bf5e96889bb4f9120f01648250c2,
-      type: 3}
-    bossSpawnDelay: 10
+  - waveNumber: 1
+    bossWave: 0
+    bossPrefab: {fileID: 0}
+    bossSpawnDelay: 0
     spawnList:
     - enemyPrefab: {fileID: 156135380281197584, guid: bd66ab370a50ba344a9cca03da457bf4,
         type: 3}
-      count: 10
-      batchSize: 1
-      spawnInterval: 5
+      count: 20
+      batchSize: 2
+      spawnInterval: 3
     - enemyPrefab: {fileID: 3158757147613360294, guid: e20388ad3480cba428d251c7efa9ef87,
         type: 3}
-      count: 10
+      count: 20
       batchSize: 1
-      spawnInterval: 5
+      spawnInterval: 2
   - waveNumber: 10
     bossWave: 1
     bossPrefab: {fileID: 3061086795334635472, guid: e5a5d33367988c840b14a4cc49ac865f,

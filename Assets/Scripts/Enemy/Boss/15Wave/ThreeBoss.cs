@@ -15,6 +15,13 @@ public class NewThreeBoss : MonoBehaviour
     [SerializeField] public float runningSpeed = 15f;
     [SerializeField] private LineRenderer warningLine;
     [SerializeField] private float chargeDuration = 2f;
+
+    [Header("보스 이동 제한")]
+    private float posX, posY;
+    [SerializeField] private float posXMax = 27.25f;
+    [SerializeField] private float posXMin = -28.25f;
+    [SerializeField] private float posYMax = 17.75f;
+    [SerializeField] private float posYMin = -17.75f;
     private SpriteRenderer spriteRenderer;
 
     protected Transform playerTransform;
@@ -86,6 +93,7 @@ public class NewThreeBoss : MonoBehaviour
         {
             rb.linearVelocity = rb.linearVelocity.normalized * enemySpeed;
         }
+        MoveLimit();
     }
 
 
@@ -219,5 +227,12 @@ public class NewThreeBoss : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, enemyRange);
+    }
+
+    private void MoveLimit()
+    {
+        rb.position = new Vector2(
+    Mathf.Clamp(rb.position.x, posXMin, posXMax),
+    Mathf.Clamp(rb.position.y, posYMin, posYMax));
     }
 }

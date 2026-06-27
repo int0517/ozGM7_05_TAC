@@ -36,6 +36,13 @@ public class LongRangeEnemyFollow : MonoBehaviour, IDamageable
 
     private string currentAnim = "";
 
+    [Header("이동 제한")]
+    private float posX, posY;
+    [SerializeField] private float posXMax = 27.25f;
+    [SerializeField] private float posXMin = -28.25f;
+    [SerializeField] private float posYMax = 17.75f;
+    [SerializeField] private float posYMin = -17.75f;
+
     private void PlayAnim(string animName)
     {
         if (currentAnim == animName)
@@ -94,6 +101,7 @@ public class LongRangeEnemyFollow : MonoBehaviour, IDamageable
         {
             rb.linearVelocity = rb.linearVelocity.normalized * enemySpeed;
         }
+        MoveLimit();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -214,5 +222,14 @@ public class LongRangeEnemyFollow : MonoBehaviour, IDamageable
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, enemyRange);
+    }
+    private void MoveLimit()
+    {
+        Vector2 pos = rb.position;
+
+        pos.x = Mathf.Clamp(pos.x, posXMin, posXMax);
+        pos.y = Mathf.Clamp(pos.y, posYMin, posYMax);
+
+        rb.position = pos;
     }
 }

@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using SP1Assets.MonsterPack2D;
 
 public class FourBoss : BossBase
 {
     [Header("보스 추가 스텟")]
+    [SerializeField] private ChangeModel changeModel;
     [SerializeField] protected GameObject eggPrefab;
     [SerializeField] protected int eggCount = 4;
     [SerializeField] protected GameObject warningPrefab;
@@ -14,9 +16,29 @@ public class FourBoss : BossBase
     [SerializeField] protected float warningCount = 2.0f;
     [SerializeField] protected float powerWarningCount = 1.0f;
     [SerializeField] protected float damageCount = 0.5f;
+
+    
+
     public List<GameObject> eggList = new List<GameObject>();
-    public bool isInvincible = true;
-    public bool isEscape = false;
+    private bool isInvincible = true;
+    private bool isEscape = false;
+    private bool shieldShowing = false;
+
+    MonsterPrefabController monster;
+    private string currentAnim = "";
+
+    private bool isDead = false;
+    private bool isHit = false;
+    private bool isAttacking = false;
+
+    private void PlayAnim(string animName)
+    {
+        if (currentAnim == animName)
+            return;
+
+        currentAnim = animName;
+        monster.PlayAnimation(animName, 0.1f);
+    }
 
     protected override void Start()
     {
@@ -27,22 +49,58 @@ public class FourBoss : BossBase
             GameObject egg = Instantiate(eggPrefab, randomPos, Quaternion.identity);
             eggList.Add(egg);
         }
-        
+        monster = GetComponent<MonsterPrefabController>();
+
+        monster.Init();
+        monster.SetAnimationSpeed(0.5f);
+        PlayAnim("walk");
+
     }
+    private void FacePlayer()
+    {
+        if (playerTransform == null) return;
+
+        Vector3 scale = transform.localScale;
+
+        if (!isEscape)
+        {
+            if (playerTransform.position.x > transform.position.x)
+                scale.x = -Mathf.Abs(scale.x);
+            else
+                scale.x = Mathf.Abs(scale.x);
+
+            transform.localScale = scale;
+        }
+        else if (isEscape)
+        {
+            if (playerTransform.position.x > transform.position.x)
+                scale.x = Mathf.Abs(scale.x);
+            else
+                scale.x = -Mathf.Abs(scale.x);
+            transform.localScale = scale;
+        }
+
+
+    }
+
     private void Update()
     {
-        eggList.RemoveAll(egg => egg == null);
+        if (Time.frameCount % 30 == 0)
+            eggList.RemoveAll(egg => egg == null);
 
         if (isInvincible && eggList.Count == 0)
         {
+            changeModel.ChangeForm();
             isInvincible = false;
             isEscape = false;
-            Debug.Log("무적 해제! 보스 공격 가능!");
+            Debug.Log("무적 해제!");
         }
     }
 
     protected override void FixedUpdate()
     {
+        if (isDead || isHit || isAttacking)
+            return;
         if (!timerCheck)
         {
             CheckForPlayer();
@@ -54,15 +112,16 @@ public class FourBoss : BossBase
             Fire();
             return;
         }
-
+        FacePlayer();
         Vector2 direction = (playerTransform.position - transform.position).normalized;
         Vector2 moveDirection = isEscape ? -direction : direction;
-        float speedMultiplier = isInvincible ? 1.0f : 2.0f;
+        float speedMultiplier = isInvincible ? 1.0f : 3.0f;
         rb.AddForce(moveDirection * enemySpeed * speedMultiplier * 10f);
         if (rb.linearVelocity.magnitude > enemySpeed)
         {
             rb.linearVelocity = rb.linearVelocity.normalized * enemySpeed;
         }
+        MoveLimit();
     }
     protected override void CheckForPlayer()
     {
@@ -73,17 +132,20 @@ public class FourBoss : BossBase
             {
                 isEscape = true;
                 isAttack = false;
+                PlayAnim("walk");
             }
             else if (dist <= enemyRange)
             {
                 isEscape = false;
                 isAttack = true;
+                PlayAnim("idle");
             }
             else if (dist > enemyRange * 1.2f)
             {
                 isEscape = false;
                 isAttack = false;
                 fireTimer = 0f;
+                PlayAnim("walk");
             }
         }
         else
@@ -92,12 +154,15 @@ public class FourBoss : BossBase
             if (dist <= enemyRange*0.5)
             {
                 isAttack = true;
+                
+                PlayAnim("idle");
             }
             else if (dist > enemyRange)
             {
                 isEscape = false;
                 isAttack = false;
                 fireTimer = 0f;
+                PlayAnim("walk");
             }
         }
 
@@ -111,6 +176,7 @@ public class FourBoss : BossBase
         {
             if (fireTimer >= enemyFireInterval)
             {
+                StartCoroutine(ReturnToIdle());
                 Vector3 playerPos = playerTransform.position;
                 StartCoroutine(AttackRoutine(playerPos));
                 fireTimer = 0f;
@@ -121,6 +187,7 @@ public class FourBoss : BossBase
         {
             if (fireTimer >= enemyFireInterval/2)
             {
+                StartCoroutine(ReturnToIdle());
                 Vector3 playerPos = playerTransform.position;
                 StartCoroutine(AttackRoutine(playerPos));
                 fireTimer = 0f;
@@ -160,10 +227,10 @@ public class FourBoss : BossBase
     private Vector3 GetRandomPositionInCamera()
     {
 
-        float randomX = Random.Range(0.1f, 0.9f);
-        float randomY = Random.Range(0.1f, 0.9f);
+        float x = Random.Range(posXMin, posXMax);
+        float y = Random.Range(posYMin, posYMax);
 
-        return Camera.main.ViewportToWorldPoint(new Vector3(randomX, randomY, 10f));
+        return new Vector3(x, y, 0f);
     }
 
     protected override void OnTriggerEnter2D(Collider2D collision)
@@ -177,17 +244,62 @@ public class FourBoss : BossBase
         }
         if (collision.CompareTag("Skill"))
         {
-            Debug.Log("무적 상태라 데미지를 입지 않습니다!");
-            StartCoroutine(KnockbackRoutine(collision.transform.position));
+            
             if (!isInvincible)
             {
-                Debug.Log("뚤렸네?");
-                enemyCurrentHP--;
-                if (enemyCurrentHP<=0)
-                {
-                    Destroy(gameObject);
-                }
+                StartCoroutine(KnockbackRoutine(collision.transform.position));
             }
         }
     }
+   
+    public override void TakeDamage(float damage)
+    {
+        if (!isInvincible)
+        {
+            enemyCurrentHP -= damage;
+            StartCoroutine(HitRoutine());
+            if (enemyCurrentHP <= 0)
+            {
+                if (coinPrefab != null && enemyPoint > 0)
+                {
+                    for (int i = 0; i < enemyPoint; i++)
+                    {
+                        Instantiate(coinPrefab, transform.position, Quaternion.identity);
+                    }
+                }
+                RaiseBossDeath();
+                StartCoroutine(Die());
+            }
+        }
+        
+
+    }
+
+    private IEnumerator ReturnToIdle()
+    {
+        isAttacking = true;
+        PlayAnim("attack");
+        yield return new WaitForSeconds(0.2f);
+        PlayAnim("idle");
+        isAttacking = false;
+    }
+    private IEnumerator HitRoutine()
+    {
+        isHit = true;
+        PlayAnim("hit");
+        yield return new WaitForSeconds(1f);
+        PlayAnim("walk");
+        isHit = false;
+    }
+    private IEnumerator Die()
+    {
+        if (isDead) yield break;
+        isDead = true;
+        rb.linearVelocity = Vector2.zero;
+        rb.bodyType = RigidbodyType2D.Kinematic;
+        PlayAnim("die");
+        yield return new WaitForSeconds(0.5f);
+        Destroy(gameObject);
+    }
+
 }
