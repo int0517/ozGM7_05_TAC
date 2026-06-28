@@ -675,9 +675,9 @@ MonoBehaviour:
   eggMaxHP: 5
   spawnInterval: 3
   eggUI: {fileID: 2329987019528261938}
-  oneEnemyPrefab: {fileID: 6255325855757872638, guid: 26c07f68d4f18024fb3a8ad6c3211d71,
+  oneEnemyPrefab: {fileID: 8229259432578833571, guid: d7d099147ba96c444b1900ad7cd1059f,
     type: 3}
-  twoEnemyPrefab: {fileID: 6255325855757872638, guid: 26c07f68d4f18024fb3a8ad6c3211d71,
+  twoEnemyPrefab: {fileID: 6672298536582143784, guid: dbb1b6bdf201a1c42b37cb69fa7f4c89,
     type: 3}
 --- !u!1 &6472693066244994072
 GameObject:

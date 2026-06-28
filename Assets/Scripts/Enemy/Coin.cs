@@ -15,9 +15,17 @@ public class Coin : MonoBehaviour
     }
     private IEnumerator StopMovement()
     {
-        yield return new WaitForSeconds(0.7f); // 1초 대기
+        yield return new WaitForSeconds(0.7f);
         rb.linearVelocity = Vector2.zero;
         rb.gravityScale = 0f;
         Debug.Log("코인 정지!");
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)//임시 방편 포인트 올려줘요!!!!!
+    {
+        if (collision.CompareTag("Player"))
+        {
+            Destroy(gameObject);
+        }
     }
 }

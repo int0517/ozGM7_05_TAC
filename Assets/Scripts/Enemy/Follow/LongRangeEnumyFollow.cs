@@ -16,7 +16,6 @@ public class LongRangeEnemyFollow : MonoBehaviour, IDamageable
     [SerializeField] private Transform firePoint;
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private GameObject coinPrefab;
-    [SerializeField] private EnemyHPUI enemyUI;
     private PlayerStat playerStat;
 
     public float knockbackForce = 20.0f;
@@ -121,9 +120,9 @@ public class LongRangeEnemyFollow : MonoBehaviour, IDamageable
 
     public void TakeDamage(float damage)
     {
+        if (isDead) return;
         enemyCurrentHP -= damage;
         StartCoroutine(HitRoutine());
-        enemyUI.UpdateHealthBar(enemyCurrentHP, enemyMaxHP);
         if (enemyCurrentHP <= 0)
         {
             if (coinPrefab != null && enemyPoint > 0)

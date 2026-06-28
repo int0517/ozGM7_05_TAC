@@ -89,7 +89,9 @@ public class WaveManager : MonoBehaviour
     
     private void Clean()
     {
+        Debug.Log("Clean 호출!");
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        Debug.Log("Enemy 개수 : " + enemies.Length);
         GameObject[] bullets = GameObject.FindGameObjectsWithTag("EnemyBullet");
         foreach (GameObject enemy in enemies)
         {

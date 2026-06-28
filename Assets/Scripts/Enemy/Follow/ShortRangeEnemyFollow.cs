@@ -11,7 +11,6 @@ public class ShortRangeEnemyFollow : MonoBehaviour, IDamageable
     [SerializeField] private float enemySpeed = 2.0f;
     [SerializeField] private int enemyPoint = 0;
     [SerializeField] private GameObject coinPrefab;
-    [SerializeField] private EnemyHPUI enemyUI;
     private PlayerStat playerStat;
     public float knockbackForce = 20.0f;
 
@@ -105,9 +104,9 @@ public class ShortRangeEnemyFollow : MonoBehaviour, IDamageable
     }
     public void TakeDamage(float damage)
     {
+        if (isDead) return;
         enemyCurrentHP -= damage;
         StartCoroutine(HitRoutine());
-        enemyUI.UpdateHealthBar(enemyCurrentHP, enemyMaxHP);
         if (enemyCurrentHP <= 0)
         {
             if (coinPrefab != null && enemyPoint > 0)
