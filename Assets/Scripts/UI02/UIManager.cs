@@ -22,12 +22,13 @@ public class UIManager : MonoBehaviour
         Instance = this;
     }
     
-    //게임 시작 시 UI상태
+    //게임 시작 시 UI상태 끄기
     private void Start()
     {
         pausePanel.Close();
         gameOverPanel.Close();
         quitPanel.Close();
+        tooltipPanel.Close();
     }
     private void Update()
     {

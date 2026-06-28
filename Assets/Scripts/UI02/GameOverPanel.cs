@@ -25,4 +25,9 @@ public class GameOverPanel : StatPanel
         Time.timeScale = 1f;
         SceneManager.LoadScene("TitleScene");
     }
+
+    public void GoExit()
+    {
+        UIManager.Instance.OpenQuit();
+    }
 }

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PausePanel : StatPanel
 {
@@ -23,6 +24,12 @@ public class PausePanel : StatPanel
     public void GoResume()
     {
         Close();
+    }
+
+    public void GoTitle()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("TitleScene");
     }
 
     public void GoExit()

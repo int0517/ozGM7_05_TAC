@@ -3,7 +3,7 @@ using UnityEngine.EventSystems;
 
 public class UI02_SkillSlotInfo : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    public UI02_SkillSlots.SkillData skillData;
+    private UI02_SkillSlots.SkillData skillData;
     
     public void OnPointerEnter(PointerEventData eventData)
     {
