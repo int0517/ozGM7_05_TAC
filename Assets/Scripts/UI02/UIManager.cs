@@ -11,6 +11,10 @@ public class UIManager : MonoBehaviour
     [SerializeField] private QuitPanel quitPanel;
     [SerializeField] private TooltipPanel tooltipPanel;
 
+    //게임오버를 위해 플레이어 스탯 받아오기
+    [SerializeField] private PlayerStat playerStat;
+    private bool isGameOver;
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -20,6 +24,8 @@ public class UIManager : MonoBehaviour
         }
 
         Instance = this;
+
+        playerStat = FindFirstObjectByType<PlayerStat>();
     }
     
     //게임 시작 시 UI상태 끄기
@@ -32,6 +38,9 @@ public class UIManager : MonoBehaviour
     }
     private void Update()
     {
+        if (playerStat == null)
+            return;
+
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (quitPanel.IsOpen)
@@ -53,6 +62,12 @@ public class UIManager : MonoBehaviour
         {
             OpenGameOver();
         }
+
+        if (playerStat != null && playerStat.PCurrentHP <= 0 && !isGameOver)
+        {
+            isGameOver = true;
+            OpenGameOver();
+        }
     }
 
     //Pause
@@ -69,6 +84,9 @@ public class UIManager : MonoBehaviour
     //GameOver
     public void OpenGameOver()
     {
+        if (gameOverPanel.IsOpen) //여러 번 실행 방지
+            return;
+
         StartCoroutine(GameOverRoutine());
     }
     private IEnumerator GameOverRoutine()

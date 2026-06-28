@@ -415,14 +415,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 258ec290c80763c46835f011d140d399, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UI02_SkillSlotInfo
-  skillData:
-    skillName: 
-    description: 
-    icon: {fileID: 0}
-    skillLevel: 0
-    skillId: 0
-    maxLevel: 5
-    unlockStage: 0
 --- !u!1 &2118541956583257322
 GameObject:
   m_ObjectHideFlags: 0
@@ -511,14 +503,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 258ec290c80763c46835f011d140d399, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UI02_SkillSlotInfo
-  skillData:
-    skillName: 
-    description: 
-    icon: {fileID: 0}
-    skillLevel: 0
-    skillId: 0
-    maxLevel: 5
-    unlockStage: 0
 --- !u!1 &2194836529720274275
 GameObject:
   m_ObjectHideFlags: 0
@@ -1220,14 +1204,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 258ec290c80763c46835f011d140d399, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UI02_SkillSlotInfo
-  skillData:
-    skillName: 
-    description: 
-    icon: {fileID: 0}
-    skillLevel: 0
-    skillId: 0
-    maxLevel: 5
-    unlockStage: 0
 --- !u!1 &3949897709459153607
 GameObject:
   m_ObjectHideFlags: 0
@@ -1398,10 +1374,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 2840165601921314862}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 400, y: 200}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &4118103275035661654
 CanvasRenderer:
@@ -2056,14 +2032,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 258ec290c80763c46835f011d140d399, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UI02_SkillSlotInfo
-  skillData:
-    skillName: 
-    description: 
-    icon: {fileID: 0}
-    skillLevel: 0
-    skillId: 0
-    maxLevel: 5
-    unlockStage: 0
 --- !u!1 &6780216987075782427
 GameObject:
   m_ObjectHideFlags: 0
@@ -2152,14 +2120,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 258ec290c80763c46835f011d140d399, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UI02_SkillSlotInfo
-  skillData:
-    skillName: 
-    description: 
-    icon: {fileID: 0}
-    skillLevel: 0
-    skillId: 0
-    maxLevel: 5
-    unlockStage: 0
 --- !u!1 &7695901204558545481
 GameObject:
   m_ObjectHideFlags: 0

@@ -16,17 +16,29 @@ public class PlayerStatUI : MonoBehaviour
     {
         if (playerStat == null)
         {
-            Debug.LogWarning("PlayerStat이 없습니다.");
+            Debug.LogWarning("PlayerStat이 없습니다."); //노란색 경고출력
             return;
         }
 
         scoreText.text = $"SCORE : ";
-        levelText.text = $"Lv. ";
+        levelText.text = $"Lv. {playerStat.PLevel}";
 
-        attackText.text = $"공격력 : {playerStat.PAttackBonus}";
-        attackSpeedText.text = "-";
-        moveSpeedText.text = $"이동속도 : {playerStat.PSpeedBonus:F1}";
+        //현재 레벨 가져오기
+        int moveLevel = playerStat.GetStatLvl(PlayerStatEnum.MoveSpeed);
+        int attackSpeedLevel = playerStat.GetStatLvl(PlayerStatEnum.AttackSpeed);
+        int damageLevel = playerStat.GetStatLvl(PlayerStatEnum.DamageIncrease);
+        int magnetLevel = playerStat.GetStatLvl(PlayerStatEnum.MagnetRadius);
+
+        // Dictionary에서 실제 값 가져오기
+        float moveSpeed = PlayerStatDictionary.PlayerMoveSpeed[moveLevel];
+        float attackSpeed = PlayerStatDictionary.PlayerAttackSpeed[attackSpeedLevel];
+        float damage = PlayerStatDictionary.PlayerDamageIncrease[damageLevel];
+        float magnet = PlayerStatDictionary.PlayerMagnetRadius[magnetLevel];
+
+        attackText.text = $"공격력 : {damage}";
+        attackSpeedText.text = $"공격속도 : {attackSpeed}";
+        moveSpeedText.text = $"이동속도 : {moveSpeed}";
         maxHpText.text = $"HP : {playerStat.PCurrentHP}/{playerStat.PMaxHP}";
-        magnetismText.text = "-";
+        magnetismText.text = $"자력 : {magnet}";
     }
 }
