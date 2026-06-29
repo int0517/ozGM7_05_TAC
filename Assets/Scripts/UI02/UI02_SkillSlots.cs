@@ -22,6 +22,14 @@ public class UI02_SkillSlots : MonoBehaviour
         public int maxLevel = 5;
 
         public int unlockStage;
+
+        public SkillType skillType;
+    }
+
+    public enum SkillType
+    {
+        Default, //시작부터 보유 중
+        Upgrade // 레벨업으로 획득
     }
 
     [SerializeField] private List<SkillData> skills;
@@ -35,9 +43,13 @@ public class UI02_SkillSlots : MonoBehaviour
         {
             skillSlots[i].sprite = skills[i].icon;
 
-            UI02_SkillSlotInfo slot = skillSlots[i].GetComponent<UI02_SkillSlotInfo>();
+            UI02_SkillSlotInfo slot = skillSlots[i].GetComponent<UI02_SkillSlotInfo>(); //겟컴포넌트 비용이들기때문에 캐싱 어웨이크에서 캐싱 배열로 호출하고
 
-            slot.skillData = skills[i];
+            if (slot != null)
+            {
+                //SkillData를 직접 접근하지 않기 위해 SkillSlotInfo의 SetSkillData()를 통해 전달.
+                slot.SetSkillData(skills[i]);
+            }
         }
     }
 

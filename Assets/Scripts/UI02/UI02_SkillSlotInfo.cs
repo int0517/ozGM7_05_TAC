@@ -3,15 +3,22 @@ using UnityEngine.EventSystems;
 
 public class UI02_SkillSlotInfo : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    public UI02_SkillSlots.SkillData skillData;
-    [SerializeField] private UI02_ToolTipPanel tooltip;
+    private UI02_SkillSlots.SkillData skillData;
     
     public void OnPointerEnter(PointerEventData eventData)
     {
-        tooltip.ShowTooltip(skillData);
+        if (skillData == null) return;
+        if (UIManager.Instance == null) return;
+        UIManager.Instance.ShowTooltip(skillData);
     }
     public void OnPointerExit(PointerEventData eventData) 
     {
-        tooltip.HideTooltip();
+        UIManager.Instance.HideTooltip();
+    }
+
+    //외부에서 SkillData를 직접 수정하지 않고, 함수를 통해서만 전달받아 설정(캡슐화)
+    public void SetSkillData(UI02_SkillSlots.SkillData data)
+    {
+        skillData = data;
     }
 }
