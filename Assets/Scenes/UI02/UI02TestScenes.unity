@@ -494,6 +494,11 @@ PrefabInstance:
       propertyPath: playerStat
       value: 
       objectReference: {fileID: 260854522}
+    - target: {fileID: 666999564741864658, guid: 95ad13248eabb16409281c5173a33b1a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 776550680651616307, guid: 95ad13248eabb16409281c5173a33b1a,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -773,6 +778,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2633294368872238501, guid: 95ad13248eabb16409281c5173a33b1a,
+        type: 3}
+      propertyPath: skills.Array.data[0].skillType
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2700261626534024394, guid: 95ad13248eabb16409281c5173a33b1a,
         type: 3}
@@ -1199,6 +1209,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6637193870743083083, guid: 95ad13248eabb16409281c5173a33b1a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6638303109779768677, guid: 95ad13248eabb16409281c5173a33b1a,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -1229,6 +1244,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6696532127355686856, guid: 95ad13248eabb16409281c5173a33b1a,
+        type: 3}
+      propertyPath: playerStat
+      value: 
+      objectReference: {fileID: 260854522}
     - target: {fileID: 7000703832095546280, guid: 95ad13248eabb16409281c5173a33b1a,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -1329,6 +1349,292 @@ PrefabInstance:
       propertyPath: playerStats
       value: 
       objectReference: {fileID: 1621133653}
+    - target: {fileID: 8164928626923537111, guid: 95ad13248eabb16409281c5173a33b1a,
+        type: 3}
+      propertyPath: allSkills.Array.size
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164928626923537111, guid: 95ad13248eabb16409281c5173a33b1a,
+        type: 3}
+      propertyPath: activeSkills.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164928626923537111, guid: 95ad13248eabb16409281c5173a33b1a,
+        type: 3}
+      propertyPath: passiveSkills.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164928626923537111, guid: 95ad13248eabb16409281c5173a33b1a,
+        type: 3}
+      propertyPath: allSkills.Array.data[12].icon
+      value: 
+      objectReference: {fileID: -506372826780094804, guid: e69003b12c4852940bd9cbf5a69769c2,
+        type: 3}
+    - target: {fileID: 8164928626923537111, guid: 95ad13248eabb16409281c5173a33b1a,
+        type: 3}
+      propertyPath: allSkills.Array.data[13].icon
+      value: 
+      objectReference: {fileID: -506372826780094804, guid: e69003b12c4852940bd9cbf5a69769c2,
+        type: 3}
+    - target: {fileID: 8164928626923537111, guid: 95ad13248eabb16409281c5173a33b1a,
+        type: 3}
+      propertyPath: activeSkills.Array.data[0].icon
+      value: 
+      objectReference: {fileID: 1613481295985639152, guid: e69003b12c4852940bd9cbf5a69769c2,
+        type: 3}
+    - target: {fileID: 8164928626923537111, guid: 95ad13248eabb16409281c5173a33b1a,
+        type: 3}
+      propertyPath: activeSkills.Array.data[1].icon
+      value: 
+      objectReference: {fileID: -9027179324681414974, guid: e69003b12c4852940bd9cbf5a69769c2,
+        type: 3}
+    - target: {fileID: 8164928626923537111, guid: 95ad13248eabb16409281c5173a33b1a,
+        type: 3}
+      propertyPath: activeSkills.Array.data[2].icon
+      value: 
+      objectReference: {fileID: 3972219151982858924, guid: e69003b12c4852940bd9cbf5a69769c2,
+        type: 3}
+    - target: {fileID: 8164928626923537111, guid: 95ad13248eabb16409281c5173a33b1a,
+        type: 3}
+      propertyPath: activeSkills.Array.data[3].icon
+      value: 
+      objectReference: {fileID: 3972219151982858924, guid: e69003b12c4852940bd9cbf5a69769c2,
+        type: 3}
+    - target: {fileID: 8164928626923537111, guid: 95ad13248eabb16409281c5173a33b1a,
+        type: 3}
+      propertyPath: allSkills.Array.data[12].skillId
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164928626923537111, guid: 95ad13248eabb16409281c5173a33b1a,
+        type: 3}
+      propertyPath: allSkills.Array.data[13].skillId
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164928626923537111, guid: 95ad13248eabb16409281c5173a33b1a,
+        type: 3}
+      propertyPath: allSkills.Array.data[0].skillType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164928626923537111, guid: 95ad13248eabb16409281c5173a33b1a,
+        type: 3}
+      propertyPath: allSkills.Array.data[12].maxLevel
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164928626923537111, guid: 95ad13248eabb16409281c5173a33b1a,
+        type: 3}
+      propertyPath: allSkills.Array.data[13].maxLevel
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164928626923537111, guid: 95ad13248eabb16409281c5173a33b1a,
+        type: 3}
+      propertyPath: activeSkills.Array.data[0].skillId
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164928626923537111, guid: 95ad13248eabb16409281c5173a33b1a,
+        type: 3}
+      propertyPath: activeSkills.Array.data[1].skillId
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164928626923537111, guid: 95ad13248eabb16409281c5173a33b1a,
+        type: 3}
+      propertyPath: activeSkills.Array.data[2].skillId
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164928626923537111, guid: 95ad13248eabb16409281c5173a33b1a,
+        type: 3}
+      propertyPath: activeSkills.Array.data[3].skillId
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164928626923537111, guid: 95ad13248eabb16409281c5173a33b1a,
+        type: 3}
+      propertyPath: allSkills.Array.data[12].skillName
+      value: "\uB808\uC774\uC800 Lv3"
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164928626923537111, guid: 95ad13248eabb16409281c5173a33b1a,
+        type: 3}
+      propertyPath: allSkills.Array.data[13].skillName
+      value: "\uB808\uC774\uC800 Lv3"
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164928626923537111, guid: 95ad13248eabb16409281c5173a33b1a,
+        type: 3}
+      propertyPath: activeSkills.Array.data[0].maxLevel
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164928626923537111, guid: 95ad13248eabb16409281c5173a33b1a,
+        type: 3}
+      propertyPath: activeSkills.Array.data[1].maxLevel
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164928626923537111, guid: 95ad13248eabb16409281c5173a33b1a,
+        type: 3}
+      propertyPath: activeSkills.Array.data[2].maxLevel
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164928626923537111, guid: 95ad13248eabb16409281c5173a33b1a,
+        type: 3}
+      propertyPath: activeSkills.Array.data[3].maxLevel
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164928626923537111, guid: 95ad13248eabb16409281c5173a33b1a,
+        type: 3}
+      propertyPath: allSkills.Array.data[12].skillLevel
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164928626923537111, guid: 95ad13248eabb16409281c5173a33b1a,
+        type: 3}
+      propertyPath: allSkills.Array.data[13].skillLevel
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164928626923537111, guid: 95ad13248eabb16409281c5173a33b1a,
+        type: 3}
+      propertyPath: passiveSkills.Array.data[0].skillId
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164928626923537111, guid: 95ad13248eabb16409281c5173a33b1a,
+        type: 3}
+      propertyPath: passiveSkills.Array.data[1].skillId
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164928626923537111, guid: 95ad13248eabb16409281c5173a33b1a,
+        type: 3}
+      propertyPath: activeSkills.Array.data[0].skillName
+      value: "\uAE30\uBCF8 \uACF5\uACA9 1"
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164928626923537111, guid: 95ad13248eabb16409281c5173a33b1a,
+        type: 3}
+      propertyPath: activeSkills.Array.data[1].skillName
+      value: "\uAE30\uBCF8 \uACF5\uACA9 2"
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164928626923537111, guid: 95ad13248eabb16409281c5173a33b1a,
+        type: 3}
+      propertyPath: activeSkills.Array.data[1].skillType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164928626923537111, guid: 95ad13248eabb16409281c5173a33b1a,
+        type: 3}
+      propertyPath: activeSkills.Array.data[2].skillName
+      value: "\uAE30\uBCF8 \uACF5\uACA9 3"
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164928626923537111, guid: 95ad13248eabb16409281c5173a33b1a,
+        type: 3}
+      propertyPath: activeSkills.Array.data[2].skillType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164928626923537111, guid: 95ad13248eabb16409281c5173a33b1a,
+        type: 3}
+      propertyPath: activeSkills.Array.data[3].skillName
+      value: "\uD30C\uC774\uC5B4\uBCFC"
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164928626923537111, guid: 95ad13248eabb16409281c5173a33b1a,
+        type: 3}
+      propertyPath: activeSkills.Array.data[3].skillType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164928626923537111, guid: 95ad13248eabb16409281c5173a33b1a,
+        type: 3}
+      propertyPath: allSkills.Array.data[12].description
+      value: "\uC0A5\uC0A5\uC0A5.."
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164928626923537111, guid: 95ad13248eabb16409281c5173a33b1a,
+        type: 3}
+      propertyPath: allSkills.Array.data[13].description
+      value: "\uC0A5\uC0A5\uC0A5.."
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164928626923537111, guid: 95ad13248eabb16409281c5173a33b1a,
+        type: 3}
+      propertyPath: passiveSkills.Array.data[0].maxLevel
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164928626923537111, guid: 95ad13248eabb16409281c5173a33b1a,
+        type: 3}
+      propertyPath: passiveSkills.Array.data[1].maxLevel
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164928626923537111, guid: 95ad13248eabb16409281c5173a33b1a,
+        type: 3}
+      propertyPath: activeSkills.Array.data[0].skillLevel
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164928626923537111, guid: 95ad13248eabb16409281c5173a33b1a,
+        type: 3}
+      propertyPath: activeSkills.Array.data[1].skillLevel
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164928626923537111, guid: 95ad13248eabb16409281c5173a33b1a,
+        type: 3}
+      propertyPath: activeSkills.Array.data[2].skillLevel
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164928626923537111, guid: 95ad13248eabb16409281c5173a33b1a,
+        type: 3}
+      propertyPath: activeSkills.Array.data[3].skillLevel
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164928626923537111, guid: 95ad13248eabb16409281c5173a33b1a,
+        type: 3}
+      propertyPath: passiveSkills.Array.data[0].skillName
+      value: "\uC774\uB3D9 \uC18D\uB3C4 1"
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164928626923537111, guid: 95ad13248eabb16409281c5173a33b1a,
+        type: 3}
+      propertyPath: passiveSkills.Array.data[1].skillName
+      value: "\uC774\uB3D9 \uC18D\uB3C4 2"
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164928626923537111, guid: 95ad13248eabb16409281c5173a33b1a,
+        type: 3}
+      propertyPath: passiveSkills.Array.data[1].skillType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164928626923537111, guid: 95ad13248eabb16409281c5173a33b1a,
+        type: 3}
+      propertyPath: activeSkills.Array.data[0].description
+      value: 1111
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164928626923537111, guid: 95ad13248eabb16409281c5173a33b1a,
+        type: 3}
+      propertyPath: activeSkills.Array.data[0].unlockStage
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164928626923537111, guid: 95ad13248eabb16409281c5173a33b1a,
+        type: 3}
+      propertyPath: activeSkills.Array.data[1].description
+      value: 222
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164928626923537111, guid: 95ad13248eabb16409281c5173a33b1a,
+        type: 3}
+      propertyPath: activeSkills.Array.data[1].unlockStage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164928626923537111, guid: 95ad13248eabb16409281c5173a33b1a,
+        type: 3}
+      propertyPath: activeSkills.Array.data[2].description
+      value: 3333
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164928626923537111, guid: 95ad13248eabb16409281c5173a33b1a,
+        type: 3}
+      propertyPath: activeSkills.Array.data[2].unlockStage
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164928626923537111, guid: 95ad13248eabb16409281c5173a33b1a,
+        type: 3}
+      propertyPath: activeSkills.Array.data[3].description
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164928626923537111, guid: 95ad13248eabb16409281c5173a33b1a,
+        type: 3}
+      propertyPath: activeSkills.Array.data[3].unlockStage
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164928626923537111, guid: 95ad13248eabb16409281c5173a33b1a,
+        type: 3}
+      propertyPath: passiveSkills.Array.data[0].skillLevel
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164928626923537111, guid: 95ad13248eabb16409281c5173a33b1a,
+        type: 3}
+      propertyPath: passiveSkills.Array.data[1].skillLevel
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8501218105007490616, guid: 95ad13248eabb16409281c5173a33b1a,
         type: 3}
       propertyPath: m_AnchorMax.y

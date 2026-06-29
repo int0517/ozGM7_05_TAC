@@ -21,9 +21,6 @@ public class LevelUpUI : MonoBehaviour
     //카드 선택용
     private bool isSelected;
 
-    //!! 전체 스킬 풀
-    [SerializeField] private List<UI02_SkillSlots.SkillData> allSkills;
-
     //!! 이번에 뽑힌 카드
     private List<UI02_SkillSlots.SkillData> currentCards;
 
@@ -32,15 +29,44 @@ public class LevelUpUI : MonoBehaviour
     private UI02_TestPlayerStats playerStats;
 
     //!!!
-    [SerializeField] private int currentStage;
-    void Start()
+    [SerializeField] 
+    private int currentStage;
+
+    [Header("액티브 스킬")]
+    [SerializeField]
+    private List<SkillData> activeSkills;
+
+    [Header("패시브 스킬")]
+    [SerializeField]
+    private List<SkillData> passiveSkills;
+
+    //액티브 + 패시브 스킬을 하나로 관리하기 위한 리스트
+    private List<SkillData> allSkills = new();
+
+    private void Start()
     {
-        CloseInstant();
+        // 액티브/패시브 스킬을 하나의 리스트로 합침
+        allSkills.AddRange(activeSkills);
+        allSkills.AddRange(passiveSkills);
+
+        Debug.Log($"전체 스킬 개수 : {allSkills.Count}");
+
+        GiveDefaultSkills(); //기본 보유 스킬 지급
+        CloseInstant(); // 레벨업 UI 초기화
     }
 
     public void Open()
     {
         if (isOpen) return;
+        Debug.Log($"allSkills: {allSkills.Count}");
+        Debug.Log($"active: {activeSkills.Count}, passive: {passiveSkills.Count}");
+        Debug.Log($"stage: {currentStage}");
+
+        if (playerStats == null)
+        {
+            Debug.LogError("playerStats 연결 안 됨" );
+            return;
+        }
 
         //!!
         GenerateCards();
@@ -188,6 +214,12 @@ public class LevelUpUI : MonoBehaviour
     {
         currentCards = new List<SkillData>();
 
+        if (allSkills == null || allSkills.Count == 0)
+        {
+            Debug.LogError("allSkills 비어있음");
+            return;
+        }
+
         List<SkillData> tempPool = allSkills.FindAll(CanShowSkill);
 
         for (int i = 0; i < skillCards.Length; i++)
@@ -205,9 +237,13 @@ public class LevelUpUI : MonoBehaviour
         }
     }
 
-    //!!! 카드 등장 조건
+    //!!! 카드 등장 조건 bool
     private bool CanShowSkill(SkillData skill)
     {
+        //기본 보유 스킬은 카드에 나오지 않게 함
+        if (skill.skillType == SkillType.Default)
+            return false;
+
         if (currentStage < skill.unlockStage)
             return false;
 
@@ -218,5 +254,17 @@ public class LevelUpUI : MonoBehaviour
 
         return playerStats.HasSkill(skill.skillId, skill.skillLevel - 1)
             && !playerStats.HasSkill(skill.skillId, skill.skillLevel);
+    }
+
+    //기본 보유 스킬 지급 -> ownedSkills로 들어가게 하기
+    private void GiveDefaultSkills()
+    {
+        foreach (SkillData skill in allSkills)
+        {
+            if (skill.skillType == SkillType.Default)
+            {
+                playerStats.AddSkill(skill);
+            }
+        }
     }
 }
