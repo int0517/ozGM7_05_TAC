@@ -65,7 +65,7 @@ public class PlayerStat : MonoBehaviour
         if (playerNonhitTimer < playerNonhitTimerMax) return;
 
         pCurrentHP -= amount;
-        Debug.Log("아파");
+        Debug.Log($"ㅠㅠ 현재체력 : {pCurrentHP} 최대체력 : {pMaxHP} 현제데미지 : {amount}");
         if (pCurrentHP < 0) pCurrentHP = 0;
         // 플레이어 사망 처리, 종료 화면
         Debug.Log("뎀졌습니다");

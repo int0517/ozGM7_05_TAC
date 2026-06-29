@@ -66,6 +66,8 @@ MonoBehaviour:
   enemyPoint: 3
   coinPrefab: {fileID: 5971139616951717026, guid: f78e6e6459eac404689428af753400a4,
     type: 3}
+  pothionPrefab: {fileID: 7036755831818187510, guid: 448c5e53d54f1ac40bbd746939968d2d,
+    type: 3}
   knockbackForce: 10
   posXMax: 27.25
   posXMin: -28.25
@@ -275,6 +277,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3088044252074953408}
   - component: {fileID: 1602421067085526723}
+  - component: {fileID: 1393821879865999392}
   m_Layer: 0
   m_Name: Monster_Slime
   m_TagString: Untagged
@@ -314,6 +317,19 @@ MonoBehaviour:
   m_Library: []
   m_SpriteLibraryAsset: {fileID: 7108339969198208228, guid: b8d67a6e6b8a2494b8a687d5ecbfe087,
     type: 3}
+--- !u!210 &1393821879865999392
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4184677715621057187}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortAtRoot: 0
+  m_Sort3DAs2D: 0
 --- !u!1 &4214831275728506688
 GameObject:
   m_ObjectHideFlags: 0

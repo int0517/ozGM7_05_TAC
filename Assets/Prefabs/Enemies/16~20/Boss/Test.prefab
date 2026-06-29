@@ -938,6 +938,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5949793936362582923}
   - component: {fileID: 8247305219796031621}
+  - component: {fileID: 5191943672621585468}
   m_Layer: 8
   m_Name: Monster_Ogre
   m_TagString: Untagged
@@ -985,6 +986,19 @@ MonoBehaviour:
   m_Library: []
   m_SpriteLibraryAsset: {fileID: 7108339969198208228, guid: d05e14d2fd5819842ba7243e58cb1a56,
     type: 3}
+--- !u!210 &5191943672621585468
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4715147319205551659}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortAtRoot: 0
+  m_Sort3DAs2D: 0
 --- !u!1 &5414825147631057963
 GameObject:
   m_ObjectHideFlags: 0

@@ -839,6 +839,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6172227511401410783}
   - component: {fileID: 6338330016866082514}
+  - component: {fileID: 4858493616533542814}
   m_Layer: 0
   m_Name: Monster_Larva
   m_TagString: Untagged
@@ -882,6 +883,19 @@ MonoBehaviour:
   m_Library: []
   m_SpriteLibraryAsset: {fileID: 7108339969198208228, guid: cb97863f2c074534db4437d322dab806,
     type: 3}
+--- !u!210 &4858493616533542814
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7998125573988101030}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortAtRoot: 0
+  m_Sort3DAs2D: 0
 --- !u!1 &8229259432578833571
 GameObject:
   m_ObjectHideFlags: 0

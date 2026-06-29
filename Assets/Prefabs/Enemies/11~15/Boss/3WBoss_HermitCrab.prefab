@@ -796,6 +796,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2793699379324570697}
   - component: {fileID: 7568006411108943595}
+  - component: {fileID: 3266599889061819989}
   m_Layer: 8
   m_Name: Monster_HermitCrab
   m_TagString: Untagged
@@ -834,6 +835,19 @@ MonoBehaviour:
   m_Library: []
   m_SpriteLibraryAsset: {fileID: 7108339969198208228, guid: f0c88ec717b942540af0184f3cfa63b3,
     type: 3}
+--- !u!210 &3266599889061819989
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4539589929867953670}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortAtRoot: 0
+  m_Sort3DAs2D: 0
 --- !u!1 &4856332939308198618
 GameObject:
   m_ObjectHideFlags: 0
@@ -1093,6 +1107,10 @@ MonoBehaviour:
   runningSpeed: 15
   warningLine: {fileID: 1900213175044141619}
   chargeDuration: 2
+  posXMax: 27.25
+  posXMin: -28.25
+  posYMax: 17.75
+  posYMin: -17.75
 --- !u!114 &1770159363656185739
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1368,6 +1386,10 @@ MonoBehaviour:
   enemyPoint: 0
   coinPrefab: {fileID: 0}
   knockbackForce: 10
+  posXMax: 27.25
+  posXMin: -28.25
+  posYMax: 17.75
+  posYMin: -17.75
 --- !u!70 &6490777042351681019
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

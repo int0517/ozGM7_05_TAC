@@ -414,6 +414,7 @@ MonoBehaviour:
   enemyPoint: 12
   coinPrefab: {fileID: 5971139616951717026, guid: f78e6e6459eac404689428af753400a4,
     type: 3}
+  pothionPrefab: {fileID: 0}
   knockbackForce: 10
   posXMax: 27.25
   posXMin: -28.25
@@ -1374,6 +1375,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4219993386697665704}
   - component: {fileID: 1558894458043160118}
+  - component: {fileID: 6446389510927719299}
   m_Layer: 0
   m_Name: Monster_Goblin
   m_TagString: Untagged
@@ -1422,6 +1424,19 @@ MonoBehaviour:
   m_Library: []
   m_SpriteLibraryAsset: {fileID: 7108339969198208228, guid: 537cbba7e3b42f0408d377b0ddd36143,
     type: 3}
+--- !u!210 &6446389510927719299
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5721075437629750414}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortAtRoot: 0
+  m_Sort3DAs2D: 0
 --- !u!1 &5930246078244059011
 GameObject:
   m_ObjectHideFlags: 0

@@ -269,6 +269,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5363759103453078910}
   - component: {fileID: 5665926300637118721}
+  - component: {fileID: 6689234150184471734}
   m_Layer: 0
   m_Name: Monster_Beatle
   m_TagString: Untagged
@@ -308,6 +309,19 @@ MonoBehaviour:
   m_Library: []
   m_SpriteLibraryAsset: {fileID: 7108339969198208228, guid: b2199acc339c27046a2d1f2eff39bbe2,
     type: 3}
+--- !u!210 &6689234150184471734
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2802326946846772101}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortAtRoot: 0
+  m_Sort3DAs2D: 0
 --- !u!1 &2836488381973949831
 GameObject:
   m_ObjectHideFlags: 0
@@ -1086,6 +1100,7 @@ MonoBehaviour:
   enemyPoint: 6
   coinPrefab: {fileID: 5971139616951717026, guid: f78e6e6459eac404689428af753400a4,
     type: 3}
+  pothionPrefab: {fileID: 0}
   knockbackForce: 10
   posXMax: 27.25
   posXMin: -28.25

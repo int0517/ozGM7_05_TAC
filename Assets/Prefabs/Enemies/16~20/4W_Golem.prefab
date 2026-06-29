@@ -555,6 +555,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9125991541887153864}
   - component: {fileID: 3818495696514549071}
+  - component: {fileID: 3901193135728989860}
   m_Layer: 0
   m_Name: Monster_Golem
   m_TagString: Untagged
@@ -600,6 +601,19 @@ MonoBehaviour:
   m_Library: []
   m_SpriteLibraryAsset: {fileID: 7108339969198208228, guid: b6e84e8a282dfad43a8b110005f5f6cc,
     type: 3}
+--- !u!210 &3901193135728989860
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3330102790870010066}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortAtRoot: 0
+  m_Sort3DAs2D: 0
 --- !u!1 &4029895649925381830
 GameObject:
   m_ObjectHideFlags: 0
