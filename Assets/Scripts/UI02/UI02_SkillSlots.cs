@@ -43,7 +43,7 @@ public class UI02_SkillSlots : MonoBehaviour
         {
             skillSlots[i].sprite = skills[i].icon;
 
-            UI02_SkillSlotInfo slot = skillSlots[i].GetComponent<UI02_SkillSlotInfo>();
+            UI02_SkillSlotInfo slot = skillSlots[i].GetComponent<UI02_SkillSlotInfo>(); //겟컴포넌트 비용이들기때문에 캐싱 어웨이크에서 캐싱 배열로 호출하고
 
             if (slot != null)
             {

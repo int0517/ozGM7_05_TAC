@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class StatPanel : UIPanel
 {
@@ -32,5 +33,15 @@ public class StatPanel : UIPanel
         {
             playerStatUI.UpdateUI(playerStat);
         }
+    }
+    public void GoTitle()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("TitleScene");
+    }
+
+    public void GoExit()
+    {
+        UIManager.Instance.OpenQuit();
     }
 }

@@ -38,7 +38,7 @@ public class UIManager : MonoBehaviour
     }
     private void Update()
     {
-        if (playerStat == null)
+        if (playerStat == null) //나중으로 빼기
             return;
 
         if (Input.GetKeyDown(KeyCode.Escape))

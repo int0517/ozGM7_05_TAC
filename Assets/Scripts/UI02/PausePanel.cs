@@ -25,15 +25,4 @@ public class PausePanel : StatPanel
     {
         Close();
     }
-
-    public void GoTitle()
-    {
-        Time.timeScale = 1f;
-        SceneManager.LoadScene("TitleScene");
-    }
-
-    public void GoExit()
-    {
-        UIManager.Instance.OpenQuit();
-    }
 }
