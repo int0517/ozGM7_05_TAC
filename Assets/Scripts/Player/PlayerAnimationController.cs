@@ -22,7 +22,7 @@ public class PlayerAnimationController : MonoBehaviour
 
     private void SpriteRotate()
     {
-        if (CombatHudController.isPaused || pStat.isDead) return;
+        if (CombatHudController.isPaused || pStat.IsDead) return;
         bool shouldFaceRight = Input.mousePosition.x >= Screen.width * 0.5f;
 
         if (shouldFaceRight != isFacingRight)

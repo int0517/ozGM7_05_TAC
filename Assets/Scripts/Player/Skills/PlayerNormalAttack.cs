@@ -17,10 +17,14 @@ public class PlayerNormalAttack : MonoBehaviour
 
     void Update()
     {
-        attackTimer += Time.deltaTime
+        if(!pStat.IsDead)
+        {
+            attackTimer += Time.deltaTime
              * PlayerStatDictionary.PlayerAttackSpeed[pStat.GetStatLvl(PlayerStatEnum.AttackSpeed)];
 
-        Attack();
+            Attack();
+        }
+        
     }
 
     private void Attack()

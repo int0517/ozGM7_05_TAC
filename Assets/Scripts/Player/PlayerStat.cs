@@ -42,7 +42,8 @@ public class PlayerStat : MonoBehaviour
     public bool CanHit {  get { return canHit; } }
 
     [SerializeField] private PlayerAnimationController playerAnimationController;
-    public bool isDead;
+    private bool isDead;
+    public bool IsDead { get { return isDead; } }
 
     private void Start()
     {

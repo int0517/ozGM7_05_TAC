@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if (pStat.isDead)
+        if (pStat.IsDead)
         {
             GetComponent<Collider2D>().enabled = false;
             GetComponent<PlayerMagnet>().enabled = false;
@@ -44,7 +44,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (pStat.isDead) return;
+        if (pStat.IsDead) return;
 
         Move();
         MoveLimit();
@@ -117,7 +117,7 @@ public class PlayerController : MonoBehaviour
     private void Rotate()
     {
         if (Camera.main == null || Mouse.current == null) return;
-        if (CombatHudController.isPaused || pStat.isDead) return;
+        if (CombatHudController.isPaused || pStat.IsDead) return;
 
 
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
@@ -131,7 +131,7 @@ public class PlayerController : MonoBehaviour
 
     private void UpdateAnimation()
     {
-        if (CombatHudController.isPaused || pStat.isDead) return;
+        if (CombatHudController.isPaused || pStat.IsDead) return;
         if (playerAnimationController.GetCurrentState() == PlayerAnimState.Hit) return;
 
         PlayerAnimationController.PlayerAnimState nextState;
