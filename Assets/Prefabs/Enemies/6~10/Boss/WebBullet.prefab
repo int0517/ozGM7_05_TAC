@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5491733953889054245}
   - component: {fileID: 8380260322528288023}
   - component: {fileID: 1846746592464343082}
-  - component: {fileID: 7476741298606949408}
+  - component: {fileID: 9098006782342532548}
   m_Layer: 0
   m_Name: WebBullet
   m_TagString: EnemyBullet
@@ -109,7 +109,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 2.5, y: 1}
   m_EdgeRadius: 0
---- !u!114 &7476741298606949408
+--- !u!114 &9098006782342532548
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -118,13 +118,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 5088536366339289579}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dde1886f1a34a7d45b2503de1cd72f8b, type: 3}
+  m_Script: {fileID: 11500000, guid: b9c9c1b42f83d0d499f2da02336b80d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WebBullet
-  bulletSpeed: 10
+  bulletSpeed: 8
   bulletLifeTime: 3
-  homingRange: 4
-  turnSpeed: 250
+  homingRange: 5
+  turnSpeed: 300
 --- !u!1 &7824134748222262434
 GameObject:
   m_ObjectHideFlags: 0

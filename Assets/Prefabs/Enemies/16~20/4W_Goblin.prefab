@@ -358,9 +358,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6119297537920228891}
   - component: {fileID: 2134134749606248882}
-  - component: {fileID: 5882994404868250772}
   - component: {fileID: 1686065977267035101}
   - component: {fileID: 5714955553219035210}
+  - component: {fileID: 8689485965469032043}
   m_Layer: 8
   m_Name: 4W_Goblin
   m_TagString: Untagged
@@ -396,30 +396,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef6d1ce4c7a24cf4b9208eb0770b567f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &5882994404868250772
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2102844605871277624}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6b8d81857ea7b64dba9090704a16770, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ShortRangeEnemyFollowTest
-  enemyMaxHP: 20
-  enemyATK: 1
-  enemySpeed: 2
-  enemyPoint: 12
-  coinPrefab: {fileID: 5971139616951717026, guid: f78e6e6459eac404689428af753400a4,
-    type: 3}
-  pothionPrefab: {fileID: 0}
-  knockbackForce: 10
-  posXMax: 27.25
-  posXMin: -28.25
-  posYMax: 17.75
-  posYMin: -17.75
 --- !u!61 &1686065977267035101
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -493,6 +469,33 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &8689485965469032043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2102844605871277624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba16d93cde56ba447840d4f872a0fa64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ShortRangeEnemy
+  enemyMaxHP: 12
+  enemyATK: 1
+  enemySpeed: 2
+  enemyPoint: 0
+  coinPrefab: {fileID: 5971139616951717026, guid: f78e6e6459eac404689428af753400a4,
+    type: 3}
+  potionPrefab: {fileID: 4674873313410750760, guid: 09a203daf38db2c4d875cdeb06274dfc,
+    type: 3}
+  shieldPrefab: {fileID: 7036755831818187510, guid: 448c5e53d54f1ac40bbd746939968d2d,
+    type: 3}
+  knockbackForce: 20
+  posXMax: 28.25
+  posXMin: -28.25
+  posYMax: 17.75
+  posYMin: -17.75
 --- !u!1 &2282754215029454815
 GameObject:
   m_ObjectHideFlags: 0

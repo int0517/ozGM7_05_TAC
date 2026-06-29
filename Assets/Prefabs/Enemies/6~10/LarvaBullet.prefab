@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 580167664256529666}
   - component: {fileID: 7436692161791033332}
   - component: {fileID: 5677709865948114548}
-  - component: {fileID: 6188307455956360783}
+  - component: {fileID: 5239090501668179279}
   m_Layer: 0
   m_Name: LarvaBullet
   m_TagString: EnemyBullet
@@ -168,7 +168,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &6188307455956360783
+--- !u!114 &5239090501668179279
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -177,9 +177,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 6750697025541862908}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7953e3cede180be4fa79b16a4f39eef1, type: 3}
+  m_Script: {fileID: 11500000, guid: 76597f3d230022048aa208d3832159c2, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyBullet
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyBullets
   bulletSpeed: 3
   bulletLifeTime: 3
   rotationSpeed: 500
