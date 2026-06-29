@@ -51,4 +51,9 @@ public class PlayerAnimationController : MonoBehaviour
     {
         playerAnimator.SetTrigger(triggername);
     }
+
+    public PlayerAnimState GetCurrentState()
+    {
+        return currentState;
+    }
 }

@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
+using static PlayerAnimationController;
 
 public class PlayerController : MonoBehaviour
 {
@@ -131,22 +132,19 @@ public class PlayerController : MonoBehaviour
     private void UpdateAnimation()
     {
         if (CombatHudController.isPaused || pStat.isDead) return;
+        if (playerAnimationController.GetCurrentState() == PlayerAnimState.Hit) return;
 
         PlayerAnimationController.PlayerAnimState nextState;
 
-        if(Mathf.Abs(movement.x) > 0.01f || Mathf.Abs(movement.y) > 0.01f)
+        if (Mathf.Abs(movement.x) > 0.01f || Mathf.Abs(movement.y) > 0.01f)
         {
             nextState = PlayerAnimationController.PlayerAnimState.Walk;
-        }
-        else if (pStat.PMaxHP <= 0)
-        {
-            nextState = PlayerAnimationController.PlayerAnimState.Die;
         }
         else
         {
             nextState = PlayerAnimationController.PlayerAnimState.Idle;
         }
-        Debug.Log(nextState.ToString());
+        
         playerAnimationController.SetState(nextState);
     }
 }

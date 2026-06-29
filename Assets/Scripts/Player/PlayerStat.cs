@@ -36,8 +36,10 @@ public class PlayerStat : MonoBehaviour
     private int pDamageIncreaseLevel = 0;
     private int pMagnetLevel = 0;
 
-    private float playerNonhitTimerMax = 2f;
+    private float playerNonhitTimerMax = 1f;
     private float playerNonhitTimer = 0f;
+    private bool canHit;
+    public bool CanHit {  get { return canHit; } }
 
     [SerializeField] private PlayerAnimationController playerAnimationController;
     public bool isDead;
@@ -46,6 +48,7 @@ public class PlayerStat : MonoBehaviour
     {
         pCurrentHP = pMaxHP;
         isDead = false;
+        canHit = true;
     }
 
     private void Update()
@@ -66,16 +69,16 @@ public class PlayerStat : MonoBehaviour
 
     public void DamagePlayer(int amount)
     {
-        if (playerNonhitTimer < playerNonhitTimerMax) return;
+        if (playerNonhitTimer < playerNonhitTimerMax || !canHit) return;
 
         pCurrentHP -= amount;
-        
+        playerNonhitTimer = 0f;
+
         if(pCurrentHP > 0)
         {
             playerAnimationController.SetState(PlayerAnimationController.PlayerAnimState.Hit);
         }
-
-        if (pCurrentHP <= 0)
+        else if (pCurrentHP <= 0)
         {
             pCurrentHP = 0;
 
@@ -87,6 +90,16 @@ public class PlayerStat : MonoBehaviour
                 isDead = true;
             }
         }
+    }
+
+    public void HealPlayer(int amount)
+    {
+        pCurrentHP += amount;
+
+        if (pCurrentHP > pMaxHP)
+            pCurrentHP = pMaxHP;
+
+        Debug.Log($"회복! 현재 체력 : {pCurrentHP}");
     }
 
     // 플레이어 스탯 레벨업 메서드
