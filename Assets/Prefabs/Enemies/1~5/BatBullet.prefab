@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2923105610318682574}
   - component: {fileID: 4557802474077658135}
-  - component: {fileID: 26111800464546855}
   - component: {fileID: 8417322233756144720}
   - component: {fileID: 7031984503984671511}
+  - component: {fileID: 8490262644066061881}
   m_Layer: 0
   m_Name: BatBullet
   m_TagString: EnemyBullet
@@ -95,21 +95,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &26111800464546855
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6898091497084025309}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7953e3cede180be4fa79b16a4f39eef1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyBullet
-  bulletSpeed: 3
-  bulletLifeTime: 3
-  rotationSpeed: 500
 --- !u!50 &8417322233756144720
 Rigidbody2D:
   serializedVersion: 5
@@ -183,3 +168,18 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.37, y: 0.37}
   m_EdgeRadius: 0
+--- !u!114 &8490262644066061881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6898091497084025309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76597f3d230022048aa208d3832159c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyBullets
+  bulletSpeed: 3
+  bulletLifeTime: 3
+  rotationSpeed: 500

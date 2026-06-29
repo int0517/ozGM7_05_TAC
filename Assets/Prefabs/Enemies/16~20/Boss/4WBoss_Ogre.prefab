@@ -711,10 +711,10 @@ GameObject:
   m_Component:
   - component: {fileID: 6456373533308771042}
   - component: {fileID: 7313447630395496671}
-  - component: {fileID: 685782391892338155}
-  - component: {fileID: 2644825635542796558}
   - component: {fileID: -883654963655876714}
   - component: {fileID: -2861403248265096732}
+  - component: {fileID: 7417644685186498756}
+  - component: {fileID: -2100045283872277635}
   m_Layer: 8
   m_Name: 4WBoss_Ogre
   m_TagString: Enemy
@@ -750,65 +750,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef6d1ce4c7a24cf4b9208eb0770b567f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &685782391892338155
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2505467402401188429}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a41d88db0ada88745906dd2d7b2c09f3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FourBoss
-  enemyMaxHP: 20
-  enemyRange: 8
-  enemyFireInterval: 3
-  enemySpeed: 2
-  enemyPoint: 10
-  coinPrefab: {fileID: 5971139616951717026, guid: f78e6e6459eac404689428af753400a4,
-    type: 3}
-  knockbackForce: 5
-  changeModel: {fileID: 2644825635542796558}
-  eggPrefab: {fileID: 6324346184176086263, guid: fbffe94c857e2944794d680f5f6810d9,
-    type: 3}
-  eggCount: 4
-  shieldPrefab: {fileID: 6929937921633181979, guid: 4ac290635254fa14d87f46c8f1b864f8,
-    type: 3}
-  warningPrefab: {fileID: 3371393513933375377, guid: 9618f428d1e8ec845b59bf731ca0f694,
-    type: 3}
-  powerWarningPrefab: {fileID: 9094168582004926659, guid: 2713d6d9d284f1c4586b123f7beb5190,
-    type: 3}
-  damagePrefab: {fileID: 4335435306265989368, guid: c26a89848029cd44a93a70622e95135d,
-    type: 3}
-  powerDamagePrefab: {fileID: 6117778424201669355, guid: 7c2c5dfb12d3e3d43aaaf912756d86a3,
-    type: 3}
-  warningCount: 2
-  powerWarningCount: 1
-  damageCount: 0.5
-  eggList: []
---- !u!114 &2644825635542796558
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2505467402401188429}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 06529633a3f6cd44ab3e3e3f601e5ee8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ChangeModel
-  eyeResolver: {fileID: 2357209546952731214}
-  leftArmResolver: {fileID: 5181516478554288553}
-  rightArmResolver: {fileID: 8507881715223416528}
-  clothResolver: {fileID: 452506596717020934}
-  bodyResolver: {fileID: 5719886900829471713}
-  headResolver: {fileID: 5582882266051221735}
-  leftLegResolver: {fileID: 5590285466169239719}
-  rightLegResolver: {fileID: 8701444075782621335}
-  club: {fileID: 7851237028283581510}
 --- !u!50 &-883654963655876714
 Rigidbody2D:
   serializedVersion: 5
@@ -882,6 +823,65 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.8, y: 2.4}
   m_EdgeRadius: 0
+--- !u!114 &7417644685186498756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2505467402401188429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67625eff2702e904bbf93867677583dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FourBoss
+  enemyMaxHP: 60
+  enemyRange: 8
+  enemyFireInterval: 1
+  enemySpeed: 1
+  enemyPoint: 50
+  coinPrefab: {fileID: 5971139616951717026, guid: f78e6e6459eac404689428af753400a4,
+    type: 3}
+  bossPotionPrefab: {fileID: 8208973172336133487, guid: f9f97a50bea78b44ca3e25f6bb5d002a,
+    type: 3}
+  knockbackForce: 5
+  posXMax: 27.25
+  posXMin: -28.25
+  posYMax: 17.75
+  posYMin: -17.75
+  changeModel: {fileID: -2100045283872277635}
+  eggPrefab: {fileID: 3843403552811082442, guid: fbffe94c857e2944794d680f5f6810d9,
+    type: 3}
+  eggCount: 4
+  warningPrefab: {fileID: 3371393513933375377, guid: 9618f428d1e8ec845b59bf731ca0f694,
+    type: 3}
+  damagePrefab: {fileID: 4335435306265989368, guid: c26a89848029cd44a93a70622e95135d,
+    type: 3}
+  warningCount: 2
+  powerWarningCount: 1
+  damageCount: 0.5
+  eggList: []
+--- !u!114 &-2100045283872277635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2505467402401188429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9134271db25f58489dfdc82f9feb3bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ChangeModel
+  eyeResolver: {fileID: 2357209546952731214}
+  headResolver: {fileID: 5582882266051221735}
+  bodyResolver: {fileID: 5719886900829471713}
+  clothResolver: {fileID: 452506596717020934}
+  leftArmResolver: {fileID: 5181516478554288553}
+  rightArmResolver: {fileID: 8507881715223416528}
+  leftLegResolver: {fileID: 5590285466169239719}
+  rightLegResolver: {fileID: 8701444075782621335}
+  club: {fileID: 7851237028283581510}
 --- !u!1 &3151036215101235387
 GameObject:
   m_ObjectHideFlags: 0

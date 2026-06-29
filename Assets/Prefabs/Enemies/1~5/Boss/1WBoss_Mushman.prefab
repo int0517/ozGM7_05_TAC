@@ -367,9 +367,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6509151416658855989}
   - component: {fileID: 7069891272469741871}
-  - component: {fileID: 8872687744346902031}
   - component: {fileID: 8949299268641788436}
   - component: {fileID: 1383927271787607258}
+  - component: {fileID: 6654103366185578660}
   m_Layer: 8
   m_Name: 1WBoss_Mushman
   m_TagString: Enemy
@@ -405,36 +405,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef6d1ce4c7a24cf4b9208eb0770b567f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &8872687744346902031
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3145273434250438604}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 784ac4528f97ec84aa171ac0accbf4e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::OneBoss
-  enemyMaxHP: 20
-  enemyRange: 5
-  enemyFireInterval: 1
-  enemySpeed: 1
-  enemyPoint: 5
-  coinPrefab: {fileID: 5971139616951717026, guid: f78e6e6459eac404689428af753400a4,
-    type: 3}
-  knockbackForce: 5
-  posXMax: 27.25
-  posXMin: -28.25
-  posYMax: 17.75
-  posYMin: -17.75
-  warningTime: 3
-  poisonDuration: 5
-  warningPrefab: {fileID: 3371393513933375377, guid: ff9098dbad2657c41be5fa50a1ce94f3,
-    type: 3}
-  poisonPrefab: {fileID: 439054695739901879, guid: 8f067aadca05dea47a4b8696122514f8,
-    type: 3}
 --- !u!50 &8949299268641788436
 Rigidbody2D:
   serializedVersion: 5
@@ -508,6 +478,38 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.2, y: 1.5}
   m_EdgeRadius: 0
+--- !u!114 &6654103366185578660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3145273434250438604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9414fd5b55a199c47b13f4c5bf787562, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OneBoss
+  enemyMaxHP: 20
+  enemyRange: 5
+  enemyFireInterval: 1
+  enemySpeed: 1
+  enemyPoint: 10
+  coinPrefab: {fileID: 5971139616951717026, guid: f78e6e6459eac404689428af753400a4,
+    type: 3}
+  bossPotionPrefab: {fileID: 8208973172336133487, guid: f9f97a50bea78b44ca3e25f6bb5d002a,
+    type: 3}
+  knockbackForce: 5
+  posXMax: 27.25
+  posXMin: -28.25
+  posYMax: 17.75
+  posYMin: -17.75
+  warningTime: 3
+  poisonDuration: 5
+  warningPrefab: {fileID: 3371393513933375377, guid: ff9098dbad2657c41be5fa50a1ce94f3,
+    type: 3}
+  poisonPrefab: {fileID: 439054695739901879, guid: 8f067aadca05dea47a4b8696122514f8,
+    type: 3}
 --- !u!1 &4159602870477031333
 GameObject:
   m_ObjectHideFlags: 0

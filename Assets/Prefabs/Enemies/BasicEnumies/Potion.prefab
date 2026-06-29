@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6441510126020428041}
   - component: {fileID: -4912550021500033969}
   - component: {fileID: 454493399901590899}
-  - component: {fileID: 7796818767870583785}
+  - component: {fileID: 743563110355629028}
   m_Layer: 9
   m_Name: Potion
   m_TagString: Item
@@ -167,7 +167,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.08, y: 0.11}
   m_EdgeRadius: 0
---- !u!114 &7796818767870583785
+--- !u!114 &743563110355629028
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -176,9 +176,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 4674873313410750760}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: efa96bc074b8ee94fad29f55e1c82ff3, type: 3}
+  m_Script: {fileID: 11500000, guid: 36543811e34e9dc42bc6d123292fb1b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Potion
-  HealEffect: {fileID: 7023741638340689833, guid: 6027366937c275746a9c471f10ebb595,
-    type: 3}
-  upHp: 1
+  HealEffect: {fileID: 0}
+  upHp: 2
