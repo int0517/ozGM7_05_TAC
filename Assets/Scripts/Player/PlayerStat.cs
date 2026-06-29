@@ -5,7 +5,7 @@ public class PlayerStat : MonoBehaviour
     // 플레이어 스탯
     private int pLevel = 1;
     private int pMaxHP = 3;
-    private int pCurrentHP;
+    [SerializeField] private int pCurrentHP;
     
     private float pAttackBonus = 1f;
     private float pSpeedBonus = 1f;
@@ -36,12 +36,19 @@ public class PlayerStat : MonoBehaviour
     private int pDamageIncreaseLevel = 0;
     private int pMagnetLevel = 0;
 
-    private float playerNonhitTimerMax = 2f;
+    private float playerNonhitTimerMax = 1f;
     private float playerNonhitTimer = 0f;
+    private bool canHit;
+    public bool CanHit {  get { return canHit; } }
+
+    [SerializeField] private PlayerAnimationController playerAnimationController;
+    public bool isDead;
 
     private void Start()
     {
         pCurrentHP = pMaxHP;
+        isDead = false;
+        canHit = true;
     }
 
     private void Update()
@@ -62,13 +69,37 @@ public class PlayerStat : MonoBehaviour
 
     public void DamagePlayer(int amount)
     {
-        if (playerNonhitTimer < playerNonhitTimerMax) return;
+        if (playerNonhitTimer < playerNonhitTimerMax || !canHit) return;
 
         pCurrentHP -= amount;
-        Debug.Log("아파");
-        if (pCurrentHP < 0) pCurrentHP = 0;
-        // 플레이어 사망 처리, 종료 화면
-        Debug.Log("뎀졌습니다");
+        playerNonhitTimer = 0f;
+
+        if(pCurrentHP > 0)
+        {
+            playerAnimationController.SetState(PlayerAnimationController.PlayerAnimState.Hit);
+        }
+        else if (pCurrentHP <= 0)
+        {
+            pCurrentHP = 0;
+
+            // 플레이어 사망 처리, 종료 화면
+            if (!isDead)
+            {
+                playerAnimationController.SetState(PlayerAnimationController.PlayerAnimState.Die);
+                playerAnimationController.SetTrigger("Dead");
+                isDead = true;
+            }
+        }
+    }
+
+    public void HealPlayer(int amount)
+    {
+        pCurrentHP += amount;
+
+        if (pCurrentHP > pMaxHP)
+            pCurrentHP = pMaxHP;
+
+        Debug.Log($"회복! 현재 체력 : {pCurrentHP}");
     }
 
     // 플레이어 스탯 레벨업 메서드
