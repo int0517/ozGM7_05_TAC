@@ -1095,6 +1095,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8704069220971024861}
   - component: {fileID: 8200562612475136173}
+  - component: {fileID: 4299781953329309078}
   m_Layer: 0
   m_Name: Monster_Bat
   m_TagString: Untagged
@@ -1134,6 +1135,19 @@ MonoBehaviour:
   m_Library: []
   m_SpriteLibraryAsset: {fileID: 7108339969198208228, guid: 4867af46aca508a4898f4988c137a34a,
     type: 3}
+--- !u!210 &4299781953329309078
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7347219577825760590}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortAtRoot: 0
+  m_Sort3DAs2D: 0
 --- !u!1 &8512208589189707088
 GameObject:
   m_ObjectHideFlags: 0

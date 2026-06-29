@@ -950,6 +950,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7145230095221136902}
   - component: {fileID: 5383413863073925042}
+  - component: {fileID: 8589994559693403474}
   m_Layer: 0
   m_Name: Monster_Fishman
   m_TagString: Untagged
@@ -989,6 +990,19 @@ MonoBehaviour:
   m_Library: []
   m_SpriteLibraryAsset: {fileID: 7108339969198208228, guid: c2c95b54e35b2444d90c95af5b89f1b3,
     type: 3}
+--- !u!210 &8589994559693403474
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7079958847848376105}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortAtRoot: 0
+  m_Sort3DAs2D: 0
 --- !u!1 &7277765518375273422
 GameObject:
   m_ObjectHideFlags: 0

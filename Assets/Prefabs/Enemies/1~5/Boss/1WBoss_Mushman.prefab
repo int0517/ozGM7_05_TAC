@@ -270,6 +270,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2439405038882793456}
   - component: {fileID: 4535045064209536394}
+  - component: {fileID: 7169419477903470434}
   m_Layer: 8
   m_Name: Monster_Mushman
   m_TagString: Untagged
@@ -312,6 +313,19 @@ MonoBehaviour:
   m_Library: []
   m_SpriteLibraryAsset: {fileID: 7108339969198208228, guid: b25215d44f22d684e93d3fd256826b98,
     type: 3}
+--- !u!210 &7169419477903470434
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2008049418477807891}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortAtRoot: 0
+  m_Sort3DAs2D: 0
 --- !u!1 &2220240317751593949
 GameObject:
   m_ObjectHideFlags: 0
@@ -411,6 +425,10 @@ MonoBehaviour:
   coinPrefab: {fileID: 5971139616951717026, guid: f78e6e6459eac404689428af753400a4,
     type: 3}
   knockbackForce: 5
+  posXMax: 27.25
+  posXMin: -28.25
+  posYMax: 17.75
+  posYMin: -17.75
   warningTime: 3
   poisonDuration: 5
   warningPrefab: {fileID: 3371393513933375377, guid: ff9098dbad2657c41be5fa50a1ce94f3,

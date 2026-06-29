@@ -11,6 +11,7 @@ public class ShortRangeEnemyFollow : MonoBehaviour, IDamageable
     [SerializeField] private float enemySpeed = 2.0f;
     [SerializeField] private int enemyPoint = 0;
     [SerializeField] private GameObject coinPrefab;
+    [SerializeField] private GameObject pothionPrefab;
     private PlayerStat playerStat;
     public float knockbackForce = 20.0f;
 
@@ -111,6 +112,7 @@ public class ShortRangeEnemyFollow : MonoBehaviour, IDamageable
         {
             if (coinPrefab != null && enemyPoint > 0)
             {
+                Instantiate(pothionPrefab, transform.position, Quaternion.identity);
                 for (int i = 0; i < enemyPoint; i++)
                 {
                     Instantiate(coinPrefab, transform.position, Quaternion.identity);
