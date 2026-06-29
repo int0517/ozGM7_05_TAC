@@ -37,8 +37,13 @@ public class Shield : MonoBehaviour
             }
             shieldEffect.SetActive(true);
             shieldEffect.transform.SetParent(collision.transform);
-            Destroy(shieldEffect, 10f);
+            StartCoroutine(EffectEnd());
             Destroy(gameObject);
         }
+    }
+    private IEnumerator EffectEnd()
+    {
+        yield return new WaitForSeconds(10f);
+        shieldEffect.SetActive(false);
     }
 }

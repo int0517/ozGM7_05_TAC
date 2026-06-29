@@ -38,8 +38,15 @@ public class Potion : MonoBehaviour
             }
             HealEffect.SetActive(true);
             HealEffect.transform.SetParent(collision.transform);
-            Destroy(HealEffect, 3f);
+            StartCoroutine(EffectEnd());
             Destroy(gameObject);
         }
+
+        
+    }
+    private IEnumerator EffectEnd()
+    {
+        yield return new WaitForSeconds(2f);
+        HealEffect.SetActive(false);
     }
 }
