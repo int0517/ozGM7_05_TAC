@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class UIManager : MonoBehaviour
+public class UIManager : MonoBehaviour //UI 열기/닫기 및 입력 처리 담당
 {
     public static UIManager Instance { get; private set; }
 
@@ -12,7 +12,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TooltipPanel tooltipPanel;
 
     //게임오버를 위해 플레이어 스탯 받아오기
-    [SerializeField] private PlayerStat playerStat;
+    private PlayerStat playerStat;
     private bool isGameOver;
 
     private void Awake()

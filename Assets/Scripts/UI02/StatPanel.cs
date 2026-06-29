@@ -2,14 +2,17 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class StatPanel : UIPanel
+public class StatPanel : UIPanel //플레이어 스탯 / 스킬 UI 갱신 담당
 {
     [SerializeField] protected UI02_SkillSlots skillSlots;
     [SerializeField] protected PlayerStatUI playerStatUI;
+
     [SerializeField] protected PlayerStat playerStat;
 
     //플레이어 테스트 스탯
     protected UI02_TestPlayerStats testPlayerStats;
+
+    [SerializeField] private string titleSceneName = "TitleScene";
 
     protected override void Awake()
     {
@@ -37,11 +40,13 @@ public class StatPanel : UIPanel
     public void GoTitle()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene("TitleScene");
+        SceneManager.LoadScene(titleSceneName);
     }
 
     public void GoExit()
     {
+        Time.timeScale = 1f;
+
         UIManager.Instance.OpenQuit();
     }
 }
