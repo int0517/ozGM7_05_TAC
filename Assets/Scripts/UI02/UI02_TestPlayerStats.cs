@@ -67,4 +67,35 @@ public class UI02_TestPlayerStats : MonoBehaviour
     {
         return ownedSkills;
     }
+
+    //스코어 찾기 플레이어 위치 기반 코인 감지
+    private int score = 0;
+    public int Score => score;
+
+    private Transform player;
+
+    private void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+    }
+
+    public void AddScore(int value)
+    {
+        score += value;
+        Debug.Log("Score: " + score);
+    }
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            AddScore(1);
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Coin"))
+        {
+            AddScore(1);
+        }
+    }
 } 
