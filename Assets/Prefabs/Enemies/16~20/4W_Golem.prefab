@@ -824,7 +824,7 @@ GameObject:
   - component: {fileID: 1509832273726397992}
   - component: {fileID: 88929131768426406}
   - component: {fileID: 5331953914608185436}
-  - component: {fileID: 42982594165893979}
+  - component: {fileID: 1577077907742836204}
   m_Layer: 8
   m_Name: 4W_Golem
   m_TagString: Untagged
@@ -933,7 +933,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &42982594165893979
+--- !u!114 &1577077907742836204
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -942,19 +942,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 4792496472568161430}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc7bd252a35450240a788787f9414995, type: 3}
+  m_Script: {fileID: 11500000, guid: f737ef55d430f0446ba1315561fc4eb4, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LongRangeEnemyFollowTest
+  m_EditorClassIdentifier: Assembly-CSharp::LongRangeEnemy
   enemyMaxHP: 3
   enemyRange: 5
   enemyATK: 1
   enemyFireInterval: 1
   enemySpeed: 2
-  enemyPoint: 12
+  enemyPoint: 0
   firePoint: {fileID: 3876867861840961634}
   bulletPrefab: {fileID: 291370545090557688, guid: 7178dd47c9f5c6d4e8369d9511056450,
     type: 3}
   coinPrefab: {fileID: 5971139616951717026, guid: f78e6e6459eac404689428af753400a4,
+    type: 3}
+  potionPrefab: {fileID: 4674873313410750760, guid: 09a203daf38db2c4d875cdeb06274dfc,
+    type: 3}
+  shieldPrefab: {fileID: 7036755831818187510, guid: 448c5e53d54f1ac40bbd746939968d2d,
     type: 3}
   knockbackForce: 20
   posXMax: 27.25

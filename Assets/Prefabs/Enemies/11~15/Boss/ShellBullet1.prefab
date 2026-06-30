@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 567695381639913497}
   - component: {fileID: 5268853462597536288}
-  - component: {fileID: 1302248127167917101}
   - component: {fileID: 6969321762750501788}
   - component: {fileID: 5665671143994743206}
+  - component: {fileID: 2672613134463145683}
   m_Layer: 0
   m_Name: ShellBullet1
   m_TagString: EnemyBullet
@@ -95,22 +95,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &1302248127167917101
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9175446442854740743}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba3a70a0b7ac0c64ca23209eaec05cfd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ShellBullet
-  bulletSpeed: 5
-  bulletATK: 1
-  bulletLifeTime: 6
-  rotationSpeed: 300
 --- !u!50 &6969321762750501788
 Rigidbody2D:
   serializedVersion: 5
@@ -175,3 +159,19 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 2.17, y: 1.63}
   m_Direction: 1
+--- !u!114 &2672613134463145683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9175446442854740743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8369c45ec806224682c2c49e2251cc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SehllBullet
+  bulletSpeed: 15
+  bulletATK: 1
+  bulletLifeTime: 3
+  rotationSpeed: 900

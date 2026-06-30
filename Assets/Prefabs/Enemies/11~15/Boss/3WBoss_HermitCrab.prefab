@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 9220149580879841616}
   - component: {fileID: 1625570707642329610}
   - component: {fileID: 8145806072959231439}
-  - component: {fileID: 7235925588290387969}
+  - component: {fileID: 4774009288261044825}
   m_Layer: 8
   m_Name: Shadow
   m_TagString: Untagged
@@ -131,7 +131,7 @@ CapsuleCollider2D:
   m_Offset: {x: 0.4, y: 0.2}
   m_Size: {x: 1.67, y: 0.52}
   m_Direction: 1
---- !u!114 &7235925588290387969
+--- !u!114 &4774009288261044825
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -140,9 +140,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 401515858392807888}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ebd7580c292f87d4a9e5ca4d0bee0689, type: 3}
+  m_Script: {fileID: 11500000, guid: 83a8823cdbf35a041b615837c2f07a60, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Attack
+  m_EditorClassIdentifier: Assembly-CSharp::ThreeBossAttack
 --- !u!1 &972115593254239888
 GameObject:
   m_ObjectHideFlags: 0
@@ -447,7 +447,7 @@ GameObject:
   - component: {fileID: 5860837790987893529}
   - component: {fileID: 2106188233025302339}
   - component: {fileID: 988640597130339775}
-  - component: {fileID: 6553109221809389748}
+  - component: {fileID: 7217497368987904364}
   m_Layer: 8
   m_Name: body
   m_TagString: Untagged
@@ -603,7 +603,7 @@ CapsuleCollider2D:
   m_Offset: {x: 0.3, y: 0.3}
   m_Size: {x: 2.2, y: 1.5}
   m_Direction: 1
---- !u!114 &6553109221809389748
+--- !u!114 &7217497368987904364
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -612,7 +612,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2897145174198752835}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e47e690cb811db4488ce073ba5d7dc43, type: 3}
+  m_Script: {fileID: 11500000, guid: a0d6040126ee3fd4985bf6b2c6b82847, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Shell
   oneBulletPrefab: {fileID: 9175446442854740743, guid: e6087f88d6aa08146a8eebc8e514d8fc,
@@ -1020,9 +1020,9 @@ GameObject:
   - component: {fileID: 7554981077418344758}
   - component: {fileID: 8449137915235299173}
   - component: {fileID: 3633693986414466599}
-  - component: {fileID: 5619003992449180097}
-  - component: {fileID: 1770159363656185739}
   - component: {fileID: 1900213175044141619}
+  - component: {fileID: 6702552955988789745}
+  - component: {fileID: 6190799706322674836}
   m_Layer: 8
   m_Name: 3WBoss_HermitCrab
   m_TagString: Enemy
@@ -1085,46 +1085,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &5619003992449180097
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6364773333740643968}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f20a5dff0c76a548af5162ddbe9850f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NewThreeBoss
-  enemyRange: 5
-  enemyFireInterval: 1
-  enemySpeed: 1
-  enemyPoint: 4
-  coinPrefab: {fileID: 5971139616951717026, guid: f78e6e6459eac404689428af753400a4,
-    type: 3}
-  knockbackForce: 5
-  runningSpeed: 15
-  warningLine: {fileID: 1900213175044141619}
-  chargeDuration: 2
-  posXMax: 27.25
-  posXMin: -28.25
-  posYMax: 17.75
-  posYMin: -17.75
---- !u!114 &1770159363656185739
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6364773333740643968}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb091fb9580798f4886f95f071ea9882, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EggSpawn
-  spawnInterval: 10
-  egg: {fileID: 9215703109507392879, guid: 225dc695d9b9df8459787dfffcb0f13d, type: 3}
 --- !u!120 &1900213175044141619
 LineRenderer:
   serializedVersion: 3
@@ -1235,6 +1195,48 @@ LineRenderer:
   m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
+--- !u!114 &6702552955988789745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6364773333740643968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5efddfc8549aa644bddf55283703776, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ThreeBoss
+  enemyRange: 10
+  enemyFireInterval: 5
+  enemySpeed: 1
+  enemyPoint: 30
+  coinPrefab: {fileID: 5971139616951717026, guid: f78e6e6459eac404689428af753400a4,
+    type: 3}
+  bossPotionPrefab: {fileID: 8208973172336133487, guid: f9f97a50bea78b44ca3e25f6bb5d002a,
+    type: 3}
+  knockbackForce: 5
+  runningSpeed: 15
+  warningLine: {fileID: 1900213175044141619}
+  chargeDuration: 2
+  posXMax: 27.25
+  posXMin: -28.25
+  posYMax: 17.75
+  posYMin: -17.75
+--- !u!114 &6190799706322674836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6364773333740643968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2bd4d9110737794d8c101a0aaed31b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EggSpawn
+  spawnInterval: 10
+  egg: {fileID: 9215703109507392879, guid: 225dc695d9b9df8459787dfffcb0f13d, type: 3}
 --- !u!1 &7580780896446497382
 GameObject:
   m_ObjectHideFlags: 0
@@ -1247,8 +1249,8 @@ GameObject:
   - component: {fileID: 4515459585458898640}
   - component: {fileID: 6844779727055637566}
   - component: {fileID: 7720094017053527209}
-  - component: {fileID: 4395518792583953711}
   - component: {fileID: 6490777042351681019}
+  - component: {fileID: 7522974652899128649}
   m_Layer: 8
   m_Name: head
   m_TagString: Enemy
@@ -1367,29 +1369,6 @@ MonoBehaviour:
   m_labelHash: 2.1594316e-38
   m_SpriteKey: 0
   m_SpriteHash: 14985480
---- !u!114 &4395518792583953711
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7580780896446497382}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1fe4ed4dd55f027458ec83b403a4d5bc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ThreeBossBody
-  enemyMaxHP: 25
-  enemyRange: 0
-  enemyFireInterval: 0
-  enemySpeed: 0
-  enemyPoint: 0
-  coinPrefab: {fileID: 0}
-  knockbackForce: 10
-  posXMax: 27.25
-  posXMin: -28.25
-  posYMax: 17.75
-  posYMin: -17.75
 --- !u!70 &6490777042351681019
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -1427,6 +1406,31 @@ CapsuleCollider2D:
   m_Offset: {x: -0.00000017881393, y: 0}
   m_Size: {x: 0.87, y: 0.82}
   m_Direction: 1
+--- !u!114 &7522974652899128649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7580780896446497382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9d623345619b144d8d08e8d61087ebd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ThreeBossBody
+  enemyMaxHP: 20
+  enemyRange: 0
+  enemyFireInterval: 0
+  enemySpeed: 0
+  enemyPoint: 0
+  coinPrefab: {fileID: 5971139616951717026, guid: f78e6e6459eac404689428af753400a4,
+    type: 3}
+  bossPotionPrefab: {fileID: 0}
+  knockbackForce: 0
+  posXMax: 27.25
+  posXMin: -28.25
+  posYMax: 17.75
+  posYMin: -17.75
 --- !u!1 &8017713210877456999
 GameObject:
   m_ObjectHideFlags: 0

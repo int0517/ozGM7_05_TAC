@@ -9705,6 +9705,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4861826630754195548}
+  - component: {fileID: 3984641526737681112}
   m_Layer: 0
   m_Name: ShieldEffect
   m_TagString: Untagged
@@ -9728,6 +9729,18 @@ Transform:
   - {fileID: 3383193433628687872}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3984641526737681112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5071406416996280479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cac35f4a8d6c934b8d2675280c0d65d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Effect
 --- !u!1 &5387397976073526261
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 
 public class PlayerStat : MonoBehaviour
 {
@@ -15,7 +16,11 @@ public class PlayerStat : MonoBehaviour
     public int PLevel { get { return pLevel; } }
     public int PMaxHP { get { return pMaxHP; } }
     public int PCurrentHP { get { return pCurrentHP; } }
-    
+
+    //아이템 임펙트
+    [SerializeField] private ParticleSystem healEffect;
+    [SerializeField] private ParticleSystem sheildEffect;
+
     public float PAttackBonus
     {
         get => pAttackBonus;
@@ -100,7 +105,39 @@ public class PlayerStat : MonoBehaviour
             pCurrentHP = pMaxHP;
 
         Debug.Log($"회복! 현재 체력 : {pCurrentHP}");
+        PlayHealEffect();
     }
+
+    //힐 임펙트 나오는거
+    private void PlayHealEffect()
+    {
+        healEffect.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+        healEffect.Play();
+    }
+
+    private Coroutine ShieldCoroutine;
+
+    //쉴드를 연속으로 먹으면 오류나서 쿠루틴 멈추고 다시해버리기
+    public void StartInvincible()
+    {
+        if (ShieldCoroutine != null)
+        {
+            StopCoroutine(ShieldCoroutine);
+        }
+        ShieldCoroutine = StartCoroutine(Invincible());
+    }
+    //10초 무적하구 임펙트키고 끄기
+    private IEnumerator Invincible()
+    {
+        canHit = false;
+        sheildEffect.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+        sheildEffect.Play();
+        yield return new WaitForSeconds(10f);//여기에 무적시간 조절!!
+        canHit = true;
+        sheildEffect.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+        ShieldCoroutine = null;
+    }
+
 
     // 플레이어 스탯 레벨업 메서드
     public void PlayerMoveSpeedLevelUp()

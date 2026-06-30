@@ -689,10 +689,10 @@ GameObject:
   m_Component:
   - component: {fileID: 7478872162144915489}
   - component: {fileID: 4209453326653230371}
-  - component: {fileID: 5542679975337638454}
   - component: {fileID: 6086350460248340807}
   - component: {fileID: 4154774615081016950}
   - component: {fileID: 3555097434831933476}
+  - component: {fileID: 8049703956123731739}
   m_Layer: 8
   m_Name: 2WBoss_Spider
   m_TagString: Enemy
@@ -728,40 +728,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef6d1ce4c7a24cf4b9208eb0770b567f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &5542679975337638454
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5373977619705221257}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e41b88dc1ecfa640800344afc594039, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TwoBoss
-  enemyMaxHP: 20
-  enemyRange: 15
-  enemyFireInterval: 3
-  enemySpeed: 0.5
-  enemyPoint: 15
-  coinPrefab: {fileID: 5971139616951717026, guid: f78e6e6459eac404689428af753400a4,
-    type: 3}
-  knockbackForce: 5
-  posXMax: 27.25
-  posXMin: -28.25
-  posYMax: 17.75
-  posYMin: -17.75
-  MouthPoint: {fileID: 4589384466049428294}
-  WebBulletPrefab: {fileID: 5088536366339289579, guid: b76224f8a69838447a79e28c386cb8f8,
-    type: 3}
-  lineRenderer: {fileID: 6086350460248340807}
-  enemyATK: 5
-  webPoints: 10
-  waveAmplitude: 0.2
-  waveSpeed: 10
-  pullingSpeed: 5
-  pullingInterval: 3
 --- !u!120 &6086350460248340807
 LineRenderer:
   serializedVersion: 3
@@ -945,6 +911,42 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 2, y: 1.2}
   m_EdgeRadius: 0
+--- !u!114 &8049703956123731739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5373977619705221257}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 602b361a0d53ad14eb3d1bf340b60665, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TwoBoss
+  enemyMaxHP: 40
+  enemyRange: 15
+  enemyFireInterval: 3
+  enemySpeed: 0.3
+  enemyPoint: 20
+  coinPrefab: {fileID: 5971139616951717026, guid: f78e6e6459eac404689428af753400a4,
+    type: 3}
+  bossPotionPrefab: {fileID: 8208973172336133487, guid: f9f97a50bea78b44ca3e25f6bb5d002a,
+    type: 3}
+  knockbackForce: 5
+  posXMax: 27.25
+  posXMin: -28.25
+  posYMax: 17.75
+  posYMin: -17.75
+  MouthPoint: {fileID: 4589384466049428294}
+  WebBulletPrefab: {fileID: 5088536366339289579, guid: b76224f8a69838447a79e28c386cb8f8,
+    type: 3}
+  lineRenderer: {fileID: 6086350460248340807}
+  enemyATK: 5
+  webPoints: 10
+  waveAmplitude: 0.2
+  waveSpeed: 10
+  pullingSpeed: 5
+  pullingInterval: 3
 --- !u!1 &5408589713430350000
 GameObject:
   m_ObjectHideFlags: 0

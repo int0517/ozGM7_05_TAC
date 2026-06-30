@@ -187,7 +187,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2702279424488514841}
   - component: {fileID: 222292066076748614}
-  - component: {fileID: 8404969450980099151}
+  - component: {fileID: 5041235197060364580}
   m_Layer: 8
   m_Name: Slider
   m_TagString: Untagged
@@ -268,7 +268,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &8404969450980099151
+--- !u!114 &5041235197060364580
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -277,9 +277,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 5142830656137582134}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69917f2fbcce7bd41a0ad963c131591f, type: 3}
+  m_Script: {fileID: 11500000, guid: c8efc75b16f0bcf4bb5efd24a099e3dc, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyHPUI
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyHpUI
   hpFillImage: {fileID: 1521194774868927956}
 --- !u!1 &5632969322576959939
 GameObject:
@@ -440,7 +440,7 @@ GameObject:
   - component: {fileID: 2853567540457942222}
   - component: {fileID: 3734172650083321561}
   - component: {fileID: 5370366085247232194}
-  - component: {fileID: 7499822121558896494}
+  - component: {fileID: 8614631266897819412}
   m_Layer: 8
   m_Name: Egg
   m_TagString: Enemy
@@ -597,7 +597,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &7499822121558896494
+--- !u!114 &8614631266897819412
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -606,12 +606,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 9215703109507392879}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5bc68d91066110f40a83600d4ebf5375, type: 3}
+  m_Script: {fileID: 11500000, guid: 6ec506eea8ea2ba468c80a68cd0b857b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Egg
   eggMaxHP: 5
   spawnInterval: 3
-  eggUI: {fileID: 8404969450980099151}
+  eggUI: {fileID: 5041235197060364580}
   oneEnemyPrefab: {fileID: 3802158189230473458, guid: 288cd7f4ad064f340882c6382af61312,
     type: 3}
   twoEnemyPrefab: {fileID: 7896830556146650860, guid: 8a15862709513714189b555e20ef8296,

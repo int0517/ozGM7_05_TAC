@@ -908,7 +908,7 @@ GameObject:
   - component: {fileID: 4897794346233117466}
   - component: {fileID: 9093117218929028982}
   - component: {fileID: 7460386481287956218}
-  - component: {fileID: 3414324797750587349}
+  - component: {fileID: 5218237412690533254}
   m_Layer: 8
   m_Name: 2W_Larva
   m_TagString: Untagged
@@ -1017,7 +1017,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 2, y: 1}
   m_EdgeRadius: 0
---- !u!114 &3414324797750587349
+--- !u!114 &5218237412690533254
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1026,21 +1026,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 8229259432578833571}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc7bd252a35450240a788787f9414995, type: 3}
+  m_Script: {fileID: 11500000, guid: f737ef55d430f0446ba1315561fc4eb4, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LongRangeEnemyFollowTest
+  m_EditorClassIdentifier: Assembly-CSharp::LongRangeEnemy
   enemyMaxHP: 3
   enemyRange: 5
   enemyATK: 1
   enemyFireInterval: 1
   enemySpeed: 2
-  enemyPoint: 6
+  enemyPoint: 0
   firePoint: {fileID: 5611969334500025543}
   bulletPrefab: {fileID: 6750697025541862908, guid: e523fc9c397a30c44abd70c0fe81ce9d,
     type: 3}
   coinPrefab: {fileID: 5971139616951717026, guid: f78e6e6459eac404689428af753400a4,
     type: 3}
-  knockbackForce: 10
+  potionPrefab: {fileID: 4674873313410750760, guid: 09a203daf38db2c4d875cdeb06274dfc,
+    type: 3}
+  shieldPrefab: {fileID: 7036755831818187510, guid: 448c5e53d54f1ac40bbd746939968d2d,
+    type: 3}
+  knockbackForce: 20
   posXMax: 27.25
   posXMin: -28.25
   posYMax: 17.75

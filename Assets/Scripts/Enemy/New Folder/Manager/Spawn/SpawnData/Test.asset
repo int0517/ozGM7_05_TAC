@@ -1,0 +1,95 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbcd59596a2e7c44aa37d9f97e0b4a00, type: 3}
+  m_Name: Test
+  m_EditorClassIdentifier: Assembly-CSharp::GameLevelData
+  waveList:
+  - waveNumber: 1
+    bossWave: 0
+    bossPrefab: {fileID: 3145273434250438604, guid: 207618cbfee1ceb4bad2c901086197dc,
+      type: 3}
+    bossSpawnDelay: 30
+    spawnList:
+    - enemyPrefab: {fileID: 156135380281197584, guid: bd66ab370a50ba344a9cca03da457bf4,
+        type: 3}
+      count: 150
+      batchSize: 10
+      spawnInterval: 3
+    - enemyPrefab: {fileID: 3158757147613360294, guid: e20388ad3480cba428d251c7efa9ef87,
+        type: 3}
+      count: 30
+      batchSize: 2
+      spawnInterval: 3
+  - waveNumber: 5
+    bossWave: 1
+    bossPrefab: {fileID: 3145273434250438604, guid: 207618cbfee1ceb4bad2c901086197dc,
+      type: 3}
+    bossSpawnDelay: 30
+    spawnList:
+    - enemyPrefab: {fileID: 156135380281197584, guid: bd66ab370a50ba344a9cca03da457bf4,
+        type: 3}
+      count: 30
+      batchSize: 2
+      spawnInterval: 3
+    - enemyPrefab: {fileID: 3158757147613360294, guid: e20388ad3480cba428d251c7efa9ef87,
+        type: 3}
+      count: 30
+      batchSize: 2
+      spawnInterval: 3
+  - waveNumber: 10
+    bossWave: 1
+    bossPrefab: {fileID: 5373977619705221257, guid: d40a9585b2b7cfd43a696d36257754e2,
+      type: 3}
+    bossSpawnDelay: 30
+    spawnList:
+    - enemyPrefab: {fileID: 6672298536582143784, guid: dbb1b6bdf201a1c42b37cb69fa7f4c89,
+        type: 3}
+      count: 30
+      batchSize: 2
+      spawnInterval: 3
+    - enemyPrefab: {fileID: 8229259432578833571, guid: d7d099147ba96c444b1900ad7cd1059f,
+        type: 3}
+      count: 30
+      batchSize: 2
+      spawnInterval: 3
+  - waveNumber: 15
+    bossWave: 1
+    bossPrefab: {fileID: 6364773333740643968, guid: 575019b95ee0d0e4e9060522458f4db4,
+      type: 3}
+    bossSpawnDelay: 30
+    spawnList:
+    - enemyPrefab: {fileID: 3802158189230473458, guid: 288cd7f4ad064f340882c6382af61312,
+        type: 3}
+      count: 30
+      batchSize: 2
+      spawnInterval: 3
+    - enemyPrefab: {fileID: 7896830556146650860, guid: 8a15862709513714189b555e20ef8296,
+        type: 3}
+      count: 30
+      batchSize: 2
+      spawnInterval: 3
+  - waveNumber: 20
+    bossWave: 1
+    bossPrefab: {fileID: 2505467402401188429, guid: efdf51a837d20a847847ade11cc66d4a,
+      type: 3}
+    bossSpawnDelay: 30
+    spawnList:
+    - enemyPrefab: {fileID: 2102844605871277624, guid: f7aa2662774c8464fb92fd71d60ce15d,
+        type: 3}
+      count: 30
+      batchSize: 2
+      spawnInterval: 3
+    - enemyPrefab: {fileID: 4792496472568161430, guid: 719f5f9d791ceb044b3702bd878c4151,
+        type: 3}
+      count: 30
+      batchSize: 2
+      spawnInterval: 3

@@ -1044,9 +1044,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2998573997797463597}
   - component: {fileID: 2837116631839062434}
-  - component: {fileID: 4781686681129423211}
   - component: {fileID: 7771033944333301059}
   - component: {fileID: 40169771670510466}
+  - component: {fileID: 7787223100782149573}
   m_Layer: 8
   m_Name: 3W_Fishman
   m_TagString: Untagged
@@ -1082,34 +1082,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef6d1ce4c7a24cf4b9208eb0770b567f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &4781686681129423211
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7896830556146650860}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc7bd252a35450240a788787f9414995, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LongRangeEnemyFollowTest
-  enemyMaxHP: 3
-  enemyRange: 5
-  enemyATK: 1
-  enemyFireInterval: 1
-  enemySpeed: 2
-  enemyPoint: 9
-  firePoint: {fileID: 2838931798010061828}
-  bulletPrefab: {fileID: 5244997853230418674, guid: 1d4824f20bae92344be628ef71b55f62,
-    type: 3}
-  coinPrefab: {fileID: 5971139616951717026, guid: f78e6e6459eac404689428af753400a4,
-    type: 3}
-  knockbackForce: 10
-  posXMax: 27.25
-  posXMin: -28.25
-  posYMax: 17.75
-  posYMin: -17.75
 --- !u!61 &7771033944333301059
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1183,6 +1155,38 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &7787223100782149573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7896830556146650860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f737ef55d430f0446ba1315561fc4eb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LongRangeEnemy
+  enemyMaxHP: 3
+  enemyRange: 5
+  enemyATK: 1
+  enemyFireInterval: 1
+  enemySpeed: 2
+  enemyPoint: 0
+  firePoint: {fileID: 2838931798010061828}
+  bulletPrefab: {fileID: 5244997853230418674, guid: 1d4824f20bae92344be628ef71b55f62,
+    type: 3}
+  coinPrefab: {fileID: 5971139616951717026, guid: f78e6e6459eac404689428af753400a4,
+    type: 3}
+  potionPrefab: {fileID: 4674873313410750760, guid: 09a203daf38db2c4d875cdeb06274dfc,
+    type: 3}
+  shieldPrefab: {fileID: 7036755831818187510, guid: 448c5e53d54f1ac40bbd746939968d2d,
+    type: 3}
+  knockbackForce: 20
+  posXMax: 27.25
+  posXMin: -28.25
+  posYMax: 17.75
+  posYMin: -17.75
 --- !u!1 &8017662506538545233
 GameObject:
   m_ObjectHideFlags: 0
