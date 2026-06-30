@@ -109,11 +109,31 @@ public class LevelUpUI : MonoBehaviour
     }
 
     //레벨업 시작 함수 / 일반 웨이브는 1, 보스 웨이브는 2를 전달받는다.
-    private void StartLevelUp(int count)
+    public void StartLevelUp(int count)
     {
         remainLevelUpCount = count;
         Open();
     }
+    //!!!!!!머지하고 주석 풀 곳!!!!!!!!!!
+    //웨이브 종료 이벤트 구독 : WaveManager에서 웨이브 끝나면 알려줌 
+    //private void OnEnable()
+    //{
+    //    WaveManager.OnWaveEnded += HandleWaveEnded;
+    //}
+
+    //오브젝트 꺼질 때 구독 해제 
+    //private void OnDisable()
+    //{
+    //    WaveManager.OnWaveEnded -= HandleWaveEnded;
+    //}
+    
+    //웨이브 종료 신호 받으면 실행되는 함수
+    //wasBossWave : 방금 끝난 웨이브가 보스웨이브였는지 여부
+    //private void HandleWaveEnded(bool wasBossWave)
+    //{
+    //    NextWave();
+    //    StartLevelUp(wasBossWave ? 2 : 1);
+    //}
     private void PlayTitleTween()
     {
         levelUpText.localScale = Vector3.zero;
@@ -275,16 +295,14 @@ public class LevelUpUI : MonoBehaviour
         if (skill.skillType == SkillType.Default)
             return false;
 
+        //스테이지 제한
         if (currentWave < skill.unlockStage)
             return false;
 
-        if (skill.skillLevel == 1)
-        {
-            return !playerStats.HasSkill(skill.skillId, 1);
-        }
+        // 이미 최대 레벨이면 제외
+        int currentLevel = playerStats.GetSkillLevel(skill.skillId);
 
-        return playerStats.HasSkill(skill.skillId, skill.skillLevel - 1)
-            && !playerStats.HasSkill(skill.skillId, skill.skillLevel);
+        return currentLevel < skill.maxLevel;
     }
 
     //기본 보유 스킬 지급 -> ownedSkills로 들어가게 하기
@@ -298,11 +316,7 @@ public class LevelUpUI : MonoBehaviour
             }
         }
     }
-    private void ShowNextLevelUp()
-    {
-        GenerateCards();
-        PlayCardOpenTween();
-    }
+ 
     //보스 웨이브 때 연속 레벨업을 위해 레벨업UI 유지하여 새로운 카드만 생성
     private void RefreshCard()
     {

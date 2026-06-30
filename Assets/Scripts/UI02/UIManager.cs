@@ -15,6 +15,23 @@ public class UIManager : MonoBehaviour //UI 열기/닫기 및 입력 처리 담당
     private PlayerStat playerStat;
     private bool isGameOver;
 
+    public enum GameState //규모 커지면 게임스테이지매니저 따로 만들기
+    {
+        Title,
+        Playing,
+        Paused,
+        GameOver
+    }
+
+    public GameState CurrentState { get; private set; }
+
+    public void SetState(GameState state)
+    {
+        CurrentState = state;
+    }
+
+    public bool IsGameplay => CurrentState == GameState.Playing;
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -73,11 +90,15 @@ public class UIManager : MonoBehaviour //UI 열기/닫기 및 입력 처리 담당
     //Pause
     public void OpenPause()
     {
+        if (!IsGameplay) return;
+
+        CurrentState = GameState.Paused; //게임 상태 일시정지
         pausePanel.Open();
     }
 
     public void ClosePause()
     {
+        CurrentState = GameState.Playing;
         pausePanel.Close();
     }
 
@@ -91,6 +112,8 @@ public class UIManager : MonoBehaviour //UI 열기/닫기 및 입력 처리 담당
     }
     private IEnumerator GameOverRoutine()
     {
+        CurrentState = GameState.GameOver;
+
         Time.timeScale = 0.2f;
 
         yield return new WaitForSecondsRealtime(1f); //현실 시간만큼 기다리기
@@ -110,9 +133,9 @@ public class UIManager : MonoBehaviour //UI 열기/닫기 및 입력 처리 담당
     }
 
     //ToolTip
-    public void ShowTooltip(UI02_SkillSlots.SkillData skillData)
+    public void ShowTooltip(UI02_SkillSlots.SkillData skillData, int level)
     {
-        tooltipPanel.ShowTooltip(skillData);
+        tooltipPanel.ShowTooltip(skillData, level);
     }
 
     public void HideTooltip()

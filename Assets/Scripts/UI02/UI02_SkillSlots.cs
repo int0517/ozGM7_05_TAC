@@ -9,8 +9,10 @@ public class UI02_SkillSlots : MonoBehaviour
     //[SerializeField] private List<Sprite> skillIcons;
 
     [SerializeField] private Image[] skillSlots; //공간
+    //플레이어에서 레벨 가져오기
+    [SerializeField] private PlayerSkillLevel playerSkillLevel;
 
-    //
+    //스킬데이터
     [Serializable]
     public class SkillData
     {
@@ -18,12 +20,10 @@ public class UI02_SkillSlots : MonoBehaviour
         public string description;
         public Sprite icon;
 
-        public int skillLevel;
         public int skillId;
         public int maxLevel = 5;
 
         public int unlockStage;
-
         public SkillType skillType;
     }
 
@@ -56,13 +56,16 @@ public class UI02_SkillSlots : MonoBehaviour
         
         for(int i = 0; i < skills.Count && i < skillSlots.Length; i++)
         {
+            //스킬 아이콘 표시
             skillSlots[i].sprite = skills[i].icon;
 
             //UI02_SkillSlotInfo slot = skillSlots[i].GetComponent<UI02_SkillSlotInfo>(); //겟컴포넌트 비용이들기때문에 캐싱 어웨이크에서 캐싱 배열로 호출하기
 
             if (slotInfos[i] != null)
             {
-                slotInfos[i].SetSkillData(skills[i]);
+                int level = playerSkillLevel.GetSkillLvl((PlayerStatEnum)skills[i].skillId); //아직 level 계산이 필요하기 때문에 참조
+
+                slotInfos[i].SetSkillData(skills[i], level);
             }
         }
     }

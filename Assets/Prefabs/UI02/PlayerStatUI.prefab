@@ -622,7 +622,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 235, y: -43}
-  m_SizeDelta: {x: 800, y: 600}
+  m_SizeDelta: {x: 1000, y: 600}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6727836371611311301
 CanvasRenderer:
@@ -645,14 +645,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.6698113, g: 0.6698113, b: 0.6698113, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.6431373}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -8554111558904251084, guid: c02e0229d9812a445a6c5f1bd581bb68,
+  m_Sprite: {fileID: 6190718380522329162, guid: 1c8f251a3d82bcd4fadd90f545259a3a,
     type: 3}
   m_Type: 0
   m_PreserveAspect: 0
@@ -705,28 +705,29 @@ MonoBehaviour:
   - {fileID: 4994079331141918848}
   - {fileID: 8245483512235179307}
   - {fileID: 2012350521095109430}
+  playerSkillLevel: {fileID: 0}
   skills:
   - skillName: skill01
     description: askjdaldjw
     icon: {fileID: 21300000, guid: 4029a9cfeb86f134c9c5af05993eaac8, type: 3}
-    skillLevel: 0
     skillId: 0
     maxLevel: 5
     unlockStage: 0
+    skillType: 0
   - skillName: skill02
     description: 12314142
     icon: {fileID: 21300000, guid: 2bccd332882fcd14b9e4c377e432c587, type: 3}
-    skillLevel: 0
     skillId: 0
     maxLevel: 5
     unlockStage: 0
+    skillType: 0
   - skillName: skill03
     description: 4324jfkgew
     icon: {fileID: 21300000, guid: 2456dd2824f5ec540830760922f5bac6, type: 3}
-    skillLevel: 0
     skillId: 0
     maxLevel: 5
     unlockStage: 0
+    skillType: 0
 --- !u!1 &2334210874748664747
 GameObject:
   m_ObjectHideFlags: 0
@@ -2400,6 +2401,7 @@ MonoBehaviour:
   maxHpText: {fileID: 8690011867343025444}
   moveSpeedText: {fileID: 1631171240863778641}
   magnetismText: {fileID: 8982312535574340488}
+  testPlayerStats: {fileID: 0}
 --- !u!1 &9160354267513360209
 GameObject:
   m_ObjectHideFlags: 0
