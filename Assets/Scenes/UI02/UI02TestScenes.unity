@@ -1848,6 +1848,11 @@ PrefabInstance:
       propertyPath: passiveSkills.Array.data[1].skillLevel
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 8254157503543697736, guid: 95ad13248eabb16409281c5173a33b1a,
+        type: 3}
+      propertyPath: testPlayerStats
+      value: 
+      objectReference: {fileID: 1621133653}
     - target: {fileID: 8501218105007490616, guid: 95ad13248eabb16409281c5173a33b1a,
         type: 3}
       propertyPath: m_AnchorMax.y

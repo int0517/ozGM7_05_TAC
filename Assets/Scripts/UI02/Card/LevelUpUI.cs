@@ -47,6 +47,10 @@ public class LevelUpUI : MonoBehaviour
     //액티브 + 패시브 스킬을 하나로 관리하기 위한 리스트
     private List<SkillData> allSkills = new();
 
+
+    //남은 레벨업 횟수
+    private int remainLevelUpCount;
+
     private void Start()
     {
         // 액티브/패시브 스킬을 하나의 리스트로 합침
@@ -102,6 +106,13 @@ public class LevelUpUI : MonoBehaviour
         PlayTitleTween();
         //스킬 카드 3개 동작 애니메이션
         PlayCardOpenTween();
+    }
+
+    //레벨업 시작 함수 / 일반 웨이브는 1, 보스 웨이브는 2를 전달받는다.
+    private void StartLevelUp(int count)
+    {
+        remainLevelUpCount = count;
+        Open();
     }
     private void PlayTitleTween()
     {
@@ -160,13 +171,15 @@ public class LevelUpUI : MonoBehaviour
     //카드가 클릭 되었을 때
     public void SelectCard(SkillCardUI selectCard)
     {
-
+        //이미 카드 선택했으면 추가 입력 방지
         if (isSelected) return;
 
-        //!! 실제 저장
+        // 실제 스킬 저장
         playerStats.AddSkill(selectCard.GetSkillData());
 
         isSelected = true;
+        
+        //카드 선택 / 나머지 카드 숨기는 애니메이션 처리
         Sequence sequence = DOTween.Sequence().SetUpdate(true);
 
         for (int i = 0; i < skillCards.Length; i++)
@@ -186,7 +199,21 @@ public class LevelUpUI : MonoBehaviour
 
         sequence.OnComplete(() =>
         {
-            Close();
+            //레벨업 1회 완료
+            remainLevelUpCount--;
+
+            //아직 남은 레벨업이 있다면 
+            if (remainLevelUpCount > 0)
+            {
+                //UI를 다지 않고 카드만 새로 생성
+                RefreshCard();
+            }
+            //남은 레벨업이 없다면 
+            else
+            {
+                //UI 종료
+                Close();
+            }
         });
     }
     public void Close()
@@ -270,5 +297,24 @@ public class LevelUpUI : MonoBehaviour
                 playerStats.AddSkill(skill);
             }
         }
+    }
+    private void ShowNextLevelUp()
+    {
+        GenerateCards();
+        PlayCardOpenTween();
+    }
+    //보스 웨이브 때 연속 레벨업을 위해 레벨업UI 유지하여 새로운 카드만 생성
+    private void RefreshCard()
+    {
+        //새로운 카드 3개 다시 생성
+        GenerateCards();
+        //뽑을 카드가 없다면 UI종료
+        if(currentCards.Count== 0)
+        {
+            Close();
+            return;
+        }
+        //카드 등장 애니메이션 다시 실행
+        PlayCardOpenTween();
     }
 }
