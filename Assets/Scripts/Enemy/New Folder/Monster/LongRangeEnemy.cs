@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 using SP1Assets.MonsterPack2D;
 
-public class LongRangeEnemy : MonoBehaviour, IDamageable
+public class LongRangeEnemy : MonoBehaviour, IDamageable, IPoolable
 {
     [Header("몬스터 스텟")]
     [SerializeField] private float enemyMaxHP = 3;
@@ -67,7 +67,27 @@ public class LongRangeEnemy : MonoBehaviour, IDamageable
         monster.Init();
         PlayAnim("walk");
     }
+    public void Init()
+    {
+        StopAllCoroutines();
 
+        enemyCurrentHP = enemyMaxHP;
+
+        isAttack = false;
+        isAttacking = false;
+        isKnockedBack = false;
+        isBeingPulled = false;
+        timerCheck = false;
+        fireTimer = 0f;
+        isDead = false;
+        isHit = false;
+
+        rb.bodyType = RigidbodyType2D.Dynamic;
+        rb.linearVelocity = Vector2.zero;
+        rb.angularVelocity = 0f;
+
+        PlayAnim("walk");
+    }
     private void FacePlayer()
     {
         if (playerTransform == null) return;
@@ -133,7 +153,11 @@ public class LongRangeEnemy : MonoBehaviour, IDamageable
                 if (Random.Range(1, 101) == 1) Instantiate(shieldPrefab, transform.position, Quaternion.identity);
                 for (int i = 0; i < enemyPoint; i++)
                 {
-                    Instantiate(coinPrefab, transform.position, Quaternion.identity);
+                    Coin coin = CManagers.Pool.GetPool(coinPrefab.GetComponent<Coin>());
+
+                    coin.transform.position = transform.position;
+                    coin.transform.rotation = Quaternion.identity;
+                    coin.Init();
                 }
             }
             StopAllCoroutines();
@@ -173,7 +197,11 @@ public class LongRangeEnemy : MonoBehaviour, IDamageable
             StartCoroutine(ReturnToIdle());
             Vector2 direction = (playerTransform.position - firePoint.position).normalized;
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            GameObject bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.Euler(0, 0, angle));
+            EnemyBullets bullet = EBManagers.Pool.GetPool(bulletPrefab.GetComponent<EnemyBullets>());
+
+            bullet.transform.position = firePoint.position;
+            bullet.transform.rotation = Quaternion.identity;
+            bullet.Init(direction);
             fireTimer = 0f;
             timerCheck = false;
         }
@@ -201,14 +229,13 @@ public class LongRangeEnemy : MonoBehaviour, IDamageable
         if (isDead) yield break;
 
         isDead = true;
-
+        StopAllCoroutines();
         rb.linearVelocity = Vector2.zero;
         rb.bodyType = RigidbodyType2D.Kinematic;
         PlayAnim("die");
 
         yield return new WaitForSeconds(0.5f);
-
-        Destroy(gameObject);
+        EManagers.Pool.ReturnPool(this);
     }
     private IEnumerator KnockbackRoutine(Vector3 attackerPos)
     {
@@ -216,6 +243,22 @@ public class LongRangeEnemy : MonoBehaviour, IDamageable
 
         Vector2 knockbackDir = (transform.position - attackerPos).normalized;
         rb.linearVelocity = knockbackDir * knockbackForce;
+
+        yield return new WaitForSeconds(0.2f);
+
+        isKnockedBack = false;
+    }
+    public void ApplyKnockback(Vector3 attackerPos)//소라게 전달용ㅎㅎ
+    {
+        StartCoroutine(BossKnockbackRoutine(attackerPos));
+        StartCoroutine(HitRoutine());
+    }
+    private IEnumerator BossKnockbackRoutine(Vector3 attackerPos)
+    {
+        isKnockedBack = true;
+
+        Vector2 knockbackDir = (transform.position - attackerPos).normalized;
+        rb.linearVelocity = knockbackDir * 90;
 
         yield return new WaitForSeconds(0.2f);
 
@@ -234,5 +277,9 @@ public class LongRangeEnemy : MonoBehaviour, IDamageable
         pos.y = Mathf.Clamp(pos.y, posYMin, posYMax);
 
         rb.position = pos;
+    }
+    public void ReturnToPool()
+    {
+        EManagers.Pool.ReturnPool(this);
     }
 }

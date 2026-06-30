@@ -21,7 +21,7 @@ MonoBehaviour:
     spawnList:
     - enemyPrefab: {fileID: 156135380281197584, guid: bd66ab370a50ba344a9cca03da457bf4,
         type: 3}
-      count: 150
+      count: 30
       batchSize: 10
       spawnInterval: 3
     - enemyPrefab: {fileID: 3158757147613360294, guid: e20388ad3480cba428d251c7efa9ef87,

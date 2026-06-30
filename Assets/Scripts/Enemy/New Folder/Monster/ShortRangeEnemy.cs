@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 using SP1Assets.MonsterPack2D;
 
-public class ShortRangeEnemy : MonoBehaviour, IDamageable
+public class ShortRangeEnemy : MonoBehaviour, IDamageable, IPoolable
 {
     [Header("몬스터 스텟")]
     [SerializeField] private float enemyMaxHP = 3;
@@ -43,6 +43,23 @@ public class ShortRangeEnemy : MonoBehaviour, IDamageable
     }
     void Start()
     {
+        enemyCurrentHP = enemyMaxHP;
+        rb = GetComponent<Rigidbody2D>();
+        GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
+        if (playerObj != null)
+        {
+            playerTransform = playerObj.transform;
+            playerStat = playerObj.GetComponent<PlayerStat>();
+        }
+        monster = GetComponent<MonsterPrefabController>();
+
+        monster.Init();
+        PlayAnim("walk");
+
+    }
+    public void Init()
+    {
+        StopAllCoroutines();
         enemyCurrentHP = enemyMaxHP;
         rb = GetComponent<Rigidbody2D>();
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
@@ -117,7 +134,11 @@ public class ShortRangeEnemy : MonoBehaviour, IDamageable
                 if (Random.Range(1, 101) == 1) Instantiate(shieldPrefab, transform.position, Quaternion.identity);
                 for (int i = 0; i < enemyPoint; i++)
                 {
-                    Instantiate(coinPrefab, transform.position, Quaternion.identity);
+                    Coin coin = CManagers.Pool.GetPool(coinPrefab.GetComponent<Coin>());
+
+                    coin.transform.position = transform.position;
+                    coin.transform.rotation = Quaternion.identity;
+                    coin.Init();
                 }
             }
             StartCoroutine(Die());
@@ -132,7 +153,8 @@ public class ShortRangeEnemy : MonoBehaviour, IDamageable
         rb.bodyType = RigidbodyType2D.Kinematic;
         PlayAnim("die");
         yield return new WaitForSeconds(0.5f);
-        Destroy(gameObject);
+        StopAllCoroutines();
+        EManagers.Pool.ReturnPool(this);
     }
 
     private IEnumerator HitRoutine()
@@ -158,6 +180,22 @@ public class ShortRangeEnemy : MonoBehaviour, IDamageable
 
         isKnockedBack = false;
     }
+    public void ApplyKnockback(Vector3 attackerPos)//소라게 전달용ㅎㅎ
+    {
+        StartCoroutine(BossKnockbackRoutine(attackerPos));
+        StartCoroutine(HitRoutine());
+    }
+    private IEnumerator BossKnockbackRoutine(Vector3 attackerPos)
+    {
+        isKnockedBack = true;
+
+        Vector2 knockbackDir = (transform.position - attackerPos).normalized;
+        rb.linearVelocity = knockbackDir * 90;
+
+        yield return new WaitForSeconds(0.2f);
+
+        isKnockedBack = false;
+    }
     private void MoveLimit()
     {
         Vector2 pos = rb.position;
@@ -166,5 +204,9 @@ public class ShortRangeEnemy : MonoBehaviour, IDamageable
         pos.y = Mathf.Clamp(pos.y, posYMin, posYMax);
 
         rb.position = pos;
+    }
+    public void ReturnToPool()
+    {
+        EManagers.Pool.ReturnPool(this);
     }
 }

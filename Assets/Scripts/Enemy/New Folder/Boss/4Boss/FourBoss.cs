@@ -232,7 +232,11 @@ public class FourBoss : BossBase
                 {
                     for (int i = 0; i < enemyPoint; i++)
                     {
-                        Instantiate(coinPrefab, transform.position, Quaternion.identity);
+                        Coin coin = CManagers.Pool.GetPool(coinPrefab.GetComponent<Coin>());
+
+                        coin.transform.position = transform.position;
+                        coin.transform.rotation = Quaternion.identity;
+                        coin.Init();
                     }
                 }
                 RaiseBossDeath();

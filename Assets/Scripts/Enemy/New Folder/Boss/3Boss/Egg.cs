@@ -27,6 +27,29 @@ public class Egg : MonoBehaviour
     {
         GameObject prefabToSpawn = (Random.value > 0.5f) ? oneEnemyPrefab : twoEnemyPrefab;
 
+        ShortRangeEnemy shortEnemy = prefabToSpawn.GetComponent<ShortRangeEnemy>();
+        if (shortEnemy != null)
+        {
+            ShortRangeEnemy enemy =
+                EManagers.Pool.GetPool(shortEnemy);
+
+            enemy.transform.position = transform.position;
+            enemy.transform.rotation = Quaternion.identity;
+            enemy.Init();
+            return;
+        }
+
+        LongRangeEnemy longEnemy = prefabToSpawn.GetComponent<LongRangeEnemy>();
+        if (longEnemy != null)
+        {
+            LongRangeEnemy enemy =
+                EManagers.Pool.GetPool(longEnemy);
+
+            enemy.transform.position = transform.position;
+            enemy.transform.rotation = Quaternion.identity;
+            enemy.Init();
+            return;
+        }
         Instantiate(prefabToSpawn, transform.position, Quaternion.identity);
     }
 
