@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class UI02_SkillSlotInfo : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
@@ -16,7 +16,7 @@ public class UI02_SkillSlotInfo : MonoBehaviour, IPointerEnterHandler, IPointerE
         UIManager.Instance.HideTooltip();
     }
 
-    //¿ÜºÎ¿¡¼­ SkillData¸¦ Á÷Á¢ ¼öÁ¤ÇÏÁö ¾Ê°í, ÇÔ¼ö¸¦ ÅëÇØ¼­¸¸ Àü´Þ¹Þ¾Æ ¼³Á¤(Ä¸½¶È­)
+    //ï¿½ÜºÎ¿ï¿½ï¿½ï¿½ SkillDataï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê°ï¿½, ï¿½Ô¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ø¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Þ¹Þ¾ï¿½ ï¿½ï¿½ï¿½ï¿½(Ä¸ï¿½ï¿½È­)
     public void SetSkillData(UI02_SkillSlots.SkillData data)
     {
         skillData = data;
