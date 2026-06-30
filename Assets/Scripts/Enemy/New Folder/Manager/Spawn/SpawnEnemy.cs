@@ -33,6 +33,32 @@ public class SpawnEnemy : MonoBehaviour
     void SpawnEnemeis(GameObject prefab)
     {
         Vector2 spawnPos = GetRandomSpawnPosition();
+
+        ShortRangeEnemy shortEnemy = prefab.GetComponent<ShortRangeEnemy>();
+
+        if (shortEnemy != null)
+        {
+            ShortRangeEnemy enemy = EManagers.Pool.GetPool(shortEnemy);
+
+            enemy.transform.position = spawnPos;
+            enemy.transform.rotation = Quaternion.identity;
+            enemy.Init();
+            return;
+        }
+
+        LongRangeEnemy longEnemy = prefab.GetComponent<LongRangeEnemy>();
+
+        if (longEnemy != null)
+        {
+            LongRangeEnemy enemy = EManagers.Pool.GetPool(longEnemy);
+
+            enemy.transform.position = spawnPos;
+            enemy.transform.rotation = Quaternion.identity;
+            enemy.Init();
+            return;
+        }
+
+    
         Instantiate(prefab, spawnPos, Quaternion.identity);
     }
 
