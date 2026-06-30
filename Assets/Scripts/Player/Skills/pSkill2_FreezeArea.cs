@@ -24,10 +24,13 @@ public class pSkill2_FreezeArea : MonoBehaviour
 
     void Update()
     {
-        if (attackTimer < attackTimerMax) attackTimer += Time.deltaTime
+        if (!pStat.IsDead)
+        {
+            if (attackTimer < attackTimerMax) attackTimer += Time.deltaTime
                  * PlayerStatDictionary.PlayerAttackSpeed[pStat.GetStatLvl(PlayerStatEnum.AttackSpeed)];
 
-        StartCoroutine(Freeze());
+            StartCoroutine(Freeze());
+        }
     }
 
     IEnumerator Freeze()

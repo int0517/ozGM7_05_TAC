@@ -31,10 +31,13 @@ public class pSkill3_Laser : MonoBehaviour
 
     void Update()
     {
-        if (attackTimer < attackTimerMax) attackTimer += Time.deltaTime
+        if (!pStat.IsDead)
+        {
+            if (attackTimer < attackTimerMax) attackTimer += Time.deltaTime
                  * PlayerStatDictionary.PlayerAttackSpeed[pStat.GetStatLvl(PlayerStatEnum.AttackSpeed)];
 
-        if (!isLaserActive && attackTimer >= attackTimerMax) StartCoroutine(LaserActive());
+            if (!isLaserActive && attackTimer >= attackTimerMax) StartCoroutine(LaserActive());
+        }
     }
 
     private void SearchEnemy()

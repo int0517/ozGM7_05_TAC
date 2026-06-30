@@ -17,10 +17,13 @@ public class pSkill1_FireBall : MonoBehaviour
 
     void Update()
     {
-        if (attackTimer < attackTimerMax) attackTimer += Time.deltaTime
+        if(!pStat.IsDead)
+        {
+            if (attackTimer < attackTimerMax) attackTimer += Time.deltaTime
                  * PlayerStatDictionary.PlayerAttackSpeed[pStat.GetStatLvl(PlayerStatEnum.AttackSpeed)];
 
-        Attack();
+            Attack();
+        }
     }
 
     private void Attack()

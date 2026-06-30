@@ -18,6 +18,12 @@ public class PlayerAnimationController : MonoBehaviour
     private void Update()
     {
         SpriteRotate();
+
+        AnimatorStateInfo info = playerAnimator.GetCurrentAnimatorStateInfo(0);
+
+        //Debug.Log($"State:{info.shortNameHash} Time:{info.normalizedTime} Speed:{playerAnimator.speed}");
+
+        Debug.Log(Animator.StringToHash("hit"));
     }
 
     private void SpriteRotate()
@@ -54,6 +60,6 @@ public class PlayerAnimationController : MonoBehaviour
 
     public PlayerAnimState GetCurrentState()
     {
-        return currentState;
+        return (PlayerAnimState)playerAnimator.GetInteger(StateHash);
     }
 }

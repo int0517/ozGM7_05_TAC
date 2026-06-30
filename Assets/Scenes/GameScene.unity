@@ -441,8 +441,7 @@ MonoBehaviour:
   pCurrentHP: 0
   healEffect: {fileID: 8612435960042930605}
   sheildEffect: {fileID: 4962502266330779972}
-  playerAnimationController: {fileID: 0}
-  isDead: 0
+  playerAnimationController: {fileID: 611944849}
 --- !u!114 &72144491
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3270,7 +3269,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1657918437279295638, guid: f9e92294f7dd8124bb4326ed4d1fae9f,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1241422105}
+      addedObject: {fileID: 1261987544}
   m_SourcePrefab: {fileID: 100100000, guid: f9e92294f7dd8124bb4326ed4d1fae9f, type: 3}
 --- !u!95 &1150190029 stripped
 Animator:
@@ -3456,6 +3455,25 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   damage: 2
+  pStat: {fileID: 72144490}
+--- !u!1 &1261987543 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1657918437279295638, guid: f9e92294f7dd8124bb4326ed4d1fae9f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1150190028}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1261987544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1261987543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd6f4a1bc4a25ba49908c408347636a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HitEndEvent
   pStat: {fileID: 72144490}
 --- !u!1 &1275381430
 GameObject:
