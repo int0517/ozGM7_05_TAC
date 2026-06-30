@@ -224,6 +224,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4adcc64df1b664f49be8976e0a2a6ab8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerStat
+  pCurrentHP: 0
+  playerAnimationController: {fileID: 0}
+  isDead: 0
 --- !u!1 &1494440672
 GameObject:
   m_ObjectHideFlags: 0
@@ -459,6 +462,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 115759846370373696, guid: 95ad13248eabb16409281c5173a33b1a,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 7829896471176830699}
+    - target: {fileID: 115759846370373696, guid: 95ad13248eabb16409281c5173a33b1a,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: GoExit
+      objectReference: {fileID: 0}
     - target: {fileID: 245815842311010437, guid: 95ad13248eabb16409281c5173a33b1a,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -964,6 +977,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4388386578689717247, guid: 95ad13248eabb16409281c5173a33b1a,
+        type: 3}
+      propertyPath: testPlayerStats
+      value: 
+      objectReference: {fileID: 1621133653}
     - target: {fileID: 4655838772819441654, guid: 95ad13248eabb16409281c5173a33b1a,
         type: 3}
       propertyPath: m_Name
@@ -1730,6 +1748,18 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 95ad13248eabb16409281c5173a33b1a, type: 3}
+--- !u!114 &7829896471176830699 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7304075407191997118, guid: 95ad13248eabb16409281c5173a33b1a,
+    type: 3}
+  m_PrefabInstance: {fileID: 7829896471176830698}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a7d4c9e6cb029641a266c4ba1dd7327, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PausePanel
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

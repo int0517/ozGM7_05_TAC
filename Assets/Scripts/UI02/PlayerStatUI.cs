@@ -12,6 +12,8 @@ public class PlayerStatUI : MonoBehaviour
     [SerializeField] protected TMP_Text moveSpeedText;
     [SerializeField] protected TMP_Text magnetismText;
 
+    [SerializeField] private UI02_TestPlayerStats testPlayerStats;
+
     public void UpdateUI(PlayerStat playerStat)
     {
         if (playerStat == null)
@@ -20,7 +22,7 @@ public class PlayerStatUI : MonoBehaviour
             return;
         }
 
-        scoreText.text = $"SCORE : ";
+        scoreText.text = $"SCORE : {testPlayerStats.Score}";
         levelText.text = $"Lv. {playerStat.PLevel}";
 
         //현재 레벨 가져오기

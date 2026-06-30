@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine.UI;
 using System;
+using System.Runtime.CompilerServices;
 
 public class UI02_SkillSlots : MonoBehaviour
 {
@@ -34,6 +35,20 @@ public class UI02_SkillSlots : MonoBehaviour
 
     [SerializeField] private List<SkillData> skills;
 
+    //캐싱용 배열 추가
+    private UI02_SkillSlotInfo[] slotInfos;
+
+    //Awake에서 캐싱 
+    private void Awake()
+    {
+        slotInfos = new UI02_SkillSlotInfo[skillSlots.Length];
+
+        for(int i = 0; i <skillSlots.Length; i++)
+        {
+            slotInfos[i] = skillSlots[i].GetComponent<UI02_SkillSlotInfo>();
+        }
+    }
+
     public void UpdateSkillsSlots()
     {
         if (skills.Count == 0) return;
@@ -43,12 +58,11 @@ public class UI02_SkillSlots : MonoBehaviour
         {
             skillSlots[i].sprite = skills[i].icon;
 
-            UI02_SkillSlotInfo slot = skillSlots[i].GetComponent<UI02_SkillSlotInfo>(); //겟컴포넌트 비용이들기때문에 캐싱 어웨이크에서 캐싱 배열로 호출하고
+            //UI02_SkillSlotInfo slot = skillSlots[i].GetComponent<UI02_SkillSlotInfo>(); //겟컴포넌트 비용이들기때문에 캐싱 어웨이크에서 캐싱 배열로 호출하기
 
-            if (slot != null)
+            if (slotInfos[i] != null)
             {
-                //SkillData를 직접 접근하지 않기 위해 SkillSlotInfo의 SetSkillData()를 통해 전달.
-                slot.SetSkillData(skills[i]);
+                slotInfos[i].SetSkillData(skills[i]);
             }
         }
     }
