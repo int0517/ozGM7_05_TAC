@@ -158,6 +158,22 @@ public class ShortRangeEnemy : MonoBehaviour, IDamageable
 
         isKnockedBack = false;
     }
+    public void ApplyKnockback(Vector3 attackerPos)//소라게 전달용ㅎㅎ
+    {
+        StartCoroutine(BossKnockbackRoutine(attackerPos));
+        StartCoroutine(HitRoutine());
+    }
+    private IEnumerator BossKnockbackRoutine(Vector3 attackerPos)
+    {
+        isKnockedBack = true;
+
+        Vector2 knockbackDir = (transform.position - attackerPos).normalized;
+        rb.linearVelocity = knockbackDir * 90;
+
+        yield return new WaitForSeconds(0.2f);
+
+        isKnockedBack = false;
+    }
     private void MoveLimit()
     {
         Vector2 pos = rb.position;
