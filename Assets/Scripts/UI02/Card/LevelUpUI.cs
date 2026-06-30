@@ -28,9 +28,13 @@ public class LevelUpUI : MonoBehaviour
     [SerializeField]
     private UI02_TestPlayerStats playerStats;
 
-    //!!!
-    [SerializeField] 
-    private int currentStage;
+    //현재 웨이브
+    private int currentWave = 1;
+    public int CurrentWave => currentWave;
+    public void NextWave()
+    {
+        currentWave++;
+    }
 
     [Header("액티브 스킬")]
     [SerializeField]
@@ -60,7 +64,7 @@ public class LevelUpUI : MonoBehaviour
         if (isOpen) return;
         Debug.Log($"allSkills: {allSkills.Count}");
         Debug.Log($"active: {activeSkills.Count}, passive: {passiveSkills.Count}");
-        Debug.Log($"stage: {currentStage}");
+        Debug.Log($"stage: {currentWave}");
 
         if (playerStats == null)
         {
@@ -244,7 +248,7 @@ public class LevelUpUI : MonoBehaviour
         if (skill.skillType == SkillType.Default)
             return false;
 
-        if (currentStage < skill.unlockStage)
+        if (currentWave < skill.unlockStage)
             return false;
 
         if (skill.skillLevel == 1)
