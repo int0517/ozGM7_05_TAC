@@ -1171,7 +1171,7 @@ MonoBehaviour:
   enemyATK: 1
   enemySpeed: 2
   enemyPoint: 0
-  coinPrefab: {fileID: 5971139616951717026, guid: f78e6e6459eac404689428af753400a4,
+  coinPrefab: {fileID: 3149272903311738704, guid: f22616b08da0eb64da238330c184b111,
     type: 3}
   potionPrefab: {fileID: 4674873313410750760, guid: 09a203daf38db2c4d875cdeb06274dfc,
     type: 3}
