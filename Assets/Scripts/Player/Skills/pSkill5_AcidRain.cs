@@ -43,31 +43,31 @@ public class pSkill5_AcidRain : MonoBehaviour
                 pSkill5_AcidRainController bullet1 = Managers.Pool.GetPool(acidrainPrefab);
                 bullet1.transform.position = targetPosition1;
                 bullet1.transform.rotation = Quaternion.identity;
-                bullet1.Init(pStat);
+                bullet1.Init(pStat, acidrainPrefab.gameObject);
                 break;
             case 2:
                 pSkill5_AcidRainController bullet2_1 = Managers.Pool.GetPool(acidrainPrefab);
                 bullet2_1.transform.position = targetPosition1;
                 bullet2_1.transform.rotation = Quaternion.identity;
-                bullet2_1.Init(pStat);
+                bullet2_1.Init(pStat, acidrainPrefab.gameObject);
                 pSkill5_AcidRainController bullet2_2 = Managers.Pool.GetPool(acidrainPrefab);
                 bullet2_2.transform.position = targetPosition2;
                 bullet2_2.transform.rotation = Quaternion.identity;
-                bullet2_2.Init(pStat);
+                bullet2_2.Init(pStat, acidrainPrefab.gameObject);
                 break;
             case 3:
                 pSkill5_AcidRainController bullet3_1 = Managers.Pool.GetPool(acidrainPrefab);
                 bullet3_1.transform.position = targetPosition1;
                 bullet3_1.transform.rotation = Quaternion.identity;
-                bullet3_1.Init(pStat);
+                bullet3_1.Init(pStat, acidrainPrefab.gameObject);
                 pSkill5_AcidRainController bullet3_2 = Managers.Pool.GetPool(acidrainPrefab);
                 bullet3_2.transform.position = targetPosition2;
                 bullet3_2.transform.rotation = Quaternion.identity;
-                bullet3_2.Init(pStat);
+                bullet3_2.Init(pStat, acidrainPrefab.gameObject);
                 pSkill5_AcidRainController bullet3_3 = Managers.Pool.GetPool(acidrainPrefab);
                 bullet3_3.transform.position = targetPosition3;
                 bullet3_3.transform.rotation = Quaternion.identity;
-                bullet3_3.Init(pStat);
+                bullet3_3.Init(pStat, acidrainPrefab.gameObject);
                 break;
             default:
                 break;

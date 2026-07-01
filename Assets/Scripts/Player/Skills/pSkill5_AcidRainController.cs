@@ -14,11 +14,14 @@ public class pSkill5_AcidRainController: MonoBehaviour
     [SerializeField] private float lifeTime = 3f;
     private float timer;
 
-    public void Init(PlayerStat pStat)
+    private GameObject originPrefab;
+
+    public void Init(PlayerStat pStat, GameObject prefab)
     {
         // 이펙트
         float damageBonus = PlayerStatDictionary.PlayerDamageIncrease[pStat.GetStatLvl(PlayerStatEnum.DamageIncrease)];
         timer = lifeTime;
+        originPrefab = prefab;
     }
 
     private void Update()
@@ -28,7 +31,7 @@ public class pSkill5_AcidRainController: MonoBehaviour
         timer -= Time.deltaTime;
         if (timer <= 0f)
         {
-            Managers.Pool.ReturnPool(this);
+            Managers.Pool.ReturnPool(originPrefab, this);
         }
     }
 

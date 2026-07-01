@@ -64,6 +64,7 @@ public class PlayerStat : MonoBehaviour
     private void Update()
     {
         if (playerNonhitTimer < playerNonhitTimerMax) playerNonhitTimer += Time.deltaTime;
+        pCurrentHP = pMaxHP;
     }
 
     public void IncreasePlayerLevel()

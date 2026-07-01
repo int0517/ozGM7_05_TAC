@@ -40,7 +40,7 @@ public class PlayerNormalAttack : MonoBehaviour
                 PlayerNormalAttackBullet bullet1 = Managers.Pool.GetPool(bulletPrefab);
                 bullet1.transform.position = firePoint[0].position;
                 bullet1.transform.rotation = transform.rotation;
-                bullet1.Init(pStat);
+                bullet1.Init(pStat, bulletPrefab.gameObject);
                 break;
             case 2:
                 // Instantiate(bulletPrefab, firePoint[1].position, transform.rotation).Init(pStat);
@@ -48,11 +48,11 @@ public class PlayerNormalAttack : MonoBehaviour
                 PlayerNormalAttackBullet bullet2_1 = Managers.Pool.GetPool(bulletPrefab);
                 bullet2_1.transform.position = firePoint[1].position;
                 bullet2_1.transform.rotation = transform.rotation;
-                bullet2_1.Init(pStat);
+                bullet2_1.Init(pStat, bulletPrefab.gameObject);
                 PlayerNormalAttackBullet bullet2_2 = Managers.Pool.GetPool(bulletPrefab);
                 bullet2_2.transform.position = firePoint[2].position;
                 bullet2_2.transform.rotation = transform.rotation;
-                bullet2_2.Init(pStat);
+                bullet2_2.Init(pStat, bulletPrefab.gameObject);
                 break;
             case 3:
                 // Instantiate(bulletPrefab, firePoint[0].position, transform.rotation).Init(pStat);
@@ -61,15 +61,15 @@ public class PlayerNormalAttack : MonoBehaviour
                 PlayerNormalAttackBullet bullet3_1 = Managers.Pool.GetPool(bulletPrefab);
                 bullet3_1.transform.position = firePoint[0].position;
                 bullet3_1.transform.rotation = transform.rotation;
-                bullet3_1.Init(pStat);
+                bullet3_1.Init(pStat, bulletPrefab.gameObject);
                 PlayerNormalAttackBullet bullet3_2 = Managers.Pool.GetPool(bulletPrefab);
                 bullet3_2.transform.position = firePoint[3].position;
                 bullet3_2.transform.rotation = transform.rotation;
-                bullet3_2.Init(pStat);
+                bullet3_2.Init(pStat, bulletPrefab.gameObject);
                 PlayerNormalAttackBullet bullet3_3 = Managers.Pool.GetPool(bulletPrefab);
                 bullet3_3.transform.position = firePoint[4].position;
                 bullet3_3.transform.rotation = transform.rotation;
-                bullet3_3.Init(pStat);
+                bullet3_3.Init(pStat, bulletPrefab.gameObject);
                 break;
         }
         

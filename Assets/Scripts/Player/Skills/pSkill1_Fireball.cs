@@ -40,19 +40,19 @@ public class pSkill1_FireBall : MonoBehaviour
                     pSkill1_FireballBullet bullet1 = Managers.Pool.GetPool(bulletPrefabs[0]);
                     bullet1.transform.position = firePoint.position;
                     bullet1.transform.rotation = transform.rotation;
-                    bullet1.Init(pStat);
+                    bullet1.Init(pStat, bulletPrefabs[0].gameObject);
                     break;
                 case 2:
                     pSkill1_FireballBullet bullet2 = Managers.Pool.GetPool(bulletPrefabs[1]);
                     bullet2.transform.position = firePoint.position;
                     bullet2.transform.rotation = transform.rotation;
-                    bullet2.Init(pStat);
+                    bullet2.Init(pStat, bulletPrefabs[1].gameObject);
                     break;
                 case 3:
                     pSkill1_FireballBullet bullet3 = Managers.Pool.GetPool(bulletPrefabs[2]);
                     bullet3.transform.position = firePoint.position;
                     bullet3.transform.rotation = transform.rotation;
-                    bullet3.Init(pStat);
+                    bullet3.Init(pStat, bulletPrefabs[2].gameObject);
                     break;
                 default:
                     break;

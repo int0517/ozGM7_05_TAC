@@ -29,4 +29,16 @@ public class PlayerSkillLevel : MonoBehaviour
                 return -1;
         }
     }
+
+    public void LevelUpSkill(int skillId)
+    {
+        switch ((PlayerStatEnum)skillId)
+        {
+            case PlayerStatEnum.Skill1: pSkill1.Skill1LevelUp(); break;
+            case PlayerStatEnum.Skill2: pSkill2.Skill2LevelUp(); break;
+            case PlayerStatEnum.Skill3: pSkill3.Skill3LevelUp(); break;
+            case PlayerStatEnum.Skill4: pSkill4.Skill4LevelUp(); break;
+            case PlayerStatEnum.Skill5: pSkill5.Skill5LevelUp(); break;
+        }
+    }
 }

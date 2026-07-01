@@ -2,8 +2,6 @@
 
 public class pSkill1_FireballBullet : MonoBehaviour
 {
-    private static Sprite fallbackFireballSprite;
-
     [SerializeField] private LayerMask targetLayer;
     [SerializeField] private float damage;
     private float damageBonus;
@@ -17,11 +15,17 @@ public class pSkill1_FireballBullet : MonoBehaviour
     [SerializeField] private float lifeTime = 5f;
     private float timer;
 
-    public void Init(PlayerStat pStat)
+    [SerializeField] private GameObject fireballVFX;
+    [SerializeField] private GameObject explosionVFX;
+
+    private GameObject originPrefab;
+
+    public void Init(PlayerStat pStat, GameObject prefab)
     {
         damageBonus = PlayerStatDictionary.PlayerDamageIncrease[pStat.GetStatLvl(PlayerStatEnum.DamageIncrease)];
         SearchEnemy();
         timer = lifeTime;
+        originPrefab = prefab;
     }
 
     void Update()
@@ -31,7 +35,7 @@ public class pSkill1_FireballBullet : MonoBehaviour
         timer -= Time.deltaTime;
         if (timer <= 0f)
         {
-            Managers.Pool.ReturnPool(this);
+            Managers.Pool.ReturnPool(originPrefab, this);
         }
     }
 
@@ -77,6 +81,8 @@ public class pSkill1_FireballBullet : MonoBehaviour
     private void Explode()
     {
         // 폭발 이펙트 추가
+        fireballVFX.SetActive(false);
+        explosionVFX.SetActive(true);
 
         Collider2D[] enemies = Physics2D.OverlapCircleAll(transform.position, explosionRadius, targetLayer);
 
@@ -86,11 +92,10 @@ public class pSkill1_FireballBullet : MonoBehaviour
         {
             if (enemy.gameObject.GetComponent<IDamageable>() is IDamageable damageable)
             {
+                moveSpeed = 0f;
                 damageable.TakeDamage(totalDamage);
             }
         }
-
-        Managers.Pool.ReturnPool(this);
     }
 
     private void OnDrawGizmos()
