@@ -174,4 +174,4 @@ MonoBehaviour:
   bulletSpeed: 5
   bulletATK: 1
   bulletLifeTime: 5
-  rotationSpeed: 300
+  rotationSpeed: 900
