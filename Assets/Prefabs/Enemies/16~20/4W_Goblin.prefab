@@ -491,6 +491,8 @@ MonoBehaviour:
     type: 3}
   shieldPrefab: {fileID: 7036755831818187510, guid: 448c5e53d54f1ac40bbd746939968d2d,
     type: 3}
+  deathEffect: {fileID: 9000928523967782430, guid: 836c0a9b2d1354d4a9bb85589c1a07dd,
+    type: 3}
   knockbackForce: 20
   posXMax: 28.25
   posXMin: -28.25

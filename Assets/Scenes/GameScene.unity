@@ -176,7 +176,7 @@ MonoBehaviour:
   - {fileID: 395068535}
   - {fileID: 163100854}
   - {fileID: 1321495543}
-  normalAttackLevel: 1
+  normalAttackLevel: 3
   attackTimerMax: 0.4
   attackTimer: 0
   pStat: {fileID: 72144490}
@@ -2883,7 +2883,7 @@ PrefabInstance:
     - target: {fileID: 3145273434250438604, guid: 207618cbfee1ceb4bad2c901086197dc,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6509151416658855989, guid: 207618cbfee1ceb4bad2c901086197dc,
         type: 3}

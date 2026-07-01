@@ -18,6 +18,7 @@ public class LongRangeEnemy : MonoBehaviour, IDamageable, IPoolable
     [SerializeField] private GameObject coinPrefab;
     [SerializeField] private GameObject potionPrefab;
     [SerializeField] private GameObject shieldPrefab;
+    [SerializeField] private GameObject deathEffect;
     private PlayerStat playerStat;
 
     public float knockbackForce = 20.0f;
@@ -82,9 +83,15 @@ public class LongRangeEnemy : MonoBehaviour, IDamageable, IPoolable
         isDead = false;
         isHit = false;
 
+        rb = GetComponent<Rigidbody2D>();
         rb.bodyType = RigidbodyType2D.Dynamic;
-        rb.linearVelocity = Vector2.zero;
-        rb.angularVelocity = 0f;
+        GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
+        if (playerObj != null)
+        {
+            playerTransform = playerObj.transform;
+            playerStat = playerObj.GetComponent<PlayerStat>();
+        }
+        monster = GetComponent<MonsterPrefabController>();
 
         PlayAnim("walk");
     }
@@ -160,7 +167,6 @@ public class LongRangeEnemy : MonoBehaviour, IDamageable, IPoolable
                     coin.Init();
                 }
             }
-            StopAllCoroutines();
             StartCoroutine(Die());
         }
     }
@@ -200,7 +206,7 @@ public class LongRangeEnemy : MonoBehaviour, IDamageable, IPoolable
             EnemyBullets bullet = EBManagers.Pool.GetPool(bulletPrefab.GetComponent<EnemyBullets>());
 
             bullet.transform.position = firePoint.position;
-            bullet.transform.rotation = Quaternion.identity;
+            bullet.transform.rotation = Quaternion.Euler(0, 0, angle);
             bullet.Init(direction);
             fireTimer = 0f;
             timerCheck = false;
@@ -219,7 +225,7 @@ public class LongRangeEnemy : MonoBehaviour, IDamageable, IPoolable
         isHit = true;
         PlayAnim("hit");
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
 
         PlayAnim("walk");
         isHit = false;
@@ -227,14 +233,14 @@ public class LongRangeEnemy : MonoBehaviour, IDamageable, IPoolable
     private IEnumerator Die()
     {
         if (isDead) yield break;
-
         isDead = true;
-        StopAllCoroutines();
         rb.linearVelocity = Vector2.zero;
         rb.bodyType = RigidbodyType2D.Kinematic;
         PlayAnim("die");
-
         yield return new WaitForSeconds(0.5f);
+        Instantiate(deathEffect, transform.position, Quaternion.identity);
+        PlayAnim("walk");
+        yield return new WaitForSeconds(0.1f);
         EManagers.Pool.ReturnPool(this);
     }
     private IEnumerator KnockbackRoutine(Vector3 attackerPos)

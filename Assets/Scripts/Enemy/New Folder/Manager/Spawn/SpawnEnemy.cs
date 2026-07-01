@@ -8,11 +8,25 @@ public class SpawnEnemy : MonoBehaviour
     [SerializeField] private float posYMax = 17.75f;
     [SerializeField] private float posYMin = -17.75f;
 
+    private bool stopSpawn = false;
+
+    public void StopSpawn()
+    {
+        stopSpawn = true;
+    }
+
+    public void ResumeSpawn()
+    {
+        stopSpawn = false;
+    }
+
     public IEnumerator SpawnEnemyRoutine(EnemySpawnInfo info)
     {
         int spawnedCount = 0;
         while (spawnedCount < info.count)
         {
+            if (stopSpawn)
+                yield break;
             for (int i = 0; i < info.batchSize; i++)
             {
                 if (spawnedCount >= info.count) break;
@@ -26,6 +40,9 @@ public class SpawnEnemy : MonoBehaviour
     public IEnumerator SpawnBossRoutine(WaveInfo info)
     {
         yield return new WaitForSeconds(info.bossSpawnDelay);
+
+        if (stopSpawn)
+            yield break;
 
         SpawnEnemeis(info.bossPrefab);
     }
