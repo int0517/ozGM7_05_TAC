@@ -7,7 +7,6 @@ public class HitEndEvent : MonoBehaviour
 
     public void HitEnd()
     {
-        Debug.Log("HitEnd");
         pStat.EndHit();
     }
 }
