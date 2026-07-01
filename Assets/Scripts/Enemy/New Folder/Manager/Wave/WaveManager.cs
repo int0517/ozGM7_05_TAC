@@ -54,8 +54,7 @@ public class WaveManager : MonoBehaviour
         spawnManager.ResumeSpawn();
         isBossDead = false;
 
-        //웨이브 시작 시점에 보스웨이브 여부를 미리 저장
-        //Clean() 시점에 다시 조회하면 이미 다음 웨이브 인덱스로 넘어가 있어서 틀린 값이 나옴
+        
         bool isCurrentlyBossWave = spawnManager.IsCurrentWaveBoss();
 
         currentWaveTimer = 0f;
@@ -67,6 +66,7 @@ public class WaveManager : MonoBehaviour
             {
                 currentWaveTimer += Time.deltaTime;
                 UI.UpdateTimerBar(currentWaveTimer, bossTime);
+                
                 yield return null;
             }
 

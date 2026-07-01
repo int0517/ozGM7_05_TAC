@@ -301,9 +301,9 @@ GameObject:
   - component: {fileID: 6570656877009903499}
   - component: {fileID: 3382750634923372212}
   - component: {fileID: 4671422774645868}
-  m_Layer: 20
+  m_Layer: 8
   m_Name: Tower
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -598,7 +598,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8192289020143212123}
   - component: {fileID: 2726270614125578996}
-  m_Layer: 20
+  m_Layer: 8
   m_Name: Shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
