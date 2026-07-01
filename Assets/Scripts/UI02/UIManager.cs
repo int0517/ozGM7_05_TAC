@@ -34,6 +34,8 @@ public class UIManager : MonoBehaviour //UI 열기/닫기 및 입력 처리 담당
 
     private void Awake()
     {
+        CurrentState = GameState.Playing; //게임 씬 시작 시 Playing으로 고정
+
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
@@ -100,6 +102,7 @@ public class UIManager : MonoBehaviour //UI 열기/닫기 및 입력 처리 담당
     {
         CurrentState = GameState.Playing;
         pausePanel.Close();
+        HideTooltip();
     }
 
     //GameOver

@@ -21,6 +21,6 @@ public class PausePanel : StatPanel
 
     public void GoResume()
     {
-        Close();
+        UIManager.Instance.ClosePause();
     }
 }

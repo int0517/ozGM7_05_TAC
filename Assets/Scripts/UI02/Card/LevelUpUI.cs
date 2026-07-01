@@ -28,13 +28,13 @@ public class LevelUpUI : MonoBehaviour
     [SerializeField]
     private UI02_TestPlayerStats playerStats;
 
-    //현재 웨이브
-    private int currentWave = 1;
-    public int CurrentWave => currentWave;
-    public void NextWave()
-    {
-        currentWave++;
-    }
+    ////현재 웨이브 -> 웨이브 트래커가 관리하도록 삭제
+    //private int currentWave = 1;
+    //public int CurrentWave => currentWave;
+    //public void NextWave()
+    //{
+    //    currentWave++;
+    //}
 
     [Header("액티브 스킬")]
     [SerializeField]
@@ -68,7 +68,6 @@ public class LevelUpUI : MonoBehaviour
         if (isOpen) return;
         Debug.Log($"allSkills: {allSkills.Count}");
         Debug.Log($"active: {activeSkills.Count}, passive: {passiveSkills.Count}");
-        Debug.Log($"stage: {currentWave}");
 
         if (playerStats == null)
         {
@@ -130,8 +129,18 @@ public class LevelUpUI : MonoBehaviour
     //웨이브 끝났다는 신호 받으면 실행
     private void HandleWaveEnded(bool wasBossWave)
     {
-        NextWave();
-        StartLevelUp(wasBossWave ? 2 : 1);
+        // 보스웨이브면 2초 후에 레벨업 패널 열기, 일반웨이브면 바로 열기
+        if (wasBossWave)
+    {
+        DOVirtual.DelayedCall(2f, () =>
+        {
+            StartLevelUp(2);
+        }).SetUpdate(true); // TimeScale 영향 안 받게
+    }
+    else
+    {
+        StartLevelUp(1);
+    }
     }
     private void PlayTitleTween()
     {
@@ -142,8 +151,9 @@ public class LevelUpUI : MonoBehaviour
     }
     private void PlayCardOpenTween()
     {
+        Time.timeScale = 1f; //타임 스케일 복구
+        
         //우선 모든 카드를 먼저 숨기자.
-
         for (int i = 0; i < skillCards.Length; i++)
         {
             skillCards[i].HideInstant();
@@ -295,7 +305,7 @@ public class LevelUpUI : MonoBehaviour
             return false;
 
         //스테이지 제한
-        if (currentWave < skill.unlockStage)
+        if (WaveTracker.Instance.CurrentWave < skill.unlockStage)
             return false;
 
         // 이미 최대 레벨이면 제외
@@ -319,6 +329,8 @@ public class LevelUpUI : MonoBehaviour
     //보스 웨이브 때 연속 레벨업을 위해 레벨업UI 유지하여 새로운 카드만 생성
     private void RefreshCard()
     {
+        isSelected = false; //카드 선택 상태 초기화
+
         //새로운 카드 3개 다시 생성
         GenerateCards();
         //뽑을 카드가 없다면 UI종료

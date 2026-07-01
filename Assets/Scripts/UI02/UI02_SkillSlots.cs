@@ -51,10 +51,20 @@ public class UI02_SkillSlots : MonoBehaviour
 
     public void UpdateSkillsSlots()
     {
-        if (skills.Count == 0) return;
-        if(skillSlots.Length == 0) return;
-        
-        for(int i = 0; i < skills.Count && i < skillSlots.Length; i++)
+        Debug.Log("UpdateSkillsSlots 호출됨"); // 테스트로그
+        if (skills.Count == 0) 
+        {
+            Debug.Log("skills 비어있음"); // 테스트로그
+            return;
+        }
+
+        if (skillSlots.Length == 0)
+        {
+            Debug.Log("skillSlots 비어있음"); // 테스트로그
+            return;
+        }
+
+        for (int i = 0; i < skills.Count && i < skillSlots.Length; i++)
         {
             //스킬 아이콘 표시
             skillSlots[i].sprite = skills[i].icon;

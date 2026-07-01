@@ -15,6 +15,10 @@ public class SkillCardUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     [Header("마우스 오버 크기")]
     [SerializeField] private float hoveScale = 1.09f;
 
+    [Header("FX")]
+    [SerializeField] private ParticleSystem hoverFX;   // 마우스 올렸을 때
+    [SerializeField] private ParticleSystem selectFX;  // 선택했을 때
+
     private RectTransform rectTransform;
 
     private Vector2 originalPosition;
@@ -120,6 +124,9 @@ public class SkillCardUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         transform.DOKill();
 
         transform.DOScale(originalScale * hoveScale, 0.15f).SetEase(Ease.OutQuad).SetUpdate(true);
+
+        //호버 FX 재생
+        if (hoverFX != null) hoverFX.Play();
     }
     public void OnPointerExit(PointerEventData eventData)
     {
@@ -128,12 +135,20 @@ public class SkillCardUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         transform.DOKill();
 
         transform.DOScale(originalScale, 0.15f).SetEase(Ease.OutQuad).SetUpdate(true);
+
+        // 호버 FX 끄기
+        if (hoverFX != null) hoverFX.Stop();
     }
 
     //카드가 클릭되었을 때 Button의 OnClick에서 호출할 녀석
     public void OnClickCard()
     {
         if (!isClickable) return;
+        levelUpUI.SelectCard(this);
+
+        //선택 FX 재생
+        if (selectFX != null) selectFX.Play();
+
         levelUpUI.SelectCard(this);
     }
 
