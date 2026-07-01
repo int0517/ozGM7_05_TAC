@@ -131,7 +131,31 @@ public class LevelUpUI : MonoBehaviour
     private void HandleWaveEnded(bool wasBossWave)
     {
         NextWave();
-        StartLevelUp(wasBossWave ? 2 : 1);
+        // 보스웨이브면 2초 후에 레벨업 패널 열기, 일반웨이브면 바로 열기
+        if (wasBossWave)
+        {
+            DOVirtual.DelayedCall(2f, () =>
+            {
+                StartLevelUp(2);
+            }).SetUpdate(true); // TimeScale 영향 안 받게
+        }
+        else
+        {
+            StartLevelUp(1);
+        }
+
+        // 보스웨이브면 2초 후에 레벨업 패널 열기, 일반웨이브면 바로 열기
+        if (wasBossWave)
+    {
+        DOVirtual.DelayedCall(2f, () =>
+        {
+            StartLevelUp(2);
+        }).SetUpdate(true); // TimeScale 영향 안 받게
+    }
+    else
+    {
+        StartLevelUp(1);
+    }
     }
     private void PlayTitleTween()
     {

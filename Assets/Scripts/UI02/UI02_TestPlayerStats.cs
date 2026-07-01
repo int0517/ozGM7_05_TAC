@@ -45,15 +45,20 @@ public class UI02_TestPlayerStats : MonoBehaviour
             {
                 // 같은 계열 스킬이면 더 높은 레벨로 교체
                 //ownedSkills[i] = skill; 
-                //이미 보유 중이면 추가x
+
+                //!!!!!!!!머지 후 주석 풀 곳!!!!!!!!!!!!!
+                //이미 보유 중인 스킬이면 레벨업만 호출하고 리턴
+                //playerSkillLevel.LevelUpSkill(skill.skillId);
                 Debug.Log($"{skill.skillName} 이미 보유 중");
 
                 return;
             }
         }
 
-        // 처음 얻는 경우만 리스트에 추가
+        // 처음 얻는 경우만 리스트에 추가하고 레벨업 호출
         ownedSkills.Add(skill);
+        //!!!!!!!!!!!!!!머지 후 주석 풀 곳!!!!!!!!!!!!!!
+        //playerSkillLevel.LevelUpSkill(skill.skillId);
 
         Debug.Log($"{skill.skillName} 최초 획득");
     }

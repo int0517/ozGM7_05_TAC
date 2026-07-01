@@ -45,7 +45,7 @@ public class StatPanel : UIPanel //플레이어 스탯 / 스킬 UI 갱신 담당
 
     public void GoExit()
     {
-        Time.timeScale = 1f;
+        Time.timeScale = 0f;
 
         UIManager.Instance.OpenQuit();
     }
