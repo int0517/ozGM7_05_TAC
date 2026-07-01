@@ -21,5 +21,6 @@ public class WaveTracker : MonoBehaviour //현재 웨이브 저장
     public void SetWave(int wave)
     {
         CurrentWave = wave;
+        Debug.Log($"WaveTracker 웨이브 변경: {CurrentWave}");
     }
 }
