@@ -40,16 +40,34 @@ public class pSkill5_AcidRain : MonoBehaviour
             case 0:
                 break;
             case 1:
-                Instantiate(acidrainPrefab, targetPosition1, Quaternion.identity).Init(pStat);
+                pSkill5_AcidRainController bullet1 = Managers.Pool.GetPool(acidrainPrefab);
+                bullet1.transform.position = targetPosition1;
+                bullet1.transform.rotation = Quaternion.identity;
+                bullet1.Init(pStat, acidrainPrefab.gameObject);
                 break;
             case 2:
-                Instantiate(acidrainPrefab, targetPosition1, Quaternion.identity).Init(pStat);
-                Instantiate(acidrainPrefab, targetPosition2, Quaternion.identity).Init(pStat);
+                pSkill5_AcidRainController bullet2_1 = Managers.Pool.GetPool(acidrainPrefab);
+                bullet2_1.transform.position = targetPosition1;
+                bullet2_1.transform.rotation = Quaternion.identity;
+                bullet2_1.Init(pStat, acidrainPrefab.gameObject);
+                pSkill5_AcidRainController bullet2_2 = Managers.Pool.GetPool(acidrainPrefab);
+                bullet2_2.transform.position = targetPosition2;
+                bullet2_2.transform.rotation = Quaternion.identity;
+                bullet2_2.Init(pStat, acidrainPrefab.gameObject);
                 break;
             case 3:
-                Instantiate(acidrainPrefab, targetPosition1, Quaternion.identity).Init(pStat);
-                Instantiate(acidrainPrefab, targetPosition2, Quaternion.identity).Init(pStat);
-                Instantiate(acidrainPrefab, targetPosition3, Quaternion.identity).Init(pStat);
+                pSkill5_AcidRainController bullet3_1 = Managers.Pool.GetPool(acidrainPrefab);
+                bullet3_1.transform.position = targetPosition1;
+                bullet3_1.transform.rotation = Quaternion.identity;
+                bullet3_1.Init(pStat, acidrainPrefab.gameObject);
+                pSkill5_AcidRainController bullet3_2 = Managers.Pool.GetPool(acidrainPrefab);
+                bullet3_2.transform.position = targetPosition2;
+                bullet3_2.transform.rotation = Quaternion.identity;
+                bullet3_2.Init(pStat, acidrainPrefab.gameObject);
+                pSkill5_AcidRainController bullet3_3 = Managers.Pool.GetPool(acidrainPrefab);
+                bullet3_3.transform.position = targetPosition3;
+                bullet3_3.transform.rotation = Quaternion.identity;
+                bullet3_3.Init(pStat, acidrainPrefab.gameObject);
                 break;
             default:
                 break;
@@ -90,11 +108,6 @@ public class pSkill5_AcidRain : MonoBehaviour
             int middleIndex = enemies.Length / 2;
             targetPosition3 = enemies[middleIndex].transform.position;
         }
-    }
-
-    private void SpawnAcidRain(Vector3 pos)
-    {
-        Instantiate(acidrainPrefab, pos, Quaternion.identity).Init(pStat);
     }
 
     public void Skill5LevelUp()

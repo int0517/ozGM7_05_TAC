@@ -10,10 +10,13 @@ public class PlayerNormalAttackBullet : MonoBehaviour
     [SerializeField] private float lifeTime = 5f;
     private float timer;
 
-    public void Init(PlayerStat pStat)
+    private GameObject originPrefab;
+
+    public void Init(PlayerStat pStat, GameObject prefab)
     {
         damageBonus = PlayerStatDictionary.PlayerDamageIncrease[pStat.GetStatLvl(PlayerStatEnum.DamageIncrease)];
         timer = lifeTime;
+        originPrefab = prefab;
     }
 
     void Update()
@@ -23,7 +26,7 @@ public class PlayerNormalAttackBullet : MonoBehaviour
         timer -= Time.deltaTime;
         if (timer <= 0f)
         {
-            PManagers.Pool.ReturnPool(this);
+            Managers.Pool.ReturnPool(originPrefab, this);
         }
     }
 
@@ -38,6 +41,6 @@ public class PlayerNormalAttackBullet : MonoBehaviour
             damageable.TakeDamage(totalDamage);
         }
 
-        PManagers.Pool.ReturnPool(this);
+        Managers.Pool.ReturnPool(originPrefab, this);
     }
 }

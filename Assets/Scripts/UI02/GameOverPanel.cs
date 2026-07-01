@@ -2,7 +2,6 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-
 public class GameOverPanel : StatPanel
 {
     [SerializeField] private TMP_Text waveText;
@@ -32,5 +31,6 @@ public class GameOverPanel : StatPanel
 
         Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        
     }
 }

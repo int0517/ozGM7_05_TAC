@@ -51,6 +51,7 @@ public class WaveManager : MonoBehaviour
 
     public IEnumerator WaveStart()
     {
+        spawnManager.ResumeSpawn();
         isBossDead = false;
 
         //웨이브 시작 시점에 보스웨이브 여부를 미리 저장
@@ -82,6 +83,7 @@ public class WaveManager : MonoBehaviour
                 //보스 처치 시 웨이브 종료
                 if (isBossDead)
                 {
+                    spawnManager.StopSpawn();
                     Clean(isCurrentlyBossWave); //보스웨이브 종료
                     yield break;
                 }
@@ -96,18 +98,40 @@ public class WaveManager : MonoBehaviour
                 UI.UpdateTimerBar(currentWaveTimer, waveTime);
                 yield return null;
             }
+            while (currentWaveTimer > 0)
+            {
+                currentWaveTimer -= Time.deltaTime * 90f;
 
-            Clean(isCurrentlyBossWave); //일반웨이브 종료
+                if (currentWaveTimer < 0)
+                    currentWaveTimer = 0;
+
+                UI.UpdateTimerBar(currentWaveTimer, waveTime);
+
+                yield return null;
+            }
+            spawnManager.StopSpawn();
+            Clean(isCurrentlyBossWave);
         }
     }
 
-    private void Clean(bool wasBossWave)
+    private void Clean(bool wasBossWave) //파라미터 추가: 보스웨이브 여부를 전달받음
     {
-        EManagers.Pool.ReturnAll();
-        EBManagers.Pool.ReturnAll();
+        Debug.Log("Clean 호출!");
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        foreach (var e in enemies)
-            Destroy(e);
+        Debug.Log("Enemy 개수 : " + enemies.Length);
+        GameObject[] bullets = GameObject.FindGameObjectsWithTag("EnemyBullet");
+
+        foreach (GameObject enemy in enemies)
+        {
+            Destroy(enemy);
+        }
+        foreach (GameObject bullet in bullets)
+        {
+            Destroy(bullet);
+        }
+
+        //적/총알 정리 완료 후 웨이브 종료 이벤트 발행
+        //구독 중인 스크립트(LevelUpUI 등)가 자동으로 반응함
         OnWaveEnded?.Invoke(wasBossWave);
     }
 }

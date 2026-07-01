@@ -6,11 +6,24 @@ public class SpawnManager : MonoBehaviour
     public GameLevelData levelData;
     public SpawnEnemy spawner;
     private int currentWaveIndex = 0;
+
+    public void StopSpawn()
+    {
+        spawner.StopSpawn();
+    }
+
+    public void ResumeSpawn()
+    {
+        spawner.ResumeSpawn();
+    }
+
     public IEnumerator StartCurrentWave()
     {
         if (currentWaveIndex >= levelData.waveList.Count) yield break;
 
         WaveInfo currentWave = levelData.waveList[currentWaveIndex];
+
+        //WaveTracker.Instance.SetWave(currentWave.waveNumber);
         if (currentWave.bossWave)
         {
             Debug.Log($"{currentWave.waveNumber / 5}번째  보스웨이브 시작!");
