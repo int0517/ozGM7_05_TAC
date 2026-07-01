@@ -2,22 +2,29 @@
 
 public class PlayerNormalAttackBullet : MonoBehaviour
 {
-    private static Sprite fallbackBulletSprite;
-
     [SerializeField] private LayerMask targetLayer;
     [SerializeField] private float damage;
     private float damageBonus;
     [SerializeField] private float moveSpeed = 10f;
 
+    [SerializeField] private float lifeTime = 5f;
+    private float timer;
+
     public void Init(PlayerStat pStat)
     {
         damageBonus = PlayerStatDictionary.PlayerDamageIncrease[pStat.GetStatLvl(PlayerStatEnum.DamageIncrease)];
-        Destroy(gameObject, 5f);
+        timer = lifeTime;
     }
 
     void Update()
     {
         transform.Translate(Vector3.down *moveSpeed * Time.deltaTime);
+
+        timer -= Time.deltaTime;
+        if (timer <= 0f)
+        {
+            PManagers.Pool.ReturnPool(this);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -31,6 +38,6 @@ public class PlayerNormalAttackBullet : MonoBehaviour
             damageable.TakeDamage(totalDamage);
         }
 
-        Destroy(gameObject);
+        PManagers.Pool.ReturnPool(this);
     }
 }

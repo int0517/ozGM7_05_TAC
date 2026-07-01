@@ -30,21 +30,24 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if (pStat.isDead)
+        if (pStat.IsDead)
         {
             GetComponent<Collider2D>().enabled = false;
             GetComponent<PlayerMagnet>().enabled = false;
             rb.linearVelocity = Vector2.zero;
-            return;
+        }
+        else
+        {
+            movement = ReadMovement();
+            Rotate();
         }
 
-        Rotate();
         UpdateAnimation();
     }
 
     private void FixedUpdate()
     {
-        if (pStat.isDead) return;
+        if (pStat.IsDead) return;
 
         Move();
         MoveLimit();
@@ -57,9 +60,8 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
-        movement = ReadMovement();
         moveSpeed = PlayerStatDictionary.PlayerMoveSpeed[pStat.GetStatLvl(PlayerStatEnum.MoveSpeed)];
-        rb.linearVelocity = new Vector2(movement.x * moveSpeed, movement.y * moveSpeed);
+        rb.linearVelocity = movement * moveSpeed;
     }
 
     private void MoveLimit()
@@ -117,7 +119,7 @@ public class PlayerController : MonoBehaviour
     private void Rotate()
     {
         if (Camera.main == null || Mouse.current == null) return;
-        if (CombatHudController.isPaused || pStat.isDead) return;
+        if (CombatHudController.isPaused || pStat.IsDead) return;
 
 
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
@@ -131,20 +133,27 @@ public class PlayerController : MonoBehaviour
 
     private void UpdateAnimation()
     {
-        if (CombatHudController.isPaused || pStat.isDead) return;
-        if (playerAnimationController.GetCurrentState() == PlayerAnimState.Hit) return;
+        if (CombatHudController.isPaused) return;
 
-        PlayerAnimationController.PlayerAnimState nextState;
+        PlayerAnimState nextState;
 
-        if (Mathf.Abs(movement.x) > 0.01f || Mathf.Abs(movement.y) > 0.01f)
+        if (pStat.IsDead)
         {
-            nextState = PlayerAnimationController.PlayerAnimState.Walk;
+            nextState = PlayerAnimState.Die;
+        }
+        else if (pStat.IsHit)
+        {
+            nextState = PlayerAnimState.Hit;
+        }
+        else if (movement.sqrMagnitude > 0.001f)
+        {
+            nextState = PlayerAnimState.Walk;
         }
         else
         {
-            nextState = PlayerAnimationController.PlayerAnimState.Idle;
+            nextState = PlayerAnimState.Idle;
         }
-        
+
         playerAnimationController.SetState(nextState);
     }
 }

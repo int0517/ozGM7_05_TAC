@@ -3,10 +3,11 @@ using static PlayerAnimationController;
 
 public class HitEndEvent : MonoBehaviour
 {
-    [SerializeField] private PlayerAnimationController playerAnimationController;
+    [SerializeField] private PlayerStat pStat;
 
     public void HitEnd()
     {
-        playerAnimationController.SetState(PlayerAnimState.Idle);
+        Debug.Log("HitEnd");
+        pStat.EndHit();
     }
 }

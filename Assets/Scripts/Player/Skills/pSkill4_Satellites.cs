@@ -14,8 +14,11 @@ public class pSkill4_Satellites : MonoBehaviour
     [SerializeField] private PlayerStat pStat;
     void Update()
     {
-        transform.Rotate(new Vector3(0, 0, rotateSpeed * Time.deltaTime *
-            PlayerStatDictionary.PlayerAttackSpeed[pStat.GetStatLvl(PlayerStatEnum.AttackSpeed)]));
+        if(!pStat.IsDead)
+        {
+            transform.Rotate(new Vector3(0, 0, rotateSpeed * Time.deltaTime *
+                PlayerStatDictionary.PlayerAttackSpeed[pStat.GetStatLvl(PlayerStatEnum.AttackSpeed)]));
+        }
     }
 
     public void Skill4LevelUp()

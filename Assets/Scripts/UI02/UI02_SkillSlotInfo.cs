@@ -3,10 +3,10 @@ using UnityEngine.EventSystems;
 
 public class UI02_SkillSlotInfo : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    //½ºÅ³ ±âº» Á¤º¸
+    //ï¿½ï¿½Å³ ï¿½âº» ï¿½ï¿½ï¿½ï¿½
     private UI02_SkillSlots.SkillData skillData;
 
-    //½ÇÁ¦ ·¹º§ °ª
+    //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
     private int skillLevel;
     
     public void OnPointerEnter(PointerEventData eventData)
@@ -21,10 +21,10 @@ public class UI02_SkillSlotInfo : MonoBehaviour, IPointerEnterHandler, IPointerE
         UIManager.Instance.HideTooltip();
     }
 
-    //¿ÜºÎ¿¡¼­ SkillData¸¦ Á÷Á¢ ¼öÁ¤ÇÏÁö ¾Ê°í, ÇÔ¼ö¸¦ ÅëÇØ¼­¸¸ Àü´Þ¹Þ¾Æ ¼³Á¤(Ä¸½¶È­)
+    //ï¿½ÜºÎ¿ï¿½ï¿½ï¿½ SkillDataï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê°ï¿½, ï¿½Ô¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ø¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Þ¹Þ¾ï¿½ ï¿½ï¿½ï¿½ï¿½(Ä¸ï¿½ï¿½È­)
     public void SetSkillData(UI02_SkillSlots.SkillData data, int level)
     {
-        skillData = data; //½ºÅ³ ±âº» Á¤º¸ ÀúÀå
-        skillLevel = level; //½ÇÁ¦ ·¹º§ °ª ÀúÀå
+        skillData = data; //ï¿½ï¿½Å³ ï¿½âº» ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+        skillLevel = level; //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     }
 }
