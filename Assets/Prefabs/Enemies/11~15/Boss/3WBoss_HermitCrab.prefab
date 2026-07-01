@@ -35366,7 +35366,7 @@ MonoBehaviour:
   enemyFireInterval: 5
   enemySpeed: 1
   enemyPoint: 30
-  coinPrefab: {fileID: 5971139616951717026, guid: f78e6e6459eac404689428af753400a4,
+  coinPrefab: {fileID: 3149272903311738704, guid: f22616b08da0eb64da238330c184b111,
     type: 3}
   bossPotionPrefab: {fileID: 8208973172336133487, guid: f9f97a50bea78b44ca3e25f6bb5d002a,
     type: 3}
