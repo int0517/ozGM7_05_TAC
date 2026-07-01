@@ -114,26 +114,25 @@ public class LevelUpUI : MonoBehaviour
         remainLevelUpCount = count;
         Open();
     }
-    //!!!!!!머지하고 주석 풀 곳!!!!!!!!!!
-    //웨이브 종료 이벤트 구독 : WaveManager에서 웨이브 끝나면 알려줌 
-    //private void OnEnable()
-    //{
-    //    WaveManager.OnWaveEnded += HandleWaveEnded;
-    //}
 
-    //오브젝트 꺼질 때 구독 해제 
-    //private void OnDisable()
-    //{
-    //    WaveManager.OnWaveEnded -= HandleWaveEnded;
-    //}
-    
-    //웨이브 종료 신호 받으면 실행되는 함수
-    //wasBossWave : 방금 끝난 웨이브가 보스웨이브였는지 여부
-    //private void HandleWaveEnded(bool wasBossWave)
-    //{
-    //    NextWave();
-    //    StartLevelUp(wasBossWave ? 2 : 1);
-    //}
+    //웨이브 종료 이벤트 구독 
+    private void OnEnable()
+    {
+        WaveManager.OnWaveEnded += HandleWaveEnded;
+    }
+
+    //오브젝트 꺼질 때 구독 해제 (중복 호출 방지)
+    private void OnDisable()
+    {
+        WaveManager.OnWaveEnded -= HandleWaveEnded;
+    }
+
+    //웨이브 끝났다는 신호 받으면 실행
+    private void HandleWaveEnded(bool wasBossWave)
+    {
+        NextWave();
+        StartLevelUp(wasBossWave ? 2 : 1);
+    }
     private void PlayTitleTween()
     {
         levelUpText.localScale = Vector3.zero;
