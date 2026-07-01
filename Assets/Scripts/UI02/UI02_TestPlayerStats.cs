@@ -100,14 +100,7 @@ public class UI02_TestPlayerStats : MonoBehaviour
         score += value;
         Debug.Log("Score: " + score);
     }
-    private void Update()
-    {
-        //테스트용! P 누르면 점수 증가
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            AddScore(1);
-        }
-    }
+    
     private void OnTriggerEnter2D(Collider2D other)
     {
         //Coin 충돌 시 점수 증가

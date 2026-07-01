@@ -108,6 +108,7 @@ RectTransform:
   m_Children:
   - {fileID: 8266284084685105688}
   - {fileID: 7064865379577191161}
+  - {fileID: 1127124024893314694}
   m_Father: {fileID: 2224965376033276928}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -168,6 +169,8 @@ MonoBehaviour:
   skillSlots: {fileID: 2633294368872238501}
   playerStatUI: {fileID: 8254157503543697736}
   playerStat: {fileID: 0}
+  titleSceneName: TitleScene
+  waveText: {fileID: 8741087212046686728}
 --- !u!1 &666999564741864658
 GameObject:
   m_ObjectHideFlags: 0
@@ -185,7 +188,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &80536075855543922
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1185,7 +1188,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 40}
+  m_AnchoredPosition: {x: 0, y: 20}
   m_SizeDelta: {x: 800, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3241017624208430543
@@ -1216,10 +1219,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Are you sure you want to quit?
+  m_text: "\uAC8C\uC784\uC744 \uC9C4\uC9DC \uC815\uB9D0 \uC885\uB8CC\uD558\uACA0\uC2B5\uB2C8\uAC00.?"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 88c67b547e60b0b44bbdf9deba2a8b3d, type: 2}
+  m_sharedMaterial: {fileID: -6414870127097749586, guid: 88c67b547e60b0b44bbdf9deba2a8b3d,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1383,6 +1387,144 @@ MonoBehaviour:
     rgba: 4294967295
   m_fontSize: 24
   m_fontSizeBase: 24
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_characterHorizontalScale: 1
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_TextWrappingMode: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 0
+  m_ActiveFontFeatures: 6e72656b
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_EmojiFallbackSupport: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &2786577555662015094
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1127124024893314694}
+  - component: {fileID: 5227895148277205421}
+  - component: {fileID: 8741087212046686728}
+  m_Layer: 5
+  m_Name: WaveText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1127124024893314694
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2786577555662015094}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7064224196961442189}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 500, y: 100}
+  m_Pivot: {x: 0.5, y: 1}
+--- !u!222 &5227895148277205421
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2786577555662015094}
+  m_CullTransparentMesh: 1
+--- !u!114 &8741087212046686728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2786577555662015094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: "\uC800\uB294 \uC6E8\uC774\uBE0C \uC785\uB2C8\uB2E4"
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: d72c97ecc5f191147baf80bccab78dd5, type: 2}
+  m_sharedMaterial: {fileID: -4787953443893882251, guid: d72c97ecc5f191147baf80bccab78dd5,
+    type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 36
+  m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1800,8 +1942,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: -5002547834464145889, guid: df72de8a014e781498eb080f36afe24a,
+    type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -2185,7 +2328,6 @@ MonoBehaviour:
   gameOverPanel: {fileID: 345871041963297522}
   quitPanel: {fileID: 6308903797803324606}
   tooltipPanel: {fileID: 5358441952209043920}
-  playerStat: {fileID: 0}
 --- !u!1 &3476429364386441956
 GameObject:
   m_ObjectHideFlags: 0
@@ -2359,7 +2501,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -7, y: 8}
-  m_SizeDelta: {x: 200, y: 100}
+  m_SizeDelta: {x: 300, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4906302005662888962
 CanvasRenderer:
@@ -2382,7 +2524,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.4056604, g: 0.4056604, b: 0.4056604, a: 1}
+  m_Color: {r: 0.4056604, g: 0.4056604, b: 0.4056604, a: 0.84313726}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2431,7 +2573,7 @@ MonoBehaviour:
   m_ChildAlignment: 0
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 100, y: 100}
+  m_CellSize: {x: 300, y: 70}
   m_Spacing: {x: 0, y: 0}
   m_Constraint: 0
   m_ConstraintCount: 2
@@ -2803,6 +2945,7 @@ MonoBehaviour:
   skillSlots: {fileID: 7701526539188707090}
   playerStatUI: {fileID: 4388386578689717247}
   playerStat: {fileID: 0}
+  titleSceneName: TitleScene
 --- !u!1 &3799080180276911083
 GameObject:
   m_ObjectHideFlags: 0
@@ -3175,8 +3318,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: -5002547834464145889, guid: df72de8a014e781498eb080f36afe24a,
+    type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -4496,7 +4640,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 800, y: 400}
+  m_SizeDelta: {x: 1000, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2980137038312560222
 CanvasRenderer:
@@ -4519,14 +4663,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.45882353, g: 0.67060786, b: 0.6901961, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 6190718380522329162, guid: 1c8f251a3d82bcd4fadd90f545259a3a,
+    type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4555,7 +4700,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &3827334629619674221
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4648,94 +4793,100 @@ MonoBehaviour:
   - {fileID: 4611418135496031101}
   - {fileID: 6538518184043602717}
   - {fileID: 3097001430941130974}
-  allSkills:
-  - skillName: "\uAE30\uBCF8\uACF5\uACA9 Lv1 "
-    description: "\uAE30\uBCF8\uACF5\uACA9\uC740 2\uB808\uBCA8\uBD80\uD130\uB85C
-      \uBC14\uAFB8\uC790"
-    icon: {fileID: 1613481295985639152, guid: e69003b12c4852940bd9cbf5a69769c2, type: 3}
-    skillLevel: 1
-    skillId: 0
-    maxLevel: 3
-    unlockStage: 0
-  - skillName: "\uAE30\uBCF8\uACF5\uACA9 Lv2"
-    description: "\uAE30\uBCF822"
-    icon: {fileID: -9027179324681414974, guid: e69003b12c4852940bd9cbf5a69769c2, type: 3}
-    skillLevel: 2
-    skillId: 0
-    maxLevel: 3
-    unlockStage: 0
-  - skillName: "\uAE30\uBCF8\uACF5\uACA9 Lv3"
-    description: "\uAE30\uBCF833"
-    icon: {fileID: 3972219151982858924, guid: e69003b12c4852940bd9cbf5a69769c2, type: 3}
-    skillLevel: 3
-    skillId: 0
-    maxLevel: 3
-    unlockStage: 0
-  - skillName: "\uD30C\uC774\uC5B4\uBCFC Lv1"
-    description: "\uC778\uB370 \uD3ED\uD0C4\uC774 \uB410\uB124.."
-    icon: {fileID: 5526119309634511866, guid: e69003b12c4852940bd9cbf5a69769c2, type: 3}
-    skillLevel: 1
-    skillId: 1
-    maxLevel: 3
-    unlockStage: 0
-  - skillName: "\uD30C\uC774\uC5B4\uBCFC Lv2"
-    description: "\uB354 \uB728\uAC70\uBE1C"
-    icon: {fileID: -8094595692935226529, guid: e69003b12c4852940bd9cbf5a69769c2, type: 3}
-    skillLevel: 2
-    skillId: 1
-    maxLevel: 3
-    unlockStage: 0
-  - skillName: "\uD30C\uC774\uC5B4\uBCFC Lv3"
-    description: "\uC644\uC804 \uB728\uAC70\uC6C0!"
-    icon: {fileID: 6276971898329534945, guid: e69003b12c4852940bd9cbf5a69769c2, type: 3}
-    skillLevel: 3
-    skillId: 1
-    maxLevel: 3
-    unlockStage: 0
-  - skillName: "\uB0C9\uAC01 \uC9C0\uB300 Lv1"
-    description: "\uCD94\uC6CC\uC6A9"
-    icon: {fileID: -6551052164859352750, guid: e69003b12c4852940bd9cbf5a69769c2, type: 3}
-    skillLevel: 1
-    skillId: 2
-    maxLevel: 3
-    unlockStage: 0
-  - skillName: "\uB0C9\uAC01 \uC9C0\uB300 Lv2"
-    description: "\uB118 \uCD94\uC6CC\uC6A9"
-    icon: {fileID: 6021421511358016280, guid: e69003b12c4852940bd9cbf5a69769c2, type: 3}
-    skillLevel: 2
-    skillId: 2
-    maxLevel: 3
-    unlockStage: 0
-  - skillName: "\uB0C9\uAC01 \uC9C0\uB300 Lv3"
-    description: "\uC9C4\uC9DC \uCD94\uC6CC\uC6A9.."
-    icon: {fileID: 6762519853196395263, guid: e69003b12c4852940bd9cbf5a69769c2, type: 3}
-    skillLevel: 3
-    skillId: 2
-    maxLevel: 3
-    unlockStage: 0
-  - skillName: "\uB808\uC774\uC800 Lv1"
-    description: "\uC0A5"
-    icon: {fileID: 527519949526313681, guid: e69003b12c4852940bd9cbf5a69769c2, type: 3}
-    skillLevel: 1
-    skillId: 3
-    maxLevel: 3
-    unlockStage: 0
-  - skillName: "\uB808\uC774\uC800 Lv2"
-    description: "\uC0A5\uC0A5"
-    icon: {fileID: -3920608344682924629, guid: e69003b12c4852940bd9cbf5a69769c2, type: 3}
-    skillLevel: 2
-    skillId: 3
-    maxLevel: 3
-    unlockStage: 0
-  - skillName: "\uB808\uC774\uC800 Lv3"
-    description: "\uC0A5\uC0A5\uC0A5.."
-    icon: {fileID: -506372826780094804, guid: e69003b12c4852940bd9cbf5a69769c2, type: 3}
-    skillLevel: 3
-    skillId: 3
-    maxLevel: 3
-    unlockStage: 0
   playerStats: {fileID: 0}
-  currentStage: 0
+  activeSkills:
+  - skillName: "\uAE30\uBCF8 \uACF5\uACA9 Lv1"
+    description: 111
+    icon: {fileID: 1613481295985639152, guid: e69003b12c4852940bd9cbf5a69769c2, type: 3}
+    skillId: 1
+    maxLevel: 3
+    unlockStage: 1
+    skillType: 1
+  - skillName: "\uAE30\uBCF8 \uACF5\uACA9 Lv2"
+    description: 22
+    icon: {fileID: -9027179324681414974, guid: e69003b12c4852940bd9cbf5a69769c2, type: 3}
+    skillId: 2
+    maxLevel: 3
+    unlockStage: 0
+    skillType: 1
+  - skillName: "\uAE30\uBCF8 \uACF5\uACA9 Lv3"
+    description: 333333333333
+    icon: {fileID: 3972219151982858924, guid: e69003b12c4852940bd9cbf5a69769c2, type: 3}
+    skillId: 1
+    maxLevel: 3
+    unlockStage: 0
+    skillType: 1
+  - skillName: "\uD30C\uC774\uC5B4\uBCFC Lv1"
+    description: 111111111111112
+    icon: {fileID: -5240615596922460295, guid: dd950139fb7e22f4998fd80ec2123f96, type: 3}
+    skillId: 2
+    maxLevel: 3
+    unlockStage: 0
+    skillType: 1
+  - skillName: "\uD30C\uC774\uC5B4\uBCFC Lv2"
+    description: 222222222222
+    icon: {fileID: 2230344122243341868, guid: 373e2ef5561987c42b761a9c7d5148e0, type: 3}
+    skillId: 2
+    maxLevel: 3
+    unlockStage: 0
+    skillType: 1
+  - skillName: "\uD30C\uC774\uC5B4\uBCFC Lv3"
+    description: 33333333333
+    icon: {fileID: -7480526380293838484, guid: b5357993e81703546b2015f0d3b26b02, type: 3}
+    skillId: 2
+    maxLevel: 3
+    unlockStage: 0
+    skillType: 1
+  - skillName: "\uD30C\uC774\uC5B4\uBCFC Lv3"
+    description: 33333333333
+    icon: {fileID: -7480526380293838484, guid: b5357993e81703546b2015f0d3b26b02, type: 3}
+    skillId: 2
+    maxLevel: 3
+    unlockStage: 0
+    skillType: 1
+  passiveSkills:
+  - skillName: "\uC774\uB3D9 \uC18D\uB3C4 Lv1"
+    description: "\uAE30\uBCF8 \uC774\uB3D9 \uC18D\uB3C4"
+    icon: {fileID: 4677402451498172315, guid: 7e02fea0b6bf78646b2085c223681825, type: 3}
+    skillId: 100
+    maxLevel: 3
+    unlockStage: 1
+    skillType: 0
+  - skillName: "\uC774\uB3D9 \uC18D\uB3C4 Lv2"
+    description: 
+    icon: {fileID: -1201811165384957444, guid: 588349779617f1044953690e4d0335eb, type: 3}
+    skillId: 100
+    maxLevel: 3
+    unlockStage: 1
+    skillType: 1
+  - skillName: "\uC774\uB3D9 \uC18D\uB3C4 Lv3"
+    description: 
+    icon: {fileID: -5118344416044974726, guid: 4ecdc0eaac302aa4c82691e579412612, type: 3}
+    skillId: 100
+    maxLevel: 3
+    unlockStage: 1
+    skillType: 1
+  - skillName: "\uACF5\uACA9 \uC18D\uB3C4 Lv1"
+    description: 
+    icon: {fileID: 1079347245444194777, guid: 9254fc6e939d056458233b8bec653392, type: 3}
+    skillId: 101
+    maxLevel: 3
+    unlockStage: 0
+    skillType: 0
+  - skillName: "\uACF5\uACA9 \uC18D\uB3C4 Lv2"
+    description: 
+    icon: {fileID: -2456806995132483157, guid: 26ae5f54ca3d5934bb24ed5f16fa9ba1, type: 3}
+    skillId: 101
+    maxLevel: 3
+    unlockStage: 0
+    skillType: 1
+  - skillName: "\uACF5\uACA9 \uC18D\uB3C4 Lv3"
+    description: 
+    icon: {fileID: -976356884977280822, guid: 2f8f6305b735cfd43b8d1e21ed031180, type: 3}
+    skillId: 101
+    maxLevel: 3
+    unlockStage: 0
+    skillType: 1
 --- !u!1 &6840868960767579265
 GameObject:
   m_ObjectHideFlags: 0
@@ -4801,10 +4952,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Yes
+  m_text: "\uC608"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 88c67b547e60b0b44bbdf9deba2a8b3d, type: 2}
+  m_sharedMaterial: {fileID: -6414870127097749586, guid: 88c67b547e60b0b44bbdf9deba2a8b3d,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -5421,10 +5573,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: No
+  m_text: "\uC544\uB2C8\uC624"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 88c67b547e60b0b44bbdf9deba2a8b3d, type: 2}
+  m_sharedMaterial: {fileID: -6414870127097749586, guid: 88c67b547e60b0b44bbdf9deba2a8b3d,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -6281,6 +6434,26 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7564295113912174501, guid: b0c4d0301b0bea740813bb46837b4538,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7564295113912174501, guid: b0c4d0301b0bea740813bb46837b4538,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7564295113912174501, guid: b0c4d0301b0bea740813bb46837b4538,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7564295113912174501, guid: b0c4d0301b0bea740813bb46837b4538,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8660961810963993429, guid: b0c4d0301b0bea740813bb46837b4538,
         type: 3}
       propertyPath: m_Name
@@ -6728,6 +6901,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7564295113912174501, guid: b0c4d0301b0bea740813bb46837b4538,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7564295113912174501, guid: b0c4d0301b0bea740813bb46837b4538,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7564295113912174501, guid: b0c4d0301b0bea740813bb46837b4538,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7564295113912174501, guid: b0c4d0301b0bea740813bb46837b4538,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8166892287318153107, guid: b0c4d0301b0bea740813bb46837b4538,
+        type: 3}
+      propertyPath: skills.Array.data[0].skillType
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8660961810963993429, guid: b0c4d0301b0bea740813bb46837b4538,
         type: 3}
