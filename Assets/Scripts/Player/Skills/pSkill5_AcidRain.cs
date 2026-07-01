@@ -21,10 +21,13 @@ public class pSkill5_AcidRain : MonoBehaviour
 
     void Update()
     {
-        if (attackTimer < attackTimerMax) attackTimer +=
+        if (!pStat.IsDead)
+        {
+            if (attackTimer < attackTimerMax) attackTimer +=
                 Time.deltaTime * PlayerStatDictionary.PlayerAttackSpeed[pStat.GetStatLvl(PlayerStatEnum.AttackSpeed)];
 
-        if (attackTimer >= attackTimerMax) SpawnAcidRain(skill5Level);
+            if (attackTimer >= attackTimerMax) SpawnAcidRain(skill5Level);
+        }
     }
 
 

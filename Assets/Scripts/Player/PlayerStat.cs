@@ -47,11 +47,16 @@ public class PlayerStat : MonoBehaviour
     public bool CanHit {  get { return canHit; } }
 
     [SerializeField] private PlayerAnimationController playerAnimationController;
-    public bool isDead;
+    private bool isHit;
+    private bool isDead;
+    public bool IsHit { get { return isHit; } }
+    public bool IsDead { get { return isDead; } }
 
     private void Start()
     {
         pCurrentHP = pMaxHP;
+
+        isHit = false;
         isDead = false;
         canHit = true;
     }
@@ -81,20 +86,18 @@ public class PlayerStat : MonoBehaviour
 
         if(pCurrentHP > 0)
         {
-            playerAnimationController.SetState(PlayerAnimationController.PlayerAnimState.Hit);
+            isHit = true;
         }
         else if (pCurrentHP <= 0)
         {
             pCurrentHP = 0;
-
-            // 플레이어 사망 처리, 종료 화면
-            if (!isDead)
-            {
-                playerAnimationController.SetState(PlayerAnimationController.PlayerAnimState.Die);
-                playerAnimationController.SetTrigger("Dead");
-                isDead = true;
-            }
+            isDead = true;
         }
+    }
+
+    public void EndHit()
+    {
+        isHit = false;
     }
 
     public void HealPlayer(int amount)
