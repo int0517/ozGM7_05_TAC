@@ -13,6 +13,7 @@ public class ShortRangeEnemy : MonoBehaviour, IDamageable, IPoolable
     [SerializeField] private GameObject coinPrefab;
     [SerializeField] private GameObject potionPrefab;
     [SerializeField] private GameObject shieldPrefab;
+    [SerializeField] private GameObject deathEffect;
     private PlayerStat playerStat;
     public float knockbackForce = 20.0f;
 
@@ -60,8 +61,12 @@ public class ShortRangeEnemy : MonoBehaviour, IDamageable, IPoolable
     public void Init()
     {
         StopAllCoroutines();
+        isDead = false;
+        isHit = false;
+        isKnockedBack = false;
         enemyCurrentHP = enemyMaxHP;
         rb = GetComponent<Rigidbody2D>();
+        rb.bodyType = RigidbodyType2D.Dynamic;
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
         if (playerObj != null)
         {
@@ -90,7 +95,7 @@ public class ShortRangeEnemy : MonoBehaviour, IDamageable, IPoolable
 
     void FixedUpdate()
     {
-
+        if (isDead) return;
         if (isKnockedBack || playerTransform == null) return;
 
         FacePlayer();
@@ -153,7 +158,9 @@ public class ShortRangeEnemy : MonoBehaviour, IDamageable, IPoolable
         rb.bodyType = RigidbodyType2D.Kinematic;
         PlayAnim("die");
         yield return new WaitForSeconds(0.5f);
-        StopAllCoroutines();
+        Instantiate(deathEffect, transform.position, Quaternion.identity);
+        PlayAnim("walk");
+        yield return new WaitForSeconds(0.1f);
         EManagers.Pool.ReturnPool(this);
     }
 
@@ -163,7 +170,7 @@ public class ShortRangeEnemy : MonoBehaviour, IDamageable, IPoolable
 
         PlayAnim("hit");
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
 
         PlayAnim("walk");
 

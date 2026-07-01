@@ -5,7 +5,10 @@ public class OneBossPoisenTimer : MonoBehaviour
 {
     [SerializeField] private TMP_Text timerText;
     [SerializeField] private float currentTime = 3.0f;
-
+    private void Start()
+    {
+       Destroy(gameObject, currentTime);
+    }
     void Update()
     {
         if (currentTime > 0)

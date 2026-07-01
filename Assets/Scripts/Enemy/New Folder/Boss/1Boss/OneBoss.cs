@@ -112,7 +112,6 @@ public class OneBoss : BossBase
     protected override void CheckForPlayer()
     {
         float dist = Vector2.Distance(transform.position, playerTransform.position);
-        if (isHit || isAttacking) return;
 
         if (dist <= enemyRange)
         {
@@ -137,7 +136,6 @@ public class OneBoss : BossBase
     {
         if (isHit) return;
         fireTimer += Time.fixedDeltaTime;
-        timerCheck = true;
         if (fireTimer >= enemyFireInterval)
         {
 
@@ -151,7 +149,6 @@ public class OneBoss : BossBase
             }
 
             fireTimer = 0f;
-            timerCheck = false;
         }
 
     }

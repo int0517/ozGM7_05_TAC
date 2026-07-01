@@ -6,6 +6,7 @@ public class BossPoison : MonoBehaviour
     private PlayerStat playerStat;
     void Start()
     {
+        Destroy(gameObject, 5);
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
         if (playerObj != null)
         {
