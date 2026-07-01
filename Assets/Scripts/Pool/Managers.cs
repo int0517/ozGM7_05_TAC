@@ -2,18 +2,18 @@
 using UnityEngine;
 
 // 해당 클래스는 여러 매니저에 쉽게 접근하기 위한 클래스
-public static class PManagers
+public static class Managers
 {
-    private static PlayerPoolManager _pool;
+    private static PoolManager _pool;
 
-    public static PlayerPoolManager Pool
+    public static PoolManager Pool
     {
         get
         {
             if (_pool == null)
             {
                 GameObject obj = new GameObject("PoolManager");
-                _pool = obj.AddComponent<PlayerPoolManager>();
+                _pool = obj.AddComponent<PoolManager>();
                 Object.DontDestroyOnLoad(obj);
             }
             return _pool;

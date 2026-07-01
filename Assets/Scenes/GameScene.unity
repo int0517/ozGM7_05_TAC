@@ -1735,7 +1735,7 @@ MonoBehaviour:
   waveTime: 60
   bossTime: 30
   spawnManager: {fileID: 1325047625}
-  UI: {fileID: 0}
+  UI: {fileID: 940614413}
 --- !u!4 &643284209
 Transform:
   m_ObjectHideFlags: 0
@@ -2152,7 +2152,7 @@ GameObject:
   - component: {fileID: 711300224}
   - component: {fileID: 711300223}
   m_Layer: 0
-  m_Name: PlayerPoolManager
+  m_Name: PoolManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

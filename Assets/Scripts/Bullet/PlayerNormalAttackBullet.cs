@@ -23,7 +23,7 @@ public class PlayerNormalAttackBullet : MonoBehaviour
         timer -= Time.deltaTime;
         if (timer <= 0f)
         {
-            PManagers.Pool.ReturnPool(this);
+            Managers.Pool.ReturnPool(this);
         }
     }
 
@@ -38,6 +38,6 @@ public class PlayerNormalAttackBullet : MonoBehaviour
             damageable.TakeDamage(totalDamage);
         }
 
-        PManagers.Pool.ReturnPool(this);
+        Managers.Pool.ReturnPool(this);
     }
 }

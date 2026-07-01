@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class PlayerPoolManager : MonoBehaviour
+public class PoolManager : MonoBehaviour
 {
     private Dictionary<Type, Queue<Component>> poolDictionary = new Dictionary<Type, Queue<Component>>();
     // 타입별 부모 오브젝트용

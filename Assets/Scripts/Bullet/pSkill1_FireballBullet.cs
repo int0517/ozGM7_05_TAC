@@ -14,16 +14,25 @@ public class pSkill1_FireballBullet : MonoBehaviour
     private bool isExploded = false;
     private Vector2 moveDirection;
 
+    [SerializeField] private float lifeTime = 5f;
+    private float timer;
+
     public void Init(PlayerStat pStat)
     {
         damageBonus = PlayerStatDictionary.PlayerDamageIncrease[pStat.GetStatLvl(PlayerStatEnum.DamageIncrease)];
         SearchEnemy();
-        Destroy(gameObject, 5f);
+        timer = lifeTime;
     }
 
     void Update()
     {
         transform.position += (Vector3)moveDirection * moveSpeed * Time.deltaTime;
+
+        timer -= Time.deltaTime;
+        if (timer <= 0f)
+        {
+            Managers.Pool.ReturnPool(this);
+        }
     }
 
     private void SearchEnemy()
@@ -81,7 +90,7 @@ public class pSkill1_FireballBullet : MonoBehaviour
             }
         }
 
-        Destroy(gameObject);
+        Managers.Pool.ReturnPool(this);
     }
 
     private void OnDrawGizmos()

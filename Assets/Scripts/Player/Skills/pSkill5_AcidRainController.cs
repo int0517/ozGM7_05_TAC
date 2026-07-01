@@ -4,7 +4,6 @@ public class pSkill5_AcidRainController: MonoBehaviour
 {
     [SerializeField] private LayerMask targetLayer;
     [SerializeField] private int damage;
-    [SerializeField] private float destroyTime = 3f;
 
     [Header("피격 쿨타임")]
     [SerializeField] private float hitTimer = 0f;
@@ -12,16 +11,25 @@ public class pSkill5_AcidRainController: MonoBehaviour
 
     [SerializeField] PlayerStat pStat;
 
+    [SerializeField] private float lifeTime = 3f;
+    private float timer;
+
     public void Init(PlayerStat pStat)
     {
         // 이펙트
         float damageBonus = PlayerStatDictionary.PlayerDamageIncrease[pStat.GetStatLvl(PlayerStatEnum.DamageIncrease)];
-        Destroy(gameObject, destroyTime);
+        timer = lifeTime;
     }
 
     private void Update()
     {
         hitTimer += Time.deltaTime;
+
+        timer -= Time.deltaTime;
+        if (timer <= 0f)
+        {
+            Managers.Pool.ReturnPool(this);
+        }
     }
 
     private void OnTriggerStay2D(Collider2D collision)
